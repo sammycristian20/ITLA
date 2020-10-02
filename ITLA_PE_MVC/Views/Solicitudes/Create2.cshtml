@@ -1,0 +1,408 @@
+﻿@model ITLA_PE_MVC.Models.SolicitudViewModel
+
+
+@using (Html.BeginForm("Create", "Solicitudes", FormMethod.Post, new { enctype = "multipart/form-data", @class = "was-validated" }))
+{
+    @Html.AntiForgeryToken()
+
+
+    <form id="msform">
+        <!-- progressbar -->
+        <ul id="progressbar">
+            <li class="active" id="account">
+                <i class="far fa-address-card">
+                </i>
+                <strong>
+                    Datos Personales
+                </strong>
+            </li>
+            <li id="personal">
+                <i class="fas fa-map-marker-alt">
+                </i>
+                <strong>
+                    Dirección
+                </strong>
+            </li>
+            <li id="payment">
+                <i class="fas fa-graduation-cap">
+                </i>
+                <strong>
+                    Nivel Academico
+                </strong>
+            </li>
+            <li id="confirm">
+                <i class="far fa-hand-point-up">
+                </i>
+                <strong>
+                    Programa a aplicar
+                </strong>
+            </li>
+            <li id="confirm">
+                <i class="fas fa-paperclip">
+                </i>
+                <strong>
+                    Documentos a adjuntar
+                </strong>
+            </li>
+            <li id="confirm">
+                <i class="fas fa-check">
+                </i>
+                <strong>
+                    Listo!
+                </strong>
+            </li>
+        </ul>
+        <div class="progress mb-4">
+            <div aria-valuemax="100" aria-valuemin="0" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar">
+            </div>
+        </div>
+        <!-- fieldsets -->
+        <fieldset class="pb-0">
+            <!-- form-card -->
+            <div class="form-card">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">
+                            Datos Personales
+                        </h2>
+                    </div>
+                    <div class="col-5">
+                        <h2 class="steps">
+                            Paso 1 - 5
+                        </h2>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer01">
+                            Nombres
+                        </label>
+                        <input class="form-control is-valid" id="validationServer01" required="" type="text" value="Mark" />
+                        <div class="valid-feedback">
+                            Bien!
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            Apellidos
+                        </label>
+                        <input class="form-control is-valid" id="validationServer02" required="" type="text" value="Otto" />
+                        <div class="valid-feedback">
+                            Bien!
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            Fecha de Nacimiento
+                        </label>
+                        <input class="form-control is-invalid" id="datepicker" required="" type="text" value="" />
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer04">
+                            Tipo Documento de Identidad
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Cedula
+                            </option>
+                            <option>
+                                Pasaporte
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            No. Documento de Identidad
+                        </label>
+                        <input class="form-control is-invalid" id="validationServer02" required="" type="text" value="" />
+                        <div class="valid-feedback">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            Email
+                        </label>
+                        <input class="form-control is-invalid" id="validationServer02" required="" type="text" value="" />
+                        <div class="valid-feedback">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            Tel. Residencial
+                        </label>
+                        <input class="form-control is-invalid" id="validationServer02" required="" type="text" value="" />
+                        <div class="valid-feedback">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer02">
+                            Tel. Celular
+                        </label>
+                        <input class="form-control is-invalid" id="validationServer02" required="" type="text" value="" />
+                        <div class="valid-feedback">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /form-card -->
+            <input class="next action-button btn btn-primary" name="next" type="button" value="Sigientes" />
+        </fieldset>
+        <!-- fieldsets -->
+        <fieldset>
+            <div class="form-card">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">
+                            Dirección
+                        </h2>
+                    </div>
+                    <div class="col-5">
+                        <h2 class="steps">
+                            Paso 2 - 5
+                        </h2>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer04">
+                            Provincia
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Maria Trinidad Sanchez
+                            </option>
+                            <option>
+                                La Vega
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="validationServer04">
+                            Municipio
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Nagua
+                            </option>
+                            <option>
+                                Cabrera
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer02">
+                            Calle y número.
+                        </label>
+                        <input class="form-control is-invalid" id="validationServer02" required="" type="text" value="" />
+                        <div class="valid-feedback">
+                            Campo requerido.
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input class="next action-button btn btn-primary" name="next" type="button" value="Sigientes" />
+            <input class="previous action-button-previous btn btn-secondary" name="previous" type="button" value="Regresar" />
+        </fieldset>
+        <!-- fieldsets -->
+        <fieldset>
+            <div class="form-card">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">
+                            Nivel Academico
+                        </h2>
+                    </div>
+                    <div class="col-5">
+                        <h2 class="steps">
+                            Paso 3 - 5
+                        </h2>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer04">
+                            Nivel Completado
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Escuela Básica
+                            </option>
+                            <option>
+                                Bachiller
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input class="next action-button btn btn-primary" name="next" type="button" value="Sigientes" />
+            <input class="previous action-button-previous btn btn-secondary" name="previous" type="button" value="Regresar" />
+        </fieldset>
+        <!-- fieldsets -->
+        <fieldset>
+            <div class="form-card">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">
+                            Programa a aplicar
+                        </h2>
+                    </div>
+                    <div class="col-5">
+                        <h2 class="steps">
+                            Paso 4 - 5
+                        </h2>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer04">
+                            Programa/Horario
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Favor seleccionar una materia/horario
+                            </option>
+                            <option>
+                                -
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer04">
+                            Programa/Horario (2da Opción)
+                        </label>
+                        <select aria-describedby="validationServer04Feedback" class="custom-select is-invalid" id="validationServer04" required="">
+                            <option disabled="" selected="" value="">
+                                Favor seleccionar una materia/horario
+                            </option>
+                            <option>
+                                -
+                            </option>
+                        </select>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input class="next action-button btn btn-primary" name="next" type="button" value="Sigientes" />
+            <input class="previous action-button-previous btn btn-secondary" name="previous" type="button" value="Regresar" />
+        </fieldset>
+        <!-- fieldsets -->
+        <fieldset>
+            <div class="form-card">
+                <div class="row">
+                    <div class="col-7">
+                        <h2 class="fs-title">
+                            Documentos a adjuntar
+                        </h2>
+                    </div>
+                    <div class="col-5">
+                        <h2 class="steps">
+                            Paso 5 - 5
+                        </h2>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer04">
+                            Cédula
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input aria-describedby="inputGroupFileAddon03" class="custom-file-input" id="inputGroupFile03" type="file" />
+                                <label class="custom-file-label" for="inputGroupFile03">
+                                    Cargar imagen
+                                </label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                    <div class="col-md-12 mb-3">
+                        <label for="validationServer04">
+                            Comprobante de estudios(CERTIFICACION DE GRADO, NOTA DE BACHILLER O CERTIFICADO DE BACHILLERATO)
+                        </label>
+                        <div class="input-group mb-3">
+                            <div class="custom-file">
+                                <input aria-describedby="inputGroupFileAddon03" class="custom-file-input" id="inputGroupFile03" type="file" />
+                                <label class="custom-file-label" for="inputGroupFile03">
+                                    Cargar imagen
+                                </label>
+                            </div>
+                        </div>
+                        <div class="invalid-feedback" id="validationServer04Feedback">
+                            Campo requerido.
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <input class="next action-button btn btn-primary" name="next" type="button" value="Sigientes" />
+            <input class="previous action-button-previous btn btn-secondary" name="previous" type="button" value="Regresar" />
+        </fieldset>
+        <fieldset>
+            <div class="form-card">
+                <h2 class="purple-text text-center mb-5">
+                    <strong>
+                        Listo!
+                    </strong>
+                </h2>
+                <div class="row justify-content-center mb-5">
+                    <div class="col-3">
+                        <img class="fit-image" src="../Image/listo.png" />
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-7 text-center">
+                        <h5 class="purple-text text-center">
+                            Gracias por aplicar!
+                        </h5>
+                    </div>
+                </div>
+            </div>
+        </fieldset>
+    </form>
+}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/dropscript")
+    @Scripts.Render("~/bundles/bootstrap")
+}

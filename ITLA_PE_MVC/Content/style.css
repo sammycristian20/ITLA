@@ -1,0 +1,609 @@
+.android-header {
+    overflow: visible;
+    background-color: white;
+    border-bottom: 3px solid #3582dc;
+}
+
+    .android-header .mdl-layout__drawer-button {
+        background: transparent;
+        color: #767777;
+    }
+
+    .android-header .material-icons {
+        color: #767777 !important;
+    }
+
+    .android-header .mdl-layout__drawer-button {
+        background: transparent;
+        color: #767777;
+    }
+
+.android-logo-image {
+    /*height: 28px;*/
+    width: 150px;
+}
+
+.android-search-box {
+    -webkit-order: 2;
+    -ms-flex-order: 2;
+    order: 2;
+    margin-left: 16px;
+    margin-right: 16px;
+}
+
+.mdl-textfield--expandable {
+    width: auto;
+}
+
+.android-header .material-icons {
+    color: #767777 !important;
+}
+
+.android-navigation-container {
+    direction: rtl;
+    -webkit-order: 1;
+    -ms-flex-order: 1;
+    order: 1;
+    width: 500px;
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1), width 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.android-navigation {
+    direction: ltr;
+    -webkit-justify-content: flex-end;
+    -ms-flex-pack: end;
+    justify-content: flex-end;
+    width: 800px;
+}
+
+    .android-navigation .mdl-navigation__link {
+        display: inline-block;
+        height: 60px;
+        line-height: 68px;
+        background-color: transparent !important;
+        border-bottom: 4px solid transparent;
+    }
+
+.android-header .mdl-navigation__link {
+    color: #757575;
+    font-weight: 700;
+    font-size: 14px;
+}
+
+.android-mobile-title {
+    display: none !important;
+}
+
+.android-more-button {
+    -webkit-order: 3;
+    -ms-flex-order: 3;
+    order: 3;
+}
+
+.android-header .mdl-menu__container {
+    z-index: 50;
+    margin: 0 !important;
+}
+
+.android-navigation .mdl-navigation__link:hover {
+    border-bottom: 4px solid #8bc34a;
+}
+/*.mdl-card__supporting-text {
+    color: rgba(0,0,0,.54);
+    font-size: 1rem;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 16px;
+    width: 100% !important;
+}*/
+
+.itla .mdl-layout__header-row {
+    height: 74px;
+    margin: 0;
+    padding: 0 40px 0 14px;
+}
+
+.blue_itla {
+    background-color: #023877 !important;
+}
+
+.itla .espaciado div:nth-child(1n+1), .itla .espaciado div:nth-child(1n+2), .itla .espaciado div:nth-child(2n+2), .itla .espaciado div:nth-child(2n+2), .itla .espaciado div:nth-child(3n+1), .itla .espaciado div:nth-child(31n+2) {
+    padding-right: 15px;
+}
+
+.itla .mdl-textfield--floating-label.is-invalid .mdl-textfield__label {
+    color: rgb(213, 0, 0);
+    font-size: 16px !important;
+}
+
+.mdl-textfield.mdl-textfield--floating-label.date .mdl-textfield__input {
+    color: transparent;
+}
+
+.mdl-textfield.mdl-textfield--floating-label.date.is-focused .mdl-textfield__input, .mdl-textfield.mdl-textfield--floating-label.date.is-dirty .mdl-textfield__input {
+    color: inherit;
+}
+
+.itla .mdl-textfield--floating-label.no-required.is-invalid .mdl-textfield__label {
+    color: rgba(0, 0, 0, 0.26);
+    font-size: 16px !important;
+}
+
+.mdl-textfield.no-required.is-invalid .mdl-textfield__input {
+    border-color: rgba(0, 0, 0, 0.12);
+    box-shadow: none;
+}
+
+.mdl-textfield2 {
+    position: relative;
+    font-size: 16px;
+    display: inline-block;
+    box-sizing: border-box;
+    width: 300px;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 0;
+}
+
+    .mdl-textfield2.is-focused .mdl-textfield__input {
+        outline: none;
+    }
+/*._cssimg,*/
+
+.loader {
+    position: absolute
+}
+
+._cssimg input[type=file], ._imgshow input[type=file], .loader {
+    display: none
+}
+
+._cssimg {
+    color: #b9b9b9;
+    border: 3px dashed #e8e8e8;
+    padding: 5%;
+    line-height: 3;
+    margin: 5px 1%;
+    cursor: pointer;
+    border-radius: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    background-color: rgba(234, 234, 234, .35);
+    font-family: sans-serif;
+    opacity: .7;
+    display: flex;
+    min-width: 250px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+    ._cssimg:hover {
+        opacity: 1;
+    }
+
+    ._cssimg:before {
+        content: attr(text-file);
+        margin: 0 auto;
+        padding-top: 40%;
+    }
+/*._imgshow{cursor:pointer;width:100%;opacity:.9;}*/
+
+._imgshow {
+    color: #b9b9b9;
+    border: 3px #e8e8e8;
+    padding: 5%;
+    line-height: 3;
+    margin: 5px 1%;
+    cursor: pointer;
+    border-radius: 10px;
+    text-shadow: 1px 1px 1px #fff;
+    background-color: rgba(234, 234, 234, .35);
+    font-family: sans-serif;
+    opacity: .9;
+    display: block;
+    overflow: hidden;
+    min-width: 250px;
+    max-width: 400px;
+    min-height: 400px;
+    max-height: 400px;
+}
+
+    ._imgshow:hover {
+        opacity: 1;
+    }
+
+    ._imgshow img {
+        /*border:1px solid silver;*/
+        border-radius: 10px;
+        background-color: #fff;
+        padding: 2px;
+        /*max-width:100%;
+        min-width:100%;*/
+        /*min-width: 300px;
+        max-width: 400px;
+    
+        min-height: 300px;
+        max-height: 400px;*/
+        ;
+        width: 100%;
+    }
+
+}
+
+.loader {
+    background-image: url(loader.gif);
+    width: 20px;
+    height: 20px;
+    background-position: center;
+    background-size: 100%;
+    margin: 1%;
+}
+
+.title-upload {
+    bottom: 0;
+    color: rgb(213, 0, 0);
+    font-size: 16px;
+    left: 4px;
+    right: 0;
+    pointer-events: none;
+    position: absolute;
+    display: block;
+    top: -13px;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: left;
+}
+
+._imgshow .title-upload {
+    color: rgb(0 0 0 / 38%);
+}
+
+.ml-0 {
+    margin-left: 0px;
+}
+
+.pl-0 {
+    padding-left: 0px;
+}
+
+.mt-10 {
+    margin-top: 10px;
+}
+
+.mt-20 {
+    margin-top: 20px;
+}
+
+.pdb-0 {
+    padding-bottom: 0px !important;
+}
+
+.itla .mdl-layout__header.is-compact {
+    max-height: 110px;
+}
+
+.itla .mdl-card {
+    min-height: 170px;
+}
+
+.itla .mdl-button--accent.mdl-button--accent.mdl-button--raised, .mdl-button--accent.mdl-button--accent.mdl-button--fab {
+    color: rgb(255, 255, 255);
+    background-color: rgb(2 56 119);
+}
+
+@media (max-width: 900px) {
+    .android-mobile-title {
+        display: block !important;
+        position: absolute;
+        left: calc(50% - 70px);
+        top: 12px;
+        transition: opacity 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .android-title {
+        display: none !important;
+    }
+
+    .android-search-box .mdl-textfield__expandable-holder {
+        width: 100%;
+    }
+
+    .android-navigation-container {
+        display: none;
+    }
+}
+
+@media (min-width: 1200px) {
+    .android-card-container.mdl-grid {
+        max-width: 70%;
+    }
+}
+
+@media (min-width: 1600px) {
+    .android-card-container.mdl-grid {
+        max-width: 60%;
+    }
+}
+
+@media (min-width: 300px) and (max-width: 767px) {
+    .android-card-container.mdl-grid {
+        max-width: 100%;
+    }
+
+    .itla .navbar a.navbar-brand:nth-child(1) {
+        float: right;
+        margin-right: 0px !important;
+    }
+
+    .itla .navbar a.navbar-brand:nth-child(2) img {
+        width: 100px !important;
+        margin-top: 20px;
+    }
+
+    .itla .navbar a.navbar-brand:nth-child(1) img {
+        width: 110px !important;
+    }
+
+    .itla .container .form-group {
+        margin-top: 50px !important;
+    }
+
+        .itla .container .form-group img {
+            width: 90% !important;
+        }
+
+        .itla .container .form-group .btn {
+            display: block;
+            width: 80%;
+            margin: 0 auto;
+        }
+}
+
+.itla .mdl-textfield__label {
+    top: 0px !important;
+}
+
+body.itla {
+    background-image: url('../Image/Puntos-Tecnologicos.png');
+    background-color: #cccccc;
+    background-size: cover;
+}
+
+    body.itla.form {
+        background-image: inherit;
+        background-color: #cccccc;
+        background-size: cover;
+    }
+
+.itla .btn-success {
+    border-color: #3BEBFD !important;
+    background-color: #027BFF !important;
+    color: #FFFFFF;
+}
+
+.itla .btn-primary {
+    border-color: #027BFF;
+    background-color: #02377B;
+    color: #FFFFFF;
+}
+
+.itla .navbar-brand {
+    float: right;
+}
+
+.itla .navbar a.navbar-brand:nth-child(2) img {
+    margin-top: 28px;
+}
+/*.itla .custom-file-label::after {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    display: block;
+    height: calc(1.5em + .75rem);
+    padding: .375rem .75rem;
+    line-height: 1.5;
+    color: #495057;
+    content: "Seleccionar Archivo";
+    background-color: #e9ecef;
+    border-left: inherit;
+    border-radius: 0 .25rem .25rem 0;
+}*/
+
+.itla form label {
+    color: #666666 !important;
+    font-weight: 400 !important;
+}
+
+.itla form .form-section {
+    color: #057fdf;
+    line-height: 3rem;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #1D2B36;
+}
+
+.itla .navbar {
+    display: initial;
+}
+/* 
+  ##Device = Low Resolution Tablets, Mobiles (Landscape)
+  ##Screen = B/w 481px to 767px
+*/
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .card {
+        width: 100% !important;
+        border-radius: 0;
+    }
+
+    #progressbar li strong {
+        display: none;
+    }
+
+    #progressbar li i {
+        /* font-family: "Font Awesome 5 Free"; */
+        width: 32px;
+        height: 32px;
+        line-height: 29px;
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        background: lightgray;
+        border-radius: 50%;
+        margin: -22px auto 10px auto;
+        padding: 2px;
+    }
+
+    #progressbar li.active:after {
+        background: none;
+    }
+
+    #progressbar li:after {
+        background: none;
+    }
+
+    #progressbar {
+        margin-bottom: 0px;
+        overflow: hidden;
+        color: lightgrey;
+    }
+
+    .col-7, .col-5 {
+        max-width: 100%;
+        width: 100%;
+        flex: none;
+    }
+
+    #progressbar .row {
+        display: block;
+    }
+
+    .fs-title {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .steps {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    #progressbar .fa-address-card:before {
+        content: "\f2bb";
+        font-size: 16px;
+        width: 20px;
+    }
+
+    .itla .navbar a.navbar-brand {
+        width: 40%;
+    }
+
+        .itla .navbar a.navbar-brand:nth-child(2) img {
+            margin-top: 10px;
+        }
+
+    #msform .action-button, #msform .action-button-previous {
+        width: 100%;
+        float: none;
+    }
+
+        #msform .action-button.btn.btn-primary {
+            margin: 10px 0px 9px 0px;
+        }
+}
+/* 
+  ##Device = Most of the Smartphones Mobiles (Portrait)
+  ##Screen = B/w 320px to 479px
+*/
+
+@media (min-width: 290px) and (max-width: 480px) {
+    .card {
+        width: 100% !important;
+        border-radius: 0;
+    }
+
+    #progressbar li strong {
+        display: none;
+    }
+
+    #progressbar li i {
+        /* font-family: "Font Awesome 5 Free"; */
+        width: 32px;
+        height: 32px;
+        line-height: 29px;
+        display: block;
+        font-size: 16px;
+        color: #ffffff;
+        background: lightgray;
+        border-radius: 50%;
+        margin: -22px auto 10px auto;
+        padding: 2px;
+    }
+
+    #progressbar li.active:after {
+        background: none;
+    }
+
+    #progressbar li:after {
+        background: none;
+    }
+
+    #progressbar {
+        margin-bottom: 0px;
+        overflow: hidden;
+        color: lightgrey;
+    }
+
+    .col-7, .col-5 {
+        max-width: 100%;
+        width: 100%;
+        flex: none;
+    }
+
+    #progressbar .row {
+        display: block;
+    }
+
+    .fs-title {
+        font-size: 20px;
+        margin-bottom: 0px;
+    }
+
+    .steps {
+        font-size: 18px;
+        margin-bottom: 10px;
+        text-align: left;
+    }
+
+    #progressbar .fa-address-card:before {
+        content: "\f2bb";
+        font-size: 16px;
+        width: 20px;
+    }
+
+    .itla .navbar a.navbar-brand {
+        width: 40%;
+    }
+
+        .itla .navbar a.navbar-brand:nth-child(2) img {
+            margin-top: 10px;
+        }
+
+    #msform .action-button, #msform .action-button-previous {
+        width: 100%;
+        float: none;
+    }
+
+        #msform .action-button.btn.btn-primary {
+            margin: 10px 0px 9px 0px;
+        }
+}
+
+.probootstrap-half .text ul {
+    font-size: 18px;
+    color: #FFFFFF;
+    line-height: 1.5
+}

@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "NumeroSolicitud";
+}
+
+
+@using (Html.BeginForm("NumeroSolicitud", "Solicitudes", FormMethod.Post, new { enctype = "multipart/form-data", @class = "was-validated" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-lg-12">
+            <div class="card" style="padding: 0px;">
+                <div class="card-header" style="background-color: #023877; color: #fff">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">NUMERO DE SOLICITUD</h4>
+                </div>
+                <br />
+                <br />
+
+                <div class="alert alert-success" role="alert">
+                    Su solicitud de beca no. @ViewBag.NoSolicitud ha sido enviada. Email @ViewBag.Email.
+                </div>
+
+
+                <a style="padding: 20px; text-decoration:underline" href="/">Volver al Menu</a>
+
+            </div>
+            </div>
+        </div>
+}
+

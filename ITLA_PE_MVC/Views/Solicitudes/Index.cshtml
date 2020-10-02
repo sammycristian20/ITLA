@@ -1,0 +1,103 @@
+﻿@model IEnumerable<ITLA_PE_MVC.ENTITY.Solicitud>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutNomal.cshtml";
+}
+
+
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+<div class="panel-body bg-light">
+
+
+    <table class="table table-bordered" id="tablelist">
+        <thead class="thead-light">
+            <tr>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.CodigoSolicitud)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.FechaCreacion)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.GenericID_EstatusSolicitud)
+                </th>
+
+
+                <th>
+                    @Html.DisplayNameFor(model => model.Nombres)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Apellidos)
+                </th>
+
+                <th>
+                    @Html.DisplayNameFor(model => model.ResultadoComentario)
+                </th>
+
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProyectoEspecialMateriaGrupoIDSegundaOpcion)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FechaCreacion)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.GenericID_EstatusSolicitud)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Nombres)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Apellidos)
+                    </td>
+
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ResultadoComentario)
+                    </td>
+
+                    <td>
+
+                        <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+                       
+                        @Html.ActionLink("Edit", "Edit", new { id = item.SolicitudID }) |
+                        @Html.ActionLink("Details", "Details", new { id = item.SolicitudID }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = item.SolicitudID })
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+
+
+
+
+
+</div>
+
+
+@section Scripts {
+
+
+    @Scripts.Render("~/bundles/bootstrap")
+}
