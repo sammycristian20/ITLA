@@ -189,8 +189,6 @@ namespace ITLA_PE_MVC.Controllers
 
                         emailBody = emailBody.Replace("@@codigo", codigo);
                         emailBody = emailBody.Replace("@@locationUrl", @"https://www.puntostecnologicos.com/solicitudes/find/" + codigo);
-
-                        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileEstudios, 9);
                         bool statusMail = serv.sendEmail(soli, emailBody);
                     }
                     catch
@@ -221,10 +219,6 @@ namespace ITLA_PE_MVC.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             ViewBag._provinciasItems = ddg.getProvincias();
-
-           
-
-
             var items = ddg.getAssigmentsAviable();
             ViewBag._proyectosEspItems = items;
             ViewBag._proyectosEspItems2 = items;
@@ -233,6 +227,11 @@ namespace ITLA_PE_MVC.Controllers
             ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
             ViewBag._getTrueFalse = ddg.getTrueFalse();
             var solicitud = serv.SolicitudGet(id.Value);
+            
+            IEnumerable<SolicitudAnexo> IsCedula = solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 6);
+            IEnumerable<SolicitudAnexo> IsActa= solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 7);
+            ViewBag.IsCedulaFile = IsCedula.Count()> 0;
+            ViewBag.IsActa = IsActa.Count() > 0;
             ViewBag._municipiosItems = ddg.getMuncicipiesDrop(solicitud.ProvinciaId);
             ViewBag.fechaFormat = solicitud.FechaNacimiento.ToString("dd-MM-yyyy");
             if (solicitud == null)
@@ -244,7 +243,9 @@ namespace ITLA_PE_MVC.Controllers
             SolicitudViewModel solicitudVM = new SolicitudViewModel { 
                 Solicitud = solicitud
             };
-
+            solicitudVM.TieneInternetVal = solicitud.TieneInternet == true ? 1 : 0;
+            solicitudVM.TieneLaptopPcVal = solicitud.TieneLaptopPc == true ? 1 : 0;
+            solicitudVM.TieneSubsidioVal = solicitud.TieneSubsidio == true ? 1 : 0;
 
             return View(solicitudVM);
         }
@@ -255,13 +256,13 @@ namespace ITLA_PE_MVC.Controllers
         {
             if (ModelState.IsValid)
             {
+                var url = Url.RequestContext.RouteData.Values["id"].ToString();
+              
+                solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url);
+               
                 var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
-
-
                 string UploadPath = Server.MapPath("~/Files");
                 //Use Namespace called :  System.IO  
-
-
                 if (solicitudVM.PostFile != null)
                 {
                     string FileNameCedula = Path.GetFileName(solicitudVM.PostFile.FileName);
@@ -275,12 +276,8 @@ namespace ITLA_PE_MVC.Controllers
                         ArchivoURL = "",
                         GenericID_TipoDocumento = 6,
                         LocalFile = FilePathCedula
-
                     };
-
                     serv.SolicitudAnexoAdd(solicitudAnexo);
-
-                    //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFile, 6);
                 }
 
                 if (solicitudVM.PostFileActa != null)

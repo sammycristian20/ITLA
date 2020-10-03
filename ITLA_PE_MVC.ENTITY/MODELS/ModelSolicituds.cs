@@ -25,7 +25,7 @@ namespace ITLA_PE_MVC.ENTITY.MODELS
         [Required]
         public string Apellidos { get; set; }
         [Required]
-        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd-MM-yyyy}")]
         public System.DateTime FechaNacimiento { get; set; }
         
         public string TelResidencial { get; set; }
