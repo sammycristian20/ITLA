@@ -25,7 +25,7 @@ namespace ITLA_PE_MVC.SERVICE
         {
 
 
-
+            //test
             var obj = dbContext.Solicituds.Find(id);
             var _NivelAcademicoDesc = GenericItems("NivelAcademico").Where(p => p.GenericID == obj.GenericID_NivelAcademico).FirstOrDefault().GenericDescription;
             var _DocumentoTipoDesc = GenericItems("TipoIdentificacion").Where(p => p.GenericID == obj.GenericID_TipoIdentificacion).FirstOrDefault().GenericDescription;
