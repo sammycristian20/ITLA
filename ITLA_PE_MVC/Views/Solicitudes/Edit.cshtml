@@ -57,7 +57,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="userinput2">No. Documento de Identidad<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="*" ForeColor="Red" ErrorMessage="No. Documento de Identidad es requerido" ControlToValidate="IdentificacionCedula"></asp:RequiredFieldValidator></label>
-                                                        @Html.EditorFor(model => model.Solicitud.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required" } })
+                                                        @Html.EditorFor(model => model.Solicitud.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required",  id = "IdentificacionCedulaEdit" } })
                                                         @Html.ValidationMessageFor(model => model.Solicitud.IdentificacionCedula, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -68,7 +68,7 @@
                                                 <div class="col-md-4">
                                                     <div class="form-group">
                                                         <label for="userinput3">Email</label>
-                                                        @Html.EditorFor(model => model.Solicitud.Email, new { htmlAttributes = new { @class = "form-control is-invalid email", pattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$", required = "required" } })
+                                                        @Html.EditorFor(model => model.Solicitud.Email, new { htmlAttributes = new { @class = "form-control is-invalid", pattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$", required = "required", id = "EmailEdit" } })
                                                         @Html.ValidationMessageFor(model => model.Solicitud.Email, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -255,7 +255,8 @@
                             </div>
                         </div>
                     </div>
-                </div>}
+                </div>
+                }
 }
 
 @section Scripts {

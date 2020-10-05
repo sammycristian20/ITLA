@@ -32,6 +32,55 @@ namespace ITLA_PE_MVC.Controllers
         //    //var solicitud = db.Solicitud.Include(s => s.ProyectoEspecialMateriaGrupo);
         //    return View(serv.SolicitudList());
         //}
+
+        public ActionResult GenerateLinks()
+        {
+            @ViewBag.Show = "none";
+            return View();
+
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult GenerateLinks(Solicitud data)
+        {
+            int idSolicitud = 0;
+            idSolicitud = serv.IdByCodeSolicitud(data.CodigoSolicitud);
+            if (idSolicitud != 0) {
+                var solicitudDetail = serv.SolicitudList().Where(p => p.SolicitudID == idSolicitud).FirstOrDefault();
+                if (solicitudDetail.Email == data.Email || solicitudDetail.IdentificacionCedula == data.IdentificacionCedula)
+                {
+                    return RedirectToAction("Edit", new RouteValueDictionary(
+                      new { controller = "Solicitudes", action = "Edit", Id = idSolicitud }));
+                }
+                else if (data.Email == null && data.IdentificacionCedula == null) {
+                    @ViewBag.Show = "normal";
+                    ViewBag.ErrorMessage = "debe digitar un correo o una cédula";
+                    return View();
+                }
+                else
+                {
+                    @ViewBag.Show = "normal";
+                    ViewBag.ErrorMessage = "No se encontro ninguna solicitud";
+                    return View();
+                }
+
+            }
+
+            else
+            {
+                @ViewBag.Show = "normal";
+                ViewBag.ErrorMessage = "Error en el código de solicitud";
+                return View();
+            }
+
+        }
+        public ActionResult LinkSend(int id)
+        {
+
+            var linkRoot = Request.Url.ToString().Replace(Request.Url.LocalPath,"");
+            @ViewBag.Link = linkRoot + "/Solicitudes/Edit/"+id;
+            return View();
+        }
         public ActionResult NumeroSolicitud(int id) {
             var solicitud = serv.CodeSolicitudById(id);
             ViewBag.NoSolicitud = solicitud.CodigoSolicitud;
@@ -39,6 +88,13 @@ namespace ITLA_PE_MVC.Controllers
             return View();
         }
 
+        public ActionResult Modified(int id)
+        {
+            var solicitud = serv.CodeSolicitudById(id);
+            ViewBag.NoSolicitud = solicitud.CodigoSolicitud;
+            ViewBag.Email = solicitud.Email;
+            return View();
+        }
         public JsonResult GetMuniciposList(int ProvinciaId)
         {
             var municipies = ddg.getMuncicipies(ProvinciaId);
@@ -97,13 +153,17 @@ namespace ITLA_PE_MVC.Controllers
             int soliId =0;
             if (ModelState.IsValid)
             {
-                bool consulCedula = false;
-
+                bool validateDuplicate = false;
+                string fixCedula = solicitudVM.Solicitud.IdentificacionCedula.Replace("-", "");
+                var consultaCedulas = serv.SolicitudCheckCedula(fixCedula);
+                validateDuplicate = consultaCedulas == null;
                 //if (solicitudVM.Solicitud)
-                if (solicitudVM.Solicitud.GenericID_TipoIdentificacion == 10)
-                    consulCedula = serv.SolicitudCheckCedula(solicitudVM.Solicitud.IdentificacionCedula.Replace("-", ""));
+                //if (solicitudVM.Solicitud.GenericID_TipoIdentificacion == 10) {
+                //  consulCedula = consultaCedulas == null;
+                //}
 
-                if (consulCedula != true) {
+
+                if (validateDuplicate == true) {
 
                     solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
                     solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
@@ -186,9 +246,10 @@ namespace ITLA_PE_MVC.Controllers
                         string codigo = serv.CodeSolicitudById(soli);
 
                         string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
-
+                        string UrlBase = Request.Url.Scheme + "://" + Request.Url.Authority.ToString();
                         emailBody = emailBody.Replace("@@codigo", codigo);
-                        emailBody = emailBody.Replace("@@locationUrl", @"https://www.puntostecnologicos.com/solicitudes/find/" + codigo);
+                        emailBody = emailBody.Replace("@@locationUrl", UrlBase + @"/solicitudes/find/" + codigo);
+                        emailBody = emailBody.Replace("@@editURL", UrlBase + @"/solicitudes/edit/" + soliId);
                         bool statusMail = serv.sendEmail(soli, emailBody);
                     }
                     catch
@@ -254,6 +315,7 @@ namespace ITLA_PE_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SolicitudViewModel solicitudVM)
         {
+            int idSol = 0;
             if (ModelState.IsValid)
             {
                 var url = Url.RequestContext.RouteData.Values["id"].ToString();
@@ -261,6 +323,7 @@ namespace ITLA_PE_MVC.Controllers
                 solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url);
                
                 var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
+                idSol = soli.SolicitudID;
                 string UploadPath = Server.MapPath("~/Files");
                 //Use Namespace called :  System.IO  
                 if (solicitudVM.PostFile != null)
@@ -322,9 +385,10 @@ namespace ITLA_PE_MVC.Controllers
                 }
 
 
-                return RedirectToAction("Index");
+               
             }
-            return View(solicitudVM);
+            return RedirectToAction("Modified", new RouteValueDictionary(
+                 new { controller = "Solicitudes", action = "Modified", Id = idSol }));
         }
 
         private void UploadFile(int solicitudID, string email, HttpPostedFileBase fileUpload, int genericID_TipoDocumento)
@@ -411,9 +475,24 @@ namespace ITLA_PE_MVC.Controllers
         {
             var message = "";
             var consulCedula = serv.SolicitudCheckCedula(cedula.Replace("-", ""));
-            if (consulCedula == true)
+            if (consulCedula!=null)
             {
                 message = "Esta cedula ya se encuentra registrada";
+            }
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult validateCedulalEdit(string cedula, string idSol)
+        {
+            var message = "";
+            var consulCedula = serv.SolicitudCheckCedula(cedula.Replace("-","")) ;
+
+            if (consulCedula!= null)
+            {
+                if (consulCedula.SolicitudID != Convert.ToInt32(idSol)) {
+                    message = "Este correo ya se encuentra registrado en otra solicitud";
+                }
+                
             }
             return Json(message, JsonRequestBehavior.AllowGet);
         }
@@ -421,10 +500,25 @@ namespace ITLA_PE_MVC.Controllers
         public JsonResult validateEmail(string email)
         {
             var message = "";
-            var consulCedula = serv.SolicitudCheckEmail(email);
-            if (consulCedula == true)
+            var consultEmail = serv.SolicitudCheckEmail(email);
+            if (consultEmail != null)
             {
                 message = "Este correo ya se encuentra registrado";
+            }
+            return Json(message, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult validateEmailEdit(string email,string idSol)
+        {
+            var message = "";
+            var consultEmail = serv.SolicitudCheckEmail(email);
+
+            if (consultEmail != null )
+            {
+                if (consultEmail.SolicitudID != Convert.ToInt32(idSol)) {
+                    message = "Este correo ya se encuentra registrado en otra solicitud";
+                }
+              
             }
             return Json(message, JsonRequestBehavior.AllowGet);
         }
@@ -455,6 +549,8 @@ namespace ITLA_PE_MVC.Controllers
                 return RedirectToAction("Index", "Home");
             }
         }
+
+       
 
         protected override void Dispose(bool disposing)
         {

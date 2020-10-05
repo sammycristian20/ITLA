@@ -50,7 +50,7 @@ $(document).ready(function () {
                 window.location.href = '/solicitudes/Create';
                 return false;
 
-                
+
 
                 //alertify.success("You've clicked OK");
             } else {
@@ -75,18 +75,24 @@ $(document).ready(function () {
             function (evt, value) {
                 if (value != "") {
                     window.location.href = '/solicitudes/Find?id=' + value;
-                } else{
+                } else {
                     alert('1112');
                 }
-               
+
             }
-        
+
         );
         return false;
     });
 
 
+    $(".edit").on('click', function () {
+        window.location.href = '/solicitudes/generatelinks';
+    });
+    $('#IdentificacionCedula').mask('000-0000000-0');
+    
     $('#Solicitud_IdentificacionCedula').mask('000-0000000-0');
+    $('#IdentificacionCedulaEdit').mask('000-0000000-0');
     $('#Solicitud_TelResidencial').mask('000-000-0000');
     $('#Solicitud_TelCelular').mask('000-000-0000');
 
@@ -101,24 +107,41 @@ $(document).ready(function () {
             document.getElementById("Solicitud_IdentificacionCedula").setCustomValidity("");
         }
     });
+
     $("#Solicitud_Email").blur(function () {
-        $('#Solicitud_Email').val($('#Solicitud_Email').val().trim().toLowerCase()) 
+        $('#Solicitud_Email').val($('#Solicitud_Email').val().trim().toLowerCase())
         var email = $('#Solicitud_Email').val();
-        if (email!= '')
+        if (email != '')
             getEmail(email);
     });
-   
+    //funciones agregadas para las cedulas y email cuando editamos 
+    $("#IdentificacionCedulaEdit").blur(function () {
+        if ($("#Solicitud_GenericID_TipoIdentificacion").val() == '10' || $("#Solicitud_GenericID_TipoIdentificacion").val() == '') {
+            var cedulaNo = $('#IdentificacionCedulaEdit').val();
+            if (cedulaNo != '')
+                getCedulaEdit(cedulaNo);
+        }
+        else {
+            document.getElementById("IdentificacionCedulaEdit").setCustomValidity("");
+        }
+    });
+
+    $("#EmailEdit").blur(function () {
+        $('#EmailEdit').val($('#EmailEdit').val().trim().toLowerCase())
+        var email = $('#EmailEdit').val();
+        if (email != '')
+            getEmailEdit(email);
+    });
+
 });
 function messageAlert(mensaje) {
 
     alertify.error(mensaje);
 }
- 
+
 function getCedula() {
-    //alert('get cedula4');
     $.ajax({
 
-        //https://beca-mj.itlard.info
         url: "/Solicitudes/validateCedula",
         type: "Post",
         data: JSON.stringify({ "cedula": $('#Solicitud_IdentificacionCedula').val() }),
@@ -149,7 +172,7 @@ function getEmail() {
         //https://beca-mj.itlard.info
         url: "/Solicitudes/validateEmail",
         type: "Post",
-        data: JSON.stringify({ "email": $('#Solicitud_Email').val()}),
+        data: JSON.stringify({ "email": $('#Solicitud_Email').val() }),
         //{ Name: name, 
         // Address: address, DOB: dob },
         mode: 'cors',
@@ -173,11 +196,71 @@ function getEmail() {
     });
 }
 
+
+
+function getCedulaEdit() {
+    var idSols = window.location.href.match(/(\d+)$/g)[0];
+    $.ajax({
+        url: "/Solicitudes/validateCedulalEdit",
+        type: "Post",
+        data: JSON.stringify({ "cedula": $('#IdentificacionCedulaEdit').val(), "idSol": idSols }),
+        contentType: 'application/json; charset=utf-8',
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        success: function (data) {
+            if (data != "") {
+                document.getElementById("IdentificacionCedulaEdit").setCustomValidity("Este cedula ya tiene una solicitud registrada por otro usaurio");
+                messageAlert(data);
+            }
+            else {
+                document.getElementById("IdentificacionCedulaEdit").setCustomValidity("");
+
+            }
+        },
+        error: function () { alert('error'); }
+    });
+}
+
+
+function getEmailEdit() {
+
+    var idSols = window.location.href.match(/(\d+)$/g)[0];
+    $.ajax({
+        url: "/Solicitudes/validateEmailEdit",
+        type: "Post",
+        data: JSON.stringify({ "email": $('#EmailEdit').val(), "idSol": idSols  }),
+        //{ Name: name, 
+        // Address: address, DOB: dob },
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            if (data != "") {
+                document.getElementById("EmailEdit").setCustomValidity("Este email ya tiene una solicitud registrada por otro usuario");
+                messageAlert(data);
+            }
+            else {
+                document.getElementById("EmailEdit").setCustomValidity("");
+
+            }
+        },
+        error: function () { alert('error'); }
+    });
+}
+
 function checkForm(obj) {
     $('#mySubmit').html('Procesando favor esperar...');
     $('#mySubmit').attr('disabled', 'disabled');
-    
-    
+
+
     return true;
     //alert('submit');
 }
@@ -192,7 +275,7 @@ function onlyAlphabets(e, t) {
         else {
             return true;
         }
-        
+
         if ((charCode > 64 && charCode < 91) || (charCode > 96 && charCode < 123) || charCode == 32)
             return true;
         else

@@ -25,49 +25,57 @@ namespace ITLA_PE_MVC.SERVICE
         {
 
 
-
-            var obj = dbContext.Solicituds.Find(id);
-            var _NivelAcademicoDesc = GenericItems("NivelAcademico").Where(p => p.GenericID == obj.GenericID_NivelAcademico).FirstOrDefault().GenericDescription;
-            var _DocumentoTipoDesc = GenericItems("TipoIdentificacion").Where(p => p.GenericID == obj.GenericID_TipoIdentificacion).FirstOrDefault().GenericDescription;
-            var _ProyectoEspecialMateriaGrupoDesc1 = GetMateriasDisponibles().Where(p => p.ProyectoEspecialMateriaGrupoID == obj.ProyectoEspecialMateriaGrupoID).FirstOrDefault().Materia;
-            var _ProyectoEspecialMateriaGrupoDesc2 = GetMateriasDisponibles().Where(p => p.ProyectoEspecialMateriaGrupoID == obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion).FirstOrDefault().Materia;
-            var _StatusDesc = GenericItems("EstatusSolicitud").Where(p => p.GenericID == obj.GenericID_EstatusSolicitud).FirstOrDefault().GenericDescription;
-            var _ProvinciaDesc = GetProvinciasRD().Where(p => p.IDprovincia == obj.ProvinciaId).FirstOrDefault().ProvinciaNombre;
-            var _MunicipioDesc = GetMunicipiosPorProvincia(obj.ProvinciaId.Value).Where(p => p.IDmunicipio == obj.DireccionidMunicipio).FirstOrDefault().Municipio;
-            var Result = new ModelSolicituds
+            try
             {
-                Nombres = obj.Apellidos,
-                Apellidos = obj.Nombres,
-                GenericID_NivelAcademico = obj.GenericID_NivelAcademico,
-                Ingreso_Familiar = obj.Ingreso_Familiar.Value,
-                DireccionCalleNumero = obj.DireccionCalleNumero,
-                DireccionidMunicipio = obj.DireccionidMunicipio,
-                Email = obj.Email,
-                FechaNacimiento = obj.FechaNacimiento,
-                GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion,
-                IdentificacionCedula = obj.IdentificacionCedula,
-                Idmunicipio = obj.DireccionidMunicipio,
-                ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID,
-                ResultadoComentario = obj.Apellidos,
-                ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion,
-                TelCelular = obj.TelCelular,
-                TelResidencial = obj.TelResidencial,
-                ProvinciaId = obj.ProvinciaId.Value,
-                IdSolicituds = obj.SolicitudID,
-                NoSolicitud = obj.CodigoSolicitud,
-                SolicitudAnexo = obj.SolicitudAnexoes,
-                NivelAcademicoDesc = _NivelAcademicoDesc,
-                DocumentoTipoDesc = _DocumentoTipoDesc,
-                ProyectoEspecialMateriaGrupoDesc1 = _ProyectoEspecialMateriaGrupoDesc1,
-                ProyectoEspecialMateriaGrupoDesc2 = _ProyectoEspecialMateriaGrupoDesc2,
-                StatusDesc = _StatusDesc,
-                ProvinciaDesc = _ProvinciaDesc,
-                MunicipioDesc = _MunicipioDesc,
-                TieneInternet = obj.TieneInternet.Value,
-                TieneLaptopPc = obj.TieneLaptopPc.Value,
-                TieneSubsidio = obj.TieneSubsidio.Value
-            };
-            return Result;
+                var obj = dbContext.Solicituds.Find(id);
+                var _NivelAcademicoDesc = GenericItems("NivelAcademico").Where(p => p.GenericID == obj.GenericID_NivelAcademico).FirstOrDefault().GenericDescription;
+                var _DocumentoTipoDesc = GenericItems("TipoIdentificacion").Where(p => p.GenericID == obj.GenericID_TipoIdentificacion).FirstOrDefault().GenericDescription;
+                var _ProyectoEspecialMateriaGrupoDesc1 = GetMateriasDisponibles().Where(p => p.ProyectoEspecialMateriaGrupoID == obj.ProyectoEspecialMateriaGrupoID).FirstOrDefault().Materia;
+                var _ProyectoEspecialMateriaGrupoDesc2 = GetMateriasDisponibles().Where(p => p.ProyectoEspecialMateriaGrupoID == obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion).FirstOrDefault().Materia;
+                var _StatusDesc = GenericItems("EstatusSolicitud").Where(p => p.GenericID == obj.GenericID_EstatusSolicitud).FirstOrDefault().GenericDescription;
+                var _ProvinciaDesc = GetProvinciasRD().Where(p => p.IDprovincia == obj.ProvinciaId).FirstOrDefault().ProvinciaNombre;
+                var _MunicipioDesc = GetMunicipiosPorProvincia(obj.ProvinciaId.Value).Where(p => p.IDmunicipio == obj.DireccionidMunicipio).FirstOrDefault().Municipio;
+                var Result = new ModelSolicituds
+                {
+                    Nombres = obj.Apellidos,
+                    Apellidos = obj.Nombres,
+                    GenericID_NivelAcademico = obj.GenericID_NivelAcademico,
+                    Ingreso_Familiar = obj.Ingreso_Familiar.Value,
+                    DireccionCalleNumero = obj.DireccionCalleNumero,
+                    DireccionidMunicipio = obj.DireccionidMunicipio,
+                    Email = obj.Email,
+                    FechaNacimiento = obj.FechaNacimiento,
+                    GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion,
+                    IdentificacionCedula = obj.IdentificacionCedula,
+                    Idmunicipio = obj.DireccionidMunicipio,
+                    ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID,
+                    ResultadoComentario = obj.Apellidos,
+                    ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion,
+                    TelCelular = obj.TelCelular,
+                    TelResidencial = obj.TelResidencial,
+                    ProvinciaId = obj.ProvinciaId.Value,
+                    IdSolicituds = obj.SolicitudID,
+                    NoSolicitud = obj.CodigoSolicitud,
+                    SolicitudAnexo = obj.SolicitudAnexoes,
+                    NivelAcademicoDesc = _NivelAcademicoDesc,
+                    DocumentoTipoDesc = _DocumentoTipoDesc,
+                    ProyectoEspecialMateriaGrupoDesc1 = _ProyectoEspecialMateriaGrupoDesc1,
+                    ProyectoEspecialMateriaGrupoDesc2 = _ProyectoEspecialMateriaGrupoDesc2,
+                    StatusDesc = _StatusDesc,
+                    ProvinciaDesc = _ProvinciaDesc,
+                    MunicipioDesc = _MunicipioDesc,
+                    TieneInternet = obj.TieneInternet.Value,
+                    TieneLaptopPc = obj.TieneLaptopPc.Value,
+                    TieneSubsidio = obj.TieneSubsidio.Value
+                };
+                return Result;
+            }
+            catch (Exception ex)
+            {
+               // this.Logger(ex.ToString(), "ITLA_PE", "obtener Data Solicitud", "Error obteniendo solicitud");
+                throw ex;
+            }
+           
 
         }
 
@@ -94,6 +102,8 @@ namespace ITLA_PE_MVC.SERVICE
             return code;
         }
 
+        
+
         public Solicitud CodeSolicitudById(int id)
         {
             //var obj = dbContext.Solicituds.Find(id);
@@ -105,71 +115,89 @@ namespace ITLA_PE_MVC.SERVICE
         public Solicitud SolicitudAdd(ModelSolicituds obj)
         {
             //var guid = new Guid();
-
-
-            Guid guids = Guid.NewGuid();
-            var solicitud = new Solicitud
+            try
             {
-                Nombres = obj.Apellidos,
-                Apellidos = obj.Nombres,
-                GenericID_NivelAcademico = obj.GenericID_NivelAcademico,
-                SolicitudAnexoes = obj.SolicitudAnexo,
-                DireccionCalleNumero = obj.DireccionCalleNumero,
-                DireccionidMunicipio = obj.DireccionidMunicipio,
-                Email = obj.Email,
-                FechaNacimiento = obj.FechaNacimiento,
-                GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion,
-                IdentificacionCedula = obj.IdentificacionCedula.Replace("-", ""),
-                ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID,
-                ResultadoComentario = obj.Apellidos,
-                ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion,
-                TelCelular = obj.TelCelular,
-                TelResidencial = obj.TelResidencial,
-                RowID = guids,
-                ProvinciaId = obj.ProvinciaId,
-                Ingreso_Familiar = obj.Ingreso_Familiar,
-                TieneInternet = obj.TieneInternet,
-                TieneLaptopPc = obj.TieneLaptopPc,
-                TieneSubsidio = obj.TieneSubsidio,
-                FechaCreacion = DateTime.Now,
-                GenericID_EstatusSolicitud = 3,
-            };
-            var result = dbContext.Solicituds.Add(solicitud);
-            dbContext.SaveChanges();
-            return result;
+                Guid guids = Guid.NewGuid();
+                var solicitud = new Solicitud
+                {
+                    Nombres = obj.Apellidos,
+                    Apellidos = obj.Nombres,
+                    GenericID_NivelAcademico = obj.GenericID_NivelAcademico,
+                    SolicitudAnexoes = obj.SolicitudAnexo,
+                    DireccionCalleNumero = obj.DireccionCalleNumero,
+                    DireccionidMunicipio = obj.DireccionidMunicipio,
+                    Email = obj.Email,
+                    FechaNacimiento = obj.FechaNacimiento,
+                    GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion,
+                    IdentificacionCedula = obj.IdentificacionCedula.Replace("-", ""),
+                    ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID,
+                    ResultadoComentario = obj.Apellidos,
+                    ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion,
+                    TelCelular = obj.TelCelular,
+                    TelResidencial = obj.TelResidencial,
+                    RowID = guids,
+                    ProvinciaId = obj.ProvinciaId,
+                    Ingreso_Familiar = obj.Ingreso_Familiar,
+                    TieneInternet = obj.TieneInternet,
+                    TieneLaptopPc = obj.TieneLaptopPc,
+                    TieneSubsidio = obj.TieneSubsidio,
+                    FechaCreacion = DateTime.Now,
+                    GenericID_EstatusSolicitud = 3,
+                };
+                var result = dbContext.Solicituds.Add(solicitud);
+                dbContext.SaveChanges();
+               // this.Logger("Solicitud Creada correctamente", "ITLA_PE", "SolicitudAdd", "Solicitud Creada para: "+ result.SolicitudID+" "+result.Nombres+" "+result.Apellidos);
+                return result;
+            }
+            catch (Exception ex)
+            {
+               // this.Logger(ex.ToString(), "ITLA_PE", "SolicitudAdd", "Error creando solicitud");
+                throw ex;
+            }
+
+           
 
         }
 
         public Solicitud SolicitudEdit(ModelSolicituds obj)
         {
-            var dae = dbContext.Solicituds.Find(obj.IdSolicituds);
-           
-           
-            dae.Nombres = obj.Nombres;
-            dae.Apellidos = obj.Apellidos;
-            dae.GenericID_NivelAcademico = obj.GenericID_NivelAcademico;
-            dae.SolicitudAnexoes = obj.SolicitudAnexo!=null?obj.SolicitudAnexo:dae.SolicitudAnexoes;
-            dae.DireccionCalleNumero = obj.DireccionCalleNumero;
-            dae.DireccionidMunicipio = obj.Idmunicipio;
-            dae.Email = obj.Email;
-            dae.FechaNacimiento = obj.FechaNacimiento;
-            dae.GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion;
-            dae.IdentificacionCedula = obj.IdentificacionCedula.Replace("-", "");
-            dae.ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID;
-            dae.ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion;
-            dae.TelCelular = obj.TelCelular;
-            dae.TelResidencial = obj.TelResidencial;
-            dae.ProvinciaId = obj.ProvinciaId;
-            dae.Ingreso_Familiar = obj.Ingreso_Familiar;
-            dae.TieneInternet = obj.TieneInternet;
-            dae.TieneLaptopPc = obj.TieneLaptopPc;
-            dae.TieneSubsidio = obj.TieneSubsidio;
-            dae.ResultadoComentario = "Solicitud modificada el " + DateTime.Now.ToString();
-    
+            try
+            {
+                var dae = dbContext.Solicituds.Find(obj.IdSolicituds);
 
-            dbContext.Entry(dae).State = EntityState.Modified;
-            dbContext.SaveChanges();
-            return dae;
+
+                dae.Nombres = obj.Nombres;
+                dae.Apellidos = obj.Apellidos;
+                dae.GenericID_NivelAcademico = obj.GenericID_NivelAcademico;
+                dae.SolicitudAnexoes = obj.SolicitudAnexo != null ? obj.SolicitudAnexo : dae.SolicitudAnexoes;
+                dae.DireccionCalleNumero = obj.DireccionCalleNumero;
+                dae.DireccionidMunicipio = obj.Idmunicipio;
+                dae.Email = obj.Email;
+                dae.FechaNacimiento = obj.FechaNacimiento;
+                dae.GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion;
+                dae.IdentificacionCedula = obj.IdentificacionCedula.Replace("-", "");
+                dae.ProyectoEspecialMateriaGrupoID = obj.ProyectoEspecialMateriaGrupoID;
+                dae.ProyectoEspecialMateriaGrupoIDSegundaOpcion = obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion;
+                dae.TelCelular = obj.TelCelular;
+                dae.TelResidencial = obj.TelResidencial;
+                dae.ProvinciaId = obj.ProvinciaId;
+                dae.Ingreso_Familiar = obj.Ingreso_Familiar;
+                dae.TieneInternet = obj.TieneInternet;
+                dae.TieneLaptopPc = obj.TieneLaptopPc;
+                dae.TieneSubsidio = obj.TieneSubsidio;
+                dae.ResultadoComentario = "Solicitud modificada el " + DateTime.Now.ToString();
+
+
+                dbContext.Entry(dae).State = EntityState.Modified;
+                dbContext.SaveChanges();
+                return dae;
+            }
+            catch (Exception ex)
+            {
+               // this.Logger(ex.ToString(), "ITLA_PE", "SolicitudEdit", "Error editando solicitud");
+                throw;
+            }
+            
         }
 
 
@@ -183,15 +211,16 @@ namespace ITLA_PE_MVC.SERVICE
 
         public List<ProyectoEspecialMateriaGrupo> ProyectoEspecialMateriaGrupoList() { return dbContext.ProyectoEspecialMateriaGrupoes.ToList(); }
 
-        public bool SolicitudCheckCedula(string cedula)
+        public Solicitud SolicitudCheckCedula(string cedula)
         {
-            return dbContext.Solicituds.Any(set => set.IdentificacionCedula == cedula);
+            return dbContext.Solicituds.Where(p =>p.IdentificacionCedula == cedula).FirstOrDefault();
         }
 
-        public bool SolicitudCheckEmail(string email)
+        public Solicitud SolicitudCheckEmail(string email)
         {
-            return dbContext.Solicituds.Any(set => set.Email == email);
+            return dbContext.Solicituds.Where(p=>p.Email == email).FirstOrDefault();
         }
+       
 
         public bool SolicitudCheckIdentifiacionGenerada(string otraIdentificacion)
         {
@@ -219,8 +248,36 @@ namespace ITLA_PE_MVC.SERVICE
         }
 
         public SolicitudAnexo SolicitudAnexoGet(int id) { return dbContext.SolicitudAnexoes.Find(id); }
-        public void SolicitudAnexoUpdate(SolicitudAnexo obj) { dbContext.Entry(obj).State = System.Data.Entity.EntityState.Modified; dbContext.SaveChanges(); ; }
-        public void SolicitudAnexoAdd(SolicitudAnexo obj) { dbContext.SolicitudAnexoes.Add(obj); dbContext.SaveChanges(); }
+        public void SolicitudAnexoUpdate(SolicitudAnexo obj) {
+
+            try
+            {
+                dbContext.Entry(obj).State = System.Data.Entity.EntityState.Modified; dbContext.SaveChanges();
+              //  this.Logger("Anexos editados exitosamente", "ITLA_PE", "SolicitudAnexoUpdate", "Anexos editados");
+            }
+            catch (Exception ex)
+            {
+              //  this.Logger(ex.ToString(), "ITLA_PE", "Error Creando Anexos", "Error Anexos DbContext");
+                throw;
+            }
+
+
+           
+        }
+        public void SolicitudAnexoAdd(SolicitudAnexo obj) {
+            try
+            {
+                dbContext.SolicitudAnexoes.Add(obj); dbContext.SaveChanges();
+               // this.Logger("Anexos Creados exitosamente", "ITLA_PE", "SolicitudAnexoAdd", "Anexos Enviados");
+            }
+            catch (Exception ex)
+            {
+               // this.Logger(ex.ToString(), "ITLA_PE", "Error Creando Anexos", "Error Anexos DbContext");
+                throw;
+            }
+            
+        
+        }
         public List<SolicitudAnexo> SolicitudAnexoList() { return dbContext.SolicitudAnexoes.ToList(); }
 
 
@@ -255,17 +312,40 @@ namespace ITLA_PE_MVC.SERVICE
                     {
                         smtp.Send(mess);
                     }
+                    //this.Logger("Email Enviado Correctamente"+ solicitud.Email, "ITLA_PE", "EmailSender", "Email status True");
                     status = true;
                     return status;
                 }
             }
             catch (Exception ex)
             {
+
+               // this.Logger(ex.ToString(),"ITLA_PE","EmailSender","Error Email status False"+ solicitud.Email);
                 status = false;
             }
             return status;
         }
+        //Generador de logs recibe mensaje, apilcacion, modulo y tipo de aplicacion
+        //public void Logger(String message, String app, string module = null, string logTypeDesc = null)
+        //{
+        //    var Logs = new Log
+        //    {
+        //        LogApp = app,
+        //        LogMessage = message,
+        //        LogModule = module,
+        //        LogTypeDesc = logTypeDesc,
+        //    };
+        //    try
+        //    {
+        //        dbContext.Logs.Add(Logs);
+        //    }
+        //    catch (Exception ex)
+        //    {
 
+        //        throw ex;
+        //    }
+
+        //}
         public void Dispose()
         {
             if (dbContext != null)
