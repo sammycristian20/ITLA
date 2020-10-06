@@ -321,7 +321,10 @@ namespace ITLA_PE_MVC.Controllers
                 var url = Url.RequestContext.RouteData.Values["id"].ToString();
               
                 solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url);
-               
+                solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
+                solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
+                solicitudVM.Solicitud.TieneSubsidio = solicitudVM.TieneSubsidioVal == 0 ? false : true;
+                solicitudVM.Solicitud.DireccionidMunicipio = solicitudVM.Solicitud.Idmunicipio;
                 var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
                 idSol = soli.SolicitudID;
                 string UploadPath = Server.MapPath("~/Files");
