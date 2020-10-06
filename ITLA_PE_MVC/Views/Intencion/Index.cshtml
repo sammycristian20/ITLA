@@ -1,0 +1,20 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutIntencion.cshtml";
+}
+
+
+
+@using (Html.BeginForm("Index", "Intencion", FormMethod.Get, htmlAttributes: new { @id = "form1" }))
+{
+
+    <link href="~/Content/assets/css/styles-merged.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/style.min.css" rel="stylesheet" />
+    <link href="~/Content/assets/css/custom.css" rel="stylesheet" />
+    <div class="form-group" style="text-align: center; margin-top: 100px;">
+
+        <div class="form-group" style="text-align: center; margin-top: 100px;">
+            <a href="/Intencion/Create" style="margin-top: 10px;" class="btn btn-ghost btn-ghost-white">LLenar formulario de intención</a>
+        </div>
+    </div>
+}

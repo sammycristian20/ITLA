@@ -26,9 +26,25 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardITLAJVProvincia().ToList();
         }
 
+        public int DashboardGeneralINfo()
+        {
+            return dbContext.DashboardGeneralINfo().SingleOrDefault().Value;
+        }
+
+
         public List<UspGetDashboardITLAJVDia_Result> GetDashboardITLAJVDia()
         {
             return dbContext.UspGetDashboardITLAJVDia().ToList();
+        }
+
+        public List<UspGetDashboardITLAJVIngresos_Result> GetDashboardITLAJVIngresos()
+        {
+            return dbContext.UspGetDashboardITLAJVIngresos().ToList();
+        }
+
+        public List<UspGetDashboardITLAJVEdad_Result> GetDashboardITLAJVEdad()
+        {
+            return dbContext.UspGetDashboardITLAJVEdad().ToList();
         }
     }
 }

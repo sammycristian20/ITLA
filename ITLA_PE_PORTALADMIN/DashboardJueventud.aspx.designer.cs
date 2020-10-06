@@ -42,13 +42,13 @@ namespace ITLA_PE_PORTALADMIN
         protected global::System.Web.UI.WebControls.Literal literalNOGS;
 
         /// <summary>
-        /// literalAprobadas control.
+        /// literalPreValidados control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal literalAprobadas;
+        protected global::System.Web.UI.WebControls.Literal literalPreValidados;
 
         /// <summary>
         /// RepeaterMaterias control.
@@ -76,5 +76,23 @@ namespace ITLA_PE_PORTALADMIN
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterDia;
+
+        /// <summary>
+        /// RepeaterEdad control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterEdad;
+
+        /// <summary>
+        /// RepeaterIngresos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterIngresos;
     }
 }

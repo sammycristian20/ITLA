@@ -77,6 +77,23 @@ namespace ITLA_PE_MVC.Utils
             }
             return _data;
         }
+
+        public List<SelectListItem> getCarreras()
+        {
+            List<SelectListItem> _data = new List<SelectListItem>();
+
+            var lista = serv.GetCarreras().ToList();
+            foreach (var item in lista)
+            {
+                _data.Add(new SelectListItem
+                {
+                    Text = util.repairString(item.Carrera),
+                    Value = item.IDcarrera.ToString()
+                });
+            }
+            return _data;
+        }
+
         public List<SelectListItem> getTrueFalse()
         {
             List<SelectListItem> _data = new List<SelectListItem>();
@@ -116,12 +133,13 @@ namespace ITLA_PE_MVC.Utils
             {
                 _data.Add(new SelectListItem
                 {
-                    Text = util.repairString(item.Materia),
+                    Text = item.Materia,
                     Value = item.ProyectoEspecialMateriaGrupoID.ToString()
                 }); ;
             }
             return _data;
         }
+
 
 
         public List<SelectListItem> getMuncicipiesDrop(int ProvinciaId)

@@ -102,7 +102,16 @@ namespace ITLA_PE_MVC.SERVICE
             return code;
         }
 
-        
+        public string CodeIntencionById(Intencion obj)
+        {
+            dbContext.Entry(obj).State = System.Data.Entity.EntityState.Detached;
+
+            var code = dbContext.Intencions.Find(obj.IntencionID).CodigoIntencion;
+            return code;
+        }
+
+
+
 
         public Solicitud CodeSolicitudById(int id)
         {
@@ -111,6 +120,16 @@ namespace ITLA_PE_MVC.SERVICE
             var data = dbContext.Solicituds.Find(id);
             return data;
         }
+
+        public Intencion CodeIntencionById(int id)
+        {
+            //var obj = dbContext.Solicituds.Find(id);
+            //dbContext.Entry(obj).State = EntityState.Detached;
+            var data = dbContext.Intencions.Find(id);
+            return data;
+        }
+
+        
         //  public void SolicitudUpdate(ModelSolicituds obj) { dbContext.Entry(obj).State = System.Data.Entity.EntityState.Modified; dbContext.SaveChanges(); ; }
         public Solicitud SolicitudAdd(ModelSolicituds obj)
         {
@@ -156,8 +175,52 @@ namespace ITLA_PE_MVC.SERVICE
             }
 
            
+        }
+
+        public Intencion IntencionAdd(ModelIntencion obj)
+        {
+            //var guid = new Guid();
+            try
+            {
+                Guid guids = Guid.NewGuid();
+                var solicitud = new Intencion
+                {
+                    Nombres = obj.Nombres,
+                    Apellidos = obj.Apellidos,
+                    GenericID_NivelAcademico = obj.GenericID_NivelAcademico,                    
+                    DireccionCalleNumero = obj.DireccionCalleNumero,
+                    DireccionidMunicipio = obj.DireccionidMunicipio,
+                    Email = obj.Email,
+                    FechaNacimiento = obj.FechaNacimiento,
+                    GenericID_TipoIdentificacion = obj.GenericID_TipoIdentificacion,
+                    IdentificacionCedula = obj.IdentificacionCedula.Replace("-", ""),                    
+                    ResultadoComentario = obj.Apellidos,
+                    TelCelular = obj.TelCelular,
+                    TelResidencial = obj.TelResidencial,
+                    RowID = guids,
+                    ProvinciaId = obj.ProvinciaId,
+                    Ingreso_Familiar = obj.Ingreso_Familiar,
+                    TieneInternet = obj.TieneInternet,
+                    TieneLaptopPc = obj.TieneLaptopPc,
+                    TieneSubsidio = obj.TieneSubsidio,
+                    FechaCreacion = DateTime.Now,     
+                    CarreraID = obj.CarreraID
+                };
+                var result = dbContext.Intencions.Add(solicitud);
+                dbContext.SaveChanges();
+                // this.Logger("Solicitud Creada correctamente", "ITLA_PE", "SolicitudAdd", "Solicitud Creada para: "+ result.SolicitudID+" "+result.Nombres+" "+result.Apellidos);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                // this.Logger(ex.ToString(), "ITLA_PE", "SolicitudAdd", "Error creando solicitud");
+                throw ex;
+            }
+
+
 
         }
+
 
         public Solicitud SolicitudEdit(ModelSolicituds obj)
         {
@@ -186,6 +249,7 @@ namespace ITLA_PE_MVC.SERVICE
                 dae.TieneLaptopPc = obj.TieneLaptopPc;
                 dae.TieneSubsidio = obj.TieneSubsidio;
                 dae.ResultadoComentario = "Solicitud modificada el " + DateTime.Now.ToString();
+                dae.LastUserUpdate = DateTime.Now;
 
 
                 dbContext.Entry(dae).State = EntityState.Modified;
@@ -216,11 +280,28 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.Solicituds.Where(p =>p.IdentificacionCedula == cedula).FirstOrDefault();
         }
 
+        public Intencion SolicitudCheckIntencionCedula(string cedula)
+        {
+            return dbContext.Intencions.Where(p => p.IdentificacionCedula == cedula).FirstOrDefault();
+        }
+
+
         public Solicitud SolicitudCheckEmail(string email)
         {
             return dbContext.Solicituds.Where(p=>p.Email == email).FirstOrDefault();
         }
-       
+
+        public Intencion IntencionCheckCedula(string cedula)
+        {
+            return dbContext.Intencions.Where(p => p.IdentificacionCedula == cedula).FirstOrDefault();
+        }
+
+
+        public Intencion IntencionCheckEmail(string email)
+        {
+            return dbContext.Intencions.Where(p => p.Email == email).FirstOrDefault();
+        }
+
 
         public bool SolicitudCheckIdentifiacionGenerada(string otraIdentificacion)
         {
@@ -230,6 +311,12 @@ namespace ITLA_PE_MVC.SERVICE
         public List<UspGenericItems_Result> GenericItems(string genericType)
         {
             return dbContext.UspGenericItems(genericType).ToList();
+        }
+
+
+        public List<UspGetCarrera_Result> GetCarreras()
+        {
+            return dbContext.UspGetCarrera().ToList();
         }
 
         public List<UspProvinciasRD_Result> GetProvinciasRD()
@@ -321,6 +408,51 @@ namespace ITLA_PE_MVC.SERVICE
             {
 
                // this.Logger(ex.ToString(),"ITLA_PE","EmailSender","Error Email status False"+ solicitud.Email);
+                status = false;
+            }
+            return status;
+        }
+
+        public bool sendEmail(Intencion solicitud, string body)
+        {
+
+            bool status = false;
+            try
+            {
+                if (solicitud != null)
+                {
+                    var senderEmail = new MailAddress("puntostecnologicos@itla.edu.do", "Itla Puntos Técnologicos");
+                    var receiverEmail = new MailAddress(solicitud.Email, solicitud.Nombres + " " + solicitud.Apellidos);
+                    var password = "2020puntostecnologicos";
+                    var sub = "Solicitud Intención Recibida";
+                    //var body = "HTML";
+                    var smtp = new SmtpClient
+                    {
+                        Host = "smtp.gmail.com",
+                        Port = 587,
+                        EnableSsl = true,
+                        DeliveryMethod = SmtpDeliveryMethod.Network,
+                        UseDefaultCredentials = false,
+                        Credentials = new NetworkCredential(senderEmail.Address, password)
+                    };
+                    using (var mess = new MailMessage(senderEmail, receiverEmail)
+                    {
+                        Subject = sub,
+                        Body = body,
+                        IsBodyHtml = true
+                    })
+                    {
+                        smtp.Send(mess);
+                    }
+                    //this.Logger("Email Enviado Correctamente"+ solicitud.Email, "ITLA_PE", "EmailSender", "Email status True");
+                    status = true;
+                    return status;
+                }
+            }
+            catch (Exception ex)
+            {
+
+                // this.Logger(ex.ToString(),"ITLA_PE","EmailSender","Error Email status False"+ solicitud.Email);
                 status = false;
             }
             return status;

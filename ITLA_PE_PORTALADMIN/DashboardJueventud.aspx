@@ -83,8 +83,8 @@
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs text-white text-uppercase mb-1">Total Aprobadas</div>
-                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalAprobadas" runat="server" Text="0"></asp:Literal></div>
+                                                        <div class="text-xs text-white text-uppercase mb-1">Total Pre-Validados</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalPreValidados" runat="server" Text="0"></asp:Literal></div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-check-double fa-2x text-white"></i>
@@ -95,17 +95,24 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-lg-8">
+                                    <div class="col-lg-6">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div id="containerProvincia"></div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="col-lg-4">
+                                    <div class="col-lg-3">
                                         <div class="row">
                                             <div class="col-12">
                                                 <div id="containerProvincia2"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-3">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerIngresos"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -203,6 +210,49 @@
             </asp:Repeater>
         </tbody>
     </table>
+
+      <table id="datatableEdad" style="display: none">
+        <thead>
+            <tr>
+                <th>Provincia</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterEdad" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                    <tr>
+                        <th><%# Eval("Provincia") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </itemtemplate>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
+
+     <table id="datatableIngresos" style="display: none">
+        <thead>
+            <tr>
+                <th>Rango de Ingresos</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterIngresos" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                    <tr>
+                        <th><%# Eval("Ingresos") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </itemtemplate>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
+
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -366,17 +416,66 @@
                 }
             }
         });
-
+        
 
         Highcharts.chart('containerProvincia2', {
             data: {
-                table: 'datatableProvincia'
+                table: 'datatableEdad'
             },
             chart: {
                 type: 'pie'
             },
             title: {
-                text: 'Solicitudes por Provincia'
+                text: 'Solicitudes por Rango de Edad'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+        Highcharts.chart('containerIngresos', {
+            data: {
+                table: 'datatableIngresos'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes por Rango de Ingresos'
             },
             yAxis: {
                 min: 0,

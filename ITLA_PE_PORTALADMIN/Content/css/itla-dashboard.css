@@ -309,7 +309,7 @@ h1, h2, p, a, span{
 .input-container {
 	position: relative;
 }
-	input[type=text]{
+	/*input[type=text]{
 		width: 260px;
 		height: 50px;
 		margin-left: 20px;
@@ -319,7 +319,7 @@ h1, h2, p, a, span{
 		color: #fff;
 		border: solid 1px #1f253d;
 		border-radius: 5px;		
-	}
+	}*/
 		input[type=text]::-webkit-input-placeholder { /* WebKit browsers */
 	   		color: #fff;	   		
 	   	}

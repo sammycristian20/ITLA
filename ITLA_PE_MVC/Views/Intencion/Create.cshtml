@@ -1,0 +1,207 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutIntencion.cshtml";
+}
+
+
+@model ITLA_PE_MVC.Models.IntencionViewModel
+
+
+@using (Html.BeginForm("Create", "Intencion", FormMethod.Post, new { enctype = "multipart/form-data", @class = "was-validated", onsubmit = "return checkForm(this);" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <div class="col-lg-12">
+            <div class="card" style="min-height: 500px; padding: 10px;">
+                <div class="card-header" style="background-color: #023877; color: #fff">
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Formulario de Intención</h4>
+                </div>
+                <div class="card-content  show">
+                    <div class="card-body">
+                        <div class="form">
+                            <div class="form-body">
+                                <div>
+                                    <asp:Literal ID="LiteralInfo" runat="server"></asp:Literal>
+                                </div>
+                                <h4 class="form-section">Datos Personales</h4>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput3">Nombres</label>
+                                            @Html.EditorFor(model => model.Intencion.Nombres, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.Nombres, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Apellidos</label>
+                                            @Html.EditorFor(model => model.Intencion.Apellidos, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.Apellidos, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Fecha de Nacimiento</label>
+                                            @Html.EditorFor(model => model.Intencion.FechaNacimiento, new { htmlAttributes = new { @type = "date", @class = "form-control is-invalid", required = "required", maxlength = "10", min = "1920-01-01", max = "2020-12-31" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.FechaNacimiento, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="userinput1">Carrera</label>
+                                            @Html.DropDownListFor(model => model.Intencion.CarreraID, ViewBag._getCarreras as List<SelectListItem>, "Seleccione la carrera", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Intencion.CarreraID, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userinput1">Tipo Documento de Identidad</label>
+                                            @Html.DropDownListFor(model => model.Intencion.GenericID_TipoIdentificacion, ViewBag._generectTypeIdentification as List<SelectListItem>, "Seleccione Tipo Documento", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Intencion.GenericID_TipoIdentificacion, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="userinput2">No. Documento de Identidad<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="*" ForeColor="Red" ErrorMessage="No. Documento de Identidad es requerido" ControlToValidate="IdentificacionCedula"></asp:RequiredFieldValidator></label>
+                                            @Html.EditorFor(model => model.Intencion.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.IdentificacionCedula, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput3">Email</label>
+                                            @Html.EditorFor(model => model.Intencion.Email, new { htmlAttributes = new { @class = "form-control is-invalid email", pattern = @"[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.Email, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Tel. Residencial</label>
+                                            @Html.EditorFor(model => model.Intencion.TelResidencial, new { htmlAttributes = new { @class = "form-control " } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.TelResidencial, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Tel. Celular</label>
+                                            @Html.EditorFor(model => model.Intencion.TelCelular, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.TelCelular, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <h4 class="form-section">
+                                    Estatus Económico
+                                </h4>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="userinput3">¿Cuenta con Internet?</label>
+                                            @Html.DropDownListFor(model => model.TieneInternetVal, ViewBag._getTrueFalse as List<SelectListItem>, "Seleccione sus opción", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.TieneInternetVal, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="userinput4">¿Cuenta con Laptop o Computador?</label>
+                                            @Html.DropDownListFor(model => model.TieneLaptopPcVal, ViewBag._getTrueFalse as List<SelectListItem>, "Seleccione sus opción", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.TieneLaptopPcVal, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="userinput3">¿Posee tarjeta de solidaridad?</label>
+                                            @Html.DropDownListFor(model => model.TieneSubsidioVal, ViewBag._getTrueFalse as List<SelectListItem>, "Seleccione sus opción", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.TieneSubsidioVal, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-5">
+                                        <div class="form-group">
+                                            <label for="userinput4">Ingreso familiar</label>
+                                            @Html.DropDownListFor(model => model.Intencion.Ingreso_Familiar, ViewBag._generectTypeIngresoFamiliar as List<SelectListItem>, "Seleccione sus íngresos", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Intencion.GenericID_TipoIdentificacion, "", new { @class = "text-danger" })
+
+                                            @Html.ValidationMessageFor(model => model.Intencion.TieneSubsidio, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <h4 class="form-section">
+                                    Dirección
+                                </h4>
+
+
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput3">Provincia</label>
+                                            @Html.DropDownListFor(model => model.Intencion.ProvinciaId, ViewBag._provinciasItems as List<SelectListItem>, "Seleccione su provincia", new { @class = "form-control is-invalid", required = "required" })
+
+                                            @Html.ValidationMessageFor(model => model.ProvinciaId, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Municipio</label>
+                                            @Html.DropDownListFor(model => model.Intencion.Idmunicipio, new List<SelectListItem>(), new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Intencion.Idmunicipio, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <label for="userinput4">Calle y número</label>
+                                            @Html.EditorFor(model => model.Intencion.DireccionCalleNumero, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required" } })
+                                            @Html.ValidationMessageFor(model => model.Intencion.DireccionCalleNumero, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+
+                                </div>
+                                <h4 class="form-section">Nivel Académico</h4>
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="userinput3">Nivel Completado</label>
+                                            @Html.DropDownListFor(model => model.Intencion.GenericID_NivelAcademico, ViewBag._getAcdemyLevel as List<SelectListItem>, "Seleccione nivel académico", htmlAttributes: new { @class = "form-control is-invalid", required = "required" })
+                                            @Html.ValidationMessageFor(model => model.Intencion.GenericID_NivelAcademico, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                            </div>
+
+                            <div class="form-actions right">
+                                <button type="submit" id="mySubmit" class="btn btn-primary btn-lg float-right">Guardar</button>
+                                <a href="/Intencion" class="btn btn-secondary btn-lg float-right mr-2">Cancelar</a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>}
+
+@section Scripts {
+
+    @Scripts.Render("~/bundles/dropscript")
+
+}

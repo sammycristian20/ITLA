@@ -49,6 +49,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="INFONETWORK.COMMONS">
+      <HintPath>..\..\..\..\source\repos\INFONETWORK\SANTANA\INFONETWORK.SANTANA.PORTAL\bin\INFONETWORK.COMMONS.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
@@ -195,6 +198,8 @@
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
     <Content Include="Login.aspx" />
+    <Content Include="PrevalidacionJuventud.aspx" />
+    <Content Include="PrevalidacionJuventudDetalle.aspx" />
     <Content Include="Web.config" />
     <Content Include="xmee-main\css\bootstrap.min.css" />
     <Content Include="xmee-main\css\fontawesome-all.min.css" />
@@ -311,12 +316,29 @@
     <Compile Include="Home.aspx.designer.cs">
       <DependentUpon>Home.aspx</DependentUpon>
     </Compile>
+    <Compile Include="JustCode\BasePage.cs">
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Login.aspx.designer.cs">
       <DependentUpon>Login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrevalidacionJuventud.aspx.cs">
+      <DependentUpon>PrevalidacionJuventud.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrevalidacionJuventud.aspx.designer.cs">
+      <DependentUpon>PrevalidacionJuventud.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PrevalidacionJuventudDetalle.aspx.cs">
+      <DependentUpon>PrevalidacionJuventudDetalle.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PrevalidacionJuventudDetalle.aspx.designer.cs">
+      <DependentUpon>PrevalidacionJuventudDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SiteMain.Master.cs">

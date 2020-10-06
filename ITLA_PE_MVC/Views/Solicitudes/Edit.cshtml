@@ -57,7 +57,7 @@
                                                 <div class="col-md-6">
                                                     <div class="form-group">
                                                         <label for="userinput2">No. Documento de Identidad<asp:RequiredFieldValidator ID="RequiredFieldValidator1" runat="server" Text="*" ForeColor="Red" ErrorMessage="No. Documento de Identidad es requerido" ControlToValidate="IdentificacionCedula"></asp:RequiredFieldValidator></label>
-                                                        @Html.EditorFor(model => model.Solicitud.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required",  id = "IdentificacionCedulaEdit" } })
+                                                        @Html.EditorFor(model => model.Solicitud.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control is-invalid", required = "required", id = "IdentificacionCedulaEdit" } })
                                                         @Html.ValidationMessageFor(model => model.Solicitud.IdentificacionCedula, "", new { @class = "text-danger" })
                                                     </div>
                                                 </div>
@@ -189,52 +189,41 @@
                                             </div>
 
                                             <h4 class="form-section">Documentos a adjuntar</h4>
-                                            @if (ViewBag.IsCedulaFile == true)
-                                            {
+                                            <div class="row" id="divCedula" runat="server">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="userinput3">
+                                                            Cédula
+                                                        </label>
 
+                                                        <div class="custom-file mb-3">
+                                                            <input type="file" id="PostFile" name="PostFile" class="custom-file-input" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" />
+                                                            <label class="custom-file-label" for="validatedCustomFile">seleccionar archivo...</label>
+                                                            @Html.ValidationMessageFor(model => model.FilePathCedula, "", new { @class = "text-danger invalid-feedback" })
+                                                        </div>
 
-                                                <div class="row" id="divCedula" runat="server">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="userinput3">
-                                                                Cédula
-                                                            </label>
-
-                                                            <div class="custom-file mb-3">
-                                                                <input type="file" id="PostFile" name="PostFile" class="custom-file-input" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" />
-                                                                <label class="custom-file-label" for="validatedCustomFile">seleccionar archivo...</label>
-                                                                @Html.ValidationMessageFor(model => model.FilePathCedula, "", new { @class = "text-danger invalid-feedback" })
-                                                            </div>
-
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row" id="divActa" runat="server" visible="false">
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="userinput3">
+                                                            Acta de Nacimiento
+                                                        </label>
+                                                        <div class="custom-file mb-3">
+                                                            <input type="file" class="custom-file-input" name="PostFileActa" id="PostFileActa" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps">
+                                                            <label class="custom-file-label" for="validatedCustomFile">seleccionar archivo...</label>
+                                                            @Html.ValidationMessageFor(model => model.FilePathActa, "", new { @class = "text-danger invalid-feedback" })
                                                         </div>
                                                     </div>
                                                 </div>
-                                            }
-
-                                            @if (ViewBag.IsActa == true)
-                                            {
-
-                                                <div class="row" id="divActa" runat="server" visible="false">
-                                                    <div class="col-md-12">
-                                                        <div class="form-group">
-                                                            <label for="userinput3">
-                                                                Acta de Nacimiento
-                                                            </label>
-                                                            <div class="custom-file mb-3">
-                                                                <input type="file" class="custom-file-input" name="PostFileActa" id="PostFileActa" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps">
-                                                                <label class="custom-file-label" for="validatedCustomFile">seleccionar archivo...</label>
-                                                                @Html.ValidationMessageFor(model => model.FilePathActa, "", new { @class = "text-danger invalid-feedback" })
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            }
-
+                                            </div>
 
                                             <div class="row">
                                                 <div class="col-md-12">
                                                     <div class="form-group">
-                                                        <label for="userinput3">Record de notas<asp:RequiredFieldValidator ID="RequiredFieldValidator12" runat="server" Text="*" ForeColor="Red" ErrorMessage="Imagen de tu comprobante de estudio es requerido" ControlToValidate="FileUploadComprobante"></asp:RequiredFieldValidator></label>
+                                                        <label for="userinput3">Record de notas</label>
                                                         <div class="custom-file mb-3">
                                                             <input type="file" id="PostFileEstudios" name="PostFileEstudios" class="custom-file-input" accept="image/jpeg,image/gif,image/png,application/pdf,image/x-eps" />
                                                             <label class="custom-file-label" for="validatedCustomFile">seleccionar archivo...</label>
@@ -262,3 +251,5 @@
 @section Scripts {
     @Scripts.Render("~/bundles/dropscript")
 }
+
+

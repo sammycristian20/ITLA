@@ -47,10 +47,10 @@ namespace ITLA_PE_MVC.Controllers
             idSolicitud = serv.IdByCodeSolicitud(data.CodigoSolicitud);
             if (idSolicitud != 0) {
                 var solicitudDetail = serv.SolicitudList().Where(p => p.SolicitudID == idSolicitud).FirstOrDefault();
-                if (solicitudDetail.Email == data.Email || solicitudDetail.IdentificacionCedula == data.IdentificacionCedula)
+                if (solicitudDetail.Email == data.Email || solicitudDetail.IdentificacionCedula == data.IdentificacionCedula.Replace("-", ""))
                 {
                     return RedirectToAction("Edit", new RouteValueDictionary(
-                      new { controller = "Solicitudes", action = "Edit", Id = idSolicitud }));
+                      new { controller = "Solicitudes", action = "Edit", Id = idSolicitud.ToString().EncryptString() }));
                 }
                 else if (data.Email == null && data.IdentificacionCedula == null) {
                     @ViewBag.Show = "normal";
@@ -137,7 +137,9 @@ namespace ITLA_PE_MVC.Controllers
             ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
             ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
             ViewBag._getTrueFalse = ddg.getTrueFalse();
+            
             //  ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(db.ProyectoEspecialMateriaGrupo, "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID");
+
             return View();
         }
 
@@ -243,6 +245,22 @@ namespace ITLA_PE_MVC.Controllers
                     try
                     {
 
+
+                        string codigo = serv.CodeSolicitudById(soli);
+
+                        string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
+
+                        emailBody = emailBody.Replace("@@codigo", codigo);
+                        emailBody = emailBody.Replace("@@locationUrl", @"https://www.puntostecnologicos.com/solicitudes/find/" + codigo);
+
+                        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileEstudios, 9);
+                        bool statusMail = serv.sendEmail(soli, emailBody);
+
+
+                        /*
+                         * 
+                       
+
                         string codigo = serv.CodeSolicitudById(soli);
 
                         string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
@@ -251,6 +269,7 @@ namespace ITLA_PE_MVC.Controllers
                         emailBody = emailBody.Replace("@@locationUrl", UrlBase + @"/solicitudes/find/" + codigo);
                         emailBody = emailBody.Replace("@@editURL", UrlBase + @"/solicitudes/edit/" + soliId);
                         bool statusMail = serv.sendEmail(soli, emailBody);
+                          * */
                     }
                     catch
                     {
@@ -273,7 +292,7 @@ namespace ITLA_PE_MVC.Controllers
         }
 
         // GET: Solicitudes/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(string id)
         {
             if (id == null)
             {
@@ -287,7 +306,7 @@ namespace ITLA_PE_MVC.Controllers
             ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
             ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
             ViewBag._getTrueFalse = ddg.getTrueFalse();
-            var solicitud = serv.SolicitudGet(id.Value);
+            var solicitud = serv.SolicitudGet(id.DecryptString().ToInt());
             
             IEnumerable<SolicitudAnexo> IsCedula = solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 6);
             IEnumerable<SolicitudAnexo> IsActa= solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 7);
@@ -307,6 +326,29 @@ namespace ITLA_PE_MVC.Controllers
             solicitudVM.TieneInternetVal = solicitud.TieneInternet == true ? 1 : 0;
             solicitudVM.TieneLaptopPcVal = solicitud.TieneLaptopPc == true ? 1 : 0;
             solicitudVM.TieneSubsidioVal = solicitud.TieneSubsidio == true ? 1 : 0;
+
+            //var anexoCedula = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 6).LastOrDefault();
+
+            //if (anexoCedula != null)
+            //{
+            //    solicitudVM.CedulaURL = anexoCedula.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            //}
+
+
+            //var anexoActa = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 7).LastOrDefault();
+
+            //if (anexoActa != null)
+            //{
+            //    solicitudVM.ActaURL = anexoActa.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            //}
+
+            //var anexoGrado = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 9).LastOrDefault();
+
+            //if (anexoGrado != null)
+            //{
+            //    solicitudVM.EstudiosURL = anexoGrado.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            //}
+
 
             return View(solicitudVM);
         }
@@ -487,6 +529,7 @@ namespace ITLA_PE_MVC.Controllers
 
         public JsonResult validateCedulalEdit(string cedula, string idSol)
         {
+            idSol = idSol.DecryptString();
             var message = "";
             var consulCedula = serv.SolicitudCheckCedula(cedula.Replace("-","")) ;
 
@@ -513,6 +556,8 @@ namespace ITLA_PE_MVC.Controllers
 
         public JsonResult validateEmailEdit(string email,string idSol)
         {
+            idSol = idSol.DecryptString();
+
             var message = "";
             var consultEmail = serv.SolicitudCheckEmail(email);
 

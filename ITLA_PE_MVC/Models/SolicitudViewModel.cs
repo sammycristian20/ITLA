@@ -20,5 +20,10 @@ namespace ITLA_PE_MVC.Models
         public int TieneInternetVal { get; set; }
         public int TieneLaptopPcVal { get; set; }
         public int TieneSubsidioVal { get; set; }
+
+        public string ActaURL { get; set; }
+        public string CedulaURL { get; set; }
+        public string EstudiosURL { get; set; }
+
     }
 }

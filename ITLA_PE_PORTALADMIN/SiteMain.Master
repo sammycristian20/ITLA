@@ -146,7 +146,13 @@
                                 <span data-i18n="nav.dash.main">Dashboard Juventud</span>
                             </a>
                         </li>
-                        <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
+                         <li class="dropdown nav-item btn-top-menu" >
+                            <a class="dropdown-toggle nav-link" href="/PrevalidacionJuventud.aspx">
+                                <i class="icon-check"></i>
+                                <span data-i18n="nav.dash.main">Pre-Validación Juventud</span>
+                            </a>
+                        </li>
+                      <%--  <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
                             <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
                                 <i class="icon-badge"></i>
                                 <span data-i18n="nav.dash.main">Proyecto Especial</span>
@@ -159,7 +165,7 @@
                                             <a class="dropdown-item" href="/DashboardJueventud.aspx">Dashboard Pre-Inscripción</a>
                                         </li>
                                         <li data-menu="">
-                                            <a class="dropdown-item" href="javascript: alert('pendiente');" >Digitación de Indices</a>
+                                            <a class="dropdown-item" href="/PrevalidacionJuventud.aspx" >Pre-Validación</a>
                                         </li>
                                         <li data-menu="">
                                             <a class="dropdown-item" href="javascript: alert('pendiente');">Aprobación de Solicitudes</a>
@@ -168,7 +174,7 @@
                                 </li>
 
                             </ul>
-                        </li>
+                        </li>--%>
                         <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
                             <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
                                 <i class="icon-settings"></i>
@@ -455,7 +461,7 @@
                 <!-- /horizontal menu content-->
             </div>
         </div>
-    </form>
+    
 
 
 
@@ -517,5 +523,6 @@
 
     <asp:ContentPlaceHolder ID="ContentPlaceHolder2" runat="server">
     </asp:ContentPlaceHolder>
+        </form>
 </body>
 </html>

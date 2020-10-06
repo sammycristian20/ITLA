@@ -7,7 +7,7 @@ using System.Web.UI.WebControls;
 
 namespace ITLA_PE_PORTALADMIN
 {
-    public partial class DashboardJueventud : System.Web.UI.Page
+    public partial class DashboardJueventud : BasePage
     {
         protected void Page_Load(object sender, EventArgs e)
         {
@@ -30,9 +30,16 @@ namespace ITLA_PE_PORTALADMIN
                 literalTotalSolicitudesGS.Text = canidadGS.ToString() + " (" + (decimal.Parse(canidadGS.ToString()) / decimal.Parse(total.ToString())).ToString("p") +  ")" ;
                 literalNOGS.Text = cantidadNOGS.ToString() + " (" + (decimal.Parse(cantidadNOGS.ToString()) / decimal.Parse(total.ToString())).ToString("p") + ")";
 
+                literalPreValidados.Text = servicesDashboard.DashboardGeneralINfo().ToString();
 
                 RepeaterDia.DataSource = servicesDashboard.GetDashboardITLAJVDia();
                 RepeaterDia.DataBind();
+
+                RepeaterEdad.DataSource = servicesDashboard.GetDashboardITLAJVEdad();
+                RepeaterEdad.DataBind();
+
+                RepeaterIngresos.DataSource = servicesDashboard.GetDashboardITLAJVIngresos();
+                RepeaterIngresos.DataBind();
 
 
 
