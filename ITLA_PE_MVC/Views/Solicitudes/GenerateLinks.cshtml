@@ -10,7 +10,7 @@
         <div class="col-lg-12">
             <div class="card" style="min-height: 500px; padding: 10px;">
                 <div class="card-header" style="background-color: #023877; color: #fff">
-                    <h4 class="card-title" id="basic-layout-colored-form-control">Generar Link Solicitud</h4>
+                    <h4 class="card-title" id="basic-layout-colored-form-control">Validación de solicitud para modificar</h4>
                 </div>
                 <div class="card-content  show">
                     <div class="card-body">
@@ -20,41 +20,44 @@
 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="userinput3">No Solicitud</label>
+                                        <label for="userinput3">Número de solicitud</label>
                                         @Html.EditorFor(model => model.CodigoSolicitud, new { htmlAttributes = new { @class = "form-control", required = "required" } })
 
                                     </div>
                                 </div>
                             </div>
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="userinput3">Cédula</label>
-                                            @Html.EditorFor(model => model.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control" } })
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="userinput3">Cédula</label>
+                                        @Html.EditorFor(model => model.IdentificacionCedula, new { htmlAttributes = new { @class = "form-control" } })
 
-                                        </div>
-                                    </div>
-                                    <div class="col-md-4">
-                                        <div class="form-group">
-                                            <label for="userinput3">Correo Electrónico</label>
-                                            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
-
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <strong>*Debe poner una cédula o correo que haya digitado en la solicitud</strong>
                                     </div>
                                 </div>
+                                <div class="col-md-4">
+                                    <div class="form-group">
+                                        <label for="userinput3">Correo Electrónico</label>
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
 
-
-                                <div class="form-actions right">
-                                    <button type="submit" id="mySubmit" class="btn btn-primary btn-lg float-right">Modificar</button>
-                                </div>
-                                <div class="row">
-                                    <div style="display:@ViewBag.Show" class="alert alert-danger" role="alert">
-                                        @ViewBag.ErrorMessage
                                     </div>
                                 </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <strong>*Debes colocar la cédula o correo electrónico que hayas registrado en la solicitud</strong>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <div style="display:@ViewBag.Show" class="alert alert-danger" role="alert">
+                                    @ViewBag.ErrorMessage
+                                </div>
+                            </div>
+
+                            <div class="form-actions right">
+                                <button type="submit" id="mySubmit" class="btn btn-primary btn-lg float-right">Modificar</button>
+                            </div>
+
                         </div>
                     </div>
                 </div>

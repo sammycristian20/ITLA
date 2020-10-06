@@ -21,24 +21,48 @@
 
 
 
+    $("#Intencion_GenericID_TipoIdentificacion,#Intencion_Nombres,#Intencion_Apellidos,#Intencion_FechaNacimiento,#Intencion_IdentificacionCedula").change(function () {
+        GenerateID();
+        //alert(GiveMe($('#Nombres').val()));
+    });
+
+    $("#Intencion_ProvinciaId").change(function () {
+        $.get("/Solicitudes/GetMuniciposList", { ProvinciaId: $("#Intencion_ProvinciaId").val() }, function (data) {
+            // VACIAMOS EL DropDownList
+            $("#Intencion_Idmunicipio").empty();
+            // AÑADIMOS UN NUEVO label CON EL NOMBRE DEL ELEMENTO SELECCIONADO
+            $("#Intencion_Idmunicipio").append("<option value>Seleccionar Municipios")
+            // CONSTRUIMOS EL DropDownList A PARTIR DEL RESULTADO Json (data)
+            $.each(data, function (index, row) {
+                $("#Intencion_Idmunicipio").append("<option value='" + row.IDmunicipio + "'>" + row.Municipio + "</option>")
+            });
+        });
+    });
+
+
 
     $("#Solicitud_GenericID_TipoIdentificacion").change(function () {
-      
+
+        documentTypeUpdate();
+    });
+
+    function documentTypeUpdate() {
+        //alert($("#Solicitud_GenericID_TipoIdentificacion").val());
+
         //$("#Solicitud_IdentificacionCedula").val("");
         var fecha = new Date($("#Solicitud_FechaNacimiento").val());
-            var nombres = $("#Solicitud_Nombres").val();
+        var nombres = $("#Solicitud_Nombres").val();
         var apellidos = $("#Solicitud_Apellidos").val();
         var solicitudDropSel = $("#Solicitud_GenericID_TipoIdentificacion").val();
         var validates = validateEmpty(nombres, apellidos, $("#Solicitud_FechaNacimiento").val());
 
         //alert('probando cambios');
 
-       
+
 
         try {
 
-            if (solicitudDropSel == '10')
-            {
+            if (solicitudDropSel == '10') {
                 $("#Solicitud_IdentificacionCedula").val("");
             }
 
@@ -54,8 +78,7 @@
                 $("#PostFileActa").prop('required', true);
                 $("#PostFile").removeAttr('required');
             }
-            else if (solicitudDropSel == "11" && validates == false)
-            {
+            else if (solicitudDropSel == "11" && validates == false) {
                 alertify
                     .alert("Debe completar su nombre apellido y fecha de nac..", function () {
                         //alertify.message('OK');
@@ -89,8 +112,8 @@
             //$('#Solicitud_IdentificacionCedula').removeAttr('disabled');
 
         }
+    }
 
-    });
     function validateEmpty(nombres, apellidos, fecha) {
         if (nombres != "" && apellidos != "" && fecha !="") {
             return true;
@@ -136,5 +159,8 @@
         }
 
     }
+
+    documentTypeUpdate();
+
 
 });

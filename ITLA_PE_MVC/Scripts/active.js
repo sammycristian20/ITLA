@@ -15,7 +15,13 @@
             }, false);
         });
     }, false);
+
+   
+
+    
 })();
+
+
 
 
 $(".custom-file-input").on("change", function () {
@@ -91,10 +97,10 @@ $(document).ready(function () {
     });
     $('#IdentificacionCedula').mask('000-0000000-0');
     
-    $('#Solicitud_IdentificacionCedula').mask('000-0000000-0');
+    $('#Solicitud_IdentificacionCedula,#Intencion_IdentificacionCedula').mask('000-0000000-0');
     $('#IdentificacionCedulaEdit').mask('000-0000000-0');
-    $('#Solicitud_TelResidencial').mask('000-000-0000');
-    $('#Solicitud_TelCelular').mask('000-000-0000');
+    $('#Solicitud_TelResidencial,#Intencion_TelResidencial').mask('000-000-0000');
+    $('#Solicitud_TelCelular,#Intencion_TelCelular').mask('000-000-0000');
 
 
     $("#Solicitud_IdentificacionCedula").blur(function () {
@@ -284,6 +290,95 @@ function onlyAlphabets(e, t) {
     catch (err) {
         //alert(err.Description);
     }
+}
+
+function UpdateDocumentType() {
+    if ($("#Solicitud_GenericID_TipoIdentificacion").val() == '10' || $("#Solicitud_GenericID_TipoIdentificacion").val() == '') {
+        var cedulaNo = $('#Solicitud_IdentificacionCedula').val();
+        if (cedulaNo != '')
+            getCedula(cedulaNo);
+    }
+    else {
+        document.getElementById("Solicitud_IdentificacionCedula").setCustomValidity("");
+    }
+
+}
+
+$("#Intencion_IdentificacionCedula").blur(function () {
+    if ($("#Intencion_GenericID_TipoIdentificacion").val() == '10' || $("#Intencion_GenericID_TipoIdentificacion").val() == '') {
+        var cedulaNo = $('#Intencion_IdentificacionCedula').val();
+        if (cedulaNo != '')
+            getIntencionCedula(cedulaNo);
+    }
+    else {
+        document.getElementById("Intencion_IdentificacionCedula").setCustomValidity("");
+    }
+});
+
+$("#Intencion_Email").blur(function () {
+    $('#Intencion_Email').val($('#Intencion_Email').val().trim().toLowerCase())
+    var email = $('#Intencion_Email').val();
+    if (email != '')
+        getIntencionEmail(email);
+});
+
+
+
+function getIntencionCedula() {
+    $.ajax({
+
+        url: "/Intencion/validateCedula",
+        type: "Post",
+        data: JSON.stringify({ "cedula": $('#Intencion_IdentificacionCedula').val() }),
+        contentType: 'application/json; charset=utf-8',
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        success: function (data) {
+            if (data != "") {
+                document.getElementById("Intencion_IdentificacionCedula").setCustomValidity("Este cedula ya tiene una Intencion registrada");
+                messageAlert(data);
+            }
+            else {
+                document.getElementById("Intencion_IdentificacionCedula").setCustomValidity("");
+
+            }
+        },
+        error: function () { alert('error'); }
+    });
+}
+
+function getIntencionEmail() {
+    //alert('get email4');
+    $.ajax({
+        //https://beca-mj.itlard.info
+        url: "/Intencion/validateEmail",
+        type: "Post",
+        data: JSON.stringify({ "email": $('#Intencion_Email').val() }),
+        //{ Name: name, 
+        // Address: address, DOB: dob },
+        mode: 'cors',
+        headers: {
+            'Access-Control-Allow-Origin': '*',
+            'Accept': 'application/json',
+            'Content-Type': 'application/json',
+        },
+        contentType: 'application/json; charset=utf-8',
+        success: function (data) {
+            if (data != "") {
+                document.getElementById("Intencion_Email").setCustomValidity("Este email ya tiene una Intencion registrada");
+                messageAlert(data);
+            }
+            else {
+                document.getElementById("Intencion_Email").setCustomValidity("");
+
+            }
+        },
+        error: function () { alert('error'); }
+    });
 }
 
 

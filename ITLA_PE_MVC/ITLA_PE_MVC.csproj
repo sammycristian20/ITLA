@@ -69,6 +69,9 @@
     <Reference Include="Google.Apis.PlatformServices, Version=1.49.0.0, Culture=neutral, PublicKeyToken=4b01fa6e34db77ab, processorArchitecture=MSIL">
       <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
+    <Reference Include="INFONETWORK.COMMONS">
+      <HintPath>..\..\..\..\source\repos\INFONETWORK\SANTANA\INFONETWORK.SANTANA.PORTAL\bin\INFONETWORK.COMMONS.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\packages\Newtonsoft.Json.12.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
@@ -181,12 +184,14 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\IntencionController.cs" />
     <Compile Include="Controllers\SolicitudesController.cs" />
     <Compile Include="Controllers\SolicitudsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IntencionViewModel.cs" />
     <Compile Include="Models\SolicitudViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Utils\DropdownsGet.cs" />
@@ -389,6 +394,10 @@
     <Content Include="Views\Solicitudes\Modified.cshtml" />
     <Content Include="Views\Solicitudes\GenerateLinks.cshtml" />
     <Content Include="Views\Solicitudes\LinkSend.cshtml" />
+    <Content Include="Views\Intencion\Index.cshtml" />
+    <Content Include="Views\Intencion\Create.cshtml" />
+    <Content Include="Views\Intencion\NumeroSolicitud.cshtml" />
+    <Content Include="Views\Shared\_LayoutIntencion.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
