@@ -14,6 +14,7 @@ namespace ITLA_PE_PORTALADMIN
             if (!IsPostBack)
             {
                 ITLA_PE_MVC.SERVICE.ServicesDashboard servicesDashboard = new ITLA_PE_MVC.SERVICE.ServicesDashboard();
+
                 RepeaterMaterias.DataSource = servicesDashboard.GetDashboardITLAJVMateria();
                 RepeaterMaterias.DataBind();
 
@@ -25,6 +26,7 @@ namespace ITLA_PE_PORTALADMIN
 
                 literalTotalSolicitudes.Text = porProvincias.Sum(set => set.Cantidad).ToString();
                 int? total = porProvincias.Sum(set => set.Cantidad);
+
                 int? canidadGS = porProvincias.Where(set => set.Provincia == "SANTO DOMINGO" || set.Provincia == "DISTRITO NACIONAL").Sum(set => set.Cantidad);
                 int? cantidadNOGS = porProvincias.Where(set => set.Provincia != "SANTO DOMINGO" && set.Provincia != "DISTRITO NACIONAL").Sum(set => set.Cantidad);
                 literalTotalSolicitudesGS.Text = canidadGS.ToString() + " (" + (decimal.Parse(canidadGS.ToString()) / decimal.Parse(total.ToString())).ToString("p") +  ")" ;

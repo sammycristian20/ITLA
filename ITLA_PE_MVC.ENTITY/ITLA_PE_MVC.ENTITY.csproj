@@ -107,6 +107,9 @@
     <Compile Include="UspGetCarrera_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardIntencionProvincia_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetDashboardITLAJVDia_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>

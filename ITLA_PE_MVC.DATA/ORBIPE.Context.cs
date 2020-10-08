@@ -125,5 +125,10 @@ namespace ITLA_PE_MVC.DATA
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("DashboardGeneralINfo");
         }
+    
+        public virtual ObjectResult<UspGetDashboardIntencionProvincia_Result> UspGetDashboardIntencionProvincia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionProvincia_Result>("UspGetDashboardIntencionProvincia");
+        }
     }
 }

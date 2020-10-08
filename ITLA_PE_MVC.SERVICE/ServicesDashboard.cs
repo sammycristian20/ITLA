@@ -46,5 +46,14 @@ namespace ITLA_PE_MVC.SERVICE
         {
             return dbContext.UspGetDashboardITLAJVEdad().ToList();
         }
+
+
+
+
+        public List<UspGetDashboardIntencionProvincia_Result> GetDashboardIntencionProvincia()
+        {
+            return dbContext.UspGetDashboardIntencionProvincia().ToList();
+        }
+
     }
 }
