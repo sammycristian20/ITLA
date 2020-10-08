@@ -87,7 +87,7 @@ namespace ITLA_PE_MVC.Utils
             {
                 _data.Add(new SelectListItem
                 {
-                    Text = util.repairString(item.Carrera),
+                    Text = item.Carrera,
                     Value = item.IDcarrera.ToString()
                 });
             }

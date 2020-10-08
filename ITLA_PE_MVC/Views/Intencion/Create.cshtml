@@ -44,7 +44,7 @@
                                     <div class="col-md-4">
                                         <div class="form-group">
                                             <label for="userinput4">Fecha de Nacimiento</label>
-                                            @Html.EditorFor(model => model.Intencion.FechaNacimiento, new { htmlAttributes = new { @type = "date", @class = "form-control is-invalid", required = "required", maxlength = "10", min = "1920-01-01", max = "2020-12-31" } })
+                                            @Html.EditorFor(model => model.Intencion.FechaNacimiento, new { htmlAttributes = new { @type = "date", @class = "form-control is-invalid", required = "required", maxlength = "10", min = "1920-01-01", max = "2004-12-31" } })
                                             @Html.ValidationMessageFor(model => model.Intencion.FechaNacimiento, "", new { @class = "text-danger" })
                                         </div>
                                     </div>

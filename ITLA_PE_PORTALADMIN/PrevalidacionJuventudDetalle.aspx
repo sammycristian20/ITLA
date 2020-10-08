@@ -1,6 +1,9 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMain.Master" AutoEventWireup="true" CodeBehind="PrevalidacionJuventudDetalle.aspx.cs" Inherits="ITLA_PE_PORTALADMIN.PrevalidacionJuventudDetalle" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
+    <style>
+        label {font-weight: bold; color: black}
+    </style>
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <asp:ValidationSummary ID="ValidationSummary1" runat="server" ShowMessageBox="true" ShowSummary="false" />
@@ -8,7 +11,7 @@
         <!-- Basic form layout section start -->
         <section id="basic-form-layouts">
             <div class="row match-height">
-                <div class="col-md-6">
+                <div class="col-md-9">
                     <div class="card" style="min-height: 150.5px;">
                         <div class="card-header">
                             <h4 class="card-title" id="basic-layout-form">Información del Solicitante</h4>
@@ -18,19 +21,19 @@
                                 <div class="form">
                                     <div class="form-body">
                                         <div class="row">
-                                            <div class="col-md-6">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="projectinput1">Solicitud</label>
                                                     <asp:TextBox ID="NoSolicitud" CssClass="form-control border-primary" ReadOnly="true" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="projectinput1">Fecha de nacimiento</label>
                                                     <asp:TextBox ID="DOB" CssClass="form-control border-primary" ReadOnly="true" runat="server"></asp:TextBox>
                                                 </div>
                                             </div>
-                                            <div class="col-md-3">
+                                            <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="projectinput1">Fecha de solicitud</label>
                                                     <asp:TextBox ID="FechaSolicitud" CssClass="form-control border-primary" ReadOnly="true" runat="server"></asp:TextBox>
@@ -68,13 +71,14 @@
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="projectinput2">Telefonos</label>
+                                                    <label for="projectinput2">Teléfonos</label>
                                                     <asp:TextBox ID="Telefonos" runat="server" CssClass="form-control" ReadOnly="true"></asp:TextBox>
                                                 </div>
                                             </div>
                                         </div>
-
+                                        <br />
                                         <h4 class="form-section"><i class="fa fa-eye"></i>Pre-Validación</h4>
+                                        <br />
 
                                         <div class="row">
                                             <div class="col-md-2">
@@ -142,7 +146,7 @@
                     </div>
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-3">
                     <div class="card" style="min-height: 300.5px;">
                         <div class="card-header">
                             <h4 class="card-title" id="basic-layout-colored-form-control">Documentos Cargados</h4>

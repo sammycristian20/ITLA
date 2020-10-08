@@ -323,9 +323,7 @@ namespace ITLA_PE_MVC.Controllers
             SolicitudViewModel solicitudVM = new SolicitudViewModel { 
                 Solicitud = solicitud
             };
-            solicitudVM.TieneInternetVal = solicitud.TieneInternet == true ? 1 : 0;
-            solicitudVM.TieneLaptopPcVal = solicitud.TieneLaptopPc == true ? 1 : 0;
-            solicitudVM.TieneSubsidioVal = solicitud.TieneSubsidio == true ? 1 : 0;
+
 
             //var anexoCedula = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 6).LastOrDefault();
 
@@ -363,7 +361,7 @@ namespace ITLA_PE_MVC.Controllers
                 var url = Url.RequestContext.RouteData.Values["id"].ToString();
               
                 solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url.DecryptString());
-               
+
                 var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
                 idSol = soli.SolicitudID;
                 string UploadPath = Server.MapPath("~/Files");
