@@ -144,6 +144,16 @@
             );
         }
 
+        if ($("#Intencion_GenericID_TipoIdentificacion").val() == 11) {
+            $('#Intencion_IdentificacionCedula').val(
+                GiveMe($('#Intencion_Nombres').val())
+                +
+                GiveMe($('#Intencion_Apellidos').val())
+                +
+                $('#Intencion_FechaNacimiento').val()
+            );
+        }
+
     }
 
     function GiveMe(str) {
