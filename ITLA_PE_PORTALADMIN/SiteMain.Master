@@ -10,8 +10,8 @@
     <meta name="description" content="">
     <meta name="author" content="Amaury Mateo">
     <title>ITLA - ORBI ADMINISTRATIVO 2020</title>
-
-    <!-- Bootstrap core CSS -->
+    
+    <!-- HOLA Bootstrap core CSS -->
     <link rel="stylesheet" href="Content/css/bootstrap.css">
     <link rel="stylesheet" href="Content/css/bootstrap-grid.min.css">
     <!-- <link rel="stylesheet" href="Content/css/bootstrap-extended.min.css"> -->
