@@ -146,6 +146,12 @@
                                 <span data-i18n="nav.dash.main">Dashboard Juventud</span>
                             </a>
                         </li>
+                           <li class="dropdown nav-item btn-top-menu active" >
+                            <a class="dropdown-toggle nav-link" href="/DashboardIntencion.aspx">
+                                <i class="icon-chart"></i>
+                                <span data-i18n="nav.dash.main">Dashboard Intencion</span>
+                            </a>
+                        </li>
                          <li class="dropdown nav-item btn-top-menu" >
                             <a class="dropdown-toggle nav-link" href="/PrevalidacionJuventud.aspx">
                                 <i class="icon-check"></i>
