@@ -75,21 +75,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-3 col-md-6 mb-4">
-                                        <div class="card border-left-primary bg-itla-4 h-100 py-2 text-left border-0">
-                                            <div class="card-body">
-                                                <div class="row no-gutters align-items-center">
-                                                    <div class="col mr-2">
-                                                        <div class="text-xs text-white text-uppercase mb-1">Total Pre-Validados</div>
-                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalPreValidados" runat="server" Text="0"></asp:Literal></div>
-                                                    </div>
-                                                    <div class="col-auto">
-                                                        <i class="fas fa-check-double fa-2x text-white"></i>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                   
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">

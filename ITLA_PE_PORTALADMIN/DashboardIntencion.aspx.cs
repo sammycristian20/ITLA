@@ -32,7 +32,7 @@ namespace ITLA_PE_PORTALADMIN
                 literalTotalSolicitudesGS.Text = canidadGS.ToString() + " (" + (decimal.Parse(canidadGS.ToString()) / decimal.Parse(total.ToString())).ToString("p") + ")";
                 literalNOGS.Text = cantidadNOGS.ToString() + " (" + (decimal.Parse(cantidadNOGS.ToString()) / decimal.Parse(total.ToString())).ToString("p") + ")";
 
-                literalPreValidados.Text = servicesDashboard.DashboardGeneralINfo().ToString();
+                //literalPreValidados.Text = servicesDashboard.DashboardGeneralINfo().ToString();
 
                 RepeaterDia.DataSource = servicesDashboard.GetDashboardITLAJVDia();
                 RepeaterDia.DataBind();
@@ -43,6 +43,7 @@ namespace ITLA_PE_PORTALADMIN
                 RepeaterIngresos.DataSource = servicesDashboard.GetDashboardITLAJVIngresos();
                 RepeaterIngresos.DataBind();
 
+               
 
 
 

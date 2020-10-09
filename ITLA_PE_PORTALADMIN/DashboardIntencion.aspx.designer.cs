@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ITLA_PE_PORTALADMIN {
-    
-    
-    public partial class DashboardIntencion {
-        
+namespace ITLA_PE_PORTALADMIN
+{
+
+
+    public partial class DashboardIntencion
+    {
+
         /// <summary>
         /// literalTotalSolicitudes control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalTotalSolicitudes;
-        
+
         /// <summary>
         /// literalTotalSolicitudesGS control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalTotalSolicitudesGS;
-        
+
         /// <summary>
         /// literalNOGS control.
         /// </summary>
@@ -38,16 +40,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalNOGS;
-        
-        /// <summary>
-        /// literalPreValidados control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Literal literalPreValidados;
-        
+
         /// <summary>
         /// RepeaterMaterias control.
         /// </summary>
@@ -56,7 +49,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterMaterias;
-        
+
         /// <summary>
         /// RepeaterProvincias control.
         /// </summary>
@@ -65,7 +58,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterProvincias;
-        
+
         /// <summary>
         /// RepeaterDia control.
         /// </summary>
@@ -74,7 +67,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterDia;
-        
+
         /// <summary>
         /// RepeaterEdad control.
         /// </summary>
@@ -83,7 +76,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterEdad;
-        
+
         /// <summary>
         /// RepeaterIngresos control.
         /// </summary>

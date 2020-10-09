@@ -50,7 +50,7 @@ namespace ITLA_PE_MVC.SERVICE
         }
 
 
-
+        //DATOS PARA EL DASHBOARD INTENCION
 
         public List<UspGetDashboardIntencionProvincia_Result> GetDashboardIntencionProvincia()
         {
@@ -66,6 +66,23 @@ namespace ITLA_PE_MVC.SERVICE
         {
             return dbContext.UspGetDashboardIntencionArea().ToList();
         }
+
+        public List<UspGetDashboardIntencionDia_Result> GetUspGetDashboardIntencionDias()
+        {
+            return dbContext.UspGetDashboardIntencionDia().ToList();
+        }
+
+        public List<UspGetDashboardIntencionIngresos_Result> GetUspGetDashboardIntencionIngresos()
+        {
+            return dbContext.UspGetDashboardIntencionIngresos().ToList();
+        }
+
+
+
+
+
+
+
 
     }
 }

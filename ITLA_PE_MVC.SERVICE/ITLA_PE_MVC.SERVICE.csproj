@@ -55,7 +55,6 @@
     <Compile Include="ServicesLayer.cs" />
     <Compile Include="ServicesRequest.cs" />
     <Compile Include="ServicioJuventudADM.cs" />
-    <Compile Include="UspGetDashboardIntencionIngresos_Result.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
