@@ -34,13 +34,13 @@ namespace ITLA_PE_PORTALADMIN
 
                 //literalPreValidados.Text = servicesDashboard.DashboardGeneralINfo().ToString();
 
-                RepeaterDia.DataSource = servicesDashboard.GetDashboardITLAJVDia();
+                RepeaterDia.DataSource = servicesDashboard.GetUspGetDashboardIntencionDias();
                 RepeaterDia.DataBind();
 
                 RepeaterEdad.DataSource = servicesDashboard.GetDashboardIntencionEdad();
                 RepeaterEdad.DataBind();
 
-                RepeaterIngresos.DataSource = servicesDashboard.GetDashboardITLAJVIngresos();
+                RepeaterIngresos.DataSource = servicesDashboard.GetUspGetDashboardIntencionIngresos();
                 RepeaterIngresos.DataBind();
 
                

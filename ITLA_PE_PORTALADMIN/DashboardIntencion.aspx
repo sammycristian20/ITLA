@@ -25,7 +25,7 @@
                                 <div class="row">
 
 
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="col-xl-4 col-md-6 mb-4">
                                         <div class="card border-left-primary bg-itla-1 h-100 py-2 text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -43,7 +43,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="col-xl-4 col-md-6 mb-4">
                                         <div class="card border-left-primary bg-itla-2 h-100 py-2 text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
@@ -59,7 +59,7 @@
                                         </div>
                                     </div>
 
-                                    <div class="col-xl-3 col-md-6 mb-4">
+                                    <div class="col-xl-4 col-md-6 mb-4">
                                         <div class="card border-left-primary bg-itla-3 h-100 py-2 text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
