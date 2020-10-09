@@ -107,6 +107,18 @@
     <Compile Include="UspGetCarrera_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardIntencionArea_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardIntencionDia_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardIntencionEdad_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardIntencionIngresos_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetDashboardIntencionProvincia_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>

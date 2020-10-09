@@ -24,6 +24,7 @@
 
 
 
+
 $(".custom-file-input").on("change", function () {
     var fileName = $(this).val().split("\\").pop();
     $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
@@ -43,9 +44,40 @@ function reset() {
     });
 }
 
-$(document).ready(function () {
-    $('#tablelist').DataTable();
+//function CalcularEdad(fecha) {
 
+//    var hoy = new Date();
+//    var cumpleanos = new Date(fecha);
+//    var edad = hoy.getFullYear() - cumpleanos.getFullYear();
+//    var m = hoy.getMonth() - cumpleanos.getMonth();
+
+//    if (m < 0 || (m === 0 && hoy.getDate() < cumpleanos.getDate())) {
+//        edad--;
+//    }
+//    return edad;
+//}
+
+
+//function RecibeFechaNac() {
+//    var txtFechaNacimiento = document.getElementById("Solicitud_FechaNacimiento").value;
+//    var edad = CalcularEdad(txtFechaNacimiento);
+//    if (edad < 16) {
+      
+//        alertify.alert("TU EDAD ES MENOR A 16 AÑOS. VERIFICA LA FECHA");
+//        document.getElementById("Solicitud_FechaNacimiento").value="";
+//    }
+//}
+
+
+
+$(document).ready(function () {
+
+    //$("#Solicitud_FechaNacimiento").change(function () {
+       
+    //    RecibeFechaNac();
+    //});
+    $('#tablelist').DataTable();
+    
     $(".new").on('click', function () {
         reset();
         alertify.confirm("Para enviar una solicitud de Beca ITLA-Ministerio de la Juventud, debe cumplir con estos requisitos: nacionalidad dominicana, tener 16 años en adelante, cédula o acta de nacimiento y comprobante de estudios(Record de notas de bachiller, 2do grado de media aprobado; antes 8vo.curso)<br/><br/> ¿Cumple usted con estos requisitos?", function (e) {

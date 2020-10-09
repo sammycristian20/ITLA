@@ -130,5 +130,25 @@ namespace ITLA_PE_MVC.DATA
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionProvincia_Result>("UspGetDashboardIntencionProvincia");
         }
+    
+        public virtual ObjectResult<UspGetDashboardIntencionEdad_Result> UspGetDashboardIntencionEdad()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionEdad_Result>("UspGetDashboardIntencionEdad");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardIntencionIngresos_Result> UspGetDashboardIntencionIngresos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionIngresos_Result>("UspGetDashboardIntencionIngresos");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardIntencionArea_Result> UspGetDashboardIntencionArea()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionArea_Result>("UspGetDashboardIntencionArea");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardIntencionDia_Result> UspGetDashboardIntencionDia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionDia_Result>("UspGetDashboardIntencionDia");
+        }
     }
 }

@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using ITLA_PE_MVC.ENTITY;
+using ITLA_PE_MVC.DATA;
+
 
 namespace ITLA_PE_MVC.SERVICE
 {
@@ -48,12 +50,39 @@ namespace ITLA_PE_MVC.SERVICE
         }
 
 
-
+        //DATOS PARA EL DASHBOARD INTENCION
 
         public List<UspGetDashboardIntencionProvincia_Result> GetDashboardIntencionProvincia()
         {
             return dbContext.UspGetDashboardIntencionProvincia().ToList();
         }
+
+        public List<UspGetDashboardIntencionEdad_Result> GetDashboardIntencionEdad()
+        {
+            return dbContext.UspGetDashboardIntencionEdad().ToList();
+        }
+
+        public List<UspGetDashboardIntencionArea_Result> GetDashboardIntencionArea()
+        {
+            return dbContext.UspGetDashboardIntencionArea().ToList();
+        }
+
+        public List<UspGetDashboardIntencionDia_Result> GetUspGetDashboardIntencionDias()
+        {
+            return dbContext.UspGetDashboardIntencionDia().ToList();
+        }
+
+        public List<UspGetDashboardIntencionIngresos_Result> GetUspGetDashboardIntencionIngresos()
+        {
+            return dbContext.UspGetDashboardIntencionIngresos().ToList();
+        }
+
+
+
+
+
+
+
 
     }
 }

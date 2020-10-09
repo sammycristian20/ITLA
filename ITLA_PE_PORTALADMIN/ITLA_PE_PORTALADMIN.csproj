@@ -50,7 +50,7 @@
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="INFONETWORK.COMMONS">
-      <HintPath>..\..\..\..\source\repos\INFONETWORK\SANTANA\INFONETWORK.SANTANA.PORTAL\bin\INFONETWORK.COMMONS.dll</HintPath>
+      <HintPath>D:\INFONETWORK.COMMONS.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Web.DynamicData" />
@@ -194,6 +194,7 @@
     <Content Include="Content\Login\js\select2.min.js" />
     <Content Include="Content\Login\js\solid.js" />
     <Content Include="Content\Login\js\vendors.min.js" />
+    <Content Include="DashboardIntencion.aspx" />
     <Content Include="DashboardJueventud.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -298,6 +299,13 @@
     </Compile>
     <Compile Include="ClearSession.aspx.designer.cs">
       <DependentUpon>ClearSession.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardIntencion.aspx.cs">
+      <DependentUpon>DashboardIntencion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardIntencion.aspx.designer.cs">
+      <DependentUpon>DashboardIntencion.aspx</DependentUpon>
     </Compile>
     <Compile Include="DashboardJueventud.aspx.cs">
       <DependentUpon>DashboardJueventud.aspx</DependentUpon>

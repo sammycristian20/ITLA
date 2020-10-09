@@ -70,7 +70,7 @@
       <HintPath>..\packages\Google.Apis.1.49.0\lib\net45\Google.Apis.PlatformServices.dll</HintPath>
     </Reference>
     <Reference Include="INFONETWORK.COMMONS">
-      <HintPath>..\..\..\..\source\repos\INFONETWORK\SANTANA\INFONETWORK.SANTANA.PORTAL\bin\INFONETWORK.COMMONS.dll</HintPath>
+      <HintPath>D:\INFONETWORK.COMMONS.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">

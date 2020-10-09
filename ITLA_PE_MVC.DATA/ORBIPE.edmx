@@ -363,6 +363,10 @@
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
         </Function>
         <Function Name="UspProvinciasRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetDashboardIntencionArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardIntencionDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardIntencionEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardIntencionIngresos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardIntencionProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -510,6 +514,10 @@
           <FunctionImport Name="UspGetDashboardITLAJVIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVIngresos_Result)" />
           <FunctionImport Name="DashboardGeneralINfo" ReturnType="Collection(Int32)" />
           <FunctionImport Name="UspGetDashboardIntencionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionProvincia_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEdad_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionIngresos_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionArea" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionArea_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionDia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionDia_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -929,6 +937,22 @@
           <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="Cantidad" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionEdad_Result">
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="17" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionIngresos_Result">
+          <Property Type="String" Name="Ingresos" Nullable="true" MaxLength="8000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionArea_Result">
+          <Property Type="String" Name="Materia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionDia_Result">
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1275,6 +1299,38 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionProvincia_Result">
                 <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionEdad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionEdad_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionIngresos_Result">
+                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionArea" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionArea_Result">
+                <ScalarProperty Name="Materia" ColumnName="Materia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionDia" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionDia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionDia_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>
