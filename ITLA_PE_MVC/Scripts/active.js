@@ -76,6 +76,36 @@ $(document).ready(function () {
         return false;
     });
 
+    $(".newIntension").on('click', function () {
+        reset();
+        alertify.confirm("Estimado solicitante:<br/><br/>Este formulario no es una inscripción o solicitud de beca, es una herramienta que aporta al levantamiento de información para definir estratégicamente las Extensiones del ITLA.<br/><br/> ¿Desea completar este formulario de intención?", function (e) {
+            if (e) {
+
+
+
+                window.location.href = '/intencion/Create';
+                return false;
+
+
+
+                //alertify.success("You've clicked OK");
+            } else {
+
+                alertify.set({
+                    labels: {
+                        ok: "OK"
+                    }
+                });
+
+                alertify.alert("Gracias.");
+
+
+
+            }
+        });
+        return false;
+    });
+
     $(".status").on('click', function () {
         alertify.prompt('Ingrese el número de su solicitud o su email:',
             function (evt, value) {
