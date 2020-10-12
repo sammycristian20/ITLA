@@ -84,7 +84,9 @@ namespace ITLA_PE_PORTALADMIN
                 solicitud.PrevalidacionIndice = decimal.Parse(IndiceAcademinco.Text);
             }
             else
+            {
                 solicitud.PrevalidacionRecordValido = false;
+            }
 
             base.ServicesLayer.ServicioJuventudADM.SolicitudUpdate(solicitud);
 

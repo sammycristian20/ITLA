@@ -158,141 +158,141 @@ namespace ITLA_PE_MVC.Controllers
         public ActionResult Create(SolicitudViewModel solicitudVM)
         {
 
-            int soliId =0;
-            if (ModelState.IsValid)
-            {
-                bool validateDuplicate = false;
-                string fixCedula = solicitudVM.Solicitud.IdentificacionCedula.Replace("-", "");
-                var consultaCedulas = serv.SolicitudCheckCedula(fixCedula);
-                validateDuplicate = consultaCedulas == null;
-                //if (solicitudVM.Solicitud)
-                //if (solicitudVM.Solicitud.GenericID_TipoIdentificacion == 10) {
-                //  consulCedula = consultaCedulas == null;
-                //}
+            //int soliId =0;
+            //if (ModelState.IsValid)
+            //{
+            //    bool validateDuplicate = false;
+            //    string fixCedula = solicitudVM.Solicitud.IdentificacionCedula.Replace("-", "");
+            //    var consultaCedulas = serv.SolicitudCheckCedula(fixCedula);
+            //    validateDuplicate = consultaCedulas == null;
+            //    //if (solicitudVM.Solicitud)
+            //    //if (solicitudVM.Solicitud.GenericID_TipoIdentificacion == 10) {
+            //    //  consulCedula = consultaCedulas == null;
+            //    //}
 
 
-                if (validateDuplicate == true) {
+            //    if (validateDuplicate == true) {
 
-                    solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
-                    solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
-                    solicitudVM.Solicitud.TieneSubsidio = solicitudVM.TieneSubsidioVal == 0 ? false : true;
-                    solicitudVM.Solicitud.DireccionidMunicipio = solicitudVM.Solicitud.Idmunicipio;
-                    var soli = serv.SolicitudAdd(solicitudVM.Solicitud);
+            //        solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
+            //        solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
+            //        solicitudVM.Solicitud.TieneSubsidio = solicitudVM.TieneSubsidioVal == 0 ? false : true;
+            //        solicitudVM.Solicitud.DireccionidMunicipio = solicitudVM.Solicitud.Idmunicipio;
+            //        var soli = serv.SolicitudAdd(solicitudVM.Solicitud);
 
                     
 
-                    soliId = soli.SolicitudID;
-                    string UploadPath = Server.MapPath("~/Files");
-                    //Use Namespace called :  System.IO  
+            //        soliId = soli.SolicitudID;
+            //        string UploadPath = Server.MapPath("~/Files");
+            //        //Use Namespace called :  System.IO  
 
 
-                    if (solicitudVM.PostFile != null)
-                    {
-                        string FileNameCedula = Path.GetFileName(solicitudVM.PostFile.FileName);
-                        var FilePathCedula = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameCedula);
-                        solicitudVM.PostFile.SaveAs(FilePathCedula);
+            //        if (solicitudVM.PostFile != null)
+            //        {
+            //            string FileNameCedula = Path.GetFileName(solicitudVM.PostFile.FileName);
+            //            var FilePathCedula = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameCedula);
+            //            solicitudVM.PostFile.SaveAs(FilePathCedula);
 
-                        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                        {
-                            SolicitudID = soliId,
-                            IsActive = true,
-                            ArchivoURL = "",
-                            GenericID_TipoDocumento = 6,
-                            LocalFile = FilePathCedula
+            //            SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //            {
+            //                SolicitudID = soliId,
+            //                IsActive = true,
+            //                ArchivoURL = "",
+            //                GenericID_TipoDocumento = 6,
+            //                LocalFile = FilePathCedula
 
-                        };
+            //            };
 
-                        serv.SolicitudAnexoAdd(solicitudAnexo);
+            //            serv.SolicitudAnexoAdd(solicitudAnexo);
 
-                        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFile, 6);
-                    }
+            //            //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFile, 6);
+            //        }
                     
-                    if (solicitudVM.PostFileActa != null)
-                    {
-                        string FileNameActa = Path.GetFileName(solicitudVM.PostFileActa.FileName);
-                        var FilePathActa = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameActa);
-                        solicitudVM.PostFileActa.SaveAs(FilePathActa);
+            //        if (solicitudVM.PostFileActa != null)
+            //        {
+            //            string FileNameActa = Path.GetFileName(solicitudVM.PostFileActa.FileName);
+            //            var FilePathActa = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameActa);
+            //            solicitudVM.PostFileActa.SaveAs(FilePathActa);
 
-                        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                        {
-                            SolicitudID = soliId,
-                            IsActive = true,
-                            ArchivoURL = "",
-                            GenericID_TipoDocumento = 7,
-                            LocalFile = FilePathActa
+            //            SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //            {
+            //                SolicitudID = soliId,
+            //                IsActive = true,
+            //                ArchivoURL = "",
+            //                GenericID_TipoDocumento = 7,
+            //                LocalFile = FilePathActa
 
-                        };
+            //            };
 
-                        serv.SolicitudAnexoAdd(solicitudAnexo);
+            //            serv.SolicitudAnexoAdd(solicitudAnexo);
 
-                        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileActa, 7);
+            //            //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileActa, 7);
 
-                    }
+            //        }
 
-                    if (solicitudVM.PostFileEstudios != null)
-                    {
-                        string FileNameEstudios = Path.GetFileName(solicitudVM.PostFileEstudios.FileName);
-                        var FilePathEstudios = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameEstudios);
-                        solicitudVM.PostFileEstudios.SaveAs(FilePathEstudios);
+            //        if (solicitudVM.PostFileEstudios != null)
+            //        {
+            //            string FileNameEstudios = Path.GetFileName(solicitudVM.PostFileEstudios.FileName);
+            //            var FilePathEstudios = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameEstudios);
+            //            solicitudVM.PostFileEstudios.SaveAs(FilePathEstudios);
 
-                        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                        {
-                            SolicitudID = soliId,
-                            IsActive = true,
-                            ArchivoURL = "",
-                            GenericID_TipoDocumento = 9,
-                            LocalFile = FilePathEstudios
+            //            SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //            {
+            //                SolicitudID = soliId,
+            //                IsActive = true,
+            //                ArchivoURL = "",
+            //                GenericID_TipoDocumento = 9,
+            //                LocalFile = FilePathEstudios
 
-                        };
+            //            };
 
-                        serv.SolicitudAnexoAdd(solicitudAnexo);
-                    }
+            //            serv.SolicitudAnexoAdd(solicitudAnexo);
+            //        }
 
-                    try
-                    {
-
-
-                        string codigo = serv.CodeSolicitudById(soli);
-
-                        string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
-
-                        emailBody = emailBody.Replace("@@codigo", codigo);
-                        emailBody = emailBody.Replace("@@locationUrl", @"https://www.puntostecnologicos.com/solicitudes/find/" + codigo);
-
-                        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileEstudios, 9);
-                        bool statusMail = serv.sendEmail(soli, emailBody);
+            //        try
+            //        {
 
 
-                        /*
-                         * 
+            //            string codigo = serv.CodeSolicitudById(soli);
+
+            //            string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
+
+            //            emailBody = emailBody.Replace("@@codigo", codigo);
+            //            emailBody = emailBody.Replace("@@locationUrl", @"https://www.puntostecnologicos.com/solicitudes/find/" + codigo);
+
+            //            //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileEstudios, 9);
+            //            bool statusMail = serv.sendEmail(soli, emailBody);
+
+
+            //            /*
+            //             * 
                        
 
-                        string codigo = serv.CodeSolicitudById(soli);
+            //            string codigo = serv.CodeSolicitudById(soli);
 
-                        string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
-                        string UrlBase = Request.Url.Scheme + "://" + Request.Url.Authority.ToString();
-                        emailBody = emailBody.Replace("@@codigo", codigo);
-                        emailBody = emailBody.Replace("@@locationUrl", UrlBase + @"/solicitudes/find/" + codigo);
-                        emailBody = emailBody.Replace("@@editURL", UrlBase + @"/solicitudes/edit/" + soliId);
-                        bool statusMail = serv.sendEmail(soli, emailBody);
-                          * */
-                    }
-                    catch
-                    {
+            //            string emailBody = System.IO.File.ReadAllText(Server.MapPath(@"/Template/ITLA-Email.html")).Replace("@@email", solicitudVM.Solicitud.Nombres + " " + solicitudVM.Solicitud.Apellidos);
+            //            string UrlBase = Request.Url.Scheme + "://" + Request.Url.Authority.ToString();
+            //            emailBody = emailBody.Replace("@@codigo", codigo);
+            //            emailBody = emailBody.Replace("@@locationUrl", UrlBase + @"/solicitudes/find/" + codigo);
+            //            emailBody = emailBody.Replace("@@editURL", UrlBase + @"/solicitudes/edit/" + soliId);
+            //            bool statusMail = serv.sendEmail(soli, emailBody);
+            //              * */
+            //        }
+            //        catch
+            //        {
 
-                    }
+            //        }
 
                 
-                }
+            //    }
                 
-               //devuelve true si el envio de corro fue exitoso. 
-                //return RedirectToAction("NoSolicitud");
-                return RedirectToAction("NumeroSolicitud", new RouteValueDictionary(
-                new { controller = "Solicitudes", action = "NumeroSolicitud", Id = soliId}));
+            //   //devuelve true si el envio de corro fue exitoso. 
+            //    //return RedirectToAction("NoSolicitud");
+            //    return RedirectToAction("NumeroSolicitud", new RouteValueDictionary(
+            //    new { controller = "Solicitudes", action = "NumeroSolicitud", Id = soliId}));
 
-            }
+            //}
 
-            ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(serv.ProyectoEspecialMateriaGrupoList(), "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID", solicitudVM.Solicitud.ProyectoEspecialMateriaGrupoID);
+            //ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(serv.ProyectoEspecialMateriaGrupoList(), "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID", solicitudVM.Solicitud.ProyectoEspecialMateriaGrupoID);
 
             return View(solicitudVM.Solicitud);
         }
@@ -363,85 +363,87 @@ namespace ITLA_PE_MVC.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(SolicitudViewModel solicitudVM)
         {
-            int idSol = 0;
-            if (ModelState.IsValid)
-            {
-                var url = Url.RequestContext.RouteData.Values["id"].ToString();
+            //int idSol = 0;
+            //if (ModelState.IsValid)
+            //{
+            //    var url = Url.RequestContext.RouteData.Values["id"].ToString();
               
-                solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url);
-                solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
-                solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
-                solicitudVM.Solicitud.TieneSubsidio = solicitudVM.TieneSubsidioVal == 0 ? false : true;
-                solicitudVM.Solicitud.DireccionidMunicipio = solicitudVM.Solicitud.Idmunicipio;
-                solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url.DecryptString());
+            //    solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url);
+            //    solicitudVM.Solicitud.TieneInternet = solicitudVM.TieneInternetVal == 0 ? false : true;
+            //    solicitudVM.Solicitud.TieneLaptopPc = solicitudVM.TieneLaptopPcVal == 0 ? false : true;
+            //    solicitudVM.Solicitud.TieneSubsidio = solicitudVM.TieneSubsidioVal == 0 ? false : true;
+            //    solicitudVM.Solicitud.DireccionidMunicipio = solicitudVM.Solicitud.Idmunicipio;
+            //    solicitudVM.Solicitud.IdSolicituds = Convert.ToInt32(url.DecryptString());
 
-                var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
-                idSol = soli.SolicitudID;
-                string UploadPath = Server.MapPath("~/Files");
-                //Use Namespace called :  System.IO  
-                if (solicitudVM.PostFile != null)
-                {
-                    string FileNameCedula = Path.GetFileName(solicitudVM.PostFile.FileName);
-                    var FilePathCedula = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameCedula);
-                    solicitudVM.PostFile.SaveAs(FilePathCedula);
+            //    var soli= serv.SolicitudEdit(solicitudVM.Solicitud);
+            //    idSol = soli.SolicitudID;
+            //    string UploadPath = Server.MapPath("~/Files");
+            //    //Use Namespace called :  System.IO  
+            //    if (solicitudVM.PostFile != null)
+            //    {
+            //        string FileNameCedula = Path.GetFileName(solicitudVM.PostFile.FileName);
+            //        var FilePathCedula = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameCedula);
+            //        solicitudVM.PostFile.SaveAs(FilePathCedula);
 
-                    SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                    {
-                        SolicitudID = soli.SolicitudID,
-                        IsActive = true,
-                        ArchivoURL = "",
-                        GenericID_TipoDocumento = 6,
-                        LocalFile = FilePathCedula
-                    };
-                    serv.SolicitudAnexoAdd(solicitudAnexo);
-                }
+            //        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //        {
+            //            SolicitudID = soli.SolicitudID,
+            //            IsActive = true,
+            //            ArchivoURL = "",
+            //            GenericID_TipoDocumento = 6,
+            //            LocalFile = FilePathCedula
+            //        };
+            //        serv.SolicitudAnexoAdd(solicitudAnexo);
+            //    }
 
-                if (solicitudVM.PostFileActa != null)
-                {
-                    string FileNameActa = Path.GetFileName(solicitudVM.PostFileActa.FileName);
-                    var FilePathActa = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameActa);
-                    solicitudVM.PostFileActa.SaveAs(FilePathActa);
+            //    if (solicitudVM.PostFileActa != null)
+            //    {
+            //        string FileNameActa = Path.GetFileName(solicitudVM.PostFileActa.FileName);
+            //        var FilePathActa = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameActa);
+            //        solicitudVM.PostFileActa.SaveAs(FilePathActa);
 
-                    SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                    {
-                        SolicitudID = soli.SolicitudID,
-                        IsActive = true,
-                        ArchivoURL = "",
-                        GenericID_TipoDocumento = 7,
-                        LocalFile = FilePathActa
+            //        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //        {
+            //            SolicitudID = soli.SolicitudID,
+            //            IsActive = true,
+            //            ArchivoURL = "",
+            //            GenericID_TipoDocumento = 7,
+            //            LocalFile = FilePathActa
 
-                    };
+            //        };
 
-                    serv.SolicitudAnexoAdd(solicitudAnexo);
+            //        serv.SolicitudAnexoAdd(solicitudAnexo);
 
-                    //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileActa, 7);
+            //        //UploadFile(soli.SolicitudID, soli.Email, solicitudVM.PostFileActa, 7);
 
-                }
+            //    }
 
-                if (solicitudVM.PostFileEstudios != null)
-                {
-                    string FileNameEstudios = Path.GetFileName(solicitudVM.PostFileEstudios.FileName);
-                    var FilePathEstudios = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameEstudios);
-                    solicitudVM.PostFileEstudios.SaveAs(FilePathEstudios);
+            //    if (solicitudVM.PostFileEstudios != null)
+            //    {
+            //        string FileNameEstudios = Path.GetFileName(solicitudVM.PostFileEstudios.FileName);
+            //        var FilePathEstudios = Path.Combine(UploadPath, Guid.NewGuid().ToString() + FileNameEstudios);
+            //        solicitudVM.PostFileEstudios.SaveAs(FilePathEstudios);
 
-                    SolicitudAnexo solicitudAnexo = new SolicitudAnexo
-                    {
-                        SolicitudID = soli.SolicitudID,
-                        IsActive = true,
-                        ArchivoURL = "",
-                        GenericID_TipoDocumento = 9,
-                        LocalFile = FilePathEstudios
+            //        SolicitudAnexo solicitudAnexo = new SolicitudAnexo
+            //        {
+            //            SolicitudID = soli.SolicitudID,
+            //            IsActive = true,
+            //            ArchivoURL = "",
+            //            GenericID_TipoDocumento = 9,
+            //            LocalFile = FilePathEstudios
 
-                    };
+            //        };
 
-                    serv.SolicitudAnexoAdd(solicitudAnexo);
-                }
+            //        serv.SolicitudAnexoAdd(solicitudAnexo);
+            //    }
 
 
                
-            }
+            //}
+            
             return RedirectToAction("Modified", new RouteValueDictionary(
-                 new { controller = "Solicitudes", action = "Modified", Id = idSol }));
+                 //idSol
+                 new { controller = "Solicitudes", action = "Modified", Id = -1}));
         }
 
         private void UploadFile(int solicitudID, string email, HttpPostedFileBase fileUpload, int genericID_TipoDocumento)
