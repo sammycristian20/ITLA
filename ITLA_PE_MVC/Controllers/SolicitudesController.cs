@@ -16,6 +16,7 @@ using ITLA_PE_MVC.Utils;
 using ITLA_PE_MVC.SERVICE;
 using ITLA_PE_MVC.ENTITY;
 using System.Web.Routing;
+using System.Web.Http.Results;
 
 namespace ITLA_PE_MVC.Controllers
 {
@@ -35,8 +36,9 @@ namespace ITLA_PE_MVC.Controllers
 
         public ActionResult GenerateLinks()
         {
-            @ViewBag.Show = "none";
-            return View();
+            return RedirectToAction("Index", "Home");
+            //@ViewBag.Show = "none";
+            //return View();
 
         }
         [HttpPost]
@@ -129,18 +131,22 @@ namespace ITLA_PE_MVC.Controllers
         public ActionResult Create()
         {
 
-            ViewBag._provinciasItems = ddg.getProvincias();
-            var items = ddg.getAssigmentsAviable();
-            ViewBag._proyectosEspItems = items;
-            ViewBag._proyectosEspItems2 = items;
-            ViewBag._generectTypeIdentification = ddg.getIdentificationType();
-            ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
-            ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
-            ViewBag._getTrueFalse = ddg.getTrueFalse();
-            
-            //  ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(db.ProyectoEspecialMateriaGrupo, "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID");
+            return RedirectToAction("Index", "Home");
 
-            return View();
+
+            //   return RedirectResult("");
+            //ViewBag._provinciasItems = ddg.getProvincias();
+            //var items = ddg.getAssigmentsAviable();
+            //ViewBag._proyectosEspItems = items;
+            //ViewBag._proyectosEspItems2 = items;
+            //ViewBag._generectTypeIdentification = ddg.getIdentificationType();
+            //ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
+            //ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
+            //ViewBag._getTrueFalse = ddg.getTrueFalse();
+
+            ////  ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(db.ProyectoEspecialMateriaGrupo, "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID");
+
+            //return View();
         }
 
         // POST: Solicitudes/Create
@@ -294,61 +300,63 @@ namespace ITLA_PE_MVC.Controllers
         // GET: Solicitudes/Edit/5
         public ActionResult Edit(string id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ViewBag._provinciasItems = ddg.getProvincias();
-            var items = ddg.getAssigmentsAviable();
-            ViewBag._proyectosEspItems = items;
-            ViewBag._proyectosEspItems2 = items;
-            ViewBag._generectTypeIdentification = ddg.getIdentificationType();
-            ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
-            ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
-            ViewBag._getTrueFalse = ddg.getTrueFalse();
-            var solicitud = serv.SolicitudGet(id.DecryptString().ToInt());
+            return RedirectToAction("Index", "Home");
+
+            //if (id == null)
+            //{
+            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            //}
+            //ViewBag._provinciasItems = ddg.getProvincias();
+            //var items = ddg.getAssigmentsAviable();
+            //ViewBag._proyectosEspItems = items;
+            //ViewBag._proyectosEspItems2 = items;
+            //ViewBag._generectTypeIdentification = ddg.getIdentificationType();
+            //ViewBag._generectTypeIngresoFamiliar = ddg.getIngresoFamiliar();
+            //ViewBag._getAcdemyLevel = ddg.getAcademicLevel();
+            //ViewBag._getTrueFalse = ddg.getTrueFalse();
+            //var solicitud = serv.SolicitudGet(id.DecryptString().ToInt());
             
-            IEnumerable<SolicitudAnexo> IsCedula = solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 6);
-            IEnumerable<SolicitudAnexo> IsActa= solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 7);
-            ViewBag.IsCedulaFile = IsCedula.Count()> 0;
-            ViewBag.IsActa = IsActa.Count() > 0;
-            ViewBag._municipiosItems = ddg.getMuncicipiesDrop(solicitud.ProvinciaId);
-            ViewBag.fechaFormat = solicitud.FechaNacimiento.ToString("dd-MM-yyyy");
-            if (solicitud == null)
-            {
-                return HttpNotFound();
-            }
+            //IEnumerable<SolicitudAnexo> IsCedula = solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 6);
+            //IEnumerable<SolicitudAnexo> IsActa= solicitud.SolicitudAnexo.Where(p => p.GenericID_TipoDocumento == 7);
+            //ViewBag.IsCedulaFile = IsCedula.Count()> 0;
+            //ViewBag.IsActa = IsActa.Count() > 0;
+            //ViewBag._municipiosItems = ddg.getMuncicipiesDrop(solicitud.ProvinciaId);
+            //ViewBag.fechaFormat = solicitud.FechaNacimiento.ToString("dd-MM-yyyy");
+            //if (solicitud == null)
+            //{
+            //    return HttpNotFound();
+            //}
          
-            ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(serv.ProyectoEspecialMateriaGrupoList(), "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID", solicitud.ProyectoEspecialMateriaGrupoID);
-            SolicitudViewModel solicitudVM = new SolicitudViewModel { 
-                Solicitud = solicitud
-            };
+            //ViewBag.ProyectoEspecialMateriaGrupoID = new SelectList(serv.ProyectoEspecialMateriaGrupoList(), "ProyectoEspecialMateriaGrupoID", "ProyectoEspecialMateriaGrupoID", solicitud.ProyectoEspecialMateriaGrupoID);
+            //SolicitudViewModel solicitudVM = new SolicitudViewModel { 
+            //    Solicitud = solicitud
+            //};
 
 
-            //var anexoCedula = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 6).LastOrDefault();
+            ////var anexoCedula = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 6).LastOrDefault();
 
-            //if (anexoCedula != null)
-            //{
-            //    solicitudVM.CedulaURL = anexoCedula.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
-            //}
-
-
-            //var anexoActa = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 7).LastOrDefault();
-
-            //if (anexoActa != null)
-            //{
-            //    solicitudVM.ActaURL = anexoActa.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
-            //}
-
-            //var anexoGrado = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 9).LastOrDefault();
-
-            //if (anexoGrado != null)
-            //{
-            //    solicitudVM.EstudiosURL = anexoGrado.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
-            //}
+            ////if (anexoCedula != null)
+            ////{
+            ////    solicitudVM.CedulaURL = anexoCedula.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            ////}
 
 
-            return View(solicitudVM);
+            ////var anexoActa = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 7).LastOrDefault();
+
+            ////if (anexoActa != null)
+            ////{
+            ////    solicitudVM.ActaURL = anexoActa.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            ////}
+
+            ////var anexoGrado = solicitudVM.Solicitud.SolicitudAnexo.Where(set => set.GenericID_TipoDocumento == 9).LastOrDefault();
+
+            ////if (anexoGrado != null)
+            ////{
+            ////    solicitudVM.EstudiosURL = anexoGrado.ArchivoURL.Replace(@"D:\Plesk\Vhosts\puntostecnologicos.com\httpdocs\Files\", @"http://puntostecnologicos.com/files/");
+            ////}
+
+
+            //return View(solicitudVM);
         }
 
         [HttpPost]

@@ -17,7 +17,7 @@
                         <div class="col col-lg-12">
                             <section id="inputs" class="text-center">
                                 <!--Section heading-->
-                                <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Intenciones Proyecto ITLA - Juventud 2020
+                                <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Intenciones - Solicitudes de Intención de Admisión
                                 </h3>
 
                                 <br />
