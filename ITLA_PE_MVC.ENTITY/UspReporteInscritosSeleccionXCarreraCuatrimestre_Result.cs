@@ -10,18 +10,12 @@
 namespace ITLA_PE_MVC.ENTITY
 {
     using System;
-    using System.Collections.Generic;
     
-    public partial class SolicitudAnexo
+    public partial class UspReporteInscritosSeleccionXCarreraCuatrimestre_Result
     {
-        public int SolicitudAnexoID { get; set; }
-        public int SolicitudID { get; set; }
-        public int GenericID_TipoDocumento { get; set; }
-        public string ArchivoURL { get; set; }
-        public bool IsActive { get; set; }
-        public string LocalFile { get; set; }
-        public string WebURL { get; set; }
-    
-        public virtual Solicitud Solicitud { get; set; }
+        public string Carrera { get; set; }
+        public Nullable<int> NuevoIngreso { get; set; }
+        public Nullable<int> Viejos { get; set; }
+        public Nullable<int> Total { get; set; }
     }
 }

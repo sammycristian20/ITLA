@@ -150,5 +150,59 @@ namespace ITLA_PE_MVC.DATA
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionDia_Result>("UspGetDashboardIntencionDia");
         }
+    
+        public virtual int Reporte_Inscritos_Seleccion_Cuatrimestre_Any(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Reporte_Inscritos_Seleccion_Cuatrimestre_Any", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result> Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result>("Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any", idPeriodoParameter);
+        }
+    
+        public virtual int Reporte_Inscritos_Seleccion_XFecha_Cuatrimestre_Any(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Reporte_Inscritos_Seleccion_XFecha_Cuatrimestre_Any", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXCarreraCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result>("UspReporteInscritosSeleccionXCarreraCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXFecha_Result> UspReporteInscritosSeleccionXFecha(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXFecha_Result>("UspReporteInscritosSeleccionXFecha", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionCuatrimestre_Result> UspReporteInscritosSeleccionCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionCuatrimestre_Result>("UspReporteInscritosSeleccionCuatrimestre", idPeriodoParameter);
+        }
     }
 }

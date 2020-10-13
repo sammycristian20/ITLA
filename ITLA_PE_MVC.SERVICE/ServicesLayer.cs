@@ -9,7 +9,7 @@ namespace ITLA_PE_MVC.SERVICE
     public class ServicesLayer
     {
         ServicioJuventudADM servicioJuventudADM = null;
-
+        ServicesDashboard servicesDashboard = null;
         public ServicioJuventudADM ServicioJuventudADM
         {
             get
@@ -18,6 +18,17 @@ namespace ITLA_PE_MVC.SERVICE
                     servicioJuventudADM = new ServicioJuventudADM();
 
                 return servicioJuventudADM;
+            }
+        }
+
+        public ServicesDashboard ServicesDashboard
+        {
+            get
+            {
+                if (servicesDashboard == null)
+                    servicesDashboard = new ServicesDashboard();
+
+                return servicesDashboard;
             }
         }
 

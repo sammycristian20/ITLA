@@ -55,6 +55,7 @@ namespace ITLA_PE_MVC.ENTITY
         public Nullable<System.DateTime> LastUserUpdate { get; set; }
         public Nullable<decimal> PrevalidacionIndice { get; set; }
         public string Genero { get; set; }
+        public Nullable<int> MJFormID { get; set; }
     
         public virtual ProyectoEspecialMateriaGrupo ProyectoEspecialMateriaGrupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

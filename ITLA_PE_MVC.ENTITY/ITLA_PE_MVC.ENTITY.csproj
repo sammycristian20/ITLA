@@ -73,6 +73,9 @@
     <Compile Include="ProyectoEspecialMateriaGrupo.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="RUNTIME\RunTimeHelper.cs" />
     <Compile Include="Setting.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
@@ -144,6 +147,15 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspProvinciasRD_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXCarreraCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXFecha_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
   </ItemGroup>
