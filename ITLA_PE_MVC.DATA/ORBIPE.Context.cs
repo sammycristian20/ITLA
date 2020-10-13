@@ -204,5 +204,10 @@ namespace ITLA_PE_MVC.DATA
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionCuatrimestre_Result>("UspReporteInscritosSeleccionCuatrimestre", idPeriodoParameter);
         }
+    
+        public virtual ObjectResult<UspGetPeriodo_Result> UspGetPeriodo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo");
+        }
     }
 }

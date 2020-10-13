@@ -143,6 +143,15 @@
     <Compile Include="UspGetLoginInfo_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetPeriodos1_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetPeriodos2_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetPeriodo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspMunicipiosPorProvincia_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>

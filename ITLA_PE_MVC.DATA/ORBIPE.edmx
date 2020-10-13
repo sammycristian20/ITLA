@@ -360,6 +360,7 @@
         </Function>
         <Function Name="UspGetCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetNextSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspInsertaMateriasGrupoJuventud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspMunicipiosPorProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
@@ -548,8 +549,9 @@
           <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UspReporteInscritosSeleccionCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result)">
-            <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -1011,6 +1013,18 @@
           <Property Type="Int32" Name="Viejos" Nullable="true" />
           <Property Type="Int32" Name="Total1" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="UspGetPeriodos1_Result">
+          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspGetPeriodos2_Result">
+          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspGetPeriodo_Result">
+          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1423,6 +1437,14 @@
                 <ScalarProperty Name="Nuevo_Ingreso" ColumnName="Nuevo Ingreso" />
                 <ScalarProperty Name="Viejos" ColumnName="Viejos" />
                 <ScalarProperty Name="Total1" ColumnName="Total1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetPeriodo" FunctionName="ORBIPEModel.Store.UspGetPeriodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetPeriodo_Result">
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

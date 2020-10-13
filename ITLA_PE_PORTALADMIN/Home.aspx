@@ -23,10 +23,11 @@
                             <section id="inputs" class="text-center">
                                 <!--Section heading-->
                                 <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Educación Superior
-                                    <select>
-                                        <option>C-3-2020</option>
-                                        <option>Viene Pronto</option>
-                                    </select>
+                                    <asp:DropDownList ID="ddlPeriodo" runat="server" DataValueField="Periodo" DataTextField="Periodo" AutoPostBack="true" OnSelectedIndexChanged="ddlPeriodo_SelectedIndexChanged">
+
+                                    </asp:DropDownList>
+
+                                    
                                 </h3>
                                 <div class="row">
                                  
@@ -37,7 +38,7 @@
                                                     <div class="card-content">
                                                         <div class="card-body">
                                                             <div class="row">
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-bag font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -53,7 +54,7 @@
                                                                         <div class="progress-bar bg-info" role="progressbar" style="width: 20.53%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-user font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -68,7 +69,7 @@
                                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 79.46%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-shuffle font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -83,7 +84,7 @@
                                                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12">
+                                                                <%--<div class="col-lg-3 col-sm-12">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-globe font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -97,7 +98,7 @@
                                                                     <div class="progress mb-0" style="height: 7px;">
                                                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 83.90%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
-                                                                </div>
+                                                                </div>--%>
                                                             </div>
                                                         </div>
                                                     </div>
