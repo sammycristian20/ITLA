@@ -12,7 +12,14 @@ namespace ITLA_PE_MVC.ENTITY
         {
             get
             {
-                return this.LocalFile.Replace(this.LocalFile.Substring(0, 90), "");
+                if (this.ArchivoURL == "")
+                {
+                    return this.LocalFile.Replace(this.LocalFile.Substring(0, 90), "");
+                }
+                else
+                {
+                    return this.ArchivoURL;
+                }
             }
         }
 
@@ -20,7 +27,10 @@ namespace ITLA_PE_MVC.ENTITY
         {
             get
             {
-                return "http://puntostecnologicos.com/files/" + this.LocalFile.Replace(this.LocalFile.Substring(0, 54), "");
+                if (this.ArchivoURL == "")
+                    return "http://puntostecnologicos.com/files/" + this.LocalFile.Replace(this.LocalFile.Substring(0, 54), "");
+                else
+                    return this.ArchivoURL;
             }
         }
     }
