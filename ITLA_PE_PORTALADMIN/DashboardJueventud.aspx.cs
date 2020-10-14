@@ -37,6 +37,12 @@ namespace ITLA_PE_PORTALADMIN
                 RepeaterDia.DataSource = servicesDashboard.GetDashboardITLAJVDia();
                 RepeaterDia.DataBind();
 
+                RepeaterGenero.DataSource = servicesDashboard.GetDashboardITLAJVGenero();
+                RepeaterGenero.DataBind();
+
+                RepeaterEducacion.DataSource = servicesDashboard.GetDashboardITLAJVEducacion();
+                RepeaterEducacion.DataBind();
+
                 RepeaterEdad.DataSource = servicesDashboard.GetDashboardITLAJVEdad();
                 RepeaterEdad.DataBind();
 

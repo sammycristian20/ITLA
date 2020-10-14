@@ -49,6 +49,17 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardITLAJVEdad().ToList();
         }
 
+        public List<UspGetDashboardITLAJVEducacion_Result> GetDashboardITLAJVEducacion()
+        {
+            return dbContext.UspGetDashboardITLAJVEducacion().ToList();
+        }
+
+        public List<UspGetDashboardITLAJVGenero_Result> GetDashboardITLAJVGenero()
+        {
+            return dbContext.UspGetDashboardITLAJVGenero().ToList();
+        }
+
+
 
         //DATOS PARA EL DASHBOARD INTENCION
 

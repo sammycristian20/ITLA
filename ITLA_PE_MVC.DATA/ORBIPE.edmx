@@ -372,6 +372,8 @@
         <Function Name="UspGetDashboardIntencionProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardITLAJVEducacion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardITLAJVGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVIngresos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -548,8 +550,10 @@
           <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UspReporteInscritosSeleccionCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result)">
-            <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <FunctionImport Name="UspGetDashboardITLAJVEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEducacion_Result)" />
+          <FunctionImport Name="UspGetDashboardITLAJVGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVGenero_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -1011,6 +1015,14 @@
           <Property Type="Int32" Name="Viejos" Nullable="true" />
           <Property Type="Int32" Name="Total1" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVEducacion_Result">
+          <Property Type="String" Name="NivelAcademico" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVGenero_Result">
+          <Property Type="String" Name="Genero" Nullable="false" MaxLength="9" />
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1423,6 +1435,22 @@
                 <ScalarProperty Name="Nuevo_Ingreso" ColumnName="Nuevo Ingreso" />
                 <ScalarProperty Name="Viejos" ColumnName="Viejos" />
                 <ScalarProperty Name="Total1" ColumnName="Total1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVEducacion" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVEducacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVEducacion_Result">
+                <ScalarProperty Name="NivelAcademico" ColumnName="NivelAcademico" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVGenero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVGenero_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

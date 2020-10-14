@@ -60,6 +60,24 @@ namespace ITLA_PE_PORTALADMIN
         protected global::System.Web.UI.WebControls.Repeater RepeaterMaterias;
 
         /// <summary>
+        /// RepeaterGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterGenero;
+
+        /// <summary>
+        /// RepeaterEducacion control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterEducacion;
+
+        /// <summary>
         /// RepeaterProvincias control.
         /// </summary>
         /// <remarks>

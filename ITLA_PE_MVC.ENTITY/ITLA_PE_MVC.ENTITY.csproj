@@ -131,6 +131,12 @@
     <Compile Include="UspGetDashboardITLAJVEdad_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardITLAJVEducacion_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardITLAJVGenero_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetDashboardITLAJVIngresos_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>

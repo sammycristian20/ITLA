@@ -204,5 +204,15 @@ namespace ITLA_PE_MVC.DATA
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionCuatrimestre_Result>("UspReporteInscritosSeleccionCuatrimestre", idPeriodoParameter);
         }
+    
+        public virtual ObjectResult<UspGetDashboardITLAJVEducacion_Result> UspGetDashboardITLAJVEducacion()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardITLAJVEducacion_Result>("UspGetDashboardITLAJVEducacion");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardITLAJVGenero_Result> UspGetDashboardITLAJVGenero()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardITLAJVGenero_Result>("UspGetDashboardITLAJVGenero");
+        }
     }
 }

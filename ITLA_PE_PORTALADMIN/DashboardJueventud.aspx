@@ -84,7 +84,7 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs text-white text-uppercase mb-1">Total Pre-Validados</div>
-                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalPreValidados" runat="server" Text="0"></asp:Literal></div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalPreValidados" runat="server" Text="0"></asp:Literal> (100%)</div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-check-double fa-2x text-white"></i>
@@ -129,11 +129,29 @@
                                     <div class="col-lg-4">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div id="containerDIA"></div>
+                                                <div id="containerGenero"></div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                   <div class="row">
+                                    <div class="col-lg-8">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerDIA"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerEducacion"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
                                  
 
                             </section>
@@ -161,6 +179,44 @@
                 <ItemTemplate>
                     <tr>
                         <th><%# Eval("Materia") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
+
+    <table id="datatableGenero" style="display: none">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterGenero" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <th><%# Eval("Genero") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
+
+      <table id="datatableEducacion" style="display: none">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterEducacion" runat="server">
+                <ItemTemplate>
+                    <tr>
+                        <th><%# Eval("NivelAcademico") %></th>
                         <td><%# Eval("Cantidad") %></td>
                     </tr>
                 </ItemTemplate>
@@ -315,6 +371,108 @@
                 }
             }
         });
+
+
+
+        Highcharts.chart('containerGenero', {
+            data: {
+                table: 'datatableGenero'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes por Genero'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        })
+
+        Highcharts.chart('containerEducacion', {
+            data: {
+                table: 'datatableEducacion'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes Nivel educativo'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        })
 
 
         Highcharts.chart('container', {
