@@ -99,6 +99,16 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo).ToList();
         }
 
+        public List<UspReporteInscritosSeleccionCuatrimestre_Result> UspReporteInscritosSeleccionCuatrimestre(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionCuatrimestre(periodo).ToList();
+        }
+
+        public List<UspReporteInscritosSeleccionXFecha_Result> UspReporteInscritosSeleccionXFecha(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXFecha(periodo).ToList();
+        }
+
 
 
     }
