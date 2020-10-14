@@ -13,6 +13,8 @@ namespace ITLA_PE_PORTALADMIN
         {
             if (!IsPostBack)
             {
+
+
                 ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo();
                 ddlPeriodo.DataTextField = "Periodo";
                 ddlPeriodo.DataValueField = "IDPeriodo";
