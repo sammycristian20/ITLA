@@ -23,10 +23,11 @@
                             <section id="inputs" class="text-center">
                                 <!--Section heading-->
                                 <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Educación Superior
-                                    <select>
-                                        <option>C-3-2020</option>
-                                        <option>Viene Pronto</option>
-                                    </select>
+                                    <asp:DropDownList ID="ddlPeriodo" runat="server" DataValueField="Periodo" DataTextField="Periodo" AutoPostBack="true" OnSelectedIndexChanged="ddlPeriodo_SelectedIndexChanged">
+
+                                    </asp:DropDownList>
+
+                                    
                                 </h3>
                                 <div class="row">
                                  
@@ -37,7 +38,7 @@
                                                     <div class="card-content">
                                                         <div class="card-body">
                                                             <div class="row">
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-bag font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -53,7 +54,7 @@
                                                                         <div class="progress-bar bg-info" role="progressbar" style="width: 20.53%" aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-user font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -68,7 +69,7 @@
                                                                         <div class="progress-bar bg-danger" role="progressbar" style="width: 79.46%" aria-valuenow="45" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12 border-right-blue-grey border-right-lighten-5">
+                                                                <div class="col-lg-4 col-sm-12 border-right-blue-grey border-right-lighten-5">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-shuffle font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -83,7 +84,7 @@
                                                                         <div class="progress-bar bg-success" role="progressbar" style="width: 100%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
                                                                 </div>
-                                                                <div class="col-lg-3 col-sm-12">
+                                                                <%--<div class="col-lg-3 col-sm-12">
                                                                     <div class="pb-1">
                                                                         <div class="clearfix mb-1">
                                                                             <i class="icon-globe font-large-1 blue-grey float-left mt-1" style="background-color: #fff!important"></i>
@@ -97,7 +98,7 @@
                                                                     <div class="progress mb-0" style="height: 7px;">
                                                                         <div class="progress-bar bg-warning" role="progressbar" style="width: 83.90%" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100"></div>
                                                                     </div>
-                                                                </div>
+                                                                </div>--%>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -129,6 +130,29 @@
         <!-- Column -->
 
     </div>
+
+    <table id="datatableCarreras" style="display: none">
+        <thead>
+            <tr>
+                <th>Provincia</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterCarreras" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                    <tr>
+                        <th><%# Eval("Carrera") %></th>
+                        <td><%# Eval("NuevoIngreso") %></td>
+                        <td><%# Eval("Viejos") %></td>
+                        <td><%# Eval("Total") %></td>
+                    </tr>
+                </itemtemplate>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
 
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
@@ -184,72 +208,122 @@
             });
 
             Highcharts.chart('container', {
+                data: {
+                    table: 'datatableCarreras'
+                },
                 chart: {
-                    type: 'column'
+                    type: 'pie'
                 },
                 title: {
-                    text: 'Inscripciones por Carrera'
-                },
-                xAxis: {
-                    categories: ['Tecnología en Desarrollo de Software',
-                        'Tecnología en Seguridad Informática',
-                        'Tecnología en Multimedia',
-                        'Tecnología en Mecatrónica',
-                        'Tecnología de Redes de Información',
-                        'Tecnología en Sonido',
-                        'Tecnología en Manufactura Automatizada',
-                        'Tecnólogo en Analítica y Ciencia de los Datos',
-                        'Tecnología en Diseño Industrial',
-                        'Tecnólogo en Manufactura de Dispositivos Médicos']
+                    text: 'Inscritos por carreras'
                 },
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'Total de Inscripciones'
+                        text: 'Inscritos',
+                        align: 'high'
                     },
-                    stackLabels: {
-                        enabled: true,
-                        style: {
-                            fontWeight: 'bold',
-                            color: ( // theme
-                                Highcharts.defaultOptions.title.style &&
-                                Highcharts.defaultOptions.title.style.color
-                            ) || 'gray'
-                        }
+                    labels: {
+                        overflow: 'justify'
                     }
                 },
-                legend: {
-                    align: 'right',
-                    x: -30,
-                    verticalAlign: 'top',
-                    y: 25,
-                    floating: true,
-                    backgroundColor:
-                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                    borderColor: '#CCC',
-                    borderWidth: 1,
-                    shadow: false
-                },
                 tooltip: {
-                    headerFormat: '<b>{point.x}</b><br/>',
-                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    valueSuffix: ' '
                 },
                 plotOptions: {
-                    column: {
-                        stacking: 'normal',
+                    pie: {
                         dataLabels: {
                             enabled: true
                         }
                     }
                 },
-                series: [{
-                    name: 'Nuevo Ingreso',
-                    data: [263, 125, 118, 67, 41, 20, 5, 21, 15, 14]
-                }, {
-                    name: 'Re-Inscripciones',
-                    data: [1017, 461, 463, 335, 223, 67, 40, 20, 25, 16]
-                }]
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    shadow: true
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                    }
+                }
             });
+
+            //Highcharts.chart('container', {
+            //    chart: {
+            //        type: 'column'
+            //    },
+            //    title: {
+            //        text: 'Inscripciones por Carrera'
+            //    },
+            //    xAxis: {
+            //        categories: ['Tecnología en Desarrollo de Software',
+            //            'Tecnología en Seguridad Informática',
+            //            'Tecnología en Multimedia',
+            //            'Tecnología en Mecatrónica',
+            //            'Tecnología de Redes de Información',
+            //            'Tecnología en Sonido',
+            //            'Tecnología en Manufactura Automatizada',
+            //            'Tecnólogo en Analítica y Ciencia de los Datos',
+            //            'Tecnología en Diseño Industrial',
+            //            'Tecnólogo en Manufactura de Dispositivos Médicos']
+            //    },
+            //    yAxis: {
+            //        min: 0,
+            //        title: {
+            //            text: 'Total de Inscripciones'
+            //        },
+            //        stackLabels: {
+            //            enabled: true,
+            //            style: {
+            //                fontWeight: 'bold',
+            //                color: ( // theme
+            //                    Highcharts.defaultOptions.title.style &&
+            //                    Highcharts.defaultOptions.title.style.color
+            //                ) || 'gray'
+            //            }
+            //        }
+            //    },
+            //    legend: {
+            //        align: 'right',
+            //        x: -30,
+            //        verticalAlign: 'top',
+            //        y: 25,
+            //        floating: true,
+            //        backgroundColor:
+            //            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+            //        borderColor: '#CCC',
+            //        borderWidth: 1,
+            //        shadow: false
+            //    },
+            //    tooltip: {
+            //        headerFormat: '<b>{point.x}</b><br/>',
+            //        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            //    },
+            //    plotOptions: {
+            //        column: {
+            //            stacking: 'normal',
+            //            dataLabels: {
+            //                enabled: true
+            //            }
+            //        }
+            //    },
+            //    series: [{
+            //        name: 'Nuevo Ingreso',
+            //        data: [263, 125, 118, 67, 41, 20, 5, 21, 15, 14]
+            //    }, {
+            //        name: 'Re-Inscripciones',
+            //        data: [1017, 461, 463, 335, 223, 67, 40, 20, 25, 16]
+            //    }]
+            //});
 
         });
 
