@@ -131,6 +131,29 @@
 
     </div>
 
+    <table id="datatableCarreras" style="display: none">
+        <thead>
+            <tr>
+                <th>Provincia</th>
+                <th>Solicitudes</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterCarreras" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                    <tr>
+                        <th><%# Eval("Carrera") %></th>
+                        <td><%# Eval("NuevoIngreso") %></td>
+                        <td><%# Eval("Viejos") %></td>
+                        <td><%# Eval("Total") %></td>
+                    </tr>
+                </itemtemplate>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+    </table>
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
     <script>
@@ -185,72 +208,122 @@
             });
 
             Highcharts.chart('container', {
+                data: {
+                    table: 'datatableCarreras'
+                },
                 chart: {
-                    type: 'column'
+                    type: 'pie'
                 },
                 title: {
-                    text: 'Inscripciones por Carrera'
-                },
-                xAxis: {
-                    categories: ['Tecnología en Desarrollo de Software',
-                        'Tecnología en Seguridad Informática',
-                        'Tecnología en Multimedia',
-                        'Tecnología en Mecatrónica',
-                        'Tecnología de Redes de Información',
-                        'Tecnología en Sonido',
-                        'Tecnología en Manufactura Automatizada',
-                        'Tecnólogo en Analítica y Ciencia de los Datos',
-                        'Tecnología en Diseño Industrial',
-                        'Tecnólogo en Manufactura de Dispositivos Médicos']
+                    text: 'Inscritos por carreras'
                 },
                 yAxis: {
                     min: 0,
                     title: {
-                        text: 'Total de Inscripciones'
+                        text: 'Inscritos',
+                        align: 'high'
                     },
-                    stackLabels: {
-                        enabled: true,
-                        style: {
-                            fontWeight: 'bold',
-                            color: ( // theme
-                                Highcharts.defaultOptions.title.style &&
-                                Highcharts.defaultOptions.title.style.color
-                            ) || 'gray'
-                        }
+                    labels: {
+                        overflow: 'justify'
                     }
                 },
-                legend: {
-                    align: 'right',
-                    x: -30,
-                    verticalAlign: 'top',
-                    y: 25,
-                    floating: true,
-                    backgroundColor:
-                        Highcharts.defaultOptions.legend.backgroundColor || 'white',
-                    borderColor: '#CCC',
-                    borderWidth: 1,
-                    shadow: false
-                },
                 tooltip: {
-                    headerFormat: '<b>{point.x}</b><br/>',
-                    pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+                    valueSuffix: ' '
                 },
                 plotOptions: {
-                    column: {
-                        stacking: 'normal',
+                    pie: {
                         dataLabels: {
                             enabled: true
                         }
                     }
                 },
-                series: [{
-                    name: 'Nuevo Ingreso',
-                    data: [263, 125, 118, 67, 41, 20, 5, 21, 15, 14]
-                }, {
-                    name: 'Re-Inscripciones',
-                    data: [1017, 461, 463, 335, 223, 67, 40, 20, 25, 16]
-                }]
+                legend: {
+                    layout: 'vertical',
+                    align: 'right',
+                    verticalAlign: 'top',
+                    x: -40,
+                    y: 80,
+                    floating: true,
+                    borderWidth: 1,
+                    backgroundColor:
+                        Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    shadow: true
+                },
+                tooltip: {
+                    formatter: function () {
+                        return '<b>' + this.series.name + '</b><br/>' +
+                            this.point.y + ' ' + this.point.name.toLowerCase();
+                    }
+                }
             });
+
+            //Highcharts.chart('container', {
+            //    chart: {
+            //        type: 'column'
+            //    },
+            //    title: {
+            //        text: 'Inscripciones por Carrera'
+            //    },
+            //    xAxis: {
+            //        categories: ['Tecnología en Desarrollo de Software',
+            //            'Tecnología en Seguridad Informática',
+            //            'Tecnología en Multimedia',
+            //            'Tecnología en Mecatrónica',
+            //            'Tecnología de Redes de Información',
+            //            'Tecnología en Sonido',
+            //            'Tecnología en Manufactura Automatizada',
+            //            'Tecnólogo en Analítica y Ciencia de los Datos',
+            //            'Tecnología en Diseño Industrial',
+            //            'Tecnólogo en Manufactura de Dispositivos Médicos']
+            //    },
+            //    yAxis: {
+            //        min: 0,
+            //        title: {
+            //            text: 'Total de Inscripciones'
+            //        },
+            //        stackLabels: {
+            //            enabled: true,
+            //            style: {
+            //                fontWeight: 'bold',
+            //                color: ( // theme
+            //                    Highcharts.defaultOptions.title.style &&
+            //                    Highcharts.defaultOptions.title.style.color
+            //                ) || 'gray'
+            //            }
+            //        }
+            //    },
+            //    legend: {
+            //        align: 'right',
+            //        x: -30,
+            //        verticalAlign: 'top',
+            //        y: 25,
+            //        floating: true,
+            //        backgroundColor:
+            //            Highcharts.defaultOptions.legend.backgroundColor || 'white',
+            //        borderColor: '#CCC',
+            //        borderWidth: 1,
+            //        shadow: false
+            //    },
+            //    tooltip: {
+            //        headerFormat: '<b>{point.x}</b><br/>',
+            //        pointFormat: '{series.name}: {point.y}<br/>Total: {point.stackTotal}'
+            //    },
+            //    plotOptions: {
+            //        column: {
+            //            stacking: 'normal',
+            //            dataLabels: {
+            //                enabled: true
+            //            }
+            //        }
+            //    },
+            //    series: [{
+            //        name: 'Nuevo Ingreso',
+            //        data: [263, 125, 118, 67, 41, 20, 5, 21, 15, 14]
+            //    }, {
+            //        name: 'Re-Inscripciones',
+            //        data: [1017, 461, 463, 335, 223, 67, 40, 20, 25, 16]
+            //    }]
+            //});
 
         });
 

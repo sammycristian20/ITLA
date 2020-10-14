@@ -18,6 +18,12 @@ namespace ITLA_PE_PORTALADMIN
                 ddlPeriodo.DataValueField = "IDPeriodo";
                 ddlPeriodo.DataBind();
 
+                int periodo = 172;
+
+                ITLA_PE_MVC.SERVICE.ServicesDashboard servicesDashboard = new ITLA_PE_MVC.SERVICE.ServicesDashboard();
+
+               RepeaterCarreras.DataSource = servicesDashboard.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo);
+               RepeaterCarreras.DataBind();
             }
         }
 

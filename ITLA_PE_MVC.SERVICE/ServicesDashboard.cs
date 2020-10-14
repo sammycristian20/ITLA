@@ -83,7 +83,10 @@ namespace ITLA_PE_MVC.SERVICE
         }
 
 
-
+        public List<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXCarreraCuatrimestre(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo).ToList();
+        }
 
 
 
