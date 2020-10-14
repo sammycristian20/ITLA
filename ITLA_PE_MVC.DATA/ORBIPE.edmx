@@ -132,6 +132,9 @@
           <Property Name="LastUserUpdate" Type="datetime" />
           <Property Name="Genero" Type="varchar" MaxLength="1" />
           <Property Name="MJFormID" Type="int" />
+          <Property Name="CumpleRequisitosMinimos" Type="bit" />
+          <Property Name="RankingIndice" Type="int" />
+          <Property Name="CriterioRankingIndice" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -800,6 +803,9 @@
           <Property Name="MJFormID" Type="Int32" />
           <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
           <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
+          <Property Name="CumpleRequisitosMinimos" Type="Boolean" />
+          <Property Name="RankingIndice" Type="Int32" />
+          <Property Name="CriterioRankingIndice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -1329,6 +1335,9 @@
           <EntitySetMapping Name="Solicituds">
             <EntityTypeMapping TypeName="ORBIPEModel.Solicitud">
               <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="CriterioRankingIndice" ColumnName="CriterioRankingIndice" />
+                <ScalarProperty Name="RankingIndice" ColumnName="RankingIndice" />
+                <ScalarProperty Name="CumpleRequisitosMinimos" ColumnName="CumpleRequisitosMinimos" />
                 <ScalarProperty Name="MJFormID" ColumnName="MJFormID" />
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
                 <ScalarProperty Name="LastUserUpdate" ColumnName="LastUserUpdate" />

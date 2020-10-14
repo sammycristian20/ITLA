@@ -46,7 +46,7 @@
                                                                                 <div class="col mr-2">
                                                                                     <div class="text-xs text-white text-uppercase mb-1">Nuevo ingreso</div>
                                                                                     <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalNuevoIngreso" runat="server" Text="0"></asp:Literal><br />
-                                                                                     <asp:Literal ID="literalNuevos" runat="server" Text="porcientoNuevos"></asp:Literal>%   
+                                                                                     <asp:Literal ID="literalNuevos" runat="server" Text=""></asp:Literal>%   
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-auto">
@@ -63,7 +63,7 @@
                                                                                 <div class="col mr-2">
                                                                                     <div class="text-xs text-white text-uppercase mb-1">Reinscritos</div>
                                                                                     <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalReinscritos" runat="server" Text="0"></asp:Literal><br />
-                                                                                    <asp:Literal ID="literalPorcientoReinscritos" runat="server" Text="porcientoReinscritos"></asp:Literal>%
+                                                                                    <asp:Literal ID="literalPorcientoReinscritos" runat="server" Text=""></asp:Literal>%
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-auto">
@@ -142,14 +142,14 @@
         <tbody>
             <asp:Repeater ID="RepeaterCarreras" runat="server">
                 <ItemTemplate>
-                    <itemtemplate>
+                   
                         <tr>
                             <th><%# Eval("Carrera") %></th>
                             <td><%# Eval("NuevoIngreso") %></td>
                             <td><%# Eval("Viejos") %></td>
                             <td><%# Eval("Total") %></td>
                         </tr>
-                    </itemtemplate>
+                    
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
@@ -168,14 +168,14 @@
         <tbody>
             <asp:Repeater ID="RepeaterInscritos" runat="server">
                 <ItemTemplate>
-                    <itemtemplate>
+                    
                         <tr>
                             <th><%# Eval("Total") %></th>
                             <td><%# Eval("Nuevo_Ingreso") %></td>
                             <td><%# Eval("Viejos") %></td>
                             <td><%# Eval("Total1") %></td>
                         </tr>
-                    </itemtemplate>
+                   
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
@@ -194,14 +194,14 @@
         <tbody>
             <asp:Repeater ID="RepeaterFechas" runat="server">
                 <ItemTemplate>
-                    <itemtemplate>
+                    
                         <tr>
                             <th><%# Eval("FechaInscripcion") %></th>
                             <td><%# Eval("NuevoIngreso") %></td>
                             <td><%# Eval("Viejos") %></td>
                             <td><%# Eval("Total") %></td>
                         </tr>
-                    </itemtemplate>
+                    
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>

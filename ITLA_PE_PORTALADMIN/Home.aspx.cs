@@ -44,6 +44,8 @@ namespace ITLA_PE_PORTALADMIN
             RepeaterCarreras.DataSource = servicesDashboard.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo);
             RepeaterCarreras.DataBind();
 
+            
+            //**VERIFICAR LOS DOS PROCEDURES QUE SON LLAMADOS AQUI
 
             //RepeaterInscritos.DataSource = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
             //RepeaterInscritos.DataBind();
