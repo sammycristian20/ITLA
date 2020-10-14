@@ -28,8 +28,10 @@ namespace ITLA_PE_MVC.DATA
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<Area> Areas { get; set; }
         public virtual DbSet<Generic> Generics { get; set; }
         public virtual DbSet<GenericType> GenericTypes { get; set; }
+        public virtual DbSet<Intencion> Intencions { get; set; }
         public virtual DbSet<ProyectoEspecial> ProyectoEspecials { get; set; }
         public virtual DbSet<ProyectoEspecialMateriaGrupo> ProyectoEspecialMateriaGrupoes { get; set; }
         public virtual DbSet<Solicitud> Solicituds { get; set; }
@@ -42,7 +44,6 @@ namespace ITLA_PE_MVC.DATA
         public virtual DbSet<UserLog> UserLogs { get; set; }
         public virtual DbSet<UsertTypeSystemAttribute> UsertTypeSystemAttributes { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<Intencion> Intencions { get; set; }
     
         public virtual ObjectResult<GetMateriasDisponibles_Result> GetMateriasDisponibles()
         {
@@ -213,6 +214,11 @@ namespace ITLA_PE_MVC.DATA
         public virtual ObjectResult<UspGetDashboardITLAJVGenero_Result> UspGetDashboardITLAJVGenero()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardITLAJVGenero_Result>("UspGetDashboardITLAJVGenero");
+        }
+    
+        public virtual ObjectResult<UspGetPeriodo_Result> UspGetPeriodo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo");
         }
     }
 }

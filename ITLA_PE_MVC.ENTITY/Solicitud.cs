@@ -50,10 +50,10 @@ namespace ITLA_PE_MVC.ENTITY
         public string PrevalidacionEstatus { get; set; }
         public Nullable<bool> PrevalidacionIdentificacionValida { get; set; }
         public Nullable<bool> PrevalidacionRecordValido { get; set; }
+        public Nullable<decimal> PrevalidacionIndice { get; set; }
         public Nullable<int> PrevalidacionUserId { get; set; }
         public Nullable<System.DateTime> PrevalidacionLastDate { get; set; }
         public Nullable<System.DateTime> LastUserUpdate { get; set; }
-        public Nullable<decimal> PrevalidacionIndice { get; set; }
         public string Genero { get; set; }
         public Nullable<int> MJFormID { get; set; }
     

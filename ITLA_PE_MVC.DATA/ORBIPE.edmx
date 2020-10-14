@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="ORBIPEModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AreaDescripcion" Type="varchar" MaxLength="100" />
+        </EntityType>
         <EntityType Name="Generic">
           <Key>
             <PropertyRef Name="GenericID" />
@@ -360,6 +367,7 @@
         </Function>
         <Function Name="UspGetCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetNextSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspInsertaMateriasGrupoJuventud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspMunicipiosPorProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
@@ -393,6 +401,7 @@
           <Parameter Name="NombreUsuario" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="ORBIPEModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Generic" EntityType="Self.Generic" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="GenericType" EntityType="Self.GenericType" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Intencion" EntityType="Self.Intencion" Schema="Admin" store:Type="Tables" />
@@ -469,8 +478,40 @@
           <Parameter Name="NombreUsuario" Mode="In" Type="String" />
           </FunctionImport>
           <FunctionImport Name="UspGetDashboardITLAJVDia" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVDia_Result)" />
+          <FunctionImport Name="UspGetCarrera" ReturnType="Collection(ORBIPEModel.UspGetCarrera_Result)" />
+          <FunctionImport Name="UspGetNextSolicitud" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="UspGetDashboardITLAJVEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEdad_Result)" />
+          <FunctionImport Name="UspGetDashboardITLAJVIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVIngresos_Result)" />
+          <FunctionImport Name="DashboardGeneralINfo" ReturnType="Collection(Int32)" />
+          <FunctionImport Name="UspGetDashboardIntencionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionProvincia_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEdad_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionIngresos_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionArea" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionArea_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionDia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionDia_Result)" />
+          <FunctionImport Name="Reporte_Inscritos_Seleccion_Cuatrimestre_Any">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any" ReturnType="Collection(ORBIPEModel.Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result)">
+            <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="Reporte_Inscritos_Seleccion_XFecha_Cuatrimestre_Any">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXCarreraCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXCarreraCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXFecha" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXFecha_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspGetDashboardITLAJVEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEducacion_Result)" />
+          <FunctionImport Name="UspGetDashboardITLAJVGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVGenero_Result)" />
+          <EntitySet Name="Areas" EntityType="ORBIPEModel.Area" />
           <EntitySet Name="Generics" EntityType="ORBIPEModel.Generic" />
           <EntitySet Name="GenericTypes" EntityType="ORBIPEModel.GenericType" />
+          <EntitySet Name="Intencions" EntityType="ORBIPEModel.Intencion" />
           <EntitySet Name="ProyectoEspecials" EntityType="ORBIPEModel.ProyectoEspecial" />
           <EntitySet Name="ProyectoEspecialMateriaGrupoes" EntityType="ORBIPEModel.ProyectoEspecialMateriaGrupo" />
           <EntitySet Name="Solicituds" EntityType="ORBIPEModel.Solicitud" />
@@ -523,37 +564,7 @@
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="UsertTypeSystemAttribute" EntitySet="UsertTypeSystemAttributes" />
           </AssociationSet>
-          <EntitySet Name="Intencions" EntityType="ORBIPEModel.Intencion" />
-          <FunctionImport Name="UspGetCarrera" ReturnType="Collection(ORBIPEModel.UspGetCarrera_Result)" />
-          <FunctionImport Name="UspGetNextSolicitud" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="UspGetDashboardITLAJVEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEdad_Result)" />
-          <FunctionImport Name="UspGetDashboardITLAJVIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVIngresos_Result)" />
-          <FunctionImport Name="DashboardGeneralINfo" ReturnType="Collection(Int32)" />
-          <FunctionImport Name="UspGetDashboardIntencionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionProvincia_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEdad_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionIngresos_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionArea" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionArea_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionDia" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionDia_Result)" />
-          <FunctionImport Name="Reporte_Inscritos_Seleccion_Cuatrimestre_Any">
-          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any" ReturnType="Collection(ORBIPEModel.Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result)">
-            <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="Reporte_Inscritos_Seleccion_XFecha_Cuatrimestre_Any">
-          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="UspReporteInscritosSeleccionXCarreraCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXCarreraCuatrimestre_Result)">
-          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="UspReporteInscritosSeleccionXFecha" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXFecha_Result)">
-          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="UspReporteInscritosSeleccionCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result)">
-          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <FunctionImport Name="UspGetDashboardITLAJVEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEducacion_Result)" />
-          <FunctionImport Name="UspGetDashboardITLAJVGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVGenero_Result)" />
+          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -591,6 +602,77 @@
           <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
           <Property Type="Int32" Name="Cantidad" Nullable="true" />
         </ComplexType>
+        <ComplexType Name="UspGetCarrera_Result">
+          <Property Type="Int32" Name="IDcarrera" Nullable="false" />
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVEdad_Result">
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="17" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVIngresos_Result">
+          <Property Type="String" Name="Ingresos" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionProvincia_Result">
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionEdad_Result">
+          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="17" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionIngresos_Result">
+          <Property Type="String" Name="Ingresos" Nullable="true" MaxLength="8000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionArea_Result">
+          <Property Type="String" Name="Materia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionDia_Result">
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXCarreraCuatrimestre_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXFecha_Result">
+          <Property Type="DateTime" Name="FechaInscripcion" Nullable="true" />
+          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionCuatrimestre_Result">
+          <Property Type="String" Name="Total" Nullable="false" MaxLength="5" />
+          <Property Type="Int32" Name="Nuevo_Ingreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVEducacion_Result">
+          <Property Type="String" Name="NivelAcademico" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardITLAJVGenero_Result">
+          <Property Type="String" Name="Genero" Nullable="false" MaxLength="9" />
+          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+        </ComplexType>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AreaDescripcion" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+        </EntityType>
         <EntityType Name="Generic">
           <Key>
             <PropertyRef Name="GenericID" />
@@ -613,6 +695,36 @@
           <Property Name="GenericTypeDescription" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
           <Property Name="IsUserEditable" Type="Boolean" Nullable="false" />
           <NavigationProperty Name="Generics" Relationship="ORBIPEModel.FK_Generic_GenericType" FromRole="GenericType" ToRole="Generic" />
+        </EntityType>
+        <EntityType Name="Intencion">
+          <Key>
+            <PropertyRef Name="IntencionID" />
+          </Key>
+          <Property Name="IntencionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CarreraID" Type="Int32" Nullable="false" />
+          <Property Name="CodigoIntencion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="RowID" Type="Guid" Nullable="false" />
+          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GenericID_TipoIdentificacion" Type="Int32" Nullable="false" />
+          <Property Name="GenericID_EstatusIntencion" Type="Int32" Nullable="false" />
+          <Property Name="IdentificacionCedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="IdentificacionGenerada" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="TelResidencial" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="TelCelular" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="DireccionidMunicipio" Type="Int32" Nullable="false" />
+          <Property Name="DireccionCalleNumero" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="GenericID_NivelAcademico" Type="Int32" Nullable="false" />
+          <Property Name="ResultadoComentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="ProvinciaId" Type="Int32" />
+          <Property Name="Ingreso_Familiar" Type="Int32" />
+          <Property Name="TieneInternet" Type="Boolean" />
+          <Property Name="TieneLaptopPc" Type="Boolean" />
+          <Property Name="TieneSubsidio" Type="Boolean" />
         </EntityType>
         <EntityType Name="ProyectoEspecial">
           <Key>
@@ -680,14 +792,14 @@
           <Property Name="PrevalidacionEstatus" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="PrevalidacionIdentificacionValida" Type="Boolean" />
           <Property Name="PrevalidacionRecordValido" Type="Boolean" />
+          <Property Name="PrevalidacionIndice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="PrevalidacionUserId" Type="Int32" />
           <Property Name="PrevalidacionLastDate" Type="DateTime" Precision="3" />
           <Property Name="LastUserUpdate" Type="DateTime" Precision="3" />
-          <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
-          <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
-          <Property Name="PrevalidacionIndice" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="MJFormID" Type="Int32" />
+          <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
+          <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -699,8 +811,8 @@
           <Property Name="ArchivoURL" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
           <Property Name="LocalFile" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="Solicitud" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="SolicitudAnexo" ToRole="Solicitud" />
           <Property Name="WebURL" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Solicitud" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="SolicitudAnexo" ToRole="Solicitud" />
         </EntityType>
         <EntityType Name="LoginSession">
           <Key>
@@ -929,99 +1041,9 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityType Name="Intencion">
-          <Key>
-            <PropertyRef Name="IntencionID" />
-          </Key>
-          <Property Name="IntencionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="CarreraID" Type="Int32" Nullable="false" />
-          <Property Name="CodigoIntencion" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="RowID" Type="Guid" Nullable="false" />
-          <Property Name="RowVersion" Type="Binary" Nullable="false" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" />
-          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="Email" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
-          <Property Name="GenericID_TipoIdentificacion" Type="Int32" Nullable="false" />
-          <Property Name="GenericID_EstatusIntencion" Type="Int32" Nullable="false" />
-          <Property Name="IdentificacionCedula" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
-          <Property Name="IdentificacionGenerada" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="Nombres" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="Apellidos" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="FechaNacimiento" Type="DateTime" Nullable="false" Precision="0" />
-          <Property Name="TelResidencial" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="TelCelular" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-          <Property Name="DireccionidMunicipio" Type="Int32" Nullable="false" />
-          <Property Name="DireccionCalleNumero" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
-          <Property Name="GenericID_NivelAcademico" Type="Int32" Nullable="false" />
-          <Property Name="ResultadoComentario" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="ProvinciaId" Type="Int32" />
-          <Property Name="Ingreso_Familiar" Type="Int32" />
-          <Property Name="TieneInternet" Type="Boolean" />
-          <Property Name="TieneLaptopPc" Type="Boolean" />
-          <Property Name="TieneSubsidio" Type="Boolean" />
-        </EntityType>
-        <ComplexType Name="UspGetCarrera_Result">
-          <Property Type="Int32" Name="IDcarrera" Nullable="false" />
-          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardITLAJVEdad_Result">
-          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="17" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardITLAJVIngresos_Result">
-          <Property Type="String" Name="Ingresos" Nullable="false" MaxLength="100" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionProvincia_Result">
-          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionEdad_Result">
-          <Property Type="String" Name="Provincia" Nullable="false" MaxLength="17" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionIngresos_Result">
-          <Property Type="String" Name="Ingresos" Nullable="true" MaxLength="8000" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionArea_Result">
-          <Property Type="String" Name="Materia" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionDia_Result">
-          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
-          <Property Type="Int32" Name="Viejos" Nullable="true" />
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspReporteInscritosSeleccionXCarreraCuatrimestre_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
-          <Property Type="Int32" Name="Viejos" Nullable="true" />
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspReporteInscritosSeleccionXFecha_Result">
-          <Property Type="DateTime" Name="FechaInscripcion" Nullable="true" />
-          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
-          <Property Type="Int32" Name="Viejos" Nullable="true" />
-          <Property Type="Int32" Name="Total" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspReporteInscritosSeleccionCuatrimestre_Result">
-          <Property Type="String" Name="Total" Nullable="false" MaxLength="5" />
-          <Property Type="Int32" Name="Nuevo_Ingreso" Nullable="true" />
-          <Property Type="Int32" Name="Viejos" Nullable="true" />
-          <Property Type="Int32" Name="Total1" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardITLAJVEducacion_Result">
-          <Property Type="String" Name="NivelAcademico" Nullable="true" MaxLength="100" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardITLAJVGenero_Result">
-          <Property Type="String" Name="Genero" Nullable="false" MaxLength="9" />
-          <Property Type="Int32" Name="Cantidad" Nullable="false" />
+        <ComplexType Name="UspGetPeriodo_Result">
+          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1098,6 +1120,127 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetCarrera" FunctionName="ORBIPEModel.Store.UspGetCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetCarrera_Result">
+                <ScalarProperty Name="IDcarrera" ColumnName="IDcarrera" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetNextSolicitud" FunctionName="ORBIPEModel.Store.UspGetNextSolicitud" />
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVEdad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVEdad_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVIngresos_Result">
+                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DashboardGeneralINfo" FunctionName="ORBIPEModel.Store.DashboardGeneralINfo" />
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionProvincia" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionProvincia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionProvincia_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionEdad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionEdad_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionIngresos_Result">
+                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionArea" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionArea">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionArea_Result">
+                <ScalarProperty Name="Materia" ColumnName="Materia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionDia" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionDia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionDia_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="Reporte_Inscritos_Seleccion_Cuatrimestre_Any" FunctionName="ORBIPEModel.Store.Reporte_Inscritos_Seleccion_Cuatrimestre_Any" />
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXCarreraCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXCarreraCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXCarreraCuatrimestre_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXFecha" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXFecha_Result">
+                <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
+                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result">
+                <ScalarProperty Name="Total" ColumnName="Total" />
+                <ScalarProperty Name="Nuevo_Ingreso" ColumnName="Nuevo Ingreso" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
+                <ScalarProperty Name="Total1" ColumnName="Total1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVEducacion" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVEducacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVEducacion_Result">
+                <ScalarProperty Name="NivelAcademico" ColumnName="NivelAcademico" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVGenero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVGenero_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="ORBIPEModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="AreaDescripcion" ColumnName="AreaDescripcion" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="Generics">
             <EntityTypeMapping TypeName="ORBIPEModel.Generic">
               <MappingFragment StoreEntitySet="Generic">
@@ -1118,6 +1261,37 @@
                 <ScalarProperty Name="IsUserEditable" ColumnName="IsUserEditable" />
                 <ScalarProperty Name="GenericTypeDescription" ColumnName="GenericTypeDescription" />
                 <ScalarProperty Name="GenericTypeCode" ColumnName="GenericTypeCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Intencions">
+            <EntityTypeMapping TypeName="ORBIPEModel.Intencion">
+              <MappingFragment StoreEntitySet="Intencion">
+                <ScalarProperty Name="TieneSubsidio" ColumnName="TieneSubsidio" />
+                <ScalarProperty Name="TieneLaptopPc" ColumnName="TieneLaptopPc" />
+                <ScalarProperty Name="TieneInternet" ColumnName="TieneInternet" />
+                <ScalarProperty Name="Ingreso_Familiar" ColumnName="Ingreso_Familiar" />
+                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
+                <ScalarProperty Name="ResultadoComentario" ColumnName="ResultadoComentario" />
+                <ScalarProperty Name="GenericID_NivelAcademico" ColumnName="GenericID_NivelAcademico" />
+                <ScalarProperty Name="DireccionCalleNumero" ColumnName="DireccionCalleNumero" />
+                <ScalarProperty Name="DireccionidMunicipio" ColumnName="DireccionidMunicipio" />
+                <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+                <ScalarProperty Name="TelResidencial" ColumnName="TelResidencial" />
+                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
+                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
+                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
+                <ScalarProperty Name="IdentificacionGenerada" ColumnName="IdentificacionGenerada" />
+                <ScalarProperty Name="IdentificacionCedula" ColumnName="IdentificacionCedula" />
+                <ScalarProperty Name="GenericID_EstatusIntencion" ColumnName="GenericID_EstatusIntencion" />
+                <ScalarProperty Name="GenericID_TipoIdentificacion" ColumnName="GenericID_TipoIdentificacion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
+                <ScalarProperty Name="RowID" ColumnName="RowID" />
+                <ScalarProperty Name="CodigoIntencion" ColumnName="CodigoIntencion" />
+                <ScalarProperty Name="CarreraID" ColumnName="CarreraID" />
+                <ScalarProperty Name="IntencionID" ColumnName="IntencionID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -1157,10 +1331,10 @@
               <MappingFragment StoreEntitySet="Solicitud">
                 <ScalarProperty Name="MJFormID" ColumnName="MJFormID" />
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
-                <ScalarProperty Name="PrevalidacionIndice" ColumnName="PrevalidacionIndice" />
                 <ScalarProperty Name="LastUserUpdate" ColumnName="LastUserUpdate" />
                 <ScalarProperty Name="PrevalidacionLastDate" ColumnName="PrevalidacionLastDate" />
                 <ScalarProperty Name="PrevalidacionUserId" ColumnName="PrevalidacionUserId" />
+                <ScalarProperty Name="PrevalidacionIndice" ColumnName="PrevalidacionIndice" />
                 <ScalarProperty Name="PrevalidacionRecordValido" ColumnName="PrevalidacionRecordValido" />
                 <ScalarProperty Name="PrevalidacionIdentificacionValida" ColumnName="PrevalidacionIdentificacionValida" />
                 <ScalarProperty Name="PrevalidacionEstatus" ColumnName="PrevalidacionEstatus" />
@@ -1310,147 +1484,11 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="Intencions">
-            <EntityTypeMapping TypeName="ORBIPEModel.Intencion">
-              <MappingFragment StoreEntitySet="Intencion">
-                <ScalarProperty Name="TieneSubsidio" ColumnName="TieneSubsidio" />
-                <ScalarProperty Name="TieneLaptopPc" ColumnName="TieneLaptopPc" />
-                <ScalarProperty Name="TieneInternet" ColumnName="TieneInternet" />
-                <ScalarProperty Name="Ingreso_Familiar" ColumnName="Ingreso_Familiar" />
-                <ScalarProperty Name="ProvinciaId" ColumnName="ProvinciaId" />
-                <ScalarProperty Name="ResultadoComentario" ColumnName="ResultadoComentario" />
-                <ScalarProperty Name="GenericID_NivelAcademico" ColumnName="GenericID_NivelAcademico" />
-                <ScalarProperty Name="DireccionCalleNumero" ColumnName="DireccionCalleNumero" />
-                <ScalarProperty Name="DireccionidMunicipio" ColumnName="DireccionidMunicipio" />
-                <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
-                <ScalarProperty Name="TelResidencial" ColumnName="TelResidencial" />
-                <ScalarProperty Name="FechaNacimiento" ColumnName="FechaNacimiento" />
-                <ScalarProperty Name="Apellidos" ColumnName="Apellidos" />
-                <ScalarProperty Name="Nombres" ColumnName="Nombres" />
-                <ScalarProperty Name="IdentificacionGenerada" ColumnName="IdentificacionGenerada" />
-                <ScalarProperty Name="IdentificacionCedula" ColumnName="IdentificacionCedula" />
-                <ScalarProperty Name="GenericID_EstatusIntencion" ColumnName="GenericID_EstatusIntencion" />
-                <ScalarProperty Name="GenericID_TipoIdentificacion" ColumnName="GenericID_TipoIdentificacion" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="RowVersion" ColumnName="RowVersion" />
-                <ScalarProperty Name="RowID" ColumnName="RowID" />
-                <ScalarProperty Name="CodigoIntencion" ColumnName="CodigoIntencion" />
-                <ScalarProperty Name="CarreraID" ColumnName="CarreraID" />
-                <ScalarProperty Name="IntencionID" ColumnName="IntencionID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="UspGetCarrera" FunctionName="ORBIPEModel.Store.UspGetCarrera">
+          <FunctionImportMapping FunctionImportName="UspGetPeriodo" FunctionName="ORBIPEModel.Store.UspGetPeriodo">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetCarrera_Result">
-                <ScalarProperty Name="IDcarrera" ColumnName="IDcarrera" />
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetNextSolicitud" FunctionName="ORBIPEModel.Store.UspGetNextSolicitud" />
-          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVEdad">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVEdad_Result">
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVIngresos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVIngresos_Result">
-                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DashboardGeneralINfo" FunctionName="ORBIPEModel.Store.DashboardGeneralINfo" />
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionProvincia" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionProvincia">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionProvincia_Result">
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionEdad">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionEdad_Result">
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionIngresos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionIngresos_Result">
-                <ScalarProperty Name="Ingresos" ColumnName="Ingresos" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionArea" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionArea">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionArea_Result">
-                <ScalarProperty Name="Materia" ColumnName="Materia" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionDia" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionDia">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionDia_Result">
-                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="Reporte_Inscritos_Seleccion_Cuatrimestre_Any" FunctionName="ORBIPEModel.Store.Reporte_Inscritos_Seleccion_Cuatrimestre_Any" />
-          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXCarreraCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXCarreraCuatrimestre">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXCarreraCuatrimestre_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
-                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXFecha" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXFecha">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXFecha_Result">
-                <ScalarProperty Name="FechaInscripcion" ColumnName="FechaInscripcion" />
-                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
-                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
-                <ScalarProperty Name="Total" ColumnName="Total" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionCuatrimestre">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionCuatrimestre_Result">
-                <ScalarProperty Name="Total" ColumnName="Total" />
-                <ScalarProperty Name="Nuevo_Ingreso" ColumnName="Nuevo Ingreso" />
-                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
-                <ScalarProperty Name="Total1" ColumnName="Total1" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVEducacion" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVEducacion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVEducacion_Result">
-                <ScalarProperty Name="NivelAcademico" ColumnName="NivelAcademico" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardITLAJVGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardITLAJVGenero">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVGenero_Result">
-                <ScalarProperty Name="Genero" ColumnName="Genero" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetPeriodo_Result">
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

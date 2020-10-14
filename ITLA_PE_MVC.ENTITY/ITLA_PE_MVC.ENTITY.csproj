@@ -43,6 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Area.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
@@ -147,6 +150,9 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspGetLoginInfo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetPeriodo_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspMunicipiosPorProvincia_Result.cs">
