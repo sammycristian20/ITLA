@@ -111,10 +111,13 @@
                                     <div class="col-lg-4">
                                         <div id="containerInscritos"></div>
                                     </div>
-                                    <div class="col-lg-8">
-                                        <div id="containerFecha"></div>
-                                    </div>
+                                    
                                 </div>
+                               <div class="row">
+                                    <div class="col-lg-12">
+                                            <div id="containerFecha"></div>
+                                    </div>
+                               </div>
 
                             </section>
                         </div>
@@ -129,86 +132,7 @@
 
     </div>
 
-
-    <table id="datatableCarreras" style="display:none">
-        <thead>
-            <tr>
-                <th>Carreras</th>
-                <th>Nuevo Ingreso</th>
-                <th>Reinscritos</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterCarreras" runat="server">
-                <ItemTemplate>
-                   
-                        <tr>
-                            <th><%# Eval("Carrera") %></th>
-                            <td><%# Eval("NuevoIngreso") %></td>
-                            <td><%# Eval("Viejos") %></td>
-                            <td><%# Eval("Total") %></td>
-                        </tr>
-                    
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-       
-    </table>
-
-    <table id="datatableInscritos" style="display:none">
-        <thead>
-            <tr>
-                <th>Carreras</th>
-                <th>Nuevo Ingreso</th>
-                <th>Reinscritos</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterInscritos" runat="server">
-                <ItemTemplate>
-                    
-                        <tr>
-                            <th><%# Eval("Total") %></th>
-                            <td><%# Eval("Nuevo_Ingreso") %></td>
-                            <td><%# Eval("Viejos") %></td>
-                            <td><%# Eval("Total1") %></td>
-                        </tr>
-                   
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-       
-    </table>
-
-    <table id="datatableFechas" style="display:none">
-        <thead>
-            <tr>
-                <th>Carreras</th>
-                <th>Nuevo Ingreso</th>
-                <th>Reinscritos</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterFechas" runat="server">
-                <ItemTemplate>
-                    
-                        <tr>
-                            <th><%# Eval("FechaInscripcion") %></th>
-                            <td><%# Eval("NuevoIngreso") %></td>
-                            <td><%# Eval("Viejos") %></td>
-                            <td><%# Eval("Total") %></td>
-                        </tr>
-                    
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-       
-    </table>
-
-   <%-- <table id="datatableCarreras" style="display: none">
+     <%-- <table id="datatableCarreras" style="display: none">
         <thead>
             <tr>
                 <th>Carreras</th>
@@ -233,15 +157,93 @@
         </tbody>
     </table>--%>
 
+
+    <table id="datatableCarreras" style="display:none">
+        <thead>
+            <tr>
+                <th>Carreras</th>
+                <th>Nuevo Ingreso</th>
+                <th>Reinscritos</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterCarreras" runat="server">
+                <ItemTemplate>
+                   <itemtemplate>
+                        <tr>
+                            <td><%# Eval("Carrera") %></td>
+                            <td><%# Eval("NuevoIngreso") %></td>
+                            <td><%# Eval("Viejos") %></td>
+                            <td><%# Eval("Total") %></td>
+                        </tr>
+                    </itemtemplate>
+                </itemtemplate>
+            </asp:Repeater>
+        </tbody>
+       
+    </table>
+
+    <table id="datatableInscritos" style="display:none">
+        <thead>
+            <tr>
+                <th>Carreras</th>
+                <th>Nuevo Ingreso</th>
+                <th>Reinscritos</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterInscritos" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                        <tr>
+                            <th><%# Eval("Total") %></th>
+                            <td><%# Eval("Nuevo_Ingreso") %></td>
+                            <td><%# Eval("Viejos") %></td>
+                            <td><%# Eval("Total1") %></td>
+                        </tr>
+                   </itemtemplate>
+                </itemtemplate>
+            </asp:Repeater>
+        </tbody>
+       
+    </table>
+
+    <table id="datatableFechas" style="display:none">
+        <thead>
+            <tr>
+                <th>Carreras</th>
+                <th>Nuevo Ingreso</th>
+                <th>Reinscritos</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterFechas" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                        <tr>
+                            <th><%# Eval("FechaInscripcion") %></th>
+                            <td><%# Eval("NuevoIngreso") %></td>
+                            <td><%# Eval("Viejos") %></td>
+                            <td><%# Eval("Total") %></td>
+                        </tr>
+                    </itemtemplate>
+                </itemtemplate>
+            </asp:Repeater>
+        </tbody>
+       
+    </table>
+
+  
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
    
  
     
     <script>
-        $(document).ready(function () {
-            
-
+                 
             Highcharts.chart('containerInscritos', {
                 data: {
                     table: 'datatableInscritos'
@@ -268,7 +270,7 @@
                 plotOptions: {
                     pie: {
                         dataLabels: {
-                            enabled: true
+                            enabled: false
                         }
                     }
                 },
@@ -292,14 +294,14 @@
                 }
             });
 
-
+        
             
             Highcharts.chart('containerCarreras', {
                 data: {
                     table: 'datatableCarreras'
                 },
                 chart: {
-                    type: 'pie'
+                    type: 'column'
                 },
                 title: {
                     text: 'Inscritos por carreras'
@@ -318,7 +320,7 @@
                     valueSuffix: ' '
                 },
                 plotOptions: {
-                    pie: {
+                    column: {
                         dataLabels: {
                             enabled: true
                         }
@@ -343,13 +345,13 @@
                     }
                 }
             });
-
-            Highcharts.chart('containerFechas', {
+            
+            Highcharts.chart('containerFecha', {
                 data: {
                     table: 'datatableFechas'
                 },
                 chart: {
-                    type: 'pie'
+                    type: 'column'
                 },
                 title: {
                     text: 'Inscritos por dia'
@@ -368,7 +370,7 @@
                     valueSuffix: ' '
                 },
                 plotOptions: {
-                    pie: {
+                    column: {
                         dataLabels: {
                             enabled: true
                         }
@@ -393,8 +395,8 @@
                     }
                 }
             });
-
-        });
-
+           
+        
+        
     </script>
 </asp:Content>

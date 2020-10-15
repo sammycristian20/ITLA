@@ -22,16 +22,6 @@ namespace ITLA_PE_PORTALADMIN
                 ddlPeriodo.DataValueField = "IDPeriodo";
                 ddlPeriodo.DataBind();
 
-                //int periodo = 169;
-
-               
-
-               
-
-                
-
-               
-
             }
         }
 
@@ -44,14 +34,14 @@ namespace ITLA_PE_PORTALADMIN
             RepeaterCarreras.DataSource = servicesDashboard.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo);
             RepeaterCarreras.DataBind();
 
+
             
-            //**VERIFICAR LOS DOS PROCEDURES QUE SON LLAMADOS AQUI
 
-            //RepeaterInscritos.DataSource = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
-            //RepeaterInscritos.DataBind();
+            RepeaterInscritos.DataSource = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
+            RepeaterInscritos.DataBind();
 
-            //RepeaterFechas.DataSource = servicesDashboard.UspReporteInscritosSeleccionXFecha(periodo);
-            //RepeaterFechas.DataBind();
+            RepeaterFechas.DataSource = servicesDashboard.UspReporteInscritosSeleccionXFecha(periodo);
+            RepeaterFechas.DataBind();
 
 
             var total = servicesDashboard.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo);
@@ -67,8 +57,8 @@ namespace ITLA_PE_PORTALADMIN
 
 
 
-            double porcientoReinscritos = reinscritos * 100 / totalInscritos;
-            double porcientoNuevos = nuevos * 100 / totalInscritos;
+            double porcientoReinscritos = Math.Round(reinscritos * 100 / totalInscritos);
+            double porcientoNuevos = Math.Round(nuevos * 100 / totalInscritos);
 
             literalPorcientoReinscritos.Text = porcientoReinscritos.ToString();
             literalNuevos.Text = porcientoNuevos.ToString();
