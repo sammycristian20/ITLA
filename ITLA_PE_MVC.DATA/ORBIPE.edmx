@@ -91,6 +91,8 @@
           <Property Name="AprobacionCupo" Type="int" Nullable="false" />
           <Property Name="AprobacionCantidad" Type="int" Nullable="false" />
           <Property Name="MateriaDescripcion" Type="varchar" MaxLength="500" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="CodigoMoodle" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -135,6 +137,8 @@
           <Property Name="CumpleRequisitosMinimos" Type="bit" />
           <Property Name="RankingIndice" Type="int" />
           <Property Name="CriterioRankingIndice" Type="varchar" MaxLength="100" />
+          <Property Name="GrupoID1" Type="int" />
+          <Property Name="GrupoID2" Type="int" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -760,6 +764,8 @@
           <Property Name="MateriaDescripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ProyectoEspecial" Relationship="ORBIPEModel.FK_ProyectoEspecialMateriaGrupo_ProyectoEspecial" FromRole="ProyectoEspecialMateriaGrupo" ToRole="ProyectoEspecial" />
           <NavigationProperty Name="Solicituds" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="ProyectoEspecialMateriaGrupo" ToRole="Solicitud" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="CodigoMoodle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -806,6 +812,8 @@
           <Property Name="CumpleRequisitosMinimos" Type="Boolean" />
           <Property Name="RankingIndice" Type="Int32" />
           <Property Name="CriterioRankingIndice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GrupoID1" Type="Int32" />
+          <Property Name="GrupoID2" Type="Int32" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -1319,6 +1327,8 @@
           <EntitySetMapping Name="ProyectoEspecialMateriaGrupoes">
             <EntityTypeMapping TypeName="ORBIPEModel.ProyectoEspecialMateriaGrupo">
               <MappingFragment StoreEntitySet="ProyectoEspecialMateriaGrupo">
+                <ScalarProperty Name="CodigoMoodle" ColumnName="CodigoMoodle" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
                 <ScalarProperty Name="MateriaDescripcion" ColumnName="MateriaDescripcion" />
                 <ScalarProperty Name="AprobacionCantidad" ColumnName="AprobacionCantidad" />
                 <ScalarProperty Name="AprobacionCupo" ColumnName="AprobacionCupo" />
@@ -1335,6 +1345,8 @@
           <EntitySetMapping Name="Solicituds">
             <EntityTypeMapping TypeName="ORBIPEModel.Solicitud">
               <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="GrupoID2" ColumnName="GrupoID2" />
+                <ScalarProperty Name="GrupoID1" ColumnName="GrupoID1" />
                 <ScalarProperty Name="CriterioRankingIndice" ColumnName="CriterioRankingIndice" />
                 <ScalarProperty Name="RankingIndice" ColumnName="RankingIndice" />
                 <ScalarProperty Name="CumpleRequisitosMinimos" ColumnName="CumpleRequisitosMinimos" />
