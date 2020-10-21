@@ -18,7 +18,7 @@
           </Key>
           <Property Name="GenericID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="GenericType" Type="varchar" MaxLength="20" Nullable="false" />
-          <Property Name="GenericDescription" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="GenericDescription" Type="varchar" MaxLength="500" Nullable="false" />
           <Property Name="LastLoginSessionID" Type="int" />
           <Property Name="LastUpdateDate" Type="date" />
           <Property Name="IsActive" Type="bit" Nullable="false" />
@@ -91,6 +91,8 @@
           <Property Name="AprobacionCupo" Type="int" Nullable="false" />
           <Property Name="AprobacionCantidad" Type="int" Nullable="false" />
           <Property Name="MateriaDescripcion" Type="varchar" MaxLength="500" />
+          <Property Name="EsActivo" Type="bit" Nullable="false" />
+          <Property Name="CodigoMoodle" Type="varchar" MaxLength="100" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -132,6 +134,11 @@
           <Property Name="LastUserUpdate" Type="datetime" />
           <Property Name="Genero" Type="varchar" MaxLength="1" />
           <Property Name="MJFormID" Type="int" />
+          <Property Name="CumpleRequisitosMinimos" Type="bit" />
+          <Property Name="RankingIndice" Type="int" />
+          <Property Name="CriterioRankingIndice" Type="varchar" MaxLength="100" />
+          <Property Name="GrupoID1" Type="int" />
+          <Property Name="GrupoID2" Type="int" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -367,7 +374,9 @@
         </Function>
         <Function Name="UspGetCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetNextSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
-        <Function Name="UspGetPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="Idperiodo" Type="int" Mode="In" />
+        </Function>
         <Function Name="UspInsertaMateriasGrupoJuventud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspMunicipiosPorProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
@@ -564,7 +573,9 @@
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="UsertTypeSystemAttribute" EntitySet="UsertTypeSystemAttributes" />
           </AssociationSet>
-          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" />
+          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" >
+            <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -679,7 +690,7 @@
           </Key>
           <Property Name="GenericID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="GenericType" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-          <Property Name="GenericDescription" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GenericDescription" Type="String" Nullable="false" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="LastLoginSessionID" Type="Int32" />
           <Property Name="LastUpdateDate" Type="DateTime" Precision="0" />
           <Property Name="IsActive" Type="Boolean" Nullable="false" />
@@ -757,6 +768,8 @@
           <Property Name="MateriaDescripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="ProyectoEspecial" Relationship="ORBIPEModel.FK_ProyectoEspecialMateriaGrupo_ProyectoEspecial" FromRole="ProyectoEspecialMateriaGrupo" ToRole="ProyectoEspecial" />
           <NavigationProperty Name="Solicituds" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="ProyectoEspecialMateriaGrupo" ToRole="Solicitud" />
+          <Property Name="EsActivo" Type="Boolean" Nullable="false" />
+          <Property Name="CodigoMoodle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -800,6 +813,11 @@
           <Property Name="MJFormID" Type="Int32" />
           <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
           <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
+          <Property Name="CumpleRequisitosMinimos" Type="Boolean" />
+          <Property Name="RankingIndice" Type="Int32" />
+          <Property Name="CriterioRankingIndice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="GrupoID1" Type="Int32" />
+          <Property Name="GrupoID2" Type="Int32" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -1313,6 +1331,8 @@
           <EntitySetMapping Name="ProyectoEspecialMateriaGrupoes">
             <EntityTypeMapping TypeName="ORBIPEModel.ProyectoEspecialMateriaGrupo">
               <MappingFragment StoreEntitySet="ProyectoEspecialMateriaGrupo">
+                <ScalarProperty Name="CodigoMoodle" ColumnName="CodigoMoodle" />
+                <ScalarProperty Name="EsActivo" ColumnName="EsActivo" />
                 <ScalarProperty Name="MateriaDescripcion" ColumnName="MateriaDescripcion" />
                 <ScalarProperty Name="AprobacionCantidad" ColumnName="AprobacionCantidad" />
                 <ScalarProperty Name="AprobacionCupo" ColumnName="AprobacionCupo" />
@@ -1329,6 +1349,11 @@
           <EntitySetMapping Name="Solicituds">
             <EntityTypeMapping TypeName="ORBIPEModel.Solicitud">
               <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="GrupoID2" ColumnName="GrupoID2" />
+                <ScalarProperty Name="GrupoID1" ColumnName="GrupoID1" />
+                <ScalarProperty Name="CriterioRankingIndice" ColumnName="CriterioRankingIndice" />
+                <ScalarProperty Name="RankingIndice" ColumnName="RankingIndice" />
+                <ScalarProperty Name="CumpleRequisitosMinimos" ColumnName="CumpleRequisitosMinimos" />
                 <ScalarProperty Name="MJFormID" ColumnName="MJFormID" />
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
                 <ScalarProperty Name="LastUserUpdate" ColumnName="LastUserUpdate" />

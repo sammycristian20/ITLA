@@ -88,15 +88,25 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardIntencionIngresos().ToList();
         }
 
-        public List<UspGetPeriodo_Result> GetUspGetPeriodo()
+        public List<UspGetPeriodo_Result> GetUspGetPeriodo(int periodo)
         {
-            return dbContext.UspGetPeriodo().ToList();
+            return dbContext.UspGetPeriodo(periodo).ToList();
         }
 
 
         public List<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXCarreraCuatrimestre(int periodo)
         {
             return dbContext.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo).ToList();
+        }
+
+        public List<UspReporteInscritosSeleccionCuatrimestre_Result> UspReporteInscritosSeleccionCuatrimestre(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionCuatrimestre(periodo).ToList();
+        }
+
+        public List<UspReporteInscritosSeleccionXFecha_Result> UspReporteInscritosSeleccionXFecha(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXFecha(periodo).ToList();
         }
 
 

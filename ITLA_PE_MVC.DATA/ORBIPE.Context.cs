@@ -216,9 +216,13 @@ namespace ITLA_PE_MVC.DATA
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardITLAJVGenero_Result>("UspGetDashboardITLAJVGenero");
         }
     
-        public virtual ObjectResult<UspGetPeriodo_Result> UspGetPeriodo()
+        public virtual ObjectResult<UspGetPeriodo_Result> UspGetPeriodo(Nullable<int> idperiodo)
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo");
+            var idperiodoParameter = idperiodo.HasValue ?
+                new ObjectParameter("Idperiodo", idperiodo) :
+                new ObjectParameter("Idperiodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo", idperiodoParameter);
         }
     }
 }
