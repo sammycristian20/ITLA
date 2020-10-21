@@ -131,11 +131,13 @@
 
     </div>
 
-    <table id="datatableCarreras" style="display: none">
+    <table id="datatableCarreras" >
         <thead>
             <tr>
-                <th>Provincia</th>
-                <th>Solicitudes</th>
+                <th>Carrera</th>
+                <th>Nuevo Ingreso</th>
+                <th>Viejos</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
@@ -159,60 +161,60 @@
     <script>
         $(document).ready(function () {
 
-            Highcharts.chart('containerIngresos', {
-                chart: {
-                    plotBackgroundColor: null,
-                    plotBorderWidth: 0,
-                    plotShadow: false
-                },
-                title: {
-                    text: '% de Nuevo <br/>vs Existentes',
-                    align: 'center',
-                    verticalAlign: 'middle',
-                    y: 60
-                },
-                tooltip: {
-                    pointFormat: '{series.name}: <b>{point.percentage:.1f}% + {point.x:.1f}</b>'
-                },
-                accessibility: {
-                    point: {
-                        valueSuffix: '%'
-                    }
-                },
-                plotOptions: {
-                    pie: {
-                        dataLabels: {
-                            enabled: true,
-                            distance: -50,
-                            style: {
-                                fontWeight: 'bold',
-                                color: 'white'
-                            }
-                        },
-                        startAngle: -90,
-                        endAngle: 90,
-                        center: ['50%', '75%'],
-                        size: '110%'
-                    }
-                },
-                series: [{
-                    type: 'pie',
-                    name: 'Browser share',
-                    innerSize: '50%',
-                    data: [
-                        ['Nuevo Ingreso', 689],
-                        ['Re-Inscripciones', 2667]
+            //Highcharts.chart('containerIngresos', {
+            //    chart: {
+            //        plotBackgroundColor: null,
+            //        plotBorderWidth: 0,
+            //        plotShadow: false
+            //    },
+            //    title: {
+            //        text: '% de Nuevo <br/>vs Existentes',
+            //        align: 'center',
+            //        verticalAlign: 'middle',
+            //        y: 60
+            //    },
+            //    tooltip: {
+            //        pointFormat: '{series.name}: <b>{point.percentage:.1f}% + {point.x:.1f}</b>'
+            //    },
+            //    accessibility: {
+            //        point: {
+            //            valueSuffix: '%'
+            //        }
+            //    },
+            //    plotOptions: {
+            //        pie: {
+            //            dataLabels: {
+            //                enabled: true,
+            //                distance: -50,
+            //                style: {
+            //                    fontWeight: 'bold',
+            //                    color: 'white'
+            //                }
+            //            },
+            //            startAngle: -90,
+            //            endAngle: 90,
+            //            center: ['50%', '75%'],
+            //            size: '110%'
+            //        }
+            //    },
+            //    series: [{
+            //        type: 'pie',
+            //        name: 'Browser share',
+            //        innerSize: '50%',
+            //        data: [
+            //            ['Nuevo Ingreso', 689],
+            //            ['Re-Inscripciones', 2667]
 
-                    ]
-                }]
-            });
+            //        ]
+            //    }]
+            //});
 
             Highcharts.chart('container', {
                 data: {
                     table: 'datatableCarreras'
                 },
                 chart: {
-                    type: 'pie'
+                    type: 'column'
                 },
                 title: {
                     text: 'Inscritos por carreras'

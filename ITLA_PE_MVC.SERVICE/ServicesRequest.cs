@@ -34,7 +34,11 @@ namespace ITLA_PE_MVC.SERVICE
                 var _ProyectoEspecialMateriaGrupoDesc2 = GetMateriasDisponibles().Where(p => p.ProyectoEspecialMateriaGrupoID == obj.ProyectoEspecialMateriaGrupoIDSegundaOpcion).FirstOrDefault().Materia;
                 var _StatusDesc = GenericItems("EstatusSolicitud").Where(p => p.GenericID == obj.GenericID_EstatusSolicitud).FirstOrDefault().GenericDescription;
                 var _ProvinciaDesc = GetProvinciasRD().Where(p => p.IDprovincia == obj.ProvinciaId).FirstOrDefault().ProvinciaNombre;
+
+                if (obj.DireccionidMunicipio.ToString() != "-1")
+                {
                 var _MunicipioDesc = GetMunicipiosPorProvincia(obj.ProvinciaId.Value).Where(p => p.IDmunicipio == obj.DireccionidMunicipio).FirstOrDefault().Municipio;
+                }
                 var Result = new ModelSolicituds
                 {
                     Nombres = obj.Apellidos,
@@ -63,7 +67,7 @@ namespace ITLA_PE_MVC.SERVICE
                     ProyectoEspecialMateriaGrupoDesc2 = _ProyectoEspecialMateriaGrupoDesc2,
                     StatusDesc = _StatusDesc,
                     ProvinciaDesc = _ProvinciaDesc,
-                    MunicipioDesc = _MunicipioDesc,
+                    //MunicipioDesc = _MunicipioDesc,
                     TieneInternet = obj.TieneInternet.Value,
                     TieneLaptopPc = obj.TieneLaptopPc.Value,
                     TieneSubsidio = obj.TieneSubsidio.Value
