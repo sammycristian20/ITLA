@@ -19,30 +19,28 @@ namespace ITLA_PE_PORTALADMIN
         {
             if (!IsPostBack)
             {
-               
+                //ESTA VARIABLE ES PARA CONTROLAR CUAL ES EL CICLO ACTUAL Y TENERLO COMO CICLO TOPE EN EL DROPDOWNLIST
+                int periodoActual = 172;
 
-                ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo();
+                ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo(periodoActual);
                 ddlPeriodo.DataTextField = "Periodo";
                 ddlPeriodo.DataValueField = "IDPeriodo";
                 ddlPeriodo.DataBind();
 
+                CargaInicial();
 
             }
         }
 
-      
-
-        protected void ddlPeriodo_SelectedIndexChanged(object sender, EventArgs e)
+        protected void CargaInicial()
         {
-            
-
             ITLA_PE_MVC.SERVICE.ServicesDashboard servicesDashboard = new ITLA_PE_MVC.SERVICE.ServicesDashboard();
 
             periodo = int.Parse(ddlPeriodo.SelectedValue);
 
             RepeaterCarreras.DataSource = servicesDashboard.UspReporteInscritosSeleccionXCarreraCuatrimestre(periodo);
             RepeaterCarreras.DataBind();
-                       
+
 
             RepeaterInscritos.DataSource = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
             RepeaterInscritos.DataBind();
@@ -57,19 +55,19 @@ namespace ITLA_PE_PORTALADMIN
             literalReinscritos.Text = total.Sum(a => a.Viejos).ToString();
             literalTotalInscritos.Text = total.Sum(set => set.Total1).ToString();
 
-            
-            
+
+
 
             double totalInscritos = (int)total.Sum(set => set.Total1);
             double reinscritos = (int)total.Sum(a => a.Viejos);
             int nuevos = (int)total.Sum(a => a.Nuevo_Ingreso);
 
 
-           
+
             CantNuevos = nuevos;
             CantViejos = reinscritos;
 
-            
+
 
 
             double porcientoReinscritos = Math.Round(reinscritos * 100 / totalInscritos);
@@ -77,6 +75,13 @@ namespace ITLA_PE_PORTALADMIN
 
             literalPorcientoReinscritos.Text = porcientoReinscritos.ToString();
             literalNuevos.Text = porcientoNuevos.ToString();
+        }
+
+        protected void ddlPeriodo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            CargaInicial();
+
+            
         }
     }
 }

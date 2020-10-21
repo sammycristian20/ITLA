@@ -88,9 +88,9 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardIntencionIngresos().ToList();
         }
 
-        public List<UspGetPeriodo_Result> GetUspGetPeriodo()
+        public List<UspGetPeriodo_Result> GetUspGetPeriodo(int periodo)
         {
-            return dbContext.UspGetPeriodo().ToList();
+            return dbContext.UspGetPeriodo(periodo).ToList();
         }
 
 

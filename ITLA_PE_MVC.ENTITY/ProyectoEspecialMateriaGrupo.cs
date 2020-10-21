@@ -30,6 +30,8 @@ namespace ITLA_PE_MVC.ENTITY
         public int AprobacionCupo { get; set; }
         public int AprobacionCantidad { get; set; }
         public string MateriaDescripcion { get; set; }
+        public bool EsActivo { get; set; }
+        public string CodigoMoodle { get; set; }
     
         public virtual ProyectoEspecial ProyectoEspecial { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
