@@ -88,11 +88,15 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardIntencionIngresos().ToList();
         }
 
+
+
+
+        //METODOS PARA QUE ALIMENTAN AL DASHBOARD HOME
+
         public List<UspGetPeriodo_Result> GetUspGetPeriodo(int periodo)
         {
             return dbContext.UspGetPeriodo(periodo).ToList();
         }
-
 
         public List<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXCarreraCuatrimestre(int periodo)
         {

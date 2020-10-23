@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CargaArchivosHorasMeet.aspx" />
     <Content Include="ClearSession.aspx" />
     <Content Include="Content\css\all.min.css" />
     <Content Include="Content\css\bootstrap-extended.min.css" />
@@ -124,6 +125,7 @@
     <Content Include="Content\images\4.jpg" />
     <Content Include="Content\images\background-t.png" />
     <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\comingsoon.jpg" />
     <Content Include="Content\images\Logo-ITLA.png" />
     <Content Include="Content\images\Logo-mInisterio-Juventud.png" />
     <Content Include="Content\images\profile-bg.jpg" />
@@ -297,6 +299,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CargaArchivosHorasMeet.aspx.cs">
+      <DependentUpon>CargaArchivosHorasMeet.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CargaArchivosHorasMeet.aspx.designer.cs">
+      <DependentUpon>CargaArchivosHorasMeet.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ClearSession.aspx.cs">
       <DependentUpon>ClearSession.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -391,6 +400,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="ArchivosMeet\" />
     <Folder Include="Content\font\" />
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />

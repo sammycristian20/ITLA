@@ -158,6 +158,12 @@
                                 <span data-i18n="nav.dash.main">Pre-Validación Juventud</span>
                             </a>
                         </li>
+                         <li class="dropdown nav-item btn-top-menu" >
+                            <a class="dropdown-toggle nav-link" href="CargaArchivosHorasMeet.aspx">
+                                <i class="icon-check"></i>
+                                <span data-i18n="nav.dash.main">Cargar Reporte Horas Google Meet</span>
+                            </a>
+                        </li>
                       <%-- <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
                             <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
                                 <i class="icon-badge"></i>
