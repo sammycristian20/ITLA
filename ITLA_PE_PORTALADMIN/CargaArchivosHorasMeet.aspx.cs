@@ -13,5 +13,28 @@ namespace ITLA_PE_PORTALADMIN
         {
 
         }
+
+        protected void btnSubir_Click(object sender, EventArgs e)
+        {
+            if (archivo.HasFile)
+            {
+                string extension = System.IO.Path.GetExtension(archivo.FileName);
+                extension = extension.ToLower();
+
+                if (extension == ".csv" || extension == ".xls" || extension == ".xlsx")
+                {
+                    archivo.SaveAs(Server.MapPath("~/ArchivosMeet/" + archivo.FileName));
+                    Response.Write("ARCHIVO CARGADO CON EXITO");
+                }
+                else
+                {
+                    Response.Write("DEBE SER UN ARCHIVOS CSV O XLS/XLSX");
+                }
+            }
+            else
+            {
+                Response.Write("SELECCIONE ARCHIVO A SUBIR");
+            }
+        }
     }
 }

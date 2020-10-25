@@ -3,9 +3,11 @@
   
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-     
-    <asp:FileUpload ID="FileUpload1" runat="server" /><br />
-    <asp:Button ID="btnSubir" runat="server" Text="Cargar Archivo" />
+ <div id="containerFileUpload" class="active">
+    <asp:FileUpload ID="archivo" runat="server" /><br />
+    <asp:Button ID="btnSubir" runat="server" Text="Cargar Archivo" OnClick="btnSubir_Click" />
+ </div>   
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
+   
 </asp:Content>
