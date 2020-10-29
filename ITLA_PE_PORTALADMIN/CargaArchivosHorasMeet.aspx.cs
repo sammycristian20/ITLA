@@ -19,7 +19,7 @@ namespace ITLA_PE_PORTALADMIN
 
         protected void btnSubir_Click(object sender, EventArgs e)
         {
-<<<<<<< HEAD
+
             if (FileUpload1.HasFile)
             {
                 string extension = Path.GetExtension(FileUpload1.FileName);
@@ -33,9 +33,9 @@ namespace ITLA_PE_PORTALADMIN
                         string nombreArchivo = Path.GetFileName(FileUpload1.FileName);
                         string ruta = Path.Combine(Server.MapPath("~/ArchivosMeet"), nombreArchivo);
 
-                      
+
                         FileUpload1.SaveAs(ruta);
-                        
+
                         string[] Lines = File.ReadAllLines(ruta);
                         string[] Fields;
 
@@ -93,8 +93,8 @@ namespace ITLA_PE_PORTALADMIN
                             // populate updated data 
                             // populateDatabaseData();
                             lblMensaje.Text = "ARCHIVO SUBIDO CON EXITO";
-                           
-                            
+
+
                         }
                     }
                     catch (Exception error)
@@ -104,32 +104,12 @@ namespace ITLA_PE_PORTALADMIN
                 }
                 else
                 {
-                    lblMensaje.Text= "DEBE SER UN ARCHIVO CSV O XLSX";
-=======
-            if (archivo.HasFile)
-            {
-                string extension = System.IO.Path.GetExtension(archivo.FileName);
-                extension = extension.ToLower();
+                    lblMensaje.Text = "DEBE SER UN ARCHIVO CSV O XLSX";
+                }
 
-                if (extension == ".csv" || extension == ".xls" || extension == ".xlsx")
-                {
-                    archivo.SaveAs(Server.MapPath("~/ArchivosMeet/" + archivo.FileName));
-                    Response.Write("ARCHIVO CARGADO CON EXITO");
-                }
-                else
-                {
-                    Response.Write("DEBE SER UN ARCHIVOS CSV O XLS/XLSX");
->>>>>>> 209fad149b9fe00b88d8c421bdd4f1868a31d14d
-                }
-            }
-            else
-            {
-<<<<<<< HEAD
-                lblMensaje.Text = "SELECCIONE ARCHIVO A SUBIR";
             }
         }
-
-       
+        
         //METODO QUE CONVIERTE LA CADENA DE LA FECHA A UNA CADENA FORMATEABLE
         protected string ProcesaFecha(string fecha)
         {
@@ -160,11 +140,7 @@ namespace ITLA_PE_PORTALADMIN
             return fecha;
         }
 
-       
-=======
-                Response.Write("SELECCIONE ARCHIVO A SUBIR");
-            }
-        }
->>>>>>> 209fad149b9fe00b88d8c421bdd4f1868a31d14d
     }
 }
+
+    
