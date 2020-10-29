@@ -8,6 +8,7 @@
     <asp:FileUpload ID="FileUpload1" runat="server" /><br />
     <asp:Button ID="btnSubir" runat="server" Text="Cargar Archivo" OnClick="btnSubir_Click"/><br />
     <asp:Label ID="lblMensaje" runat="server" Text="Label" ForeColor="Red"></asp:Label>
+    <asp:Label ID="lblPrueba" runat="server" Text="Label" ForeColor="Red"></asp:Label>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
   
