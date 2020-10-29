@@ -406,6 +406,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ITLA_PE_MVC.DATA\ITLA_PE_MVC.DATA.csproj">
+      <Project>{AAA56ED6-A422-4EB9-9822-A424AC2AD556}</Project>
+      <Name>ITLA_PE_MVC.DATA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITLA_PE_MVC.ENTITY\ITLA_PE_MVC.ENTITY.csproj">
       <Project>{d2802efd-1324-4572-b72e-bef2b3713755}</Project>
       <Name>ITLA_PE_MVC.ENTITY</Name>

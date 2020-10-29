@@ -70,6 +70,9 @@
     <Compile Include="LoginSession.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="MEETLOGDOCENTE.cs">
+      <DependentUpon>HorasLog.tt</DependentUpon>
+    </Compile>
     <Compile Include="MODELS\ModelIntencion.cs" />
     <Compile Include="MODELS\ModelSolicituds.cs" />
     <Compile Include="ORBIPE.cs">
@@ -181,6 +184,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HorasLog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HorasLog.cs</LastGenOutput>
+    </Content>
     <Content Include="ORBIPE.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ORBIPE.cs</LastGenOutput>
