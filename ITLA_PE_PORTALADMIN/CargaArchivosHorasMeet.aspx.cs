@@ -19,6 +19,7 @@ namespace ITLA_PE_PORTALADMIN
 
         protected void btnSubir_Click(object sender, EventArgs e)
         {
+<<<<<<< HEAD
             if (FileUpload1.HasFile)
             {
                 string extension = Path.GetExtension(FileUpload1.FileName);
@@ -104,10 +105,26 @@ namespace ITLA_PE_PORTALADMIN
                 else
                 {
                     lblMensaje.Text= "DEBE SER UN ARCHIVO CSV O XLSX";
+=======
+            if (archivo.HasFile)
+            {
+                string extension = System.IO.Path.GetExtension(archivo.FileName);
+                extension = extension.ToLower();
+
+                if (extension == ".csv" || extension == ".xls" || extension == ".xlsx")
+                {
+                    archivo.SaveAs(Server.MapPath("~/ArchivosMeet/" + archivo.FileName));
+                    Response.Write("ARCHIVO CARGADO CON EXITO");
+                }
+                else
+                {
+                    Response.Write("DEBE SER UN ARCHIVOS CSV O XLS/XLSX");
+>>>>>>> 209fad149b9fe00b88d8c421bdd4f1868a31d14d
                 }
             }
             else
             {
+<<<<<<< HEAD
                 lblMensaje.Text = "SELECCIONE ARCHIVO A SUBIR";
             }
         }
@@ -144,5 +161,10 @@ namespace ITLA_PE_PORTALADMIN
         }
 
        
+=======
+                Response.Write("SELECCIONE ARCHIVO A SUBIR");
+            }
+        }
+>>>>>>> 209fad149b9fe00b88d8c421bdd4f1868a31d14d
     }
 }
