@@ -9,15 +9,15 @@
 
 namespace ITLA_PE_MVC.DATA
 {
+    using ITLA_PE_MVC.ENTITY;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
-
     
-    public partial class HorasLogEntities : DbContext
+    public partial class HorasLogEntities2 : DbContext
     {
-        public HorasLogEntities()
-            : base("name=HorasLogEntities")
+        public HorasLogEntities2()
+            : base("name=HorasLogEntities2")
         {
         }
     
@@ -26,6 +26,6 @@ namespace ITLA_PE_MVC.DATA
             throw new UnintentionalCodeFirstException();
         }
     
-        public virtual DbSet<MEETLOGDOCENTE> MEETLOGDOCENTEs { get; set; }
+        public virtual DbSet<MeetLogDocente> MeetLogDocentes { get; set; }
     }
 }

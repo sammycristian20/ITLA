@@ -58,18 +58,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>HorasLog.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="HorasLog.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HorasLog.tt</DependentUpon>
-    </Compile>
     <Compile Include="HorasLog.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HorasLog.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="MEETLOGDOCENTE.cs">
-      <DependentUpon>HorasLog.tt</DependentUpon>
     </Compile>
     <Compile Include="ORBIPE.Context.cs">
       <AutoGen>True</AutoGen>
@@ -106,11 +98,6 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>HorasLog.edmx</DependentUpon>
       <LastGenOutput>HorasLog.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="HorasLog.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>HorasLog.edmx</DependentUpon>
-      <LastGenOutput>HorasLog.cs</LastGenOutput>
     </Content>
     <Content Include="ORBIPE.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

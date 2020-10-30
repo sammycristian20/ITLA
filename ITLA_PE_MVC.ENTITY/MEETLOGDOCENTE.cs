@@ -12,9 +12,9 @@ namespace ITLA_PE_MVC.ENTITY
     using System;
     using System.Collections.Generic;
     
-    public partial class MEETLOGDOCENTE
+    public partial class MeetLogDocente
     {
-        public int IdRegistro { get; set; }
+        public int Id { get; set; }
         public string Fecha { get; set; }
         public string Nombre_evento { get; set; }
         public string Descripcion_evento { get; set; }

@@ -4,8 +4,8 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="be6606c41a314ca6ad6c0e5bef90b7ba" Name="Diagram1" ZoomLevel="54">
-        <EntityTypeShape EntityType="HorasLogModel.MEETLOGDOCENTE" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
+      <Diagram DiagramId="2e46f5896a6747659cef8ac443e5f4a8" Name="Diagram1">
+        <EntityTypeShape EntityType="HorasLogModel.MeetLogDocente" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
