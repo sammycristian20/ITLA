@@ -26,7 +26,7 @@ namespace ITLA_PE_PORTALADMIN
                 string extension = Path.GetExtension(FileUpload1.FileName);
                 extension = extension.ToLower();
 
-                if (extension == ".csv" || extension == ".xlsx")
+                if (extension == ".csv")
                 {
 
                     try
@@ -40,29 +40,29 @@ namespace ITLA_PE_PORTALADMIN
                         string[] Lines = File.ReadAllLines(ruta);
                         string[] Fields;
 
-                        //Quitar la linea encabezado
-                        //  Lines = Lines.Skip(1).ToArray();
+                        //Quitar la linea encabezado. 
+                        //  Lines = Lines.Skip(1).ToArray(); [DECOMENTAR ESTA LINEA CUANDO SE VAYA A SUBIR A PRODUCCION]
                         List<MeetLogDocente> emList = new List<MeetLogDocente>();
 
 
                         foreach (var line in Lines)
                         {
-                            Fields = line.Split(new char[] { ',' });
+                            Fields = line.Split(new char[] { ',' }); //SEPARA LOS CAMPOS
                             emList.Add(
                                 new MeetLogDocente
                                 {
                                     //IdRegistro = ProcesaFecha(Fields[0].Replace("\"", "")).ToString()+Fields[4].Replace("\"", ""),
-                                    Fecha = ProcesaFecha(Fields[0].Replace("\"", "")).ToString(),
-                                    Codigo_reunion = Fields[3].Replace("\"", ""),
-                                    Identificador_participante = Fields[4].Replace("\"", ""),
-                                    Correoelectronico_organizador = Fields[7].Replace("\"", ""),
-                                    Duracion = Convert.ToInt32((Fields[9].Replace("\"", ""))),
-                                    Nombre_participante = Fields[11].Replace("\"", ""),
-                                    Direccion_IP = Fields[12].Replace("\"", ""),
-                                    Ciudad = Fields[13].Replace("\"", ""),
-                                    Pais = Fields[14].Replace("\"", ""),
-                                    ID_evento_calendario = Fields[26].Replace("\"", ""),
-                                    ID_conferencia = Fields[27].Replace("\"", ""),
+                                    Fecha = ProcesaFecha(Fields[0]).ToString(),
+                                    Codigo_reunion = Fields[3],
+                                    Identificador_participante = Fields[4],
+                                    Correoelectronico_organizador = Fields[7],
+                                    Duracion = Convert.ToInt32(Fields[9]),
+                                    Nombre_participante = Fields[11],
+                                    Direccion_IP = Fields[12],
+                                    Ciudad = Fields[13],
+                                    Pais = Fields[14],
+                                    ID_evento_calendario = Fields[26],
+                                    ID_conferencia = Fields[27],
 
                                 });
 
@@ -95,7 +95,7 @@ namespace ITLA_PE_PORTALADMIN
                 }
                 else
                 {
-                    lblMensaje.Text = "DEBE SER UN ARCHIVO CSV O XLSX";
+                    lblMensaje.Text = "DEBE SER UN ARCHIVO EN FORMATO CSV";
                 }
                
             }
