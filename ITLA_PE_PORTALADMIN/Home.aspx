@@ -7,7 +7,7 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <link href="Content/css/colors.css" rel="stylesheet" />
-    <link href="Content/css/bootstrap-extended.min.css" rel="stylesheet" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Content here -->

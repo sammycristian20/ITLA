@@ -4,15 +4,18 @@
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="Content/css/colors.css" rel="stylesheet" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
+   <!-- Content here -->
+    <!-- Content here -->
     <div class="row mt-3">
         <!-- Column -->
         <div class="col col-lg-12 col-xlg-12 col-md-12">
             <!-- Column -->
             <div class="card">
                 <div class="container-fluid">
-
                     <div class="row">
                         <div class="col col-lg-12">
                             <section id="inputs" class="text-center">
@@ -125,9 +128,8 @@
                 </div>
             </div>
         </div>
-    </div>
 
-     <table id="datatable" style="display: none">
+         <table id="datatable" style="display: none">
         <thead>
             <tr>
                 <th>Materia</th>
@@ -232,6 +234,10 @@
     </table>
 
 
+    </div>
+    
+    
+    
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
