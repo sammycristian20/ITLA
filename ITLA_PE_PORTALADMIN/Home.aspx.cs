@@ -58,6 +58,7 @@ namespace ITLA_PE_PORTALADMIN
 
 
 
+            
             double totalInscritos = (int)total.Sum(set => set.Total1);
             double reinscritos = (int)total.Sum(a => a.Viejos);
             int nuevos = (int)total.Sum(a => a.Nuevo_Ingreso);

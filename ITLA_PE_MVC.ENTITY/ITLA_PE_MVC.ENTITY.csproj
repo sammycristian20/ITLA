@@ -64,11 +64,19 @@
     <Compile Include="GetMateriasDisponibles_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="HorasLog.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HorasLog.tt</DependentUpon>
+    </Compile>
     <Compile Include="Intencion.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="LoginSession.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MeetLogDocente.cs">
+      <DependentUpon>HorasLog.tt</DependentUpon>
     </Compile>
     <Compile Include="MODELS\ModelIntencion.cs" />
     <Compile Include="MODELS\ModelSolicituds.cs" />
@@ -181,6 +189,10 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HorasLog.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>HorasLog.cs</LastGenOutput>
+    </Content>
     <Content Include="ORBIPE.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ORBIPE.cs</LastGenOutput>

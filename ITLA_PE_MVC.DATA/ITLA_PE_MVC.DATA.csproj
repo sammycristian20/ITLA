@@ -53,6 +53,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="HorasLog.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HorasLog.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="HorasLog.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HorasLog.edmx</DependentUpon>
+    </Compile>
     <Compile Include="ORBIPE.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -71,12 +81,24 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>ORBIPE.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <EntityDeploy Include="HorasLog.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>HorasLog.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="HorasLog.edmx.diagram">
+      <DependentUpon>HorasLog.edmx</DependentUpon>
+    </None>
     <None Include="ORBIPE.edmx.diagram">
       <DependentUpon>ORBIPE.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="HorasLog.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>HorasLog.edmx</DependentUpon>
+      <LastGenOutput>HorasLog.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="ORBIPE.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>ORBIPE.edmx</DependentUpon>
