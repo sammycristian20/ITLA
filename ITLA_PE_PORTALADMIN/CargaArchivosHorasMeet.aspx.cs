@@ -42,58 +42,80 @@ namespace ITLA_PE_PORTALADMIN
                         string[] Fields;
 
                         //Quitar la linea encabezado. 
-                          Lines = Lines.Skip(1).ToArray(); 
+                        Lines = Lines.Skip(1).ToArray();
                         List<MeetLogDocente> registros = new List<MeetLogDocente>();
 
 
                         foreach (var line in Lines)
                         {
                             Fields = line.Split(new char[] { ',' }); //SEPARA LOS CAMPOS
-                            registros.Add(
-                                new MeetLogDocente
-                                {
-                                   
-                                    Fecha = ProcesaFecha(Fields[0]).ToString(),
-                                    Codigo_reunion = Fields[3],
-                                    Identificador_participante = Fields[4],
-                                    Correoelectronico_organizador = Fields[7],
-                                    Duracion = Convert.ToInt32(Fields[9]),
-                                    Nombre_participante = Fields[11],
-                                    Direccion_IP = Fields[12],
-                                    Ciudad = Fields[13],
-                                    Pais = Fields[14],
-                                    ID_evento_calendario = Fields[26],
-                                    ID_conferencia = Fields[27],
+                            
+                            //VALIDANDO QUE SI HAY UN REGISTRO DUPLICADO EN EL CSV NO SE AGREGUE A LA LISTA (HAY CASOS ASI)
+                            if (!registros.Any(x => x.Fecha == ProcesaFecha(Fields[0]).ToString()))
+                            {
 
-                                });
+                                registros.Add(
+                                    new MeetLogDocente
+                                    {
 
-                        }
-                        
+                                        Fecha = ProcesaFecha(Fields[0]).ToString(),
+                                        Codigo_reunion = Fields[3],
+                                        Identificador_participante = Fields[4],
+                                        Correoelectronico_organizador = Fields[7],
+                                        Duracion = Convert.ToInt32(Fields[9]),
+                                        Nombre_participante = Fields[11],
+                                        Direccion_IP = Fields[12],
+                                        Ciudad = Fields[13],
+                                        Pais = Fields[14],
+                                        ID_evento_calendario = Fields[26],
+                                        ID_conferencia = Fields[27],
+
+                                    });
+
+                            IEnumerable<string> date = registros.Select(x=>x.Fecha);
+                            }                     
+
+                         }
+                 
+                       
+                       
                         //Carga la data en la BD
                         using (HorasLogEntities2 db = new HorasLogEntities2())
                         {
+
+                            StringBuilder st = new StringBuilder();
                            //Variables que contienen los resultados de 
                            //una Consulta a los registros existentes en la BD para compararlos con los registros del CSV
                             var fecha = from a in db.MeetLogDocentes
-                                        select a;
+                                        select a.Fecha;
                             var idPart = from a in db.MeetLogDocentes
-                                         select a;
+                                         select a.Identificador_participante;
 
-                                                        
-                          
-                            foreach (var i in registros)
-                            {
-                                if (!idPart.Any(x => x.Equals(i.Identificador_participante)) && !fecha.Any(x=>x.Equals(i.Fecha)))
+
+                           foreach (var i in registros)
+                           {
+                                if (!fecha.Any(x => x.Equals(i.Fecha)))
                                 {
-                                   db.MeetLogDocentes.Add(i);
-                                      
+                                    if (!idPart.Any(x => x.Equals(i.Identificador_participante)))
+                                    {
+                                        db.MeetLogDocentes.Add(i);
+                                    }
+                                    else
+                                    {
+                                        db.MeetLogDocentes.Add(i);
+                                        //st.AppendLine("Registro duplicado");
+                                    }
                                 }
+                                else if ((!idPart.Any(x => x.Equals(i.Identificador_participante))))
+                                {
+                                    db.MeetLogDocentes.Add(i);
+                                }
+
+
                             }
+                       
                             db.SaveChanges();
-                                                              
                             lblMensaje.Text = "ARCHIVO SUBIDO CON EXITO";
-
-
                         }
                     }
                     catch (Exception error)
