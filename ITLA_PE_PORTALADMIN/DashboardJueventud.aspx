@@ -5,10 +5,14 @@
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+    <link href="Content/css/colors.css" rel="stylesheet" />
+    
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
 
 
+   <!-- Content here -->
+    <!-- Content here -->
     <div class="row mt-3">
         <!-- Column -->
         <div class="col col-lg-12 col-xlg-12 col-md-12">
