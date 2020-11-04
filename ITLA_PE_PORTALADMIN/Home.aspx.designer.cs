@@ -7,11 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ITLA_PE_PORTALADMIN {
-    
-    
-    public partial class Home {
-        
+namespace ITLA_PE_PORTALADMIN
+{
+
+
+    public partial class Home
+    {
+
         /// <summary>
         /// ddlPeriodo control.
         /// </summary>
@@ -20,7 +22,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.DropDownList ddlPeriodo;
-        
+
         /// <summary>
         /// literalNuevoIngreso control.
         /// </summary>
@@ -29,7 +31,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalNuevoIngreso;
-        
+
         /// <summary>
         /// literalNuevos control.
         /// </summary>
@@ -38,7 +40,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalNuevos;
-        
+
         /// <summary>
         /// literalReinscritos control.
         /// </summary>
@@ -47,7 +49,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalReinscritos;
-        
+
         /// <summary>
         /// literalPorcientoReinscritos control.
         /// </summary>
@@ -56,7 +58,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalPorcientoReinscritos;
-        
+
         /// <summary>
         /// literalTotalInscritos control.
         /// </summary>
@@ -65,7 +67,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal literalTotalInscritos;
-        
+
         /// <summary>
         /// RepeaterCarreras control.
         /// </summary>
@@ -74,7 +76,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterCarreras;
-        
+
         /// <summary>
         /// RepeaterInscritos control.
         /// </summary>
@@ -83,7 +85,7 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterInscritos;
-        
+
         /// <summary>
         /// RepeaterFechas control.
         /// </summary>
@@ -92,5 +94,50 @@ namespace ITLA_PE_PORTALADMIN {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Repeater RepeaterFechas;
+
+        /// <summary>
+        /// RepeaterPais control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterPais;
+
+        /// <summary>
+        /// RepeaterProvincia control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterProvincia;
+
+        /// <summary>
+        /// RepeaterGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterGenero;
+
+        /// <summary>
+        /// RepeaterGeneroNuevosViejos control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterGeneroNuevosViejos;
+
+        /// <summary>
+        /// RepeaterCarreraGenero control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterCarreraGenero;
     }
 }

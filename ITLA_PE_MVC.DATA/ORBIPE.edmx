@@ -139,6 +139,8 @@
           <Property Name="CriterioRankingIndice" Type="varchar" MaxLength="100" />
           <Property Name="GrupoID1" Type="int" />
           <Property Name="GrupoID2" Type="int" />
+          <Property Name="UsuarioID" Type="int" />
+          <Property Name="EstudianteID" Type="int" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -403,6 +405,21 @@
         <Function Name="UspReporteInscritosSeleccionXFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXPaisCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
         <Function Name="Reporte_Inscritos_Seleccion_Cuatrimestre_Any" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
@@ -574,7 +591,22 @@
             <End Role="UsertTypeSystemAttribute" EntitySet="UsertTypeSystemAttributes" />
           </AssociationSet>
           <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" >
-            <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+          <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXPaisCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXPaisCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
@@ -818,6 +850,8 @@
           <Property Name="CriterioRankingIndice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="GrupoID1" Type="Int32" />
           <Property Name="GrupoID2" Type="Int32" />
+          <Property Name="UsuarioID" Type="Int32" />
+          <Property Name="EstudianteID" Type="Int32" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -1062,6 +1096,30 @@
         <ComplexType Name="UspGetPeriodo_Result">
           <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
           <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroCuatrimestre_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Masculino" Nullable="true" />
+          <Property Type="Int32" Name="Femenino" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXPaisCuatrimestre_Result">
+          <Property Type="String" Name="Pais" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1349,6 +1407,8 @@
           <EntitySetMapping Name="Solicituds">
             <EntityTypeMapping TypeName="ORBIPEModel.Solicitud">
               <MappingFragment StoreEntitySet="Solicitud">
+                <ScalarProperty Name="EstudianteID" ColumnName="EstudianteID" />
+                <ScalarProperty Name="UsuarioID" ColumnName="UsuarioID" />
                 <ScalarProperty Name="GrupoID2" ColumnName="GrupoID2" />
                 <ScalarProperty Name="GrupoID1" ColumnName="GrupoID1" />
                 <ScalarProperty Name="CriterioRankingIndice" ColumnName="CriterioRankingIndice" />
@@ -1514,6 +1574,50 @@
               <ComplexTypeMapping TypeName="ORBIPEModel.UspGetPeriodo_Result">
                 <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
                 <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroCuatrimestre_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Masculino" ColumnName="Masculino" />
+                <ScalarProperty Name="Femenino" ColumnName="Femenino" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXPaisCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXPaisCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXPaisCuatrimestre_Result">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXProvinciaCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXProvinciaCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

@@ -187,6 +187,21 @@
     <Compile Include="UspReporteInscritosSeleccionXFecha_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXGeneroCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXPaisCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="HorasLog.tt">

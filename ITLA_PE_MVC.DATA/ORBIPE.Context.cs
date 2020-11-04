@@ -224,5 +224,50 @@ namespace ITLA_PE_MVC.DATA
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo", idperiodoParameter);
         }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXPaisCuatrimestre_Result> UspReporteInscritosSeleccionXPaisCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXPaisCuatrimestre_Result>("UspReporteInscritosSeleccionXPaisCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result> UspReporteInscritosSeleccionXProvinciaCuatrimestre(Nullable<int> idPeriodo)
+        {
+            var idPeriodoParameter = idPeriodo.HasValue ?
+                new ObjectParameter("idPeriodo", idPeriodo) :
+                new ObjectParameter("idPeriodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result>("UspReporteInscritosSeleccionXProvinciaCuatrimestre", idPeriodoParameter);
+        }
     }
 }

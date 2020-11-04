@@ -11,7 +11,7 @@ namespace ITLA_PE_MVC.SERVICE
 {
     public class ServicesDashboard
     {
-        ITLA_PE_MVC.DATA.ORBIPEEntities dbContext = null;
+        ORBIPEEntities dbContext = null;
 
         public ServicesDashboard()
         {
@@ -113,7 +113,29 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspReporteInscritosSeleccionXFecha(periodo).ToList();
         }
 
+        public List<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result> UspReporteInscritosSeleccionXGenero(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXGeneroCuatrimestre(periodo).ToList();
+        }
 
+        public List<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroNuevosViejos(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre(periodo).ToList();
+        }
 
+        public List<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroYCarrera(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre(periodo).ToList();
+        }
+
+        public List<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result> UspReporteInscritosSeleccionXProvincia(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXProvinciaCuatrimestre(periodo).ToList();
+        }
+
+        public List<UspReporteInscritosSeleccionXPaisCuatrimestre_Result> UspReporteInscritosSeleccionXPais(int periodo)
+        {
+            return dbContext.UspReporteInscritosSeleccionXPaisCuatrimestre(periodo).ToList();
+        }
     }
 }

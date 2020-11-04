@@ -1,6 +1,5 @@
 ﻿using ITLA_PE_MVC.DATA;
 using ITLA_PE_MVC.ENTITY;
-//using ITLA_PE_MVC.ENTITY;
 using System;
 using System.Collections.Generic;
 using System.IO;
@@ -9,6 +8,8 @@ using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Threading;
+
 
 namespace ITLA_PE_PORTALADMIN
 {
@@ -21,7 +22,7 @@ namespace ITLA_PE_PORTALADMIN
 
         protected void btnSubir_Click(object sender, EventArgs e)
         {
-            
+            Thread.Sleep(3000);
             if (FileUpload1.HasFile)
             {
                 string extension = Path.GetExtension(FileUpload1.FileName);
@@ -72,7 +73,7 @@ namespace ITLA_PE_PORTALADMIN
 
                                     });
 
-                            IEnumerable<string> date = registros.Select(x=>x.Fecha);
+                            //IEnumerable<string> date = registros.Select(x=>x.Fecha);
                             }                     
 
                          }
@@ -129,6 +130,7 @@ namespace ITLA_PE_PORTALADMIN
                 }
                
             }
+            
         }
         //METODO QUE CONVIERTE LA CADENA DE LA FECHA A UNA CADENA FORMATEABLE
         protected DateTime ProcesaFecha(string fecha)

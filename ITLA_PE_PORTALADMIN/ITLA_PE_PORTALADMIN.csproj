@@ -101,6 +101,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CargaArchivosHorasMeet.aspx" />
     <Content Include="ClearSession.aspx" />
     <Content Include="Content\css\all.min.css" />
     <Content Include="Content\css\bootstrap-extended.min.css" />
@@ -127,6 +128,7 @@
     <Content Include="Content\images\4.jpg" />
     <Content Include="Content\images\background-t.png" />
     <Content Include="Content\images\background.png" />
+    <Content Include="Content\images\loading.gif" />
     <Content Include="Content\images\Logo-ITLA.png" />
     <Content Include="Content\images\Logo-mInisterio-Juventud.png" />
     <Content Include="Content\images\profile-bg.jpg" />
@@ -305,6 +307,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="CargaArchivosHorasMeet.aspx.cs">
+      <DependentUpon>CargaArchivosHorasMeet.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="CargaArchivosHorasMeet.aspx.designer.cs">
+      <DependentUpon>CargaArchivosHorasMeet.aspx</DependentUpon>
+    </Compile>
     <Compile Include="ClearSession.aspx.cs">
       <DependentUpon>ClearSession.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -419,6 +427,10 @@
     <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ITLA_PE_MVC.DATA\ITLA_PE_MVC.DATA.csproj">
+      <Project>{aaa56ed6-a422-4eb9-9822-a424ac2ad556}</Project>
+      <Name>ITLA_PE_MVC.DATA</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ITLA_PE_MVC.ENTITY\ITLA_PE_MVC.ENTITY.csproj">
       <Project>{d2802efd-1324-4572-b72e-bef2b3713755}</Project>
       <Name>ITLA_PE_MVC.ENTITY</Name>

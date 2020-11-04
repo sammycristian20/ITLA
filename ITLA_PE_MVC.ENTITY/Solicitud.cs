@@ -61,6 +61,8 @@ namespace ITLA_PE_MVC.ENTITY
         public string CriterioRankingIndice { get; set; }
         public Nullable<int> GrupoID1 { get; set; }
         public Nullable<int> GrupoID2 { get; set; }
+        public Nullable<int> UsuarioID { get; set; }
+        public Nullable<int> EstudianteID { get; set; }
     
         public virtual ProyectoEspecialMateriaGrupo ProyectoEspecialMateriaGrupo { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

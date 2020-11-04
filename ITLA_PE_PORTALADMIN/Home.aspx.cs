@@ -15,6 +15,9 @@ namespace ITLA_PE_PORTALADMIN
         public double CantNuevos { get; set; }
         public double CantViejos { get; set; }
 
+        public double cantMasculino { get; set; }
+        public double cantFemenino { get; set; }
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -42,14 +45,43 @@ namespace ITLA_PE_PORTALADMIN
             RepeaterCarreras.DataBind();
 
 
-            RepeaterInscritos.DataSource = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
+            var total = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
+            RepeaterInscritos.DataSource = total;
             RepeaterInscritos.DataBind();
+            
+
+
 
             RepeaterFechas.DataSource = servicesDashboard.UspReporteInscritosSeleccionXFecha(periodo);
             RepeaterFechas.DataBind();
 
+            
+            var totalGenero = servicesDashboard.UspReporteInscritosSeleccionXGenero(periodo);
+            RepeaterGenero.DataSource = totalGenero;
+            RepeaterGenero.DataBind();
 
-            var total = servicesDashboard.UspReporteInscritosSeleccionCuatrimestre(periodo);
+            cantMasculino = (int)totalGenero.Max(a=>a.Total);
+            cantFemenino = (int)totalGenero.Min(a=>a.Total);
+
+            //string masc = (totalGenero.First().ToString());
+           // string fem = (totalGenero.Last().ToString());
+
+          //  cantMasculino = int.Parse(masc);
+         //   cantFemenino = int.Parse(fem);
+
+            RepeaterGeneroNuevosViejos.DataSource = servicesDashboard.UspReporteInscritosSeleccionXGeneroNuevosViejos(periodo);
+            RepeaterGeneroNuevosViejos.DataBind();
+
+            RepeaterCarreraGenero.DataSource = servicesDashboard.UspReporteInscritosSeleccionXGeneroYCarrera(periodo);
+            RepeaterCarreraGenero.DataBind();
+
+            RepeaterProvincia.DataSource = servicesDashboard.UspReporteInscritosSeleccionXProvincia(periodo);
+            RepeaterProvincia.DataBind();
+
+            RepeaterPais.DataSource = servicesDashboard.UspReporteInscritosSeleccionXPais(periodo);
+            RepeaterPais.DataBind();
+
+
 
             literalNuevoIngreso.Text = total.Sum(a => a.Nuevo_Ingreso).ToString();
             literalReinscritos.Text = total.Sum(a => a.Viejos).ToString();
@@ -57,25 +89,21 @@ namespace ITLA_PE_PORTALADMIN
 
 
 
-
-            
             double totalInscritos = (int)total.Sum(set => set.Total1);
-            double reinscritos = (int)total.Sum(a => a.Viejos);
-            int nuevos = (int)total.Sum(a => a.Nuevo_Ingreso);
+            CantViejos = (int)total.Sum(a => a.Viejos);
+            CantNuevos = (int)total.Sum(a => a.Nuevo_Ingreso);
 
-
-
-            CantNuevos = nuevos;
-            CantViejos = reinscritos;
-
-
-
-
-            double porcientoReinscritos = Math.Round(reinscritos * 100 / totalInscritos);
-            double porcientoNuevos = Math.Round(nuevos * 100 / totalInscritos);
+                                 
+            
+            double porcientoReinscritos = Math.Round(CantViejos * 100 / totalInscritos);
+            double porcientoNuevos = Math.Round(CantNuevos * 100 / totalInscritos);
 
             literalPorcientoReinscritos.Text = porcientoReinscritos.ToString();
             literalNuevos.Text = porcientoNuevos.ToString();
+
+
+
+
         }
 
         protected void ddlPeriodo_SelectedIndexChanged(object sender, EventArgs e)
