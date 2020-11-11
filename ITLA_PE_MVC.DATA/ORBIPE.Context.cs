@@ -44,6 +44,7 @@ namespace ITLA_PE_MVC.DATA
         public virtual DbSet<UserLog> UserLogs { get; set; }
         public virtual DbSet<UsertTypeSystemAttribute> UsertTypeSystemAttributes { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
+        public virtual DbSet<MeetLogDocente> MeetLogDocentes { get; set; }
     
         public virtual ObjectResult<GetMateriasDisponibles_Result> GetMateriasDisponibles()
         {
@@ -225,49 +226,50 @@ namespace ITLA_PE_MVC.DATA
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetPeriodo_Result>("UspGetPeriodo", idperiodoParameter);
         }
     
-        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroCuatrimestre(Nullable<int> idPeriodo)
+        public virtual ObjectResult<UspGetDashboardIntencionEducacion_Result> UspGetDashboardIntencionEducacion()
         {
-            var idPeriodoParameter = idPeriodo.HasValue ?
-                new ObjectParameter("idPeriodo", idPeriodo) :
-                new ObjectParameter("idPeriodo", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroCuatrimestre", idPeriodoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionEducacion_Result>("UspGetDashboardIntencionEducacion");
         }
     
-        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre(Nullable<int> idPeriodo)
+        public virtual ObjectResult<UspGetDashboardIntencionINTERNET_Result> UspGetDashboardIntencionINTERNET()
         {
-            var idPeriodoParameter = idPeriodo.HasValue ?
-                new ObjectParameter("idPeriodo", idPeriodo) :
-                new ObjectParameter("idPeriodo", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre", idPeriodoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionINTERNET_Result>("UspGetDashboardIntencionINTERNET");
         }
     
-        public virtual ObjectResult<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre(Nullable<int> idPeriodo)
+        public virtual ObjectResult<UspGetDashboardIntencionPC_Result> UspGetDashboardIntencionPC()
         {
-            var idPeriodoParameter = idPeriodo.HasValue ?
-                new ObjectParameter("idPeriodo", idPeriodo) :
-                new ObjectParameter("idPeriodo", typeof(int));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result>("UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre", idPeriodoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardIntencionPC_Result>("UspGetDashboardIntencionPC");
         }
     
-        public virtual ObjectResult<UspReporteInscritosSeleccionXPaisCuatrimestre_Result> UspReporteInscritosSeleccionXPaisCuatrimestre(Nullable<int> idPeriodo)
+        public virtual ObjectResult<UspReporteIntencion_Result> UspReporteIntencion(Nullable<System.DateTime> dateFROM, Nullable<System.DateTime> dateTo)
         {
-            var idPeriodoParameter = idPeriodo.HasValue ?
-                new ObjectParameter("idPeriodo", idPeriodo) :
-                new ObjectParameter("idPeriodo", typeof(int));
+            var dateFROMParameter = dateFROM.HasValue ?
+                new ObjectParameter("DateFROM", dateFROM) :
+                new ObjectParameter("DateFROM", typeof(System.DateTime));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXPaisCuatrimestre_Result>("UspReporteInscritosSeleccionXPaisCuatrimestre", idPeriodoParameter);
+            var dateToParameter = dateTo.HasValue ?
+                new ObjectParameter("DateTo", dateTo) :
+                new ObjectParameter("DateTo", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteIntencion_Result>("UspReporteIntencion", dateFROMParameter, dateToParameter);
         }
     
-        public virtual ObjectResult<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result> UspReporteInscritosSeleccionXProvinciaCuatrimestre(Nullable<int> idPeriodo)
+        public virtual ObjectResult<DashboardGeneroPorPeriodo_Result> DashboardGeneroPorPeriodo(Nullable<int> iDperiodo)
         {
-            var idPeriodoParameter = idPeriodo.HasValue ?
-                new ObjectParameter("idPeriodo", idPeriodo) :
-                new ObjectParameter("idPeriodo", typeof(int));
+            var iDperiodoParameter = iDperiodo.HasValue ?
+                new ObjectParameter("IDperiodo", iDperiodo) :
+                new ObjectParameter("IDperiodo", typeof(int));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result>("UspReporteInscritosSeleccionXProvinciaCuatrimestre", idPeriodoParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DashboardGeneroPorPeriodo_Result>("DashboardGeneroPorPeriodo", iDperiodoParameter);
+        }
+    
+        public virtual ObjectResult<DashboardRangoEdadPorPeriodo_Result> DashboardRangoEdadPorPeriodo(Nullable<int> iDperiodo)
+        {
+            var iDperiodoParameter = iDperiodo.HasValue ?
+                new ObjectParameter("IDperiodo", iDperiodo) :
+                new ObjectParameter("IDperiodo", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DashboardRangoEdadPorPeriodo_Result>("DashboardRangoEdadPorPeriodo", iDperiodoParameter);
         }
     }
 }

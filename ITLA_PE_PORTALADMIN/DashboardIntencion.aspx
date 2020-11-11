@@ -1,14 +1,15 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/SiteMain.Master" AutoEventWireup="true" CodeBehind="DashboardIntencion.aspx.cs" Inherits="ITLA_PE_PORTALADMIN.DashboardIntencion" %>
+
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-     <script src="https://code.highcharts.com/highcharts.js"></script>
+    <script src="https://code.highcharts.com/highcharts.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <script src="https://code.highcharts.com/modules/exporting.js"></script>
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <link href="Content/css/colors.css" rel="stylesheet" />
-    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
-   <!-- Content here -->
+    <!-- Content here -->
     <!-- Content here -->
     <div class="row mt-3">
         <!-- Column -->
@@ -52,7 +53,8 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs text-white text-uppercase mb-1">Total Gran Santo Domingo</div>
-                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalTotalSolicitudesGS" runat="server"></asp:Literal></div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalTotalSolicitudesGS" runat="server"></asp:Literal></div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-inbox fa-2x text-white"></i>
@@ -68,7 +70,8 @@
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
                                                         <div class="text-xs text-white text-uppercase mb-1">Total El Interior</div>
-                                                        <div class="h3 mb-0 font-weight-bold text-white"><asp:Literal ID="literalNOGS" runat="server"></asp:Literal></div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalNOGS" runat="server"></asp:Literal></div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-sign-out-alt fa-2x text-white"></i>
@@ -78,7 +81,7 @@
                                         </div>
                                     </div>
 
-                                   
+
                                 </div>
                                 <div class="row">
                                     <div class="col-lg-6">
@@ -120,7 +123,33 @@
                                         </div>
                                     </div>
                                 </div>
-                                 
+
+                                
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerPC"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerInternet"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                      <div class="col-lg-4">
+                                        <div class="row">
+                                            <div class="col-12">
+                                                <div id="containerEducacion"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
 
                             </section>
                         </div>
@@ -129,115 +158,178 @@
             </div>
         </div>
 
-         <table id="datatable" style="display: none">
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterMaterias" runat="server">
-                <ItemTemplate>
-                    <tr>
-                        <th><%# Eval("Materia") %></th>
-                        <td><%# Eval("Cantidad") %></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+        <table id="datatable" style="display: none">
+            <thead>
+                <tr>
+                    <th>Materia</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterMaterias" runat="server">
+                    <ItemTemplate>
+                        <tr>
+                            <th><%# Eval("Materia") %></th>
+                            <td><%# Eval("Cantidad") %></td>
+                        </tr>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
-    <table id="datatableProvincia" style="display: none">
-        <thead>
-            <tr>
-                <th>Provincia</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterProvincias" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
+        <table id="datatableProvincia" style="display: none">
+            <thead>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterProvincias" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
                     <tr>
                         <th><%# Eval("Provincia") %></th>
                         <td><%# Eval("Cantidad") %></td>
                     </tr>
                 </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
-    
-    <table id="datatableDia" style="display: none">
-        <thead>
-            <tr>
-                <th>Dia</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterDia" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
+
+        <table id="datatableDia" style="display: none">
+            <thead>
+                <tr>
+                    <th>Dia</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterDia" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
                     <tr>
                         <th><%# Eval("Fecha") %></th>
                         <td><%# Eval("Cantidad") %></td>
                     </tr>
                 </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
-      <table id="datatableEdad" style="display: none">
-        <thead>
-            <tr>
-                <th>Provincia</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterEdad" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
+        <table id="datatableEdad" style="display: none">
+            <thead>
+                <tr>
+                    <th>Provincia</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterEdad" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
                     <tr>
                         <th><%# Eval("Provincia") %></th>
                         <td><%# Eval("Cantidad") %></td>
                     </tr>
                 </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
-     <table id="datatableIngresos" style="display: none">
-        <thead>
-            <tr>
-                <th>Rango de Ingresos</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterIngresos" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
+        <table id="datatableIngresos" style="display: none">
+            <thead>
+                <tr>
+                    <th>Rango de Ingresos</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterIngresos" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
                     <tr>
                         <th><%# Eval("Ingresos") %></th>
                         <td><%# Eval("Cantidad") %></td>
                     </tr>
                 </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
+
+        <table id="datatableInternet" style="display: none">
+            <thead>
+                <tr>
+                    <th>PC</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterInternet" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
+                    <tr>
+                        <th><%# Eval("TieneInternet") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </itemtemplate>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
+
+        <table id="datatablePC" style="display: none">
+            <thead>
+                <tr>
+                    <th>PC</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterPC" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
+                    <tr>
+                        <th><%# Eval("TienePC") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </itemtemplate>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
+
+        <table id="datatableEducacion" style="display: none">
+            <thead>
+                <tr>
+                    <th>PC</th>
+                    <th>Solicitudes</th>
+                </tr>
+            </thead>
+            <tbody>
+                <asp:Repeater ID="RepeaterEducacion" runat="server">
+                    <ItemTemplate>
+                        <itemtemplate>
+                    <tr>
+                        <th><%# Eval("NivelAcademico") %></th>
+                        <td><%# Eval("Cantidad") %></td>
+                    </tr>
+                </itemtemplate>
+                    </ItemTemplate>
+                </asp:Repeater>
+            </tbody>
+        </table>
 
 
     </div>
-    
-    
-    
+
+
+
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="ContentPlaceHolder2" runat="server">
 
@@ -400,7 +492,7 @@
                 }
             }
         });
-        
+
 
         Highcharts.chart('containerProvincia2', {
             data: {
@@ -460,6 +552,157 @@
             },
             title: {
                 text: 'Solicitudes por Rango de Ingresos'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+        Highcharts.chart('containerPC', {
+            data: {
+                table: 'datatablePC'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes - ¿Tiene PC o Laptop?'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+        Highcharts.chart('containerEducacion', {
+            data: {
+                table: 'datatableEducacion'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes Nivel Educativo'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Solicitudes',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                pie: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+
+        Highcharts.chart('containerInternet', {
+            data: {
+                table: 'datatableInternet'
+            },
+            chart: {
+                type: 'pie'
+            },
+            title: {
+                text: 'Solicitudes - ¿Tiene Internet?'
             },
             yAxis: {
                 min: 0,

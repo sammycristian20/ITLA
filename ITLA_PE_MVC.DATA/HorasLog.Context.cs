@@ -9,7 +9,6 @@
 
 namespace ITLA_PE_MVC.DATA
 {
-    using ITLA_PE_MVC.ENTITY;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;

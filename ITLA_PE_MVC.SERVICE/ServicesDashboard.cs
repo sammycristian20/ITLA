@@ -11,7 +11,7 @@ namespace ITLA_PE_MVC.SERVICE
 {
     public class ServicesDashboard
     {
-        ORBIPEEntities dbContext = null;
+        ITLA_PE_MVC.DATA.ORBIPEEntities dbContext = null;
 
         public ServicesDashboard()
         {
@@ -90,6 +90,23 @@ namespace ITLA_PE_MVC.SERVICE
 
 
 
+        public List<UspGetDashboardIntencionINTERNET_Result> UspGetDashboardIntencionINTERNET()
+        {
+            return dbContext.UspGetDashboardIntencionINTERNET().ToList();
+        }
+
+        public List<UspGetDashboardIntencionPC_Result> UspGetDashboardIntencionPC()
+        {
+            return dbContext.UspGetDashboardIntencionPC().ToList();
+        }
+
+
+        public List<UspGetDashboardIntencionEducacion_Result> UspGetDashboardIntencionEducacion()
+        {
+            return dbContext.UspGetDashboardIntencionEducacion().ToList();
+        }
+
+
 
         //METODOS PARA QUE ALIMENTAN AL DASHBOARD HOME
 
@@ -113,29 +130,17 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspReporteInscritosSeleccionXFecha(periodo).ToList();
         }
 
-        public List<UspReporteInscritosSeleccionXGeneroCuatrimestre_Result> UspReporteInscritosSeleccionXGenero(int periodo)
+        public List<DashboardGeneroPorPeriodo_Result> DashboardGeneroPorPeriodo(int periodo)
         {
-            return dbContext.UspReporteInscritosSeleccionXGeneroCuatrimestre(periodo).ToList();
+            return dbContext.DashboardGeneroPorPeriodo(periodo).ToList();
         }
 
-        public List<UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroNuevosViejos(int periodo)
+        public List<DashboardRangoEdadPorPeriodo_Result> DashboardRangoEdadPorPeriodo(int periodo)
         {
-            return dbContext.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre(periodo).ToList();
+            return dbContext.DashboardRangoEdadPorPeriodo(periodo).ToList();
         }
 
-        public List<UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXGeneroYCarrera(int periodo)
-        {
-            return dbContext.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre(periodo).ToList();
-        }
 
-        public List<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result> UspReporteInscritosSeleccionXProvincia(int periodo)
-        {
-            return dbContext.UspReporteInscritosSeleccionXProvinciaCuatrimestre(periodo).ToList();
-        }
 
-        public List<UspReporteInscritosSeleccionXPaisCuatrimestre_Result> UspReporteInscritosSeleccionXPais(int periodo)
-        {
-            return dbContext.UspReporteInscritosSeleccionXPaisCuatrimestre(periodo).ToList();
-        }
     }
 }

@@ -55,6 +55,12 @@
     <Compile Include="Area.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="DashboardGeneroPorPeriodo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardRangoEdadPorPeriodo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="Generic.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
@@ -64,11 +70,6 @@
     <Compile Include="GetMateriasDisponibles_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="HorasLog.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HorasLog.tt</DependentUpon>
-    </Compile>
     <Compile Include="Intencion.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
@@ -76,7 +77,7 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="MeetLogDocente.cs">
-      <DependentUpon>HorasLog.tt</DependentUpon>
+      <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="MODELS\ModelIntencion.cs" />
     <Compile Include="MODELS\ModelSolicituds.cs" />
@@ -139,7 +140,16 @@
     <Compile Include="UspGetDashboardIntencionEdad_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardIntencionEducacion_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetDashboardIntencionIngresos_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardIntencionINTERNET_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardIntencionPC_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspGetDashboardIntencionProvincia_Result.cs">
@@ -187,27 +197,11 @@
     <Compile Include="UspReporteInscritosSeleccionXFecha_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="UspReporteInscritosSeleccionXGeneroCuatrimestre_Result.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UspReporteInscritosSeleccionXPaisCuatrimestre_Result.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result.cs">
+    <Compile Include="UspReporteIntencion_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="HorasLog.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>HorasLog.cs</LastGenOutput>
-    </Content>
     <Content Include="ORBIPE.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ORBIPE.cs</LastGenOutput>

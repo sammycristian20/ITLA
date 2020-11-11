@@ -31,6 +31,7 @@
         <AssociationConnector Association="ORBIPEModel.FK_UserLog_User" />
         <AssociationConnector Association="ORBIPEModel.FK_UserLog_UserAction" />
         <AssociationConnector Association="ORBIPEModel.FK_UsertTypeSystemAttribute_UserType" />
+        <EntityTypeShape EntityType="ORBIPEModel.MeetLogDocente" Width="1.5" PointX="3.375" PointY="12.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

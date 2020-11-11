@@ -7,7 +7,7 @@
     <script src="https://code.highcharts.com/modules/accessibility.js"></script>
     <script src="https://code.highcharts.com/modules/data.js"></script>
     <link href="Content/css/colors.css" rel="stylesheet" />
-    
+
 </asp:Content>
 <asp:Content ID="Content2" ContentPlaceHolderID="ContentPlaceHolder1" runat="server">
     <!-- Content here -->
@@ -110,51 +110,28 @@
                                 <div class="row">
                                     <div class="col-lg-8">
                                         <div id="containerCarreras">
-                                          
                                         </div>
                                     </div>
                                     <div class="col-lg-4">
                                         <div id="containerInscritos"></div>
                                     </div>
-
                                 </div>
-                                <div class="row">
-                                    <div class="col-lg-6">
-                                        <div id="containerGenero">
-                                          
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6">
-                                        <div id="containerGeneroNuevosViejos"></div>
-                                    </div>
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                        <div id="containerCarreraGenero"></div>
-                                    </div>
-                                </div>
-
-                                 <div class="row">
-                                    <div class="col-lg-6">
-                                        <div id="containerPais">
-                                          
-                                        </div>
-                                    </div>
-                                   
-
-                                </div>
-                                <div class="row">
-                                    <div class="col-lg-12">
-                                            <div id="containerProvincia"></div>
-                                    </div>
-                                </div>    
-
                                 <div class="row">
                                     <div class="col-lg-12">
                                         <div id="containerFecha"></div>
                                     </div>
                                 </div>
+
+                                <div class="row">
+                                    <div class="col-lg-6">
+                                        <div id="containerEdad">
+                                        </div>
+                                    </div>
+                                    <div class="col-lg-6">
+                                        <div id="containerGenero"></div>
+                                    </div>
+                                </div>
+
 
                             </section>
                         </div>
@@ -196,13 +173,13 @@
 
     </table>
 
-    <table id="datatableInscritos" style="display:none">
+    <table id="datatableInscritos" style="display: none">
         <thead>
             <tr>
-               <th>Carreras</th>
+                <th>Carreras</th>
                 <th>Nuevo Ingreso</th>
                 <th>Reinscritos</th>
-               <th>Total</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
@@ -245,60 +222,36 @@
                 </ItemTemplate>
             </asp:Repeater>
         </tbody>
-</table>
-
-        <table id="datatablePais" style="display: normal">
-        <thead>
-            <tr>
-                <th>Pais</th>
-                <th>Cantidad</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterPais" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
-                        <tr>
-                            <th><%# Eval("Pais") %></th>
-                            <td><%# Eval("Cantidad") %></td>
-                            
-                        </tr>
-                    </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
-
-        <table id="datatableProvincia" style="display: normal">
-        <thead>
-            <tr>
-                <th>Provincia</th>
-                <th>Cantidad</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterProvincia" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
-                        <tr>
-                            <th><%# Eval("Provincia") %></th>
-                            <td><%# Eval("Cantidad") %></td>
-                            
-                        </tr>
-                    </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-
 
     </table>
 
-    <table id="datatableGenero" style="display:normal">
+    <table id="datatableEdad" style="display: none">
         <thead>
             <tr>
-                <th>Genero</th>
+                <th>Edad</th>
                 <th>Total</th>
-                
+            </tr>
+        </thead>
+        <tbody>
+            <asp:Repeater ID="RepeaterEdad" runat="server">
+                <ItemTemplate>
+                    <itemtemplate>
+                        <tr>
+                            <th><%# Eval("Descripcion") %></th>
+                            <td><%# Eval("Cantidad") %></td>
+                        </tr>
+                    </itemtemplate>
+                </ItemTemplate>
+            </asp:Repeater>
+        </tbody>
+
+    </table>
+
+    <table id="datatableGenero" style="display: none">
+        <thead>
+            <tr>
+                <th>Edad</th>
+                <th>Total</th>
             </tr>
         </thead>
         <tbody>
@@ -306,8 +259,8 @@
                 <ItemTemplate>
                     <itemtemplate>
                         <tr>
-                            <td><%# Eval("Genero") %></td>
-                            <td><%# Eval("Total") %></td>      
+                            <th><%# Eval("Genero") %></th>
+                            <td><%# Eval("Cantidad") %></td>
                         </tr>
                     </itemtemplate>
                 </ItemTemplate>
@@ -316,57 +269,6 @@
 
     </table>
 
-    <table id="datatableGeneroNuevosViejos" style="display:normal">
-        <thead>
-            <tr>
-                <th>Carreras</th>
-                <th>Nuevo Ingreso</th>
-                <th>Reinscritos</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterGeneroNuevosViejos" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
-                        <tr>
-                            <td><%# Eval("Genero") %></td>
-                            <td><%# Eval("NuevoIngreso") %></td>
-                   -        <td><%# Eval("Viejos") %></td>
-                            <td><%# Eval("Total") %></td>
-                        </tr>
-                    </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-
-    </table>
-
-    <table id="datatableCarreraGenero" style="display:normal">
-        <thead>
-            <tr>
-                <th>Carreras</th>
-                <th>Masculino</th>
-                <th>Femenino</th>
-                <th>Total</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterCarreraGenero" runat="server">
-                <ItemTemplate>
-                    <itemtemplate>
-                        <tr>
-                            <td><%# Eval("Carrera") %></td>
-                            <td><%# Eval("Masculino") %></td>
-                            <td><%# Eval("Femenino") %></td>
-                            <td><%# Eval("Total") %></td>
-                        </tr>
-                    </itemtemplate>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-
-    </table>
 
 
 </asp:Content>
@@ -374,259 +276,8 @@
 
 
     <script>
-        let nuevos = parseInt("<% = this.CantNuevos%>");
-        let viejos = parseInt("<% = this.CantViejos%>");
-
-        let masculino = parseInt("<% = this.cantMasculino%>");
-        let femenino = parseInt("<% = this.cantFemenino%>");
-
-        Highcharts.chart('containerProvincia', {
-            data: {
-                table: 'datatableProvincia'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Inscritos por Provincia'
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Cantidad',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' '
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-
-        Highcharts.chart('containerPais', {
-            data: {
-                table: 'datatablePais'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Inscritos por pais de origen'
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Cantidad',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' '
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-
-
-        Highcharts.chart('containerCarreraGenero', {
-            data: {
-                table: 'datatableCarreraGenero'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Distribución de Género por carreras'
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Cantidad',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' '
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-
-        Highcharts.chart('containerGeneroNuevosViejos', {
-            data: {
-                table: 'datatableGeneroNuevosViejos'
-            },
-            chart: {
-                type: 'column'
-            },
-            title: {
-                text: 'Distribución de Género por tipo de ingreso'
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Cantidad',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' '
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        });
-
-
-
-        Highcharts.chart('containerGenero', {
-            chart: {
-                plotBackgroundColor: null,
-                plotBorderWidth: null,
-                plotShadow: false,
-                type: 'pie'
-            },
-            title: {
-                text: 'Masculino / Femenino'
-            },
-            tooltip: {
-                pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-            },
-            accessibility: {
-                point: {
-                    valueSuffix: '%'
-                }
-            },
-            plotOptions: {
-                pie: {
-                    allowPointSelect: true,
-                    cursor: 'pointer',
-                    dataLabels: {
-                        enabled: true,
-                        format: '<b>{point.name}</b>: {point.percentage:.1f} %'
-                    }
-                }
-            },
-            series: [{
-                name: 'Brands',
-                colorByPoint: true,
-                data: [{
-                    name: 'Masculino',
-                    y: masculino,
-                    sliced: true,
-                    selected: true
-                }, {
-                        name: 'Femenino',
-                        y: femenino
-                }]
-            }]
-        });
-
-
+        let nuevos = parseInt("<%= this.CantNuevos%>");
+        let viejos = parseInt("<%= this.CantViejos%>");
 
 
         Highcharts.chart('containerCarreras', {
@@ -668,7 +319,7 @@
                 floating: true,
                 borderWidth: 1,
                 backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
                 shadow: true
             },
             tooltip: {
@@ -716,8 +367,8 @@
                     sliced: true,
                     selected: true
                 }, {
-                        name: 'Nuevos',
-                        y: nuevos
+                    name: 'Nuevos',
+                    y: nuevos
                 }]
             }]
         });
@@ -763,7 +414,115 @@
                 floating: true,
                 borderWidth: 1,
                 backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+
+        Highcharts.chart('containerEdad', {
+            data: {
+                table: 'datatableEdad'
+            },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Inscritos por Edad'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+                shadow: true
+            },
+            tooltip: {
+                formatter: function () {
+                    return '<b>' + this.series.name + '</b><br/>' +
+                        this.point.y + ' ' + this.point.name.toLowerCase();
+                }
+            }
+        });
+
+
+        Highcharts.chart('containerGenero', {
+            data: {
+                table: 'datatableGenero'
+            },
+            chart: {
+                plotBackgroundColor: null,
+                plotBorderWidth: null,
+                plotShadow: false,
+                type: 'pie'
+            },
+            title: {
+                text: 'Inscritos por Genero'
+            },
+            yAxis: {
+                min: 0,
+                title: {
+                    text: 'Cantidad',
+                    align: 'high'
+                },
+                labels: {
+                    overflow: 'justify'
+                }
+            },
+            tooltip: {
+                valueSuffix: ' '
+            },
+            plotOptions: {
+                column: {
+                    dataLabels: {
+                        enabled: true
+                    }
+                }
+            },
+            legend: {
+                layout: 'vertical',
+                align: 'right',
+                verticalAlign: 'top',
+                x: -40,
+                y: 80,
+                floating: true,
+                borderWidth: 1,
+                backgroundColor:
+                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
                 shadow: true
             },
             tooltip: {
@@ -776,11 +535,8 @@
 
 
 
-          
-
-
     </script>
 
 
-   
+
 </asp:Content>

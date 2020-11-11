@@ -43,9 +43,14 @@ namespace ITLA_PE_PORTALADMIN
                 RepeaterIngresos.DataSource = servicesDashboard.GetUspGetDashboardIntencionIngresos();
                 RepeaterIngresos.DataBind();
 
-               
+                RepeaterPC.DataSource = servicesDashboard.UspGetDashboardIntencionPC();
+                RepeaterPC.DataBind();
 
+                RepeaterInternet.DataSource = servicesDashboard.UspGetDashboardIntencionINTERNET();
+                RepeaterInternet.DataBind();
 
+                RepeaterEducacion.DataSource = servicesDashboard.UspGetDashboardIntencionEducacion();
+                RepeaterEducacion.DataBind();
 
 
             }

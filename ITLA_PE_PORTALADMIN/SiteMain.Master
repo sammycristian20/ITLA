@@ -85,7 +85,7 @@
                         <!-- include ../../../includes/mixins-->
                         <ul class="nav navbar-nav" id="main-menu-navigation" data-menu="menu-navigation">
                             <li class="dropdown nav-item btn-top-menu">
-                                <a class="dropdown-toggle nav-link" href="Home.aspx">
+                                <a class="dropdown-toggle nav-link" href="/Home.aspx">
                                     <i class="icon-home"></i>
                                     <span data-i18n="nav.dash.main">Inicio</span>
                                 </a>
@@ -124,6 +124,7 @@
                                         <ul class="dropdown-menu">
                                             <li data-menu="">
                                                 <a class="dropdown-item" href="/DashboardIntencion.aspx">Dashboard Solicitudes</a>
+                                                <a class="dropdown-item" href="/Reporte/ReporteDetalleIntencion.aspx">Reporte Solicitudes</a>
                                             </li>                                            
                                         </ul>
                                     </li>

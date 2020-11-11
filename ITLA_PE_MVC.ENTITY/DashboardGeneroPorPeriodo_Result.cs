@@ -11,9 +11,9 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class UspReporteInscritosSeleccionXPaisCuatrimestre_Result
+    public partial class DashboardGeneroPorPeriodo_Result
     {
-        public string Pais { get; set; }
+        public string Genero { get; set; }
         public Nullable<int> Cantidad { get; set; }
     }
 }

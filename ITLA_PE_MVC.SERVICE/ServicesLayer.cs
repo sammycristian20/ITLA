@@ -10,6 +10,7 @@ namespace ITLA_PE_MVC.SERVICE
     {
         ServicioJuventudADM servicioJuventudADM = null;
         ServicesDashboard servicesDashboard = null;
+        ServiceReport serviceReport = null;
         public ServicioJuventudADM ServicioJuventudADM
         {
             get
@@ -32,6 +33,16 @@ namespace ITLA_PE_MVC.SERVICE
             }
         }
 
+        public ServiceReport ServiceReport
+        {
+            get
+            {
+                if (serviceReport == null)
+                    serviceReport = new ServiceReport();
+
+                return serviceReport;
+            }
+        }
 
     }
 }
