@@ -99,7 +99,8 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li data-menu="">
-                                        <a class="dropdown-item" href="/Home.aspx">Dashbaord Inscripción</a>
+                                        <a class="dropdown-item" href="/DashboardAdmision.aspx">Dashbaord Admisión</a>
+                                        <%--<a class="dropdown-item" href="/Home.aspx">Dashbaord Inscripción</a>--%>
                                     </li>
                                 </ul>
                             </li>
@@ -111,9 +112,9 @@
                                         Permanente</span>
                                 </a>
                             </li>
-                      
 
-                              <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
+
+                            <li class="dropdown nav-item btn-top-menu" data-menu="dropdown">
                                 <a class="dropdown-toggle nav-link" href="index.html" data-toggle="dropdown">
                                     <i class="icon-shuffle"></i>
                                     <span data-i18n="nav.dash.main">Extensión</span>
@@ -125,7 +126,7 @@
                                             <li data-menu="">
                                                 <a class="dropdown-item" href="/DashboardIntencion.aspx">Dashboard Solicitudes</a>
                                                 <a class="dropdown-item" href="/Reporte/ReporteDetalleIntencion.aspx">Reporte Solicitudes</a>
-                                            </li>                                            
+                                            </li>
                                         </ul>
                                     </li>
 

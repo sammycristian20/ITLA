@@ -262,6 +262,7 @@
     <Content Include="Content\Login\js\solid.js" />
     <Content Include="Content\Login\js\vendors.min.js" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="DashboardAdmision.aspx" />
     <Content Include="DashboardIntencion.aspx" />
     <Content Include="DashboardJueventud.aspx" />
     <Content Include="Global.asax" />
@@ -368,6 +369,13 @@
     </Compile>
     <Compile Include="ClearSession.aspx.designer.cs">
       <DependentUpon>ClearSession.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="DashboardAdmision.aspx.cs">
+      <DependentUpon>DashboardAdmision.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardAdmision.aspx.designer.cs">
+      <DependentUpon>DashboardAdmision.aspx</DependentUpon>
     </Compile>
     <Compile Include="DashboardIntencion.aspx.cs">
       <DependentUpon>DashboardIntencion.aspx</DependentUpon>

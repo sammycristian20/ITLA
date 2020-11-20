@@ -141,6 +141,65 @@ namespace ITLA_PE_MVC.SERVICE
         }
 
 
+        /////
+        ///
+        
 
+        public List<UspGetDashboardAdmisionInfo_Result> GetDashboardAdmisionInfo()
+        {
+            return dbContext.UspGetDashboardAdmisionInfo().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionCarrera_Result> UspGetDashboardAdmisionCarrera()
+        {
+            return dbContext.UspGetDashboardAdmisionCarrera().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionProvincia_Result> UspGetDashboardAdmisionProvincia()
+        {
+            return dbContext.UspGetDashboardAdmisionProvincia().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionGenero_Result> GetDashboardAdmisionGenero()
+        {
+            return dbContext.UspGetDashboardAdmisionGenero().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionFecha_Result> UspGetDashboardAdmisionFecha()
+        {
+            return dbContext.UspGetDashboardAdmisionFecha().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionEdad_Result> UspGetDashboardAdmisionEdad()
+        {
+            return dbContext.UspGetDashboardAdmisionEdad().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionTanda_Result> UspGetDashboardAdmisionTanda()
+        {
+            return dbContext.UspGetDashboardAdmisionTanda().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionCosteo_Result> GetDashboardAdmisionCosteo()
+        {
+            return dbContext.UspGetDashboardAdmisionCosteo().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionPeriodoIngreso_Result> GetDashboardAdmisionPeriodoIngreso()
+        {
+            return dbContext.UspGetDashboardAdmisionPeriodoIngreso().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionIngresos_Result> GetDashboardAdmisionIngresos()
+        {
+            return dbContext.UspGetDashboardAdmisionIngresos().ToList();
+        }
+
+        public List<UspGetDashboardAdmisionTipoSolicitud_Result> GetDashboardAdmisionTipoSolicitud()
+        {
+            return dbContext.UspGetDashboardAdmisionTipoSolicitud().ToList();
+        }
+        
+        ///////
     }
 }

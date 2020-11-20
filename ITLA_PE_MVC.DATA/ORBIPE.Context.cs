@@ -271,5 +271,60 @@ namespace ITLA_PE_MVC.DATA
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DashboardRangoEdadPorPeriodo_Result>("DashboardRangoEdadPorPeriodo", iDperiodoParameter);
         }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionCarrera_Result> UspGetDashboardAdmisionCarrera()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionCarrera_Result>("UspGetDashboardAdmisionCarrera");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionCosteo_Result> UspGetDashboardAdmisionCosteo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionCosteo_Result>("UspGetDashboardAdmisionCosteo");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionEdad_Result> UspGetDashboardAdmisionEdad()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionEdad_Result>("UspGetDashboardAdmisionEdad");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionFecha_Result> UspGetDashboardAdmisionFecha()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionFecha_Result>("UspGetDashboardAdmisionFecha");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionGenero_Result> UspGetDashboardAdmisionGenero()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionGenero_Result>("UspGetDashboardAdmisionGenero");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionInfo_Result> UspGetDashboardAdmisionInfo()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionInfo_Result>("UspGetDashboardAdmisionInfo");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionIngresos_Result> UspGetDashboardAdmisionIngresos()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionIngresos_Result>("UspGetDashboardAdmisionIngresos");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionPeriodoIngreso_Result> UspGetDashboardAdmisionPeriodoIngreso()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionPeriodoIngreso_Result>("UspGetDashboardAdmisionPeriodoIngreso");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionProvincia_Result> UspGetDashboardAdmisionProvincia()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionProvincia_Result>("UspGetDashboardAdmisionProvincia");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionTanda_Result> UspGetDashboardAdmisionTanda()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionTanda_Result>("UspGetDashboardAdmisionTanda");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionTipoSolicitud_Result> UspGetDashboardAdmisionTipoSolicitud()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionTipoSolicitud_Result>("UspGetDashboardAdmisionTipoSolicitud");
+        }
     }
 }

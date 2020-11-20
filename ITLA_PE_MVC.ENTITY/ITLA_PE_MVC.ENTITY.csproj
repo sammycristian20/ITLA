@@ -131,6 +131,39 @@
     <Compile Include="UspGetCarrera_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardAdmisionCarrera_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionCosteo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionEdad_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionFecha_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionGenero_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionInfo_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionIngresos_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionPeriodoIngreso_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionProvincia_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionTanda_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionTipoSolicitud_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetDashboardIntencionArea_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>

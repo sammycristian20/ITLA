@@ -154,76 +154,6 @@
           <Property Name="LocalFile" Type="varchar" MaxLength="1000" />
           <Property Name="WebURL" Type="varchar" MaxLength="500" />
         </EntityType>
-        <EntityType Name="MeetLogDocentes">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="Fecha" Type="nvarchar" MaxLength="50" Nullable="false" />
-          <Property Name="Nombre_evento" Type="nvarchar" MaxLength="500" />
-          <Property Name="Descripcion_evento" Type="nvarchar" MaxLength="500" />
-          <Property Name="Codigo_reunion" Type="nvarchar" MaxLength="500" />
-          <Property Name="Identificador_participante" Type="nvarchar" MaxLength="100" Nullable="false" />
-          <Property Name="Participante_ajeno_organizacion" Type="nvarchar" MaxLength="500" />
-          <Property Name="Tipo_cliente" Type="nvarchar" MaxLength="500" />
-          <Property Name="Correoelectronico_organizador" Type="nvarchar" MaxLength="500" />
-          <Property Name="Tipo_producto" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion" Type="int" />
-          <Property Name="Valoracion_llamada" Type="nvarchar" MaxLength="500" />
-          <Property Name="Nombre_participante" Type="nvarchar" MaxLength="500" />
-          <Property Name="Direccion_IP" Type="nvarchar" MaxLength="500" />
-          <Property Name="Ciudad" Type="nvarchar" MaxLength="500" />
-          <Property Name="Pais" Type="nvarchar" MaxLength="500" />
-          <Property Name="Tiempo_medio_ida_vuelta_red" Type="int" />
-          <Property Name="Protocolo_transporte" Type="nvarchar" MaxLength="500" />
-          <Property Name="Ancho_banda_subida" Type="nvarchar" MaxLength="500" />
-          <Property Name="Ancho_banda_descarga" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_maxima_paquetes_audio_recibido" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_audio_recibido" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_recepcion_audio" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_tasa_bits_audio_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_maxima_paquetes_audio_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_audio_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_envio_audio" Type="nvarchar" MaxLength="500" />
-          <Property Name="ID_evento_calendario" Type="nvarchar" MaxLength="500" />
-          <Property Name="ID_conferencia" Type="nvarchar" MaxLength="500" />
-          <Property Name="Fluctuacion_media_recepcion_red" Type="int" />
-          <Property Name="Maxima_fluctuacion_recepcion_red" Type="int" />
-          <Property Name="Fluctuacion_media_envio_red" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_tasa_bits_capturas_pantalla_video_recibidas" Type="int" />
-          <Property Name="Promedio_otogramas_capturas_pantalla_vídeo_recibidas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_largo_capturas_pantalla_video_recibidas" Type="int" />
-          <Property Name="Perdida_maxima_paquetes__capturas_pantalla_video_recibidas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_capturas_pantalla_video_recibidas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_recepcion_capturas_pantalla_video" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_corto_capturas_de_pantalla_video_recibidas" Type="int" />
-          <Property Name="Promedio_capturas_pantalla_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_fotogramas_pantalla_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_lado_largo_capturas_pantalla_de_video" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_maxima_paquetes_capturas_de_pantalla_de_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_capturas_pantalla_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_capturas_pantalla_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_corto_capturas_pantalla_video_enviadas" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_fotogramas_video_recibido" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_largo_video_recibido" Type="int" />
-          <Property Name="Perdida_maxima_paquetes_video_recibido" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_video_recibido" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_recepcion_video" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_corto_video_recibido" Type="int" />
-          <Property Name="Indice_congestion_red" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_tasa_bits_video_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Promedio_fotogramas_video_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_largo_video_enviado" Type="int" />
-          <Property Name="Perdida_maxima_paquetes_video_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Perdida_media_paquetes_video_enviado" Type="nvarchar" MaxLength="500" />
-          <Property Name="Duracion_envio_video" Type="nvarchar" MaxLength="500" />
-          <Property Name="Mediana_lado_corto_video_enviado" Type="int" />
-          <Property Name="Motivo_accion" Type="nvarchar" MaxLength="500" />
-          <Property Name="Descripcion_accion" Type="nvarchar" MaxLength="500" />
-          <Property Name="Nombres_visibles_objetivo" Type="nvarchar" MaxLength="500" />
-          <Property Name="Correoelectronico_objetivo" Type="nvarchar" MaxLength="500" />
-          <Property Name="Numero_telefono_objetivo" Type="nvarchar" MaxLength="500" />
-        </EntityType>
         <EntityType Name="LoginSession">
           <Key>
             <PropertyRef Name="LoginSessionID" />
@@ -460,6 +390,17 @@
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
         </Function>
         <Function Name="UspProvinciasRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetDashboardAdmisionCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionCosteo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionGenero" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionInfo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionIngresos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionPeriodoIngreso" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionTanda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardAdmisionTipoSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardIntencionArea" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardIntencionDia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardIntencionEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -503,7 +444,6 @@
           <EntitySet Name="ProyectoEspecialMateriaGrupo" EntityType="Self.ProyectoEspecialMateriaGrupo" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="SolicitudAnexo" EntityType="Self.SolicitudAnexo" Schema="Admin" store:Type="Tables" />
-          <EntitySet Name="MeetLogDocentes" EntityType="Self.MeetLogDocentes" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="LoginSession" EntityType="Self.LoginSession" Schema="Security" store:Type="Tables" />
           <EntitySet Name="Settings" EntityType="Self.Settings" Schema="Security" store:Type="Tables" />
           <EntitySet Name="SystemAttribute" EntityType="Self.SystemAttribute" Schema="Security" store:Type="Tables" />
@@ -676,6 +616,17 @@
           <Parameter Name="IDperiodo" Mode="In" Type="Int32" />
           </FunctionImport>
           <EntitySet Name="MeetLogDocentes" EntityType="ORBIPEModel.MeetLogDocente" />
+          <FunctionImport Name="UspGetDashboardAdmisionCarrera" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCarrera_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionCosteo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCosteo_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionEdad_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionFecha" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionFecha_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionGenero_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionInfo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionInfo_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionIngresos_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionPeriodoIngreso" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionProvincia_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionTanda" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTanda_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionTipoSolicitud" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -1268,6 +1219,51 @@
           <Property Name="Correoelectronico_objetivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
           <Property Name="Numero_telefono_objetivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
         </EntityType>
+        <ComplexType Name="UspGetDashboardAdmisionCarrera_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionCosteo_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionEdad_Result">
+          <Property Type="String" Name="RangoEdad" Nullable="false" MaxLength="17" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionFecha_Result">
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionGenero_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionInfo_Result">
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+          <Property Type="Int32" Name="Meta" Nullable="false" />
+          <Property Type="String" Name="Evaluados" Nullable="false" MaxLength="9" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionIngresos_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionPeriodoIngreso_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionProvincia_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionTanda_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionTipoSolicitud_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1781,77 +1777,95 @@
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <EntitySetMapping Name="MeetLogDocentes">
-            <EntityTypeMapping TypeName="ORBIPEModel.MeetLogDocente">
-              <MappingFragment StoreEntitySet="MeetLogDocentes">
-                <ScalarProperty Name="Numero_telefono_objetivo" ColumnName="Numero_telefono_objetivo" />
-                <ScalarProperty Name="Correoelectronico_objetivo" ColumnName="Correoelectronico_objetivo" />
-                <ScalarProperty Name="Nombres_visibles_objetivo" ColumnName="Nombres_visibles_objetivo" />
-                <ScalarProperty Name="Descripcion_accion" ColumnName="Descripcion_accion" />
-                <ScalarProperty Name="Motivo_accion" ColumnName="Motivo_accion" />
-                <ScalarProperty Name="Mediana_lado_corto_video_enviado" ColumnName="Mediana_lado_corto_video_enviado" />
-                <ScalarProperty Name="Duracion_envio_video" ColumnName="Duracion_envio_video" />
-                <ScalarProperty Name="Perdida_media_paquetes_video_enviado" ColumnName="Perdida_media_paquetes_video_enviado" />
-                <ScalarProperty Name="Perdida_maxima_paquetes_video_enviado" ColumnName="Perdida_maxima_paquetes_video_enviado" />
-                <ScalarProperty Name="Mediana_lado_largo_video_enviado" ColumnName="Mediana_lado_largo_video_enviado" />
-                <ScalarProperty Name="Promedio_fotogramas_video_enviado" ColumnName="Promedio_fotogramas_video_enviado" />
-                <ScalarProperty Name="Promedio_tasa_bits_video_enviado" ColumnName="Promedio_tasa_bits_video_enviado" />
-                <ScalarProperty Name="Indice_congestion_red" ColumnName="Indice_congestion_red" />
-                <ScalarProperty Name="Mediana_lado_corto_video_recibido" ColumnName="Mediana_lado_corto_video_recibido" />
-                <ScalarProperty Name="Duracion_recepcion_video" ColumnName="Duracion_recepcion_video" />
-                <ScalarProperty Name="Perdida_media_paquetes_video_recibido" ColumnName="Perdida_media_paquetes_video_recibido" />
-                <ScalarProperty Name="Perdida_maxima_paquetes_video_recibido" ColumnName="Perdida_maxima_paquetes_video_recibido" />
-                <ScalarProperty Name="Mediana_lado_largo_video_recibido" ColumnName="Mediana_lado_largo_video_recibido" />
-                <ScalarProperty Name="Promedio_fotogramas_video_recibido" ColumnName="Promedio_fotogramas_video_recibido" />
-                <ScalarProperty Name="Mediana_lado_corto_capturas_pantalla_video_enviadas" ColumnName="Mediana_lado_corto_capturas_pantalla_video_enviadas" />
-                <ScalarProperty Name="Duracion_capturas_pantalla_video_enviadas" ColumnName="Duracion_capturas_pantalla_video_enviadas" />
-                <ScalarProperty Name="Perdida_media_paquetes_capturas_pantalla_video_enviadas" ColumnName="Perdida_media_paquetes_capturas_pantalla_video_enviadas" />
-                <ScalarProperty Name="Perdida_maxima_paquetes_capturas_de_pantalla_de_video_enviadas" ColumnName="Perdida_maxima_paquetes_capturas_de_pantalla_de_video_enviadas" />
-                <ScalarProperty Name="Promedio_lado_largo_capturas_pantalla_de_video" ColumnName="Promedio_lado_largo_capturas_pantalla_de_video" />
-                <ScalarProperty Name="Promedio_fotogramas_pantalla_video_enviadas" ColumnName="Promedio_fotogramas_pantalla_video_enviadas" />
-                <ScalarProperty Name="Promedio_capturas_pantalla_video_enviadas" ColumnName="Promedio_capturas_pantalla_video_enviadas" />
-                <ScalarProperty Name="Mediana_lado_corto_capturas_de_pantalla_video_recibidas" ColumnName="Mediana_lado_corto_capturas_de_pantalla_video_recibidas" />
-                <ScalarProperty Name="Duracion_recepcion_capturas_pantalla_video" ColumnName="Duracion_recepcion_capturas_pantalla_video" />
-                <ScalarProperty Name="Perdida_media_paquetes_capturas_pantalla_video_recibidas" ColumnName="Perdida_media_paquetes_capturas_pantalla_video_recibidas" />
-                <ScalarProperty Name="Perdida_maxima_paquetes__capturas_pantalla_video_recibidas" ColumnName="Perdida_maxima_paquetes__capturas_pantalla_video_recibidas" />
-                <ScalarProperty Name="Mediana_lado_largo_capturas_pantalla_video_recibidas" ColumnName="Mediana_lado_largo_capturas_pantalla_video_recibidas" />
-                <ScalarProperty Name="Promedio_otogramas_capturas_pantalla_vídeo_recibidas" ColumnName="Promedio_otogramas_capturas_pantalla_vídeo_recibidas" />
-                <ScalarProperty Name="Promedio_tasa_bits_capturas_pantalla_video_recibidas" ColumnName="Promedio_tasa_bits_capturas_pantalla_video_recibidas" />
-                <ScalarProperty Name="Fluctuacion_media_envio_red" ColumnName="Fluctuacion_media_envio_red" />
-                <ScalarProperty Name="Maxima_fluctuacion_recepcion_red" ColumnName="Maxima_fluctuacion_recepcion_red" />
-                <ScalarProperty Name="Fluctuacion_media_recepcion_red" ColumnName="Fluctuacion_media_recepcion_red" />
-                <ScalarProperty Name="ID_conferencia" ColumnName="ID_conferencia" />
-                <ScalarProperty Name="ID_evento_calendario" ColumnName="ID_evento_calendario" />
-                <ScalarProperty Name="Duracion_envio_audio" ColumnName="Duracion_envio_audio" />
-                <ScalarProperty Name="Perdida_media_paquetes_audio_enviado" ColumnName="Perdida_media_paquetes_audio_enviado" />
-                <ScalarProperty Name="Perdida_maxima_paquetes_audio_enviado" ColumnName="Perdida_maxima_paquetes_audio_enviado" />
-                <ScalarProperty Name="Promedio_tasa_bits_audio_enviado" ColumnName="Promedio_tasa_bits_audio_enviado" />
-                <ScalarProperty Name="Duracion_recepcion_audio" ColumnName="Duracion_recepcion_audio" />
-                <ScalarProperty Name="Perdida_media_paquetes_audio_recibido" ColumnName="Perdida_media_paquetes_audio_recibido" />
-                <ScalarProperty Name="Perdida_maxima_paquetes_audio_recibido" ColumnName="Perdida_maxima_paquetes_audio_recibido" />
-                <ScalarProperty Name="Ancho_banda_descarga" ColumnName="Ancho_banda_descarga" />
-                <ScalarProperty Name="Ancho_banda_subida" ColumnName="Ancho_banda_subida" />
-                <ScalarProperty Name="Protocolo_transporte" ColumnName="Protocolo_transporte" />
-                <ScalarProperty Name="Tiempo_medio_ida_vuelta_red" ColumnName="Tiempo_medio_ida_vuelta_red" />
-                <ScalarProperty Name="Pais" ColumnName="Pais" />
-                <ScalarProperty Name="Ciudad" ColumnName="Ciudad" />
-                <ScalarProperty Name="Direccion_IP" ColumnName="Direccion_IP" />
-                <ScalarProperty Name="Nombre_participante" ColumnName="Nombre_participante" />
-                <ScalarProperty Name="Valoracion_llamada" ColumnName="Valoracion_llamada" />
-                <ScalarProperty Name="Duracion" ColumnName="Duracion" />
-                <ScalarProperty Name="Tipo_producto" ColumnName="Tipo_producto" />
-                <ScalarProperty Name="Correoelectronico_organizador" ColumnName="Correoelectronico_organizador" />
-                <ScalarProperty Name="Tipo_cliente" ColumnName="Tipo_cliente" />
-                <ScalarProperty Name="Participante_ajeno_organizacion" ColumnName="Participante_ajeno_organizacion" />
-                <ScalarProperty Name="Identificador_participante" ColumnName="Identificador_participante" />
-                <ScalarProperty Name="Codigo_reunion" ColumnName="Codigo_reunion" />
-                <ScalarProperty Name="Descripcion_evento" ColumnName="Descripcion_evento" />
-                <ScalarProperty Name="Nombre_evento" ColumnName="Nombre_evento" />
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCarrera" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCarrera_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCosteo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCosteo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCosteo_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionEdad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionEdad_Result">
+                <ScalarProperty Name="RangoEdad" ColumnName="RangoEdad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionFecha" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionFecha_Result">
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionGenero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionGenero_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionInfo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionInfo_Result">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Meta" ColumnName="Meta" />
+                <ScalarProperty Name="Evaluados" ColumnName="Evaluados" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionIngresos_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionPeriodoIngreso" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionPeriodoIngreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionProvincia" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionProvincia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionProvincia_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTanda" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTanda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTanda_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTipoSolicitud" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTipoSolicitud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
