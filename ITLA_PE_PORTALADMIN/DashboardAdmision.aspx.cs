@@ -40,7 +40,7 @@ namespace ITLA_PE_PORTALADMIN
                 RepeaterPeriodo.DataSource = servicesDashboard.GetDashboardAdmisionCosteo();
                 RepeaterPeriodo.DataBind();
 
-                RepeaterEducacion.DataSource = servicesDashboard.GetDashboardAdmisionTipoSolicitud();
+                RepeaterEducacion.DataSource = servicesDashboard.GetDashboardAdmisionAgendadosPorVenir();
                 RepeaterEducacion.DataBind();
 
 
@@ -51,9 +51,21 @@ namespace ITLA_PE_PORTALADMIN
                 literalPreValidados.Text = info.Meta.ToString();
 
                 decimal porcentante = (decimal.Parse(info.Cantidad.ToString()) / decimal.Parse(info.Meta.ToString()));
-                
-                literalTotalSolicitudesGS.Text = porcentante.ToString("p");
 
+                decimal porcentanteAdmitidos = (decimal.Parse(info.AgendaronAsistieron.Value.ToString()) / decimal.Parse(info.Meta.ToString()));
+
+                decimal porcentanteRecordDeNota = (decimal.Parse(info.RecordDeNotaEnvaidi.Value.ToString()) / decimal.Parse(info.Meta.ToString()));
+
+                literalTotalSolicitudesGS.Text = porcentante.ToString("p");
+                literalPorcentajeAdmitidos.Text = porcentanteAdmitidos.ToString("p");
+                literalRecordDeNotaAprobadosPorcentaje.Text = porcentanteRecordDeNota.ToString("p");
+
+                //literalRecordDeNotaAprobadosPorcentaje
+
+                literalTotalExaminadosNuevos.Text = info.AgendaronAsistieron.Value.ToString();
+                literalExaminadosDeOtrosPeriodos.Text = info.AgendaronAsistieronNo1800.Value.ToString();
+                literalProximoDia.Text = info.AgendaronAFuturoPorVenir.Value.ToString();
+                literalRecordDeNotaAprobados.Text = info.RecordDeNotaEnvaidi.Value.ToString();
 
                 //UspGetDashboardAdmisionGenero
 

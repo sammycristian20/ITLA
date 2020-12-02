@@ -199,7 +199,12 @@ namespace ITLA_PE_MVC.SERVICE
         {
             return dbContext.UspGetDashboardAdmisionTipoSolicitud().ToList();
         }
-        
+
+        public List<UspGetDashboardAdmisionAgendadosPorVenir_Result> GetDashboardAdmisionAgendadosPorVenir()
+        {
+            return dbContext.UspGetDashboardAdmisionAgendadosPorVenir().ToList();
+        }
+
         ///////
     }
 }

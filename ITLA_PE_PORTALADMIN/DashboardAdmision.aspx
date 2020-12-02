@@ -8,10 +8,9 @@
     <link href="Content/css/colors.css" rel="stylesheet" />
 
     <style>
-        #container, #containerGenero, #containerDIA, #containerEducacion  {
+        #container, #containerGenero, #containerDIA, #containerEducacion {
             height: 500px;
         }
-        
     </style>
 
 </asp:Content>
@@ -31,7 +30,7 @@
                         <div class="col col-lg-12">
                             <section id="inputs" class="text-center">
                                 <!--Section heading-->
-                                <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Solicitu de Admisión - 31 de Agosto 2020
+                                <h3 class="section-heading mb-1 h1 mt-4 text-left">Dashboard Solicitud de Admisión - 31 de Agosto 2020
                                 </h3>
 
                                 <br />
@@ -40,7 +39,7 @@
 
 
                                     <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-primary bg-itla-1 h-100 py-2 text-left border-0">
+                                        <div class="card border-left-primary bg-itla-1  text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
@@ -60,11 +59,11 @@
 
 
                                     <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-primary bg-itla-4 h-100 py-2 text-left border-0">
+                                        <div class="card border-left-primary bg-itla-4  text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs text-white text-uppercase mb-1">Meta</div>
+                                                        <div class="text-xs text-white text-uppercase mb-1">Meta de Solicitudes</div>
                                                         <div class="h3 mb-0 font-weight-bold text-white">
                                                             <asp:Literal ID="literalPreValidados" runat="server" Text="0"></asp:Literal>
                                                         </div>
@@ -82,17 +81,184 @@
 
 
                                     <div class="col-xl-4 col-md-6 mb-4">
-                                        <div class="card border-left-primary bg-itla-2 h-100 py-2 text-left border-0">
+                                        <div class="card border-left-primary bg-itla-2  text-left border-0">
                                             <div class="card-body">
                                                 <div class="row no-gutters align-items-center">
                                                     <div class="col mr-2">
-                                                        <div class="text-xs text-white text-uppercase mb-1">Pocentante Meta</div>
+                                                        <div class="text-xs text-white text-uppercase mb-1">Porcentaje Meta de Solicitudes</div>
                                                         <div class="h3 mb-0 font-weight-bold text-white">
                                                             <asp:Literal ID="literalTotalSolicitudesGS" runat="server"></asp:Literal>
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">
                                                         <i class="fas fa-inbox fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="row">
+
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-1  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Total de Admitidos</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalTotalExaminadosNuevos" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-users fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-4  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Meta de Admitidos</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            2,000
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-check-double fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-2  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Porcentaje Meta de Admitidos</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalPorcentajeAdmitidos" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-inbox fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+
+                                <div class="row">
+
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-1  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Total de Solcitudes con Record de Nota</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalRecordDeNotaAprobados" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-users fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-4  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Meta solicitudes Records de Nota</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            2,000
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-check-double fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-4 col-md-6 mb-4">
+                                        <div class="card border-left-primary bg-itla-2  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Porcentaje meta solicitudes record de nota</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalRecordDeNotaAprobadosPorcentaje" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-inbox fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+
+                                <div class="row">
+
+                                    <div class="col-xl-6 col-md-6 mb-3">
+                                        <div class="card border-left-primary bg-itla-1  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Examinados de Otros Periodos</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalExaminadosDeOtrosPeriodos" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-users fa-2x text-white"></i>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-xl-6 col-md-6 mb-3">
+                                        <div class="card border-left-primary bg-itla-1  text-left border-0">
+                                            <div class="card-body">
+                                                <div class="row no-gutters align-items-center">
+                                                    <div class="col mr-2">
+                                                        <div class="text-xs text-white text-uppercase mb-1">Agendaron para los proximos días</div>
+                                                        <div class="h3 mb-0 font-weight-bold text-white">
+                                                            <asp:Literal ID="literalProximoDia" runat="server"></asp:Literal>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                        <i class="fas fa-users fa-2x text-white"></i>
                                                     </div>
                                                 </div>
                                             </div>
@@ -110,7 +276,7 @@
                                             </div>
                                         </div>
                                     </div>
-                                  
+
 
 
                                     <div class="col-lg-3">
@@ -150,7 +316,35 @@
                                     <div class="col-lg-4">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div id="containerGenero"></div>
+                                                <div id="containerEducacion">
+                                                    <h2>Agenda Proximos Dias</h2>
+                                                    <table class="table table-striped">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Fecha</th>
+                                                                <th>Agendados Total</th>
+                                                                <th>Agendados Nuevos</th>
+                                                                <th>Agendados Viejos</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody>
+                                                            <asp:Repeater ID="RepeaterEducacion" runat="server">
+                                                                <ItemTemplate>
+                                                                    <tr>
+                                                                        <th>
+                                                                            <a target="_blank" style="color: #0645AD  !important; font-weight: bold" href='/Reporte/ReporteDetallePorAgenda.aspx?fecha=<%# Eval("Fecha") %>'>
+                                                                            <%# Eval("Fecha") %>
+                                                                                </a></th>
+                                                                        <td><%# Eval("AgendadosTotal") %></td>
+                                                                        <td><%# Eval("AgendaronNuevos") %></td>
+                                                                        <td><%# Eval("Viejos") %></td>
+                                                                    </tr>
+                                                                </ItemTemplate>
+                                                            </asp:Repeater>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -167,7 +361,8 @@
                                     <div class="col-lg-4">
                                         <div class="row">
                                             <div class="col-12">
-                                                <div id="containerEducacion"></div>
+                                                
+                                                <div id="containerGenero"></div>
                                             </div>
                                         </div>
                                     </div>
@@ -237,24 +432,7 @@
         </tbody>
     </table>
 
-    <table id="datatableEducacion" style="display: none">
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Solicitudes</th>
-            </tr>
-        </thead>
-        <tbody>
-            <asp:Repeater ID="RepeaterEducacion" runat="server">
-                <ItemTemplate>
-                    <tr>
-                        <th><%# Eval("Carrera") %></th>
-                        <td><%# Eval("Cantidad") %></td>
-                    </tr>
-                </ItemTemplate>
-            </asp:Repeater>
-        </tbody>
-    </table>
+
 
     <table id="datatableProvincia" style="display: none">
         <thead>
@@ -486,55 +664,55 @@
             }
         })
 
-        Highcharts.chart('containerEducacion', {
-            data: {
-                table: 'datatableEducacion'
-            },
-            chart: {
-                type: 'pie'
-            },
-            title: {
-                text: 'Solicitudes Tipo de Solicitud'
-            },
-            yAxis: {
-                min: 0,
-                title: {
-                    text: 'Solicitudes',
-                    align: 'high'
-                },
-                labels: {
-                    overflow: 'justify'
-                }
-            },
-            tooltip: {
-                valueSuffix: ' '
-            },
-            plotOptions: {
-                column: {
-                    dataLabels: {
-                        enabled: true
-                    }
-                }
-            },
-            legend: {
-                layout: 'vertical',
-                align: 'right',
-                verticalAlign: 'top',
-                x: -40,
-                y: 80,
-                floating: true,
-                borderWidth: 1,
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
-                shadow: true
-            },
-            tooltip: {
-                formatter: function () {
-                    return '<b>' + this.series.name + '</b><br/>' +
-                        this.point.y + ' ' + this.point.name.toLowerCase();
-                }
-            }
-        })
+        //Highcharts.chart('containerEducacion', {
+        //    data: {
+        //        table: 'datatableEducacion'
+        //    },
+        //    chart: {
+        //        type: 'pie'
+        //    },
+        //    title: {
+        //        text: 'Solicitudes Tipo de Solicitud'
+        //    },
+        //    yAxis: {
+        //        min: 0,
+        //        title: {
+        //            text: 'Solicitudes',
+        //            align: 'high'
+        //        },
+        //        labels: {
+        //            overflow: 'justify'
+        //        }
+        //    },
+        //    tooltip: {
+        //        valueSuffix: ' '
+        //    },
+        //    plotOptions: {
+        //        column: {
+        //            dataLabels: {
+        //                enabled: true
+        //            }
+        //        }
+        //    },
+        //    legend: {
+        //        layout: 'vertical',
+        //        align: 'right',
+        //        verticalAlign: 'top',
+        //        x: -40,
+        //        y: 80,
+        //        floating: true,
+        //        borderWidth: 1,
+        //        backgroundColor:
+        //            Highcharts.defaultOptions.legend.backgroundColor || '#FFFFFF',
+        //        shadow: true
+        //    },
+        //    tooltip: {
+        //        formatter: function () {
+        //            return '<b>' + this.series.name + '</b><br/>' +
+        //                this.point.y + ' ' + this.point.name.toLowerCase();
+        //        }
+        //    }
+        //})
 
 
         Highcharts.chart('container', {

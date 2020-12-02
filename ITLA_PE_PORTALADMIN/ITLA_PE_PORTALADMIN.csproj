@@ -265,12 +265,15 @@
     <Content Include="DashboardAdmision.aspx" />
     <Content Include="DashboardIntencion.aspx" />
     <Content Include="DashboardJueventud.aspx" />
+    <Content Include="Dialogs\EntregarServisioAEstudiante.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
+    <Content Include="ListadoServiciosSinEntregar.aspx" />
     <Content Include="Login.aspx" />
     <Content Include="PrevalidacionJuventud.aspx" />
     <Content Include="PrevalidacionJuventudDetalle.aspx" />
     <Content Include="Reporte\ReporteDetalleIntencion.aspx" />
+    <Content Include="Reporte\ReporteDetallePorAgenda.aspx" />
     <Content Include="Web.config" />
     <Content Include="xmee-main\css\bootstrap.min.css" />
     <Content Include="xmee-main\css\fontawesome-all.min.css" />
@@ -391,6 +394,20 @@
     <Compile Include="DashboardJueventud.aspx.designer.cs">
       <DependentUpon>DashboardJueventud.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Dialogs\EntregarServisioAEstudiante.aspx.cs">
+      <DependentUpon>EntregarServisioAEstudiante.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dialogs\EntregarServisioAEstudiante.aspx.designer.cs">
+      <DependentUpon>EntregarServisioAEstudiante.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Dialogs\SiteDialog.Master.cs">
+      <DependentUpon>SiteDialog.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dialogs\SiteDialog.Master.designer.cs">
+      <DependentUpon>SiteDialog.Master</DependentUpon>
+    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -403,6 +420,13 @@
     </Compile>
     <Compile Include="JustCode\BasePage.cs">
       <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoServiciosSinEntregar.aspx.cs">
+      <DependentUpon>ListadoServiciosSinEntregar.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ListadoServiciosSinEntregar.aspx.designer.cs">
+      <DependentUpon>ListadoServiciosSinEntregar.aspx</DependentUpon>
     </Compile>
     <Compile Include="Login.aspx.cs">
       <DependentUpon>Login.aspx</DependentUpon>
@@ -432,6 +456,13 @@
     </Compile>
     <Compile Include="Reporte\ReporteDetalleIntencion.aspx.designer.cs">
       <DependentUpon>ReporteDetalleIntencion.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Reporte\ReporteDetallePorAgenda.aspx.cs">
+      <DependentUpon>ReporteDetallePorAgenda.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Reporte\ReporteDetallePorAgenda.aspx.designer.cs">
+      <DependentUpon>ReporteDetallePorAgenda.aspx</DependentUpon>
     </Compile>
     <Compile Include="SiteMain.Master.cs">
       <DependentUpon>SiteMain.Master</DependentUpon>
@@ -467,6 +498,7 @@
     <Content Include="Content\FullLibraries\bootstrap-datepicker-1.6.4-dist\css\bootstrap-datepicker3.min.css.map" />
     <Content Include="Content\FullLibraries\bootstrap-datepicker-1.6.4-dist\css\bootstrap-datepicker3.standalone.css.map" />
     <Content Include="Content\FullLibraries\bootstrap-datepicker-1.6.4-dist\css\bootstrap-datepicker3.standalone.min.css.map" />
+    <Content Include="Dialogs\SiteDialog.Master" />
     <None Include="packages.config" />
     <Content Include="SiteMain.Master" />
     <None Include="Web.Debug.config">

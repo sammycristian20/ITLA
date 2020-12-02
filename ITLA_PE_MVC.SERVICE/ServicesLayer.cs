@@ -11,6 +11,19 @@ namespace ITLA_PE_MVC.SERVICE
         ServicioJuventudADM servicioJuventudADM = null;
         ServicesDashboard servicesDashboard = null;
         ServiceReport serviceReport = null;
+        ServiceRegistro serviceRegistro = null;
+
+        public ServiceRegistro ServiceRegistro
+        {
+            get
+            {
+                if (serviceRegistro == null)
+                    serviceRegistro = new ServiceRegistro();
+
+                return serviceRegistro;
+            }
+        }
+
         public ServicioJuventudADM ServicioJuventudADM
         {
             get

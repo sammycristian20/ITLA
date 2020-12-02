@@ -20,6 +20,13 @@ namespace ITLA_PE_MVC.SERVICE
         public List<UspReporteIntencion_Result> UspReporteIntencion(DateTime? dateFrom, DateTime? dateTo)
         {
             return dbContext.UspReporteIntencion(dateFrom, dateTo).ToList();
+     
+        
+        }
+
+        public List<UspGetAdmisionAgendados_Result> GetAdmisionAgendados(DateTime date)
+        {
+            return dbContext.UspGetAdmisionAgendados(date).ToList();
         }
 
     }

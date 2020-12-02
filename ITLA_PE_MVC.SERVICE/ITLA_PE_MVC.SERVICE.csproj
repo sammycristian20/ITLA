@@ -52,7 +52,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceLayer.cs" />
+    <Compile Include="ServiceRegistro.cs" />
     <Compile Include="ServiceReport.cs" />
     <Compile Include="ServicesDashboard.cs" />
     <Compile Include="ServiceSecurity.cs" />

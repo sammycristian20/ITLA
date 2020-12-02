@@ -99,11 +99,24 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li data-menu="">
-                                        <a class="dropdown-item" href="/DashboardAdmision.aspx">Dashbaord Admisión</a>
-                                        <%--<a class="dropdown-item" href="/Home.aspx">Dashbaord Inscripción</a>--%>
+                                        <a class="dropdown-item" href="/Home.aspx">Dashbaord Inscripción</a>
+                                        <a class="dropdown-item" href="/DashboardAdmision.aspx">Dashbaord Admisión</a>                                        
                                     </li>
                                 </ul>
                             </li>
+
+                            <li class="dropdown nav-item btn-top-menu">
+                                <a class="dropdown-toggle nav-link" href="#">
+                                    <i class="icon-book-open"></i>
+                                    <span data-i18n="nav.dash.main">Registro</span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li data-menu="">
+                                        <a class="dropdown-item" href="/ListadoServiciosSinEntregar.aspx">Listado de Servicios sin Entregar</a>                                        
+                                    </li>
+                                </ul>
+                            </li>
+
                             <li class="dropdown nav-item btn-top-menu">
                                 <a class="dropdown-toggle nav-link" href="#">
                                     <i class="icon-graduation"></i>
@@ -493,6 +506,37 @@
         <script type="text/javascript" src="/Content/js/scripts.js"></script>
         <script type="text/javascript" src="/Content/js/foundation.min.js"></script>
         <script type="text/javascript" src="/Content/js/what-input.min.js"></script>
+
+
+        
+        <div class="modal fade bs-example-modal-static bs-example-modal-lg" tabindex="-1" role="dialog" data-backdrop="static">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+
+                    <!-- End Preloader -->
+
+                    <div class="modal-header">
+
+                    
+
+                        <button aria-hidden="true" data-dismiss="modal" class="close" type="button">&times;</button>
+                        <div>
+                            <div style="float: left" id="loading">
+                                <%--<img height="30"  src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/ab79a231234507.564a1d23814ef.gif" />--%>
+                            </div>
+                            <div style="float: left">                                
+                                <h4 id="popuptitle" class="modal-title"></h4>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+                    <iframe src="" width="99.6%" height="440" frameborder="0" id="iframeloader"></iframe>
+                </div>
+            </div>
+        </div>
+
 
         <script type="text/javascript">
             // Create a clone of the menu, right next to original.

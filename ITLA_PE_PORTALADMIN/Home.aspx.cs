@@ -20,16 +20,16 @@ namespace ITLA_PE_PORTALADMIN
             if (!IsPostBack)
             {
 
-                Response.Redirect("DashboardJueventud.aspx");
+                //Response.Redirect("DashboardJueventud.aspx");
                 //ESTA VARIABLE ES PARA CONTROLAR CUAL ES EL CICLO ACTUAL Y TENERLO COMO CICLO TOPE EN EL DROPDOWNLIST
-                //int periodoActual = 172;
+                int periodoActual = 172;
 
-                //ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo(periodoActual);
-                //ddlPeriodo.DataTextField = "Periodo";
-                //ddlPeriodo.DataValueField = "IDPeriodo";
-                //ddlPeriodo.DataBind();
+                ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo(periodoActual);
+                ddlPeriodo.DataTextField = "Periodo";
+                ddlPeriodo.DataValueField = "IDPeriodo";
+                ddlPeriodo.DataBind();
 
-                //CargaInicial();
+                CargaInicial();
 
             }
         }

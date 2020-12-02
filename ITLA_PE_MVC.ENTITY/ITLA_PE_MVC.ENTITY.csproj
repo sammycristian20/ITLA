@@ -76,7 +76,7 @@
     <Compile Include="LoginSession.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="MeetLogDocente.cs">
+    <Compile Include="MateriaGrupoNuevo.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="MODELS\ModelIntencion.cs" />
@@ -92,6 +92,9 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="ProyectoEspecialMateriaGrupo.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="ProyectoEspecialMateriaGrupoSolicitud.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result.cs">
@@ -125,10 +128,19 @@
     <Compile Include="UserType.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspBuscaServicioRegistro_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGenericItems_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetAdmisionAgendados_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetCarrera_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardAdmisionAgendadosPorVenir_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspGetDashboardAdmisionCarrera_Result.cs">
@@ -231,6 +243,9 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspReporteIntencion_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspReporteServiciosRegistro_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
   </ItemGroup>

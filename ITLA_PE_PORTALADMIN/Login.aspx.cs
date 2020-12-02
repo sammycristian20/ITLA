@@ -31,7 +31,7 @@ namespace ITLA_PE_PORTALADMIN
                 Session.Add("UserTypeCode", item.UserTypeCode);
                 Session.Add("FullName", item.FullName + " (" + item.UserTypeCode + ")");
 
-                Response.Redirect("Home.aspx");
+                Response.Redirect("DashboardAdmision.aspx");
 
             }
 

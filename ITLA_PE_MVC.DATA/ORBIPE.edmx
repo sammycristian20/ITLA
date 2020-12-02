@@ -63,6 +63,18 @@
           <Property Name="TieneLaptopPc" Type="bit" />
           <Property Name="TieneSubsidio" Type="bit" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ORBIPE.Admin.MateriaGrupoNuevo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MateriaGrupoNuevo">
+          <Key>
+            <PropertyRef Name="idMateria" />
+            <PropertyRef Name="iDGrupo" />
+          </Key>
+          <Property Name="idMateria" Type="int" Nullable="false" />
+          <Property Name="iDGrupo" Type="int" Nullable="false" />
+          <Property Name="FechaCreado" Type="datetime" />
+          <Property Name="Materia" Type="nvarchar(max)" />
+        </EntityType>
         <EntityType Name="ProyectoEspecial">
           <Key>
             <PropertyRef Name="ProyectoEspecialID" />
@@ -93,6 +105,19 @@
           <Property Name="MateriaDescripcion" Type="varchar" MaxLength="500" />
           <Property Name="EsActivo" Type="bit" Nullable="false" />
           <Property Name="CodigoMoodle" Type="varchar" MaxLength="100" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProyectoEspecialMateriaGrupoSolicitud">
+          <Key>
+            <PropertyRef Name="ProyectoEspecialMateriaGrupoSolicitudID" />
+            <PropertyRef Name="ProyectoEspecialMateriaGrupoID" />
+            <PropertyRef Name="SolicitudID" />
+          </Key>
+          <Property Name="ProyectoEspecialMateriaGrupoSolicitudID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProyectoEspecialMateriaGrupoID" Type="int" Nullable="false" />
+          <Property Name="SolicitudID" Type="int" Nullable="false" />
+          <Property Name="CupoNumero" Type="int" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -377,6 +402,9 @@
           <Parameter Name="IDperiodo" Type="int" Mode="In" />
         </Function>
         <Function Name="GetMateriasDisponibles" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspBuscaServicioRegistro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="IDfactura" Type="int" Mode="In" />
+        </Function>
         <Function Name="UspGenericItems" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="GenericType" Type="varchar" Mode="In" />
         </Function>
@@ -389,7 +417,13 @@
         <Function Name="UspMunicipiosPorProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="IdProvincia" Type="int" Mode="In" />
         </Function>
+        <Function Name="UspPostServicioEntrega" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="IDfactura" Type="int" Mode="In" />
+          <Parameter Name="IDusuario" Type="int" Mode="In" />
+          <Parameter Name="FechaEntrega" Type="date" Mode="In" />
+        </Function>
         <Function Name="UspProvinciasRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspGetDashboardAdmisionAgendadosPorVenir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardAdmisionCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardAdmisionCosteo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardAdmisionEdad" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -425,8 +459,12 @@
         <Function Name="UspReporteInscritosSeleccionXFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
+        <Function Name="UspReporteServiciosRegistro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="Reporte_Inscritos_Seleccion_Cuatrimestre_Any" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspGetAdmisionAgendados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Report">
+          <Parameter Name="Date" Type="date" Mode="In" />
         </Function>
         <Function Name="UspReporteIntencion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Report">
           <Parameter Name="DateFROM" Type="date" Mode="In" />
@@ -452,6 +490,22 @@
           <EntitySet Name="UserLog" EntityType="Self.UserLog" Schema="Security" store:Type="Tables" />
           <EntitySet Name="UsertTypeSystemAttribute" EntityType="Self.UsertTypeSystemAttribute" Schema="Security" store:Type="Tables" />
           <EntitySet Name="UserType" EntityType="Self.UserType" Schema="Security" store:Type="Tables" />
+          <EntitySet Name="MateriaGrupoNuevo" EntityType="Self.MateriaGrupoNuevo" store:Type="Tables" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [MateriaGrupoNuevo].[idMateria] AS [idMateria], 
+    [MateriaGrupoNuevo].[iDGrupo] AS [iDGrupo], 
+    [MateriaGrupoNuevo].[FechaCreado] AS [FechaCreado], 
+    [MateriaGrupoNuevo].[Materia] AS [Materia]
+    FROM [Admin].[MateriaGrupoNuevo] AS [MateriaGrupoNuevo]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="ProyectoEspecialMateriaGrupoSolicitud" EntityType="Self.ProyectoEspecialMateriaGrupoSolicitud" store:Type="Tables" store:Schema="Admin">
+            <DefiningQuery>SELECT 
+    [ProyectoEspecialMateriaGrupoSolicitud].[ProyectoEspecialMateriaGrupoSolicitudID] AS [ProyectoEspecialMateriaGrupoSolicitudID], 
+    [ProyectoEspecialMateriaGrupoSolicitud].[ProyectoEspecialMateriaGrupoID] AS [ProyectoEspecialMateriaGrupoID], 
+    [ProyectoEspecialMateriaGrupoSolicitud].[SolicitudID] AS [SolicitudID], 
+    [ProyectoEspecialMateriaGrupoSolicitud].[CupoNumero] AS [CupoNumero]
+    FROM [Admin].[ProyectoEspecialMateriaGrupoSolicitud] AS [ProyectoEspecialMateriaGrupoSolicitud]</DefiningQuery>
+          </EntitySet>
           <AssociationSet Name="FK_Generic_GenericType" Association="Self.FK_Generic_GenericType">
             <End Role="GenericType" EntitySet="GenericType" />
             <End Role="Generic" EntitySet="Generic" />
@@ -543,6 +597,33 @@
           </FunctionImport>
           <FunctionImport Name="UspGetDashboardITLAJVEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEducacion_Result)" />
           <FunctionImport Name="UspGetDashboardITLAJVGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVGenero_Result)" />
+          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" >
+          <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspGetDashboardIntencionEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEducacion_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionINTERNET" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionINTERNET_Result)" />
+          <FunctionImport Name="UspGetDashboardIntencionPC" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionPC_Result)" />
+          <FunctionImport Name="UspReporteIntencion" ReturnType="Collection(ORBIPEModel.UspReporteIntencion_Result)">
+            <Parameter Name="DateFROM" Mode="In" Type="DateTime" />
+            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="DashboardGeneroPorPeriodo" ReturnType="Collection(ORBIPEModel.DashboardGeneroPorPeriodo_Result)">
+          <Parameter Name="IDperiodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DashboardRangoEdadPorPeriodo" ReturnType="Collection(ORBIPEModel.DashboardRangoEdadPorPeriodo_Result)">
+          <Parameter Name="IDperiodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspGetDashboardAdmisionCarrera" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCarrera_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionCosteo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCosteo_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionEdad_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionFecha" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionFecha_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionGenero_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionInfo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionInfo_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionIngresos_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionPeriodoIngreso" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionProvincia_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionTanda" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTanda_Result)" />
+          <FunctionImport Name="UspGetDashboardAdmisionTipoSolicitud" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result)" />
           <EntitySet Name="Areas" EntityType="ORBIPEModel.Area" />
           <EntitySet Name="Generics" EntityType="ORBIPEModel.Generic" />
           <EntitySet Name="GenericTypes" EntityType="ORBIPEModel.GenericType" />
@@ -559,6 +640,8 @@
           <EntitySet Name="UserLogs" EntityType="ORBIPEModel.UserLog" />
           <EntitySet Name="UsertTypeSystemAttributes" EntityType="ORBIPEModel.UsertTypeSystemAttribute" />
           <EntitySet Name="UserTypes" EntityType="ORBIPEModel.UserType" />
+          <EntitySet Name="MateriaGrupoNuevoes" EntityType="ORBIPEModel.MateriaGrupoNuevo" />
+          <EntitySet Name="ProyectoEspecialMateriaGrupoSolicituds" EntityType="ORBIPEModel.ProyectoEspecialMateriaGrupoSolicitud" />
           <AssociationSet Name="FK_Generic_GenericType" Association="ORBIPEModel.FK_Generic_GenericType">
             <End Role="GenericType" EntitySet="GenericTypes" />
             <End Role="Generic" EntitySet="Generics" />
@@ -599,34 +682,19 @@
             <End Role="UserType" EntitySet="UserTypes" />
             <End Role="UsertTypeSystemAttribute" EntitySet="UsertTypeSystemAttributes" />
           </AssociationSet>
-          <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" >
-          <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+          <FunctionImport Name="UspGetDashboardAdmisionAgendadosPorVenir" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionAgendadosPorVenir_Result)" />
+          <FunctionImport Name="UspGetAdmisionAgendados" ReturnType="Collection(ORBIPEModel.UspGetAdmisionAgendados_Result)">
+          <Parameter Name="Date" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="UspGetDashboardIntencionEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEducacion_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionINTERNET" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionINTERNET_Result)" />
-          <FunctionImport Name="UspGetDashboardIntencionPC" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionPC_Result)" />
-          <FunctionImport Name="UspReporteIntencion" ReturnType="Collection(ORBIPEModel.UspReporteIntencion_Result)">
-            <Parameter Name="DateFROM" Mode="In" Type="DateTime" />
-            <Parameter Name="DateTo" Mode="In" Type="DateTime" />
+          <FunctionImport Name="UspBuscaServicioRegistro" ReturnType="Collection(ORBIPEModel.UspBuscaServicioRegistro_Result)">
+          <Parameter Name="IDfactura" Mode="In" Type="Int32" />
           </FunctionImport>
-          <FunctionImport Name="DashboardGeneroPorPeriodo" ReturnType="Collection(ORBIPEModel.DashboardGeneroPorPeriodo_Result)">
-          <Parameter Name="IDperiodo" Mode="In" Type="Int32" />
+          <FunctionImport Name="UspPostServicioEntrega">
+            <Parameter Name="IDfactura" Mode="In" Type="Int32" />
+            <Parameter Name="IDusuario" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEntrega" Mode="In" Type="DateTime" />
           </FunctionImport>
-          <FunctionImport Name="DashboardRangoEdadPorPeriodo" ReturnType="Collection(ORBIPEModel.DashboardRangoEdadPorPeriodo_Result)">
-          <Parameter Name="IDperiodo" Mode="In" Type="Int32" />
-          </FunctionImport>
-          <EntitySet Name="MeetLogDocentes" EntityType="ORBIPEModel.MeetLogDocente" />
-          <FunctionImport Name="UspGetDashboardAdmisionCarrera" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCarrera_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionCosteo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionCosteo_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionEdad" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionEdad_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionFecha" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionFecha_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionGenero_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionInfo" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionInfo_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionIngresos" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionIngresos_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionPeriodoIngreso" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionProvincia" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionProvincia_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionTanda" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTanda_Result)" />
-          <FunctionImport Name="UspGetDashboardAdmisionTipoSolicitud" ReturnType="Collection(ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result)" />
+          <FunctionImport Name="UspReporteServiciosRegistro" ReturnType="Collection(ORBIPEModel.UspReporteServiciosRegistro_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -728,6 +796,93 @@
           <Property Type="String" Name="Genero" Nullable="false" MaxLength="9" />
           <Property Type="Int32" Name="Cantidad" Nullable="false" />
         </ComplexType>
+        <ComplexType Name="UspGetPeriodo_Result">
+          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionEducacion_Result">
+          <Property Type="String" Name="NivelAcademico" Nullable="true" MaxLength="500" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionINTERNET_Result">
+          <Property Type="String" Name="TieneInternet" Nullable="false" MaxLength="2" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardIntencionPC_Result">
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+          <Property Type="String" Name="TienePC" Nullable="false" MaxLength="2" />
+        </ComplexType>
+        <ComplexType Name="UspReporteIntencion_Result">
+          <Property Type="Int32" Name="IntencionID" Nullable="false" />
+          <Property Type="String" Name="CodigoIntencion" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
+          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
+          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="TelResidencial" Nullable="true" MaxLength="200" />
+          <Property Type="String" Name="TelCelular" Nullable="true" MaxLength="200" />
+          <Property Type="Int32" Name="CarreraID" Nullable="false" />
+        </ComplexType>
+        <ComplexType Name="DashboardGeneroPorPeriodo_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="DashboardRangoEdadPorPeriodo_Result">
+          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="13" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionCarrera_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionCosteo_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionEdad_Result">
+          <Property Type="String" Name="RangoEdad" Nullable="false" MaxLength="17" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionFecha_Result">
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionGenero_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionInfo_Result">
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+          <Property Type="Int32" Name="Meta" Nullable="false" />
+          <Property Type="String" Name="Evaluados" Nullable="false" MaxLength="9" />
+          <Property Type="Int32" Name="Agendaron" Nullable="true" />
+          <Property Type="Int32" Name="AgendaronAFuturoPorVenir" Nullable="true" />
+          <Property Type="Int32" Name="AgendaronAsistieron" Nullable="true" />
+          <Property Type="Int32" Name="AgendaronAsistieronNo1800" Nullable="true" />
+          <Property Type="Int32" Name="RecordDeNotaEnvaidi" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionIngresos_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionPeriodoIngreso_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionProvincia_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionTanda_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardAdmisionTipoSolicitud_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
         <EntityType Name="Area">
           <Key>
             <PropertyRef Name="AreaID" />
@@ -817,10 +972,10 @@
           <Property Name="AprobacionCupo" Type="Int32" Nullable="false" />
           <Property Name="AprobacionCantidad" Type="Int32" Nullable="false" />
           <Property Name="MateriaDescripcion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="ProyectoEspecial" Relationship="ORBIPEModel.FK_ProyectoEspecialMateriaGrupo_ProyectoEspecial" FromRole="ProyectoEspecialMateriaGrupo" ToRole="ProyectoEspecial" />
-          <NavigationProperty Name="Solicituds" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="ProyectoEspecialMateriaGrupo" ToRole="Solicitud" />
           <Property Name="EsActivo" Type="Boolean" Nullable="false" />
           <Property Name="CodigoMoodle" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="ProyectoEspecial" Relationship="ORBIPEModel.FK_ProyectoEspecialMateriaGrupo_ProyectoEspecial" FromRole="ProyectoEspecialMateriaGrupo" ToRole="ProyectoEspecial" />
+          <NavigationProperty Name="Solicituds" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="ProyectoEspecialMateriaGrupo" ToRole="Solicitud" />
         </EntityType>
         <EntityType Name="Solicitud">
           <Key>
@@ -862,8 +1017,6 @@
           <Property Name="LastUserUpdate" Type="DateTime" Precision="3" />
           <Property Name="Genero" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
           <Property Name="MJFormID" Type="Int32" />
-          <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
-          <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
           <Property Name="CumpleRequisitosMinimos" Type="Boolean" />
           <Property Name="RankingIndice" Type="Int32" />
           <Property Name="CriterioRankingIndice" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
@@ -871,6 +1024,8 @@
           <Property Name="GrupoID2" Type="Int32" />
           <Property Name="UsuarioID" Type="Int32" />
           <Property Name="EstudianteID" Type="Int32" />
+          <NavigationProperty Name="ProyectoEspecialMateriaGrupo" Relationship="ORBIPEModel.FK_Solicitud_ProyectoEspecialMateriaGrupo" FromRole="Solicitud" ToRole="ProyectoEspecialMateriaGrupo" />
+          <NavigationProperty Name="SolicitudAnexoes" Relationship="ORBIPEModel.FK_SolicitudAnexo_Solicitud" FromRole="Solicitud" ToRole="SolicitudAnexo" />
         </EntityType>
         <EntityType Name="SolicitudAnexo">
           <Key>
@@ -992,6 +1147,27 @@
           <NavigationProperty Name="Users" Relationship="ORBIPEModel.FK_User_UserType" FromRole="UserType" ToRole="User" />
           <NavigationProperty Name="UsertTypeSystemAttributes" Relationship="ORBIPEModel.FK_UsertTypeSystemAttribute_UserType" FromRole="UserType" ToRole="UsertTypeSystemAttribute" />
         </EntityType>
+        <EntityType Name="MateriaGrupoNuevo">
+          <Key>
+            <PropertyRef Name="idMateria" />
+            <PropertyRef Name="iDGrupo" />
+          </Key>
+          <Property Name="idMateria" Type="Int32" Nullable="false" />
+          <Property Name="iDGrupo" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreado" Type="DateTime" Precision="3" />
+          <Property Name="Materia" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProyectoEspecialMateriaGrupoSolicitud">
+          <Key>
+            <PropertyRef Name="ProyectoEspecialMateriaGrupoSolicitudID" />
+            <PropertyRef Name="ProyectoEspecialMateriaGrupoID" />
+            <PropertyRef Name="SolicitudID" />
+          </Key>
+          <Property Name="ProyectoEspecialMateriaGrupoSolicitudID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProyectoEspecialMateriaGrupoID" Type="Int32" Nullable="false" />
+          <Property Name="SolicitudID" Type="Int32" Nullable="false" />
+          <Property Name="CupoNumero" Type="Int32" />
+        </EntityType>
         <Association Name="FK_Generic_GenericType">
           <End Type="ORBIPEModel.GenericType" Role="GenericType" Multiplicity="1" />
           <End Type="ORBIPEModel.Generic" Role="Generic" Multiplicity="*" />
@@ -1112,157 +1288,50 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <ComplexType Name="UspGetPeriodo_Result">
-          <Property Type="Int32" Name="IDPeriodo" Nullable="false" />
-          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="100" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionEducacion_Result">
-          <Property Type="String" Name="NivelAcademico" Nullable="true" MaxLength="500" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionINTERNET_Result">
-          <Property Type="String" Name="TieneInternet" Nullable="false" MaxLength="2" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardIntencionPC_Result">
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-          <Property Type="String" Name="TienePC" Nullable="false" MaxLength="2" />
-        </ComplexType>
-        <ComplexType Name="UspReporteIntencion_Result">
-          <Property Type="Int32" Name="IntencionID" Nullable="false" />
-          <Property Type="String" Name="CodigoIntencion" Nullable="true" MaxLength="20" />
-          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
-          <Property Type="DateTime" Name="FechaCreacion" Nullable="false" Precision="23" />
-          <Property Type="String" Name="Email" Nullable="false" MaxLength="100" />
-          <Property Type="String" Name="NOMBRE" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="APELLIDO" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
-          <Property Type="String" Name="TelResidencial" Nullable="true" MaxLength="200" />
-          <Property Type="String" Name="TelCelular" Nullable="true" MaxLength="200" />
-          <Property Type="Int32" Name="CarreraID" Nullable="false" />
-        </ComplexType>
-        <ComplexType Name="DashboardGeneroPorPeriodo_Result">
-          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="DashboardRangoEdadPorPeriodo_Result">
-          <Property Type="String" Name="Descripcion" Nullable="false" MaxLength="13" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <EntityType Name="MeetLogDocente">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="Fecha" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="true" />
-          <Property Name="Nombre_evento" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Descripcion_evento" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Codigo_reunion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Identificador_participante" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
-          <Property Name="Participante_ajeno_organizacion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Tipo_cliente" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Correoelectronico_organizador" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Tipo_producto" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion" Type="Int32" />
-          <Property Name="Valoracion_llamada" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Nombre_participante" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Direccion_IP" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Ciudad" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Pais" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Tiempo_medio_ida_vuelta_red" Type="Int32" />
-          <Property Name="Protocolo_transporte" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Ancho_banda_subida" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Ancho_banda_descarga" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_maxima_paquetes_audio_recibido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_audio_recibido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_recepcion_audio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_tasa_bits_audio_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_maxima_paquetes_audio_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_audio_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_envio_audio" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ID_evento_calendario" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="ID_conferencia" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Fluctuacion_media_recepcion_red" Type="Int32" />
-          <Property Name="Maxima_fluctuacion_recepcion_red" Type="Int32" />
-          <Property Name="Fluctuacion_media_envio_red" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_tasa_bits_capturas_pantalla_video_recibidas" Type="Int32" />
-          <Property Name="Promedio_otogramas_capturas_pantalla_vídeo_recibidas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_largo_capturas_pantalla_video_recibidas" Type="Int32" />
-          <Property Name="Perdida_maxima_paquetes__capturas_pantalla_video_recibidas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_capturas_pantalla_video_recibidas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_recepcion_capturas_pantalla_video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_corto_capturas_de_pantalla_video_recibidas" Type="Int32" />
-          <Property Name="Promedio_capturas_pantalla_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_fotogramas_pantalla_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_lado_largo_capturas_pantalla_de_video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_maxima_paquetes_capturas_de_pantalla_de_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_capturas_pantalla_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_capturas_pantalla_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_corto_capturas_pantalla_video_enviadas" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_fotogramas_video_recibido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_largo_video_recibido" Type="Int32" />
-          <Property Name="Perdida_maxima_paquetes_video_recibido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_video_recibido" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_recepcion_video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_corto_video_recibido" Type="Int32" />
-          <Property Name="Indice_congestion_red" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_tasa_bits_video_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Promedio_fotogramas_video_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_largo_video_enviado" Type="Int32" />
-          <Property Name="Perdida_maxima_paquetes_video_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Perdida_media_paquetes_video_enviado" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Duracion_envio_video" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Mediana_lado_corto_video_enviado" Type="Int32" />
-          <Property Name="Motivo_accion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Descripcion_accion" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Nombres_visibles_objetivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Correoelectronico_objetivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-          <Property Name="Numero_telefono_objetivo" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
-        </EntityType>
-        <ComplexType Name="UspGetDashboardAdmisionCarrera_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionCosteo_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionEdad_Result">
-          <Property Type="String" Name="RangoEdad" Nullable="false" MaxLength="17" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionFecha_Result">
+        <ComplexType Name="UspGetDashboardAdmisionAgendadosPorVenir_Result">
+          <Property Type="Int32" Name="IdAgenda" Nullable="false" />
           <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+          <Property Type="Int32" Name="AgendadosTotal" Nullable="true" />
+          <Property Type="Int32" Name="AgendaronNuevos" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
         </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionGenero_Result">
-          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        <ComplexType Name="UspGetAdmisionAgendados_Result">
+          <Property Type="String" Name="Tel_casa" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Tel_celular" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="tel_Otro" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Apellido" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="Email" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Cedula" Nullable="true" MaxLength="20" />
+          <Property Type="String" Name="Fecha" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="Tanda" Nullable="true" MaxLength="30" />
+          <Property Type="String" Name="Periodo" Nullable="true" MaxLength="25" />
+          </ComplexType>
+        <ComplexType Name="UspBuscaServicioRegistro_Result">
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="String" Name="ncf" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo_personal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estatus_pago" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="fecha_crea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ServicioNombre" Nullable="false" MaxLength="100" />
         </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionInfo_Result">
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-          <Property Type="Int32" Name="Meta" Nullable="false" />
-          <Property Type="String" Name="Evaluados" Nullable="false" MaxLength="9" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionIngresos_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionPeriodoIngreso_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionProvincia_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionTanda_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
-        </ComplexType>
-        <ComplexType Name="UspGetDashboardAdmisionTipoSolicitud_Result">
-          <Property Type="String" Name="Carrera" Nullable="true" />
-          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        <ComplexType Name="UspReporteServiciosRegistro_Result">
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="String" Name="ncf" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo_personal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estatus_pago" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="fecha_crea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ServicioNombre" Nullable="false" MaxLength="100" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -1448,6 +1517,165 @@
             <ResultMapping>
               <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardITLAJVGenero_Result">
                 <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetPeriodo" FunctionName="ORBIPEModel.Store.UspGetPeriodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetPeriodo_Result">
+                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionEducacion" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionEducacion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionEducacion_Result">
+                <ScalarProperty Name="NivelAcademico" ColumnName="NivelAcademico" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionINTERNET" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionINTERNET">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionINTERNET_Result">
+                <ScalarProperty Name="TieneInternet" ColumnName="TieneInternet" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionPC" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionPC">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionPC_Result">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="TienePC" ColumnName="TienePC" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteIntencion" FunctionName="ORBIPEModel.Store.UspReporteIntencion">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteIntencion_Result">
+                <ScalarProperty Name="IntencionID" ColumnName="IntencionID" />
+                <ScalarProperty Name="CodigoIntencion" ColumnName="CodigoIntencion" />
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
+                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="TelResidencial" ColumnName="TelResidencial" />
+                <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
+                <ScalarProperty Name="CarreraID" ColumnName="CarreraID" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DashboardGeneroPorPeriodo" FunctionName="ORBIPEModel.Store.DashboardGeneroPorPeriodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.DashboardGeneroPorPeriodo_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="DashboardRangoEdadPorPeriodo" FunctionName="ORBIPEModel.Store.DashboardRangoEdadPorPeriodo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.DashboardRangoEdadPorPeriodo_Result">
+                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCarrera" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCarrera">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCarrera_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCosteo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCosteo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCosteo_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionEdad">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionEdad_Result">
+                <ScalarProperty Name="RangoEdad" ColumnName="RangoEdad" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionFecha" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionFecha_Result">
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionGenero">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionGenero_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionInfo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionInfo">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionInfo_Result">
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="Meta" ColumnName="Meta" />
+                <ScalarProperty Name="Evaluados" ColumnName="Evaluados" />
+                <ScalarProperty Name="Agendaron" ColumnName="Agendaron" />
+                <ScalarProperty Name="AgendaronAFuturoPorVenir" ColumnName="AgendaronAFuturoPorVenir" />
+                <ScalarProperty Name="AgendaronAsistieron" ColumnName="AgendaronAsistieron" />
+                <ScalarProperty Name="AgendaronAsistieronNo1800" ColumnName="AgendaronAsistieronNo1800" />
+                <ScalarProperty Name="RecordDeNotaEnvaidi" ColumnName="RecordDeNotaEnvaidi" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionIngresos">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionIngresos_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionPeriodoIngreso" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionPeriodoIngreso">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionProvincia" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionProvincia">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionProvincia_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTanda" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTanda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTanda_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTipoSolicitud" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTipoSolicitud">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>
@@ -1712,157 +1940,85 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <FunctionImportMapping FunctionImportName="UspGetPeriodo" FunctionName="ORBIPEModel.Store.UspGetPeriodo">
+          <EntitySetMapping Name="MateriaGrupoNuevoes">
+            <EntityTypeMapping TypeName="ORBIPEModel.MateriaGrupoNuevo">
+              <MappingFragment StoreEntitySet="MateriaGrupoNuevo">
+                <ScalarProperty Name="Materia" ColumnName="Materia" />
+                <ScalarProperty Name="FechaCreado" ColumnName="FechaCreado" />
+                <ScalarProperty Name="iDGrupo" ColumnName="iDGrupo" />
+                <ScalarProperty Name="idMateria" ColumnName="idMateria" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProyectoEspecialMateriaGrupoSolicituds">
+            <EntityTypeMapping TypeName="ORBIPEModel.ProyectoEspecialMateriaGrupoSolicitud">
+              <MappingFragment StoreEntitySet="ProyectoEspecialMateriaGrupoSolicitud">
+                <ScalarProperty Name="CupoNumero" ColumnName="CupoNumero" />
+                <ScalarProperty Name="SolicitudID" ColumnName="SolicitudID" />
+                <ScalarProperty Name="ProyectoEspecialMateriaGrupoID" ColumnName="ProyectoEspecialMateriaGrupoID" />
+                <ScalarProperty Name="ProyectoEspecialMateriaGrupoSolicitudID" ColumnName="ProyectoEspecialMateriaGrupoSolicitudID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionAgendadosPorVenir" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionAgendadosPorVenir">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetPeriodo_Result">
-                <ScalarProperty Name="IDPeriodo" ColumnName="IDPeriodo" />
-                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionEducacion" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionEducacion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionEducacion_Result">
-                <ScalarProperty Name="NivelAcademico" ColumnName="NivelAcademico" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionINTERNET" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionINTERNET">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionINTERNET_Result">
-                <ScalarProperty Name="TieneInternet" ColumnName="TieneInternet" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardIntencionPC" FunctionName="ORBIPEModel.Store.UspGetDashboardIntencionPC">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardIntencionPC_Result">
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="TienePC" ColumnName="TienePC" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspReporteIntencion" FunctionName="ORBIPEModel.Store.UspReporteIntencion">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteIntencion_Result">
-                <ScalarProperty Name="IntencionID" ColumnName="IntencionID" />
-                <ScalarProperty Name="CodigoIntencion" ColumnName="CodigoIntencion" />
-                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
-                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
-                <ScalarProperty Name="APELLIDO" ColumnName="APELLIDO" />
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="TelResidencial" ColumnName="TelResidencial" />
-                <ScalarProperty Name="TelCelular" ColumnName="TelCelular" />
-                <ScalarProperty Name="CarreraID" ColumnName="CarreraID" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DashboardGeneroPorPeriodo" FunctionName="ORBIPEModel.Store.DashboardGeneroPorPeriodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.DashboardGeneroPorPeriodo_Result">
-                <ScalarProperty Name="Genero" ColumnName="Genero" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="DashboardRangoEdadPorPeriodo" FunctionName="ORBIPEModel.Store.DashboardRangoEdadPorPeriodo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.DashboardRangoEdadPorPeriodo_Result">
-                <ScalarProperty Name="Descripcion" ColumnName="Descripcion" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCarrera" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCarrera">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCarrera_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionCosteo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionCosteo">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionCosteo_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionEdad" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionEdad">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionEdad_Result">
-                <ScalarProperty Name="RangoEdad" ColumnName="RangoEdad" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionFecha" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionFecha">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionFecha_Result">
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionAgendadosPorVenir_Result">
+                <ScalarProperty Name="IdAgenda" ColumnName="IdAgenda" />
                 <ScalarProperty Name="Fecha" ColumnName="Fecha" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+                <ScalarProperty Name="AgendadosTotal" ColumnName="AgendadosTotal" />
+                <ScalarProperty Name="AgendaronNuevos" ColumnName="AgendaronNuevos" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionGenero" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionGenero">
+          <FunctionImportMapping FunctionImportName="UspGetAdmisionAgendados" FunctionName="ORBIPEModel.Store.UspGetAdmisionAgendados">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionGenero_Result">
-                <ScalarProperty Name="Genero" ColumnName="Genero" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetAdmisionAgendados_Result">
+                <ScalarProperty Name="Tel_casa" ColumnName="Tel_casa" />
+                <ScalarProperty Name="Tel_celular" ColumnName="Tel_celular" />
+                <ScalarProperty Name="tel_Otro" ColumnName="tel_Otro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Cedula" ColumnName="Cedula" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Tanda" ColumnName="Tanda" />
+                <ScalarProperty Name="Periodo" ColumnName="Periodo" />
+                </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspBuscaServicioRegistro" FunctionName="ORBIPEModel.Store.UspBuscaServicioRegistro">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspBuscaServicioRegistro_Result">
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="correo_personal" ColumnName="correo_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="estatus_pago" ColumnName="estatus_pago" />
+                <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionInfo" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionInfo">
+          <FunctionImportMapping FunctionImportName="UspPostServicioEntrega" FunctionName="ORBIPEModel.Store.UspPostServicioEntrega" />
+          <FunctionImportMapping FunctionImportName="UspReporteServiciosRegistro" FunctionName="ORBIPEModel.Store.UspReporteServiciosRegistro">
             <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionInfo_Result">
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-                <ScalarProperty Name="Meta" ColumnName="Meta" />
-                <ScalarProperty Name="Evaluados" ColumnName="Evaluados" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionIngresos" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionIngresos">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionIngresos_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionPeriodoIngreso" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionPeriodoIngreso">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionPeriodoIngreso_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionProvincia" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionProvincia">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionProvincia_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTanda" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTanda">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTanda_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
-              </ComplexTypeMapping>
-            </ResultMapping>
-          </FunctionImportMapping>
-          <FunctionImportMapping FunctionImportName="UspGetDashboardAdmisionTipoSolicitud" FunctionName="ORBIPEModel.Store.UspGetDashboardAdmisionTipoSolicitud">
-            <ResultMapping>
-              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardAdmisionTipoSolicitud_Result">
-                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
-                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteServiciosRegistro_Result">
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="correo_personal" ColumnName="correo_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="estatus_pago" ColumnName="estatus_pago" />
+                <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

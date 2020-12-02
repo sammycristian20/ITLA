@@ -44,7 +44,8 @@ namespace ITLA_PE_MVC.DATA
         public virtual DbSet<UserLog> UserLogs { get; set; }
         public virtual DbSet<UsertTypeSystemAttribute> UsertTypeSystemAttributes { get; set; }
         public virtual DbSet<UserType> UserTypes { get; set; }
-        public virtual DbSet<MeetLogDocente> MeetLogDocentes { get; set; }
+        public virtual DbSet<MateriaGrupoNuevo> MateriaGrupoNuevoes { get; set; }
+        public virtual DbSet<ProyectoEspecialMateriaGrupoSolicitud> ProyectoEspecialMateriaGrupoSolicituds { get; set; }
     
         public virtual ObjectResult<GetMateriasDisponibles_Result> GetMateriasDisponibles()
         {
@@ -325,6 +326,51 @@ namespace ITLA_PE_MVC.DATA
         public virtual ObjectResult<UspGetDashboardAdmisionTipoSolicitud_Result> UspGetDashboardAdmisionTipoSolicitud()
         {
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionTipoSolicitud_Result>("UspGetDashboardAdmisionTipoSolicitud");
+        }
+    
+        public virtual ObjectResult<UspGetDashboardAdmisionAgendadosPorVenir_Result> UspGetDashboardAdmisionAgendadosPorVenir()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetDashboardAdmisionAgendadosPorVenir_Result>("UspGetDashboardAdmisionAgendadosPorVenir");
+        }
+    
+        public virtual ObjectResult<UspGetAdmisionAgendados_Result> UspGetAdmisionAgendados(Nullable<System.DateTime> date)
+        {
+            var dateParameter = date.HasValue ?
+                new ObjectParameter("Date", date) :
+                new ObjectParameter("Date", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspGetAdmisionAgendados_Result>("UspGetAdmisionAgendados", dateParameter);
+        }
+    
+        public virtual ObjectResult<UspBuscaServicioRegistro_Result> UspBuscaServicioRegistro(Nullable<int> iDfactura)
+        {
+            var iDfacturaParameter = iDfactura.HasValue ?
+                new ObjectParameter("IDfactura", iDfactura) :
+                new ObjectParameter("IDfactura", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspBuscaServicioRegistro_Result>("UspBuscaServicioRegistro", iDfacturaParameter);
+        }
+    
+        public virtual int UspPostServicioEntrega(Nullable<int> iDfactura, Nullable<int> iDusuario, Nullable<System.DateTime> fechaEntrega)
+        {
+            var iDfacturaParameter = iDfactura.HasValue ?
+                new ObjectParameter("IDfactura", iDfactura) :
+                new ObjectParameter("IDfactura", typeof(int));
+    
+            var iDusuarioParameter = iDusuario.HasValue ?
+                new ObjectParameter("IDusuario", iDusuario) :
+                new ObjectParameter("IDusuario", typeof(int));
+    
+            var fechaEntregaParameter = fechaEntrega.HasValue ?
+                new ObjectParameter("FechaEntrega", fechaEntrega) :
+                new ObjectParameter("FechaEntrega", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("UspPostServicioEntrega", iDfacturaParameter, iDusuarioParameter, fechaEntregaParameter);
+        }
+    
+        public virtual ObjectResult<UspReporteServiciosRegistro_Result> UspReporteServiciosRegistro()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteServiciosRegistro_Result>("UspReporteServiciosRegistro");
         }
     }
 }
