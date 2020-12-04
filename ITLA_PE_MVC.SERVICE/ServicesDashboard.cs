@@ -110,9 +110,9 @@ namespace ITLA_PE_MVC.SERVICE
 
         //METODOS PARA QUE ALIMENTAN AL DASHBOARD HOME
 
-        public List<UspGetPeriodo_Result> GetUspGetPeriodo(int periodo)
+        public List<UspGetPeriodo_Result> GetUspGetPeriodo(int recinto, string n_corto, int tipoPeriodo, int naturaleza)
         {
-            return dbContext.UspGetPeriodo(periodo).ToList();
+            return dbContext.UspGetPeriodo(recinto,n_corto,tipoPeriodo,naturaleza).ToList();
         }
 
         public List<UspReporteInscritosSeleccionXCarreraCuatrimestre_Result> UspReporteInscritosSeleccionXCarreraCuatrimestre(int periodo)
@@ -205,6 +205,26 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardAdmisionAgendadosPorVenir().ToList();
         }
 
-        ///////
+        public List<UspGetDashboardRegistroCondicionAcademica_Result> GetDashboardRegistroCondicionAcademica(int idPeriodo)
+        {
+            return dbContext.UspGetDashboardRegistroCondicionAcademica(idPeriodo).ToList();
+        }
+
+        public List<UspGetDashboardRegistroServicioEntregadoFecha_Result> DashboardRegistroServicioEntregadoFecha()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoFecha().ToList();
+        }
+
+        public List<UspGetDashboardRegistroServicioEntregadoUsuario_Result> DashboardRegistroServicioEntregadoUsuario()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoUsuario().ToList();
+        }
+
+        public List<UspGetDashboardRegistroServicioEntregadoTipoServicio_Result> DashboardRegistroServicioEntregadoTipoServicio()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoTipoServicio().ToList();
+        }
+
+
     }
 }
