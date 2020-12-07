@@ -114,6 +114,12 @@
                                     <li data-menu="">
                                         <a class="dropdown-item" href="/ListadoServiciosSinEntregar.aspx">Listado de Servicios sin Entregar</a>                                        
                                     </li>
+                                    <li data-menu="">
+                                        <a class="dropdown-item" href="/ReporteServiciosEntregados.aspx">Reporte de Servicios Entregados</a>                                        
+                                    </li>
+                                    <li data-menu="">
+                                        <a class="dropdown-item" href="/DashboardServiciosRegistro.aspx">Dashboard Servicios</a>                                        
+                                    </li>
                                 </ul>
                             </li>
 

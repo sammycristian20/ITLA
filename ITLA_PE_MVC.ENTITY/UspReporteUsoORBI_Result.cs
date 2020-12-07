@@ -11,10 +11,10 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class UspReporteUsoORBI_Result
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public string Fecha { get; set; }
+        public Nullable<int> Usuarios { get; set; }
+        public Nullable<int> CantidadDeVeces { get; set; }
     }
 }

@@ -13,14 +13,14 @@ namespace ITLA_PE_PORTALADMIN
         {
             if (!IsPostBack)
             {
-                this.RepeaterDates.DataSource = base.ServicesLayer.ServiceRegistro.ReporteServiciosRegistro();
+                this.RepeaterDates.DataSource = base.ServicesLayer.ServiceRegistro.ServicioRegistroReporteSolicitado();
                 this.RepeaterDates.DataBind();
             }
         }
 
         protected void btnUpdate_Click(object sender, EventArgs e)
         {
-            this.RepeaterDates.DataSource = base.ServicesLayer.ServiceRegistro.ReporteServiciosRegistro();
+            this.RepeaterDates.DataSource = base.ServicesLayer.ServiceRegistro.ServicioRegistroReporteSolicitado();
             this.RepeaterDates.DataBind();
         }
     }

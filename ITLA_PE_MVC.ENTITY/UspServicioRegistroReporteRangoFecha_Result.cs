@@ -11,10 +11,13 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class UspServicioRegistroReporteRangoFecha_Result
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public int IDUsuario { get; set; }
+        public string Nombre { get; set; }
+        public string correo_personal { get; set; }
+        public int IDfactura { get; set; }
+        public Nullable<System.DateTime> Fecha_Solicitud { get; set; }
+        public System.DateTime Fecha_Entrega { get; set; }
     }
 }

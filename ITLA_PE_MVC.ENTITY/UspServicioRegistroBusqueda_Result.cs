@@ -11,7 +11,7 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class UspReporteServiciosRegistro_Result
+    public partial class UspServicioRegistroBusqueda_Result
     {
         public int IDfactura { get; set; }
         public string ncf { get; set; }

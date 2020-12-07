@@ -11,10 +11,11 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public string Carrera { get; set; }
+        public Nullable<int> Masculino { get; set; }
+        public Nullable<int> Femenino { get; set; }
+        public Nullable<int> Total { get; set; }
     }
 }

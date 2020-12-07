@@ -10,11 +10,15 @@
 namespace ITLA_PE_MVC.ENTITY
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class OrbiServicioEntrega
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public int ServicioEntregaId { get; set; }
+        public int IDfactura { get; set; }
+        public int IDUsuario { get; set; }
+        public System.DateTime FechaCreacion { get; set; }
+        public System.DateTime FechaEntrega { get; set; }
+        public string Comentario { get; set; }
     }
 }

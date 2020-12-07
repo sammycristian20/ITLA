@@ -42,6 +42,12 @@
             <asp:TextBox ID="FechaEntrega" runat="server" CssClass="form-control date" ></asp:TextBox>
         </div>
 
+             <div class="form-group">
+            <label for="exampleInputPassword1">Comentario
+               
+            </label>
+            <asp:TextBox ID="Comentario" runat="server" CssClass="form-control"></asp:TextBox>
+        </div>
 
 
         <asp:Button ID="btnSave" runat="server" Text="Guardar" CssClass="btn btn-primary"  OnClick="btnSave_Click"/>

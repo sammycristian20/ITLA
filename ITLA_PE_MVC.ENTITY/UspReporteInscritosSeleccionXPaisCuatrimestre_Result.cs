@@ -11,10 +11,9 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class UspReporteInscritosSeleccionXPaisCuatrimestre_Result
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public string Pais { get; set; }
+        public Nullable<int> Cantidad { get; set; }
     }
 }

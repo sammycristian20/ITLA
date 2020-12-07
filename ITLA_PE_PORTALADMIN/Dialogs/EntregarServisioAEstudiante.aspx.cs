@@ -15,7 +15,7 @@ namespace ITLA_PE_PORTALADMIN.Dialogs
             {
                 int facturaID = Request.QueryString["token"].ToInt();
 
-                var factura = base.ServicesLayer.ServiceRegistro.BuscaServicioRegistro(facturaID);
+                var factura = base.ServicesLayer.ServiceRegistro.ServicioRegistroBusqueda(facturaID);
 
                 Nombre.Text = factura.nombre;
                 Apellido.Text = factura.apellido;
@@ -24,6 +24,8 @@ namespace ITLA_PE_PORTALADMIN.Dialogs
                 Matricula.Text = factura.matricula;
 
                 FechaEntrega.Text = DateTime.Today.ToString("dd/MM/yyyy");
+
+
 
 
             }
@@ -36,10 +38,11 @@ namespace ITLA_PE_PORTALADMIN.Dialogs
             int facturaID = Request.QueryString["token"].ToInt();
 
 
-            base.ServicesLayer.ServiceRegistro.PostServicioEntrega(
-                facturaID, 
-                ITLA_PE_MVC.ENTITY.RUNTIME.RunTimeHelper.UserID.Value, 
-                FechaEntrega.Text.ToNuleableDateFromddMMyyyy().Value);
+            base.ServicesLayer.ServiceRegistro.ServicioRegistroInserta(
+                facturaID,
+                ITLA_PE_MVC.ENTITY.RUNTIME.RunTimeHelper.UserID.Value,
+                FechaEntrega.Text.ToNuleableDateFromddMMyyyy().Value,
+                Comentario.Text);
 
 
             ScriptManager.RegisterStartupScript(this, this.GetType(), Guid.NewGuid().ToString().Substring(0, 12), "parent.CloseAndUpdate();", true);

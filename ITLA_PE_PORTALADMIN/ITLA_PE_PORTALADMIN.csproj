@@ -51,7 +51,7 @@
       <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="INFONETWORK.COMMONS">
-      <HintPath>..\..\..\..\..\Desktop\INFONETWORK.COMMONS.dll</HintPath>
+      <HintPath>..\..\..\..\Desktop\INFONETWORK.COMMONS.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -265,6 +265,7 @@
     <Content Include="DashboardAdmision.aspx" />
     <Content Include="DashboardIntencion.aspx" />
     <Content Include="DashboardJueventud.aspx" />
+    <Content Include="DashboardServiciosRegistro.aspx" />
     <Content Include="Dialogs\EntregarServisioAEstudiante.aspx" />
     <Content Include="Global.asax" />
     <Content Include="Home.aspx" />
@@ -272,6 +273,7 @@
     <Content Include="Login.aspx" />
     <Content Include="PrevalidacionJuventud.aspx" />
     <Content Include="PrevalidacionJuventudDetalle.aspx" />
+    <Content Include="ReporteServiciosEntregados.aspx" />
     <Content Include="Reporte\ReporteDetalleIntencion.aspx" />
     <Content Include="Reporte\ReporteDetallePorAgenda.aspx" />
     <Content Include="Web.config" />
@@ -394,6 +396,13 @@
     <Compile Include="DashboardJueventud.aspx.designer.cs">
       <DependentUpon>DashboardJueventud.aspx</DependentUpon>
     </Compile>
+    <Compile Include="DashboardServiciosRegistro.aspx.cs">
+      <DependentUpon>DashboardServiciosRegistro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="DashboardServiciosRegistro.aspx.designer.cs">
+      <DependentUpon>DashboardServiciosRegistro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Dialogs\EntregarServisioAEstudiante.aspx.cs">
       <DependentUpon>EntregarServisioAEstudiante.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -450,6 +459,13 @@
       <DependentUpon>PrevalidacionJuventudDetalle.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReporteServiciosEntregados.aspx.cs">
+      <DependentUpon>ReporteServiciosEntregados.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="ReporteServiciosEntregados.aspx.designer.cs">
+      <DependentUpon>ReporteServiciosEntregados.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Reporte\ReporteDetalleIntencion.aspx.cs">
       <DependentUpon>ReporteDetalleIntencion.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -10,18 +10,21 @@
 namespace ITLA_PE_MVC.ENTITY
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class UspGetAdmisionAgendados_Result
+    public partial class BecasJuventud
     {
+        public string Email { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
-        public string Email { get; set; }
-        public string Cedula { get; set; }
-        public string Fecha { get; set; }
-        public string Tel_casa { get; set; }
-        public string Tel_celular { get; set; }
-        public string tel_Otro { get; set; }
-        public string Tanda { get; set; }
-        public string Periodo { get; set; }
+        public string IdentificacionCedula { get; set; }
+        public System.DateTime FechaNacimiento { get; set; }
+        public string Genero { get; set; }
+        public string TelResidencial { get; set; }
+        public string TelCelular { get; set; }
+        public int SolicitudID { get; set; }
+        public string Calve { get; set; }
+        public Nullable<int> UsuarioID { get; set; }
+        public Nullable<int> EstudianteID { get; set; }
     }
 }

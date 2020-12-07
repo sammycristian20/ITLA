@@ -10,11 +10,12 @@
 namespace ITLA_PE_MVC.ENTITY
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class GetMateriasDisponibles_Result
+    public partial class Secuence
     {
-        public int ProyectoEspecialMateriaGrupoID { get; set; }
-        public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public string SecuenceKey { get; set; }
+        public int LastNumber { get; set; }
+        public System.DateTime LastUpdate { get; set; }
     }
 }

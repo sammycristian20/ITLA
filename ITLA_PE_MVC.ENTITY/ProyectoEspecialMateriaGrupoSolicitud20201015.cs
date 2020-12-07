@@ -10,12 +10,13 @@
 namespace ITLA_PE_MVC.ENTITY
 {
     using System;
+    using System.Collections.Generic;
     
-    public partial class Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result
+    public partial class ProyectoEspecialMateriaGrupoSolicitud20201015
     {
-        public string Carrera { get; set; }
-        public Nullable<int> NuevoIngreso { get; set; }
-        public Nullable<int> Viejos { get; set; }
-        public Nullable<int> Total { get; set; }
+        public int ProyectoEspecialMateriaGrupoSolicitudID { get; set; }
+        public int ProyectoEspecialMateriaGrupoID { get; set; }
+        public int SolicitudID { get; set; }
+        public Nullable<int> CupoNumero { get; set; }
     }
 }
