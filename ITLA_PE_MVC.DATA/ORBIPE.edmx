@@ -75,6 +75,17 @@ warning 6002: The table/view 'ORBIPE.Admin.MateriaGrupoNuevo' does not have a pr
           <Property Name="FechaCreado" Type="datetime" />
           <Property Name="Materia" Type="nvarchar(max)" />
         </EntityType>
+        <EntityType Name="OrbiServicioEntrega">
+          <Key>
+            <PropertyRef Name="ServicioEntregaId" />
+          </Key>
+          <Property Name="ServicioEntregaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDfactura" Type="int" Nullable="false" />
+          <Property Name="IDUsuario" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaEntrega" Type="datetime" Nullable="false" />
+          <Property Name="Comentario" Type="varchar" MaxLength="500" />
+        </EntityType>
         <EntityType Name="ProyectoEspecial">
           <Key>
             <PropertyRef Name="ProyectoEspecialID" />
@@ -411,7 +422,10 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
         <Function Name="UspGetCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetNextSolicitud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetPeriodo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
-          <Parameter Name="Idperiodo" Type="int" Mode="In" />
+          <Parameter Name="idRecinto" Type="int" Mode="In" />
+          <Parameter Name="n_corto" Type="varchar" Mode="In" />
+          <Parameter Name="tipoPeriodo" Type="int" Mode="In" />
+          <Parameter Name="naturaleza" Type="int" Mode="In" />
         </Function>
         <Function Name="UspInsertaMateriasGrupoJuventud" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspMunicipiosPorProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
@@ -423,6 +437,24 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <Parameter Name="FechaEntrega" Type="date" Mode="In" />
         </Function>
         <Function Name="UspProvinciasRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspServicioRegistroBusqueda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="IDfactura" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspServicioRegistroInserta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="IDfactura" Type="int" Mode="In" />
+          <Parameter Name="IDusuario" Type="int" Mode="In" />
+          <Parameter Name="FechaEntrega" Type="date" Mode="In" />
+          <Parameter Name="Comentario" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="UspServicioRegistroReporteCondicionAcademica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspServicioRegistroReporteEntregado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspServicioRegistroReporteRangoFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
+          <Parameter Name="fechaInicial" Type="date" Mode="In" />
+          <Parameter Name="fechaFinal" Type="date" Mode="In" />
+        </Function>
+        <Function Name="UspServicioRegistroReporteSolicitado" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspGetDashboardAdmisionAgendadosPorVenir" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardAdmisionCarrera" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardAdmisionCosteo" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -450,6 +482,15 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
         <Function Name="UspGetDashboardITLAJVIngresos" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVMateria" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspGetDashboardITLAJVProvincia" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardRegistroCondicionAcademica" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspGetDashboardRegistroServicioEntregadoFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardRegistroServicioEntregadoTipoServicio" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardRegistroServicioEntregadoUsuario" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardRegistroServiciosEntregados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetDashboardRegistroServiciosSolicitados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
+        <Function Name="UspGetServiciosRegistroSolicitados" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
         <Function Name="UspReporteInscritosSeleccionCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
@@ -457,6 +498,21 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
         <Function Name="UspReporteInscritosSeleccionXFecha" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXPaisCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
+          <Parameter Name="idPeriodo" Type="int" Mode="In" />
+        </Function>
+        <Function Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard">
           <Parameter Name="idPeriodo" Type="int" Mode="In" />
         </Function>
         <Function Name="UspReporteServiciosRegistro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Dashboard" />
@@ -478,6 +534,7 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <EntitySet Name="Generic" EntityType="Self.Generic" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="GenericType" EntityType="Self.GenericType" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Intencion" EntityType="Self.Intencion" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="OrbiServicioEntrega" EntityType="Self.OrbiServicioEntrega" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="ProyectoEspecial" EntityType="Self.ProyectoEspecial" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="ProyectoEspecialMateriaGrupo" EntityType="Self.ProyectoEspecialMateriaGrupo" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Solicitud" EntityType="Self.Solicitud" Schema="Admin" store:Type="Tables" />
@@ -598,7 +655,10 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <FunctionImport Name="UspGetDashboardITLAJVEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVEducacion_Result)" />
           <FunctionImport Name="UspGetDashboardITLAJVGenero" ReturnType="Collection(ORBIPEModel.UspGetDashboardITLAJVGenero_Result)" />
           <FunctionImport Name="UspGetPeriodo" ReturnType="Collection(ORBIPEModel.UspGetPeriodo_Result)" >
-          <Parameter Name="Idperiodo" Mode="In" Type="Int32" />
+            <Parameter Name="idRecinto" Mode="In" Type="Int32" />
+            <Parameter Name="n_corto" Mode="In" Type="String" />
+            <Parameter Name="tipoPeriodo" Mode="In" Type="Int32" />
+            <Parameter Name="naturaleza" Mode="In" Type="Int32" />
           </FunctionImport>
           <FunctionImport Name="UspGetDashboardIntencionEducacion" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionEducacion_Result)" />
           <FunctionImport Name="UspGetDashboardIntencionINTERNET" ReturnType="Collection(ORBIPEModel.UspGetDashboardIntencionINTERNET_Result)" />
@@ -695,6 +755,49 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
             <Parameter Name="FechaEntrega" Mode="In" Type="DateTime" />
           </FunctionImport>
           <FunctionImport Name="UspReporteServiciosRegistro" ReturnType="Collection(ORBIPEModel.UspReporteServiciosRegistro_Result)" />
+          <EntitySet Name="OrbiServicioEntregas" EntityType="ORBIPEModel.OrbiServicioEntrega" />
+          <FunctionImport Name="UspServicioRegistroBusqueda" ReturnType="Collection(ORBIPEModel.UspServicioRegistroBusqueda_Result)">
+          <Parameter Name="IDfactura" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspServicioRegistroInserta">
+            <Parameter Name="IDfactura" Mode="In" Type="Int32" />
+            <Parameter Name="IDusuario" Mode="In" Type="Int32" />
+            <Parameter Name="FechaEntrega" Mode="In" Type="DateTime" />
+            <Parameter Name="Comentario" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="UspServicioRegistroReporteCondicionAcademica" ReturnType="Collection(ORBIPEModel.UspServicioRegistroReporteCondicionAcademica_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspServicioRegistroReporteEntregado" ReturnType="Collection(ORBIPEModel.UspServicioRegistroReporteEntregado_Result)" />
+          <FunctionImport Name="UspServicioRegistroReporteRangoFecha" ReturnType="Collection(ORBIPEModel.UspServicioRegistroReporteRangoFecha_Result)">
+            <Parameter Name="fechaInicial" Mode="In" Type="DateTime" />
+            <Parameter Name="fechaFinal" Mode="In" Type="DateTime" />
+          </FunctionImport>
+          <FunctionImport Name="UspServicioRegistroReporteSolicitado" ReturnType="Collection(ORBIPEModel.UspServicioRegistroReporteSolicitado_Result)" />
+          <FunctionImport Name="UspGetDashboardRegistroCondicionAcademica" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroCondicionAcademica_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspGetDashboardRegistroServicioEntregadoFecha" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroServicioEntregadoFecha_Result)" />
+          <FunctionImport Name="UspGetDashboardRegistroServicioEntregadoTipoServicio" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroServicioEntregadoTipoServicio_Result)" />
+          <FunctionImport Name="UspGetDashboardRegistroServicioEntregadoUsuario" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroServicioEntregadoUsuario_Result)" />
+          <FunctionImport Name="UspGetDashboardRegistroServiciosEntregados" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroServiciosEntregados_Result)" />
+          <FunctionImport Name="UspGetDashboardRegistroServiciosSolicitados" ReturnType="Collection(ORBIPEModel.UspGetDashboardRegistroServiciosSolicitados_Result)" />
+          <FunctionImport Name="UspGetServiciosRegistroSolicitados" ReturnType="Collection(ORBIPEModel.UspGetServiciosRegistroSolicitados_Result)" />
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXPaisCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXPaisCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result)">
+          <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -862,6 +965,7 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <Property Type="Int32" Name="AgendaronAsistieron" Nullable="true" />
           <Property Type="Int32" Name="AgendaronAsistieronNo1800" Nullable="true" />
           <Property Type="Int32" Name="RecordDeNotaEnvaidi" Nullable="true" />
+          <Property Type="Int32" Name="MetaSolicitudes" Nullable="false" />
         </ComplexType>
         <ComplexType Name="UspGetDashboardAdmisionIngresos_Result">
           <Property Type="String" Name="Carrera" Nullable="true" />
@@ -1333,6 +1437,128 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
           <Property Type="String" Name="ServicioNombre" Nullable="false" MaxLength="100" />
         </ComplexType>
+        <EntityType Name="OrbiServicioEntrega">
+          <Key>
+            <PropertyRef Name="ServicioEntregaId" />
+          </Key>
+          <Property Name="ServicioEntregaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDfactura" Type="Int32" Nullable="false" />
+          <Property Name="IDUsuario" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEntrega" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Comentario" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="UspServicioRegistroBusqueda_Result">
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="String" Name="ncf" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo_personal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="apellido" Nullable="false" MaxLength="50" />
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estatus_pago" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="fecha_crea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ServicioNombre" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspServicioRegistroReporteCondicionAcademica_Result">
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="correo_institucional" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="NombreCompleto" Nullable="true" />
+          <Property Type="Int32" Name="IDcondicion_academica" Nullable="false" />
+          <Property Type="String" Name="CondicionAcademica" Nullable="true" MaxLength="100" />
+        </ComplexType>
+        <ComplexType Name="UspServicioRegistroReporteEntregado_Result">
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="String" Name="ncf" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo_personal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="true" />
+          <Property Type="String" Name="apellido" Nullable="true" />
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estatus_pago" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="fecha_crea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ServicioNombre" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspServicioRegistroReporteRangoFecha_Result">
+          <Property Type="Int32" Name="IDusuario" Nullable="false" />
+          <Property Type="String" Name="Usuario" Nullable="true" MaxLength="151" />
+          <Property Type="DateTime" Name="FechaEntrega" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="Int32" Name="IDEstudiante" Nullable="false" />
+          <Property Type="String" Name="Matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estudiante" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="correo_institucional" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Servicio" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspServicioRegistroReporteSolicitado_Result">
+          <Property Type="Int32" Name="IDfactura" Nullable="false" />
+          <Property Type="String" Name="ncf" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="correo_personal" Nullable="false" MaxLength="100" />
+          <Property Type="String" Name="nombre" Nullable="true" />
+          <Property Type="String" Name="apellido" Nullable="true" />
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="matricula" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="estatus_pago" Nullable="true" MaxLength="2" />
+          <Property Type="DateTime" Name="fecha_crea" Nullable="true" Precision="23" />
+          <Property Type="String" Name="comentario" Nullable="true" MaxLength="1000" />
+          <Property Type="String" Name="ServicioNombre" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroCondicionAcademica_Result">
+          <Property Type="Int32" Name="IDcondicion_academica" Nullable="false" />
+          <Property Type="String" Name="nombre" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroServicioEntregadoFecha_Result">
+          <Property Type="DateTime" Name="FechaEntrega" Nullable="false" Precision="23" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroServicioEntregadoTipoServicio_Result">
+          <Property Type="Int32" Name="IDservicio" Nullable="false" />
+          <Property Type="String" Name="TipoServicio" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroServicioEntregadoUsuario_Result">
+          <Property Type="String" Name="NombreUsuario" Nullable="false" MaxLength="151" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroServiciosEntregados_Result">
+          <Property Type="String" Name="ServicioNombre" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetDashboardRegistroServiciosSolicitados_Result">
+          <Property Type="String" Name="ServicioNombre" Nullable="true" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspGetServiciosRegistroSolicitados_Result">
+          <Property Type="String" Name="Servicio" Nullable="false" MaxLength="100" />
+          <Property Type="Int32" Name="Column1" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroCuatrimestre_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result">
+          <Property Type="String" Name="Genero" Nullable="true" MaxLength="1" />
+          <Property Type="Int32" Name="NuevoIngreso" Nullable="true" />
+          <Property Type="Int32" Name="Viejos" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result">
+          <Property Type="String" Name="Carrera" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Masculino" Nullable="true" />
+          <Property Type="Int32" Name="Femenino" Nullable="true" />
+          <Property Type="Int32" Name="Total" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXPaisCuatrimestre_Result">
+          <Property Type="String" Name="Pais" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
+          <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
+          <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1637,6 +1863,7 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
                 <ScalarProperty Name="AgendaronAsistieron" ColumnName="AgendaronAsistieron" />
                 <ScalarProperty Name="AgendaronAsistieronNo1800" ColumnName="AgendaronAsistieronNo1800" />
                 <ScalarProperty Name="RecordDeNotaEnvaidi" ColumnName="RecordDeNotaEnvaidi" />
+                <ScalarProperty Name="MetaSolicitudes" ColumnName="MetaSolicitudes" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>
@@ -2019,6 +2246,198 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
                 <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
                 <ScalarProperty Name="comentario" ColumnName="comentario" />
                 <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="OrbiServicioEntregas">
+            <EntityTypeMapping TypeName="ORBIPEModel.OrbiServicioEntrega">
+              <MappingFragment StoreEntitySet="OrbiServicioEntrega">
+                <ScalarProperty Name="Comentario" ColumnName="Comentario" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDUsuario" ColumnName="IDUsuario" />
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ServicioEntregaId" ColumnName="ServicioEntregaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroBusqueda" FunctionName="ORBIPEModel.Store.UspServicioRegistroBusqueda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspServicioRegistroBusqueda_Result">
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="correo_personal" ColumnName="correo_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="estatus_pago" ColumnName="estatus_pago" />
+                <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroInserta" FunctionName="ORBIPEModel.Store.UspServicioRegistroInserta" />
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroReporteCondicionAcademica" FunctionName="ORBIPEModel.Store.UspServicioRegistroReporteCondicionAcademica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspServicioRegistroReporteCondicionAcademica_Result">
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="correo_institucional" ColumnName="correo_institucional" />
+                <ScalarProperty Name="NombreCompleto" ColumnName="NombreCompleto" />
+                <ScalarProperty Name="IDcondicion_academica" ColumnName="IDcondicion_academica" />
+                <ScalarProperty Name="CondicionAcademica" ColumnName="CondicionAcademica" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroReporteEntregado" FunctionName="ORBIPEModel.Store.UspServicioRegistroReporteEntregado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspServicioRegistroReporteEntregado_Result">
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="correo_personal" ColumnName="correo_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="estatus_pago" ColumnName="estatus_pago" />
+                <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroReporteRangoFecha" FunctionName="ORBIPEModel.Store.UspServicioRegistroReporteRangoFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspServicioRegistroReporteRangoFecha_Result">
+                <ScalarProperty Name="IDusuario" ColumnName="IDusuario" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="IDEstudiante" ColumnName="IDEstudiante" />
+                <ScalarProperty Name="Matricula" ColumnName="Matricula" />
+                <ScalarProperty Name="estudiante" ColumnName="estudiante" />
+                <ScalarProperty Name="correo_institucional" ColumnName="correo_institucional" />
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspServicioRegistroReporteSolicitado" FunctionName="ORBIPEModel.Store.UspServicioRegistroReporteSolicitado">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspServicioRegistroReporteSolicitado_Result">
+                <ScalarProperty Name="IDfactura" ColumnName="IDfactura" />
+                <ScalarProperty Name="ncf" ColumnName="ncf" />
+                <ScalarProperty Name="correo_personal" ColumnName="correo_personal" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="apellido" ColumnName="apellido" />
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="matricula" ColumnName="matricula" />
+                <ScalarProperty Name="estatus_pago" ColumnName="estatus_pago" />
+                <ScalarProperty Name="fecha_crea" ColumnName="fecha_crea" />
+                <ScalarProperty Name="comentario" ColumnName="comentario" />
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroCondicionAcademica" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroCondicionAcademica">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroCondicionAcademica_Result">
+                <ScalarProperty Name="IDcondicion_academica" ColumnName="IDcondicion_academica" />
+                <ScalarProperty Name="nombre" ColumnName="nombre" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroServicioEntregadoFecha" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroServicioEntregadoFecha">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroServicioEntregadoFecha_Result">
+                <ScalarProperty Name="FechaEntrega" ColumnName="FechaEntrega" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroServicioEntregadoTipoServicio" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroServicioEntregadoTipoServicio">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroServicioEntregadoTipoServicio_Result">
+                <ScalarProperty Name="IDservicio" ColumnName="IDservicio" />
+                <ScalarProperty Name="TipoServicio" ColumnName="TipoServicio" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroServicioEntregadoUsuario" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroServicioEntregadoUsuario">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroServicioEntregadoUsuario_Result">
+                <ScalarProperty Name="NombreUsuario" ColumnName="NombreUsuario" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroServiciosEntregados" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroServiciosEntregados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroServiciosEntregados_Result">
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetDashboardRegistroServiciosSolicitados" FunctionName="ORBIPEModel.Store.UspGetDashboardRegistroServiciosSolicitados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetDashboardRegistroServiciosSolicitados_Result">
+                <ScalarProperty Name="ServicioNombre" ColumnName="ServicioNombre" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspGetServiciosRegistroSolicitados" FunctionName="ORBIPEModel.Store.UspGetServiciosRegistroSolicitados">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspGetServiciosRegistroSolicitados_Result">
+                <ScalarProperty Name="Servicio" ColumnName="Servicio" />
+                <ScalarProperty Name="Column1" ColumnName="Column1" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroCuatrimestre_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroNuevosViejosCuatrimestre_Result">
+                <ScalarProperty Name="Genero" ColumnName="Genero" />
+                <ScalarProperty Name="NuevoIngreso" ColumnName="NuevoIngreso" />
+                <ScalarProperty Name="Viejos" ColumnName="Viejos" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXGeneroYCarreraCuatrimestre_Result">
+                <ScalarProperty Name="Carrera" ColumnName="Carrera" />
+                <ScalarProperty Name="Masculino" ColumnName="Masculino" />
+                <ScalarProperty Name="Femenino" ColumnName="Femenino" />
+                <ScalarProperty Name="Total" ColumnName="Total" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXPaisCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXPaisCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXPaisCuatrimestre_Result">
+                <ScalarProperty Name="Pais" ColumnName="Pais" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UspReporteInscritosSeleccionXProvinciaCuatrimestre" FunctionName="ORBIPEModel.Store.UspReporteInscritosSeleccionXProvinciaCuatrimestre">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
+                <ScalarProperty Name="Provincia" ColumnName="Provincia" />
+                <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

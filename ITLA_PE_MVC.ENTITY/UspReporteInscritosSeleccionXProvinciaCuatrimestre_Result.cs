@@ -11,16 +11,9 @@ namespace ITLA_PE_MVC.ENTITY
 {
     using System;
     
-    public partial class UspGetDashboardAdmisionInfo_Result
+    public partial class UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result
     {
+        public string Provincia { get; set; }
         public Nullable<int> Cantidad { get; set; }
-        public int Meta { get; set; }
-        public string Evaluados { get; set; }
-        public Nullable<int> Agendaron { get; set; }
-        public Nullable<int> AgendaronAFuturoPorVenir { get; set; }
-        public Nullable<int> AgendaronAsistieron { get; set; }
-        public Nullable<int> AgendaronAsistieronNo1800 { get; set; }
-        public Nullable<int> RecordDeNotaEnvaidi { get; set; }
-        public int MetaSolicitudes { get; set; }
     }
 }

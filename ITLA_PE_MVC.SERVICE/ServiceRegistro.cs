@@ -18,23 +18,31 @@ namespace ITLA_PE_MVC.SERVICE
             dbContext = new ITLA_PE_MVC.DATA.ORBIPEEntities();
         }
 
-        public List<UspReporteServiciosRegistro_Result> ReporteServiciosRegistro()
+        //MODIFICAR ESTOS METODOS CON LOS NUEVOS PROCEDURES
+        public UspServicioRegistroBusqueda_Result ServicioRegistroBusqueda(int idFactura)
         {
-            return dbContext.UspReporteServiciosRegistro().ToList();
+            return dbContext.UspServicioRegistroBusqueda(idFactura).SingleOrDefault();
         }
 
-        public UspBuscaServicioRegistro_Result BuscaServicioRegistro(int idFactura)
+        public void ServicioRegistroInserta(int iDfactura, int iDusuario, DateTime fechaEntrega, string comentario)
         {
-            return dbContext.UspBuscaServicioRegistro(idFactura).SingleOrDefault();
-        }
-
-        public void PostServicioEntrega(int iDfactura, int iDusuario, DateTime fechaEntrega)
-        {
-            dbContext.UspPostServicioEntrega(iDfactura, iDusuario, fechaEntrega);
+            dbContext.UspServicioRegistroInserta(iDfactura, iDusuario, fechaEntrega, comentario);
 
         }
 
+        public List<UspServicioRegistroReporteSolicitado_Result> ServicioRegistroReporteSolicitado()
+        {
+            return dbContext.UspServicioRegistroReporteSolicitado().ToList();
+        }
 
+        public List<UspServicioRegistroReporteRangoFecha_Result> ServicioRegistroReporteRangoFecha(DateTime ini, DateTime fin)
+        {
+            return dbContext.UspServicioRegistroReporteRangoFecha(ini,fin).ToList();
+        }
 
+        public List<UspServicioRegistroReporteCondicionAcademica_Result> ServicioRegistroReporteCondicionAcademica(int periodo)
+        {
+            return dbContext.UspServicioRegistroReporteCondicionAcademica(periodo).ToList();
+        }
     }
 }

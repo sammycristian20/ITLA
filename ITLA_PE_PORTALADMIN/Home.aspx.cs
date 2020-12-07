@@ -22,9 +22,15 @@ namespace ITLA_PE_PORTALADMIN
 
                 //Response.Redirect("DashboardJueventud.aspx");
                 //ESTA VARIABLE ES PARA CONTROLAR CUAL ES EL CICLO ACTUAL Y TENERLO COMO CICLO TOPE EN EL DROPDOWNLIST
-                int periodoActual = 172;
+                //int periodoActual = 172;
 
-                ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo(periodoActual);
+                int recinto = 5;
+                string n_corto = "C";
+                int tipoPeriodo = 1;
+                int naturaleza = 1;
+
+
+                ddlPeriodo.DataSource = base.ServicesLayer.ServicesDashboard.GetUspGetPeriodo(recinto,n_corto,tipoPeriodo,naturaleza);
                 ddlPeriodo.DataTextField = "Periodo";
                 ddlPeriodo.DataValueField = "IDPeriodo";
                 ddlPeriodo.DataBind();
