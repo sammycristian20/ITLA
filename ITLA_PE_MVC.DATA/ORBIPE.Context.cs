@@ -47,6 +47,7 @@ namespace ITLA_PE_MVC.DATA
         public virtual DbSet<MateriaGrupoNuevo> MateriaGrupoNuevoes { get; set; }
         public virtual DbSet<ProyectoEspecialMateriaGrupoSolicitud> ProyectoEspecialMateriaGrupoSolicituds { get; set; }
         public virtual DbSet<OrbiServicioEntrega> OrbiServicioEntregas { get; set; }
+        public virtual DbSet<CartaAdmision> CartaAdmisions { get; set; }
     
         public virtual ObjectResult<GetMateriasDisponibles_Result> GetMateriasDisponibles()
         {
@@ -530,6 +531,11 @@ namespace ITLA_PE_MVC.DATA
                 new ObjectParameter("idPeriodo", typeof(int));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result>("UspReporteInscritosSeleccionXProvinciaCuatrimestre", idPeriodoParameter);
+        }
+    
+        public virtual ObjectResult<UspRegistroParaEnviarCarta_Result> UspRegistroParaEnviarCarta()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<UspRegistroParaEnviarCarta_Result>("UspRegistroParaEnviarCarta");
         }
     }
 }
