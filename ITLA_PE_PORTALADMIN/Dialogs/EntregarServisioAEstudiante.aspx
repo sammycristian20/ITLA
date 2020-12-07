@@ -46,7 +46,11 @@
             <label for="exampleInputPassword1">Comentario
                
             </label>
+<<<<<<< HEAD
             <asp:TextBox ID="Comentario" runat="server" CssClass="form-control" MaxLength="500" TextMode="MultiLine"></asp:TextBox>
+=======
+            <asp:TextBox ID="Comentario" runat="server" CssClass="form-control"></asp:TextBox>
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
         </div>
 
 

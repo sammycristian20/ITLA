@@ -16,8 +16,13 @@ namespace ITLA_PE_PORTALADMIN
                 //DateTime inicio = DateTime.Parse("12-01-2020");
                 //DateTime fin = DateTime.Parse("12-30-2020");
 
+<<<<<<< HEAD
                 FechaDesde.Text = (new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1)).ToString("dd/MM/yyyy");// "01/12/2020"; //Poner que tome el 1er del mes actual
                 FechaHasta.Text = DateTime.Today.ToString("dd/MM/yyyy"); ; //Poner que tome el ultimo del mes actual
+=======
+                FechaDesde.Text = "01/12/2020"; //Poner que tome el 1er del mes actual
+                FechaHasta.Text = "30/12/2020"; //Poner que tome el ultimo del mes actual
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
 
 
                 UpdateRepetaer();

@@ -353,7 +353,11 @@
                  type: 'column'
              },
              title: {
+<<<<<<< HEAD
                  text: 'Condición Academica C2-2020'
+=======
+                 text: 'Condicion Academica C2-2020'
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
              },
              /* subtitle: {
                   text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -426,7 +430,11 @@
                  type: 'column'
              },
              title: {
+<<<<<<< HEAD
                  text: 'Condición Academica C1-2020'
+=======
+                 text: 'Condicion Academica C1-2020'
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
              },
              /* subtitle: {
                   text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -497,7 +505,11 @@
                  type: 'column'
              },
              title: {
+<<<<<<< HEAD
                  text: 'Condición Academica C3-2019'
+=======
+                 text: 'Condicion Academica C3-2019'
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
              },
              /* subtitle: {
                   text: 'Click the columns to view versions. Source: <a href="http://statcounter.com" target="_blank">statcounter.com</a>'
@@ -656,7 +668,11 @@
                  type: 'pie'
              },
              title: {
+<<<<<<< HEAD
                  text: 'Relación Tipo de Servicios'
+=======
+                 text: 'Relacion Tipo de Servicios'
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
              },
              tooltip: {
                  //pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'

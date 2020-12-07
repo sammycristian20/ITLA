@@ -77,11 +77,18 @@
 
                                         <th>Realizado por</th>
                                         <th>Fecha Entrega</th>
+<<<<<<< HEAD
                                         <th>Factura</th>
                                         <th>Matricula</th>
                                         <th>Estudiante</th>
                                         <th>Correo</th>
                                         <th>Servicios</th>
+=======
+                                        <th>IDfactura</th>
+                                        <th>Matricula</th>
+                                        <th>Estudiante</th>
+                                        <th>Correo</th>
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
                                         
 
                                     </tr>
@@ -97,7 +104,13 @@
                                                 <td><%# Eval("Matricula") %></td>
                                                 <td><%# Eval("estudiante") %></td>
                                                 <td><%# Eval("correo_institucional") %></td>
+<<<<<<< HEAD
                                                 <td><%# Eval("Servicio") %></td>
+=======
+                                               
+                                                
+                                                >
+>>>>>>> 15630a5ecae458bf1260f092200e9a4afce8a7e2
                                             </tr>
                                         </ItemTemplate>
                                     </asp:Repeater>
