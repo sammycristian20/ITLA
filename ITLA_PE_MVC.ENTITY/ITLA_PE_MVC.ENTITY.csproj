@@ -55,10 +55,7 @@
     <Compile Include="Area.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="BecasJuventud.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="CalculateAgeInYears_Result.cs">
+    <Compile Include="CartaAdmision.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="DashboardGeneroPorPeriodo_Result.cs">
@@ -85,9 +82,6 @@
     <Compile Include="MateriaGrupoNuevo.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="MJ20201012.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
     <Compile Include="MODELS\ModelIntencion.cs" />
     <Compile Include="MODELS\ModelSolicituds.cs" />
     <Compile Include="ORBIPE.cs">
@@ -109,35 +103,20 @@
     <Compile Include="ProyectoEspecialMateriaGrupoSolicitud.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="ProyectoEspecialMateriaGrupoSolicitud20201015.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="ReporteGSuit.cs">
+    <Compile Include="Reporte_Inscritos_Seleccion_XCarrera_Cuatrimestre_Any_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="RUNTIME\RunTimeHelper.cs" />
-    <Compile Include="Secuence.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
     <Compile Include="Setting.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="Solicitud.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="Solicitud20201012.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Solicitud20201015.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
     <Compile Include="SolicitudAnexo.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="SystemAttribute.cs">
-      <DependentUpon>ORBIPE.tt</DependentUpon>
-    </Compile>
-    <Compile Include="TraceTable20201117.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="User.cs">
@@ -153,6 +132,9 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UserType.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspBuscaServicioRegistro_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspGenericItems_Result.cs">
@@ -248,16 +230,37 @@
     <Compile Include="UspGetDashboardRegistroCondicionAcademica_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetDashboardRegistroServicioEntregadoFecha_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardRegistroServicioEntregadoTipoServicio_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardRegistroServicioEntregadoUsuario_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardRegistroServiciosEntregados_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspGetDashboardRegistroServiciosSolicitados_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspGetLoginInfo_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspGetPeriodo_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="UspGetServiciosRegistroSolicitados_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="UspMunicipiosPorProvincia_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspProvinciasRD_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspRegistroParaEnviarCarta_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspReporteInscritosSeleccionCuatrimestre_Result.cs">
@@ -287,10 +290,13 @@
     <Compile Include="UspReporteIntencion_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
-    <Compile Include="UspReporteUsoORBI_Result.cs">
+    <Compile Include="UspReporteServiciosRegistro_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspServicioRegistroBusqueda_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspServicioRegistroReporteCondicionAcademica_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspServicioRegistroReporteEntregado_Result.cs">
@@ -304,17 +310,17 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ORBIPE.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ORBIPE.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="ORBIPE.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>ORBIPE.cs</LastGenOutput>
-    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

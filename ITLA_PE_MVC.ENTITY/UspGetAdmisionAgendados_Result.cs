@@ -13,14 +13,14 @@ namespace ITLA_PE_MVC.ENTITY
     
     public partial class UspGetAdmisionAgendados_Result
     {
+        public string Tel_casa { get; set; }
+        public string Tel_celular { get; set; }
+        public string tel_Otro { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Email { get; set; }
         public string Cedula { get; set; }
         public string Fecha { get; set; }
-        public string Tel_casa { get; set; }
-        public string Tel_celular { get; set; }
-        public string tel_Otro { get; set; }
         public string Tanda { get; set; }
         public string Periodo { get; set; }
     }

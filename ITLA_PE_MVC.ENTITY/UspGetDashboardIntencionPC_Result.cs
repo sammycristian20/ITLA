@@ -13,7 +13,7 @@ namespace ITLA_PE_MVC.ENTITY
     
     public partial class UspGetDashboardIntencionPC_Result
     {
-        public string TienePC { get; set; }
         public Nullable<int> Cantidad { get; set; }
+        public string TienePC { get; set; }
     }
 }

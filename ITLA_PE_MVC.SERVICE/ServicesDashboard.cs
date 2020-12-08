@@ -205,9 +205,26 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspGetDashboardAdmisionAgendadosPorVenir().ToList();
         }
 
-        public List<UspGetDashboardRegistroCondicionAcademica_Result> GetDashboardRegistroCondicionAcademica()
+        public List<UspGetDashboardRegistroCondicionAcademica_Result> GetDashboardRegistroCondicionAcademica(int idPeriodo)
         {
-            return dbContext.UspGetDashboardRegistroCondicionAcademica().ToList();
+            return dbContext.UspGetDashboardRegistroCondicionAcademica(idPeriodo).ToList();
         }
+
+        public List<UspGetDashboardRegistroServicioEntregadoFecha_Result> DashboardRegistroServicioEntregadoFecha()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoFecha().ToList();
+        }
+
+        public List<UspGetDashboardRegistroServicioEntregadoUsuario_Result> DashboardRegistroServicioEntregadoUsuario()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoUsuario().ToList();
+        }
+
+        public List<UspGetDashboardRegistroServicioEntregadoTipoServicio_Result> DashboardRegistroServicioEntregadoTipoServicio()
+        {
+            return dbContext.UspGetDashboardRegistroServicioEntregadoTipoServicio().ToList();
+        }
+
+
     }
 }

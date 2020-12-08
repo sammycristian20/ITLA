@@ -15,12 +15,57 @@ namespace ITLA_PE_PORTALADMIN
     {
 
         /// <summary>
-        /// RepeaterCondicionAcademica control.
+        /// RepeaterC22020 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater RepeaterCondicionAcademica;
+        protected global::System.Web.UI.WebControls.Repeater RepeaterC22020;
+
+        /// <summary>
+        /// RepeaterC12020 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterC12020;
+
+        /// <summary>
+        /// RepeaterC32019 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterC32019;
+
+        /// <summary>
+        /// RepeaterEntregadosFecha control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterEntregadosFecha;
+
+        /// <summary>
+        /// RepeaterEntregadosUsuario control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterEntregadosUsuario;
+
+        /// <summary>
+        /// RepeaterEntregadosTipo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Repeater RepeaterEntregadosTipo;
     }
 }

@@ -118,6 +118,9 @@
                                         <a class="dropdown-item" href="/ReporteServiciosEntregados.aspx">Reporte de Servicios Entregados</a>                                        
                                     </li>
                                     <li data-menu="">
+                                        <a class="dropdown-item" href="ReporteCondicionAcademica.aspx">Reporte Condicion Academica</a>                                        
+                                    </li>
+                                    <li data-menu="">
                                         <a class="dropdown-item" href="/DashboardServiciosRegistro.aspx">Dashboard Servicios</a>                                        
                                     </li>
                                 </ul>

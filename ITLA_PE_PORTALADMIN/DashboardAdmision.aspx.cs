@@ -46,11 +46,11 @@ namespace ITLA_PE_PORTALADMIN
 
                 var info = servicesDashboard.GetDashboardAdmisionInfo().SingleOrDefault();
 
-                literalTotalSolicitudes.Text = info.Cantidad.ToString();
+                literalTotalSolicitudes.Text = String.Format("{0:n0}", info.Cantidad); 
                 
-                literalPreValidados.Text = info.Meta.ToString();
+                literalPreValidados.Text = String.Format("{0:n0}", info.MetaSolicitudes); 
 
-                decimal porcentante = (decimal.Parse(info.Cantidad.ToString()) / decimal.Parse(info.Meta.ToString()));
+                decimal porcentante = (decimal.Parse(info.Cantidad.ToString()) / decimal.Parse(info.MetaSolicitudes.ToString()));
 
                 decimal porcentanteAdmitidos = (decimal.Parse(info.AgendaronAsistieron.Value.ToString()) / decimal.Parse(info.Meta.ToString()));
 

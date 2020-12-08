@@ -13,12 +13,28 @@ namespace ITLA_PE_PORTALADMIN
         {
             if (!IsPostBack)
             {
-                DateTime inicio = DateTime.Parse("12-02-2020");
-                DateTime fin = DateTime.Parse("12-30-2020");
+                //DateTime inicio = DateTime.Parse("12-01-2020");
+                //DateTime fin = DateTime.Parse("12-30-2020");
 
-                RepeaterEntregados.DataSource = ServicesLayer.ServiceRegistro.ServicioRegistroReporteRangoFecha(inicio,fin);
-                RepeaterEntregados.DataBind();
+                FechaDesde.Text = (new DateTime(DateTime.Today.Year, DateTime.Today.Month, 1)).ToString("dd/MM/yyyy");// "01/12/2020"; //Poner que tome el 1er del mes actual
+                FechaHasta.Text = DateTime.Today.ToString("dd/MM/yyyy"); ; //Poner que tome el ultimo del mes actual
+
+
+                UpdateRepetaer();
+
+
             }
+        }
+
+        private void UpdateRepetaer()
+        {
+            RepeaterEntregados.DataSource = ServicesLayer.ServiceRegistro.ServicioRegistroReporteRangoFecha(FechaDesde.Text.ToNuleableDateFromddMMyyyy().Value, FechaHasta.Text.ToNuleableDateFromddMMyyyy().Value);
+            RepeaterEntregados.DataBind();
+        }
+
+        protected void btmBuscar_Click(object sender, EventArgs e)
+        {
+            UpdateRepetaer();
         }
     }
 }

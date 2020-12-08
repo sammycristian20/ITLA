@@ -13,11 +13,14 @@ namespace ITLA_PE_MVC.ENTITY
     
     public partial class UspServicioRegistroReporteRangoFecha_Result
     {
-        public int IDUsuario { get; set; }
-        public string Nombre { get; set; }
-        public string correo_personal { get; set; }
+        public int IDusuario { get; set; }
+        public string Usuario { get; set; }
+        public System.DateTime FechaEntrega { get; set; }
         public int IDfactura { get; set; }
-        public Nullable<System.DateTime> Fecha_Solicitud { get; set; }
-        public System.DateTime Fecha_Entrega { get; set; }
+        public int IDEstudiante { get; set; }
+        public string Matricula { get; set; }
+        public string estudiante { get; set; }
+        public string correo_institucional { get; set; }
+        public string Servicio { get; set; }
     }
 }

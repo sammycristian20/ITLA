@@ -132,7 +132,7 @@
                                                     <div class="col mr-2">
                                                         <div class="text-xs text-white text-uppercase mb-1">Meta de Admitidos</div>
                                                         <div class="h3 mb-0 font-weight-bold text-white">
-                                                            2,000
+                                                            1,500
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">
@@ -195,7 +195,7 @@
                                                     <div class="col mr-2">
                                                         <div class="text-xs text-white text-uppercase mb-1">Meta solicitudes Records de Nota</div>
                                                         <div class="h3 mb-0 font-weight-bold text-white">
-                                                            2,000
+                                                            1,500
                                                         </div>
                                                     </div>
                                                     <div class="col-auto">

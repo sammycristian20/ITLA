@@ -40,6 +40,9 @@ namespace ITLA_PE_MVC.SERVICE
             return dbContext.UspServicioRegistroReporteRangoFecha(ini,fin).ToList();
         }
 
-
+        public List<UspServicioRegistroReporteCondicionAcademica_Result> ServicioRegistroReporteCondicionAcademica(int periodo)
+        {
+            return dbContext.UspServicioRegistroReporteCondicionAcademica(periodo).ToList();
+        }
     }
 }

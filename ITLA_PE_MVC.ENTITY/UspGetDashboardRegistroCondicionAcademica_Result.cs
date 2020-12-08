@@ -13,8 +13,8 @@ namespace ITLA_PE_MVC.ENTITY
     
     public partial class UspGetDashboardRegistroCondicionAcademica_Result
     {
-        public Nullable<int> Cantidad { get; set; }
         public int IDcondicion_academica { get; set; }
         public string nombre { get; set; }
+        public Nullable<int> Cantidad { get; set; }
     }
 }

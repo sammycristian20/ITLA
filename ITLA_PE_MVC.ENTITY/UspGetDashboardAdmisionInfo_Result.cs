@@ -21,5 +21,6 @@ namespace ITLA_PE_MVC.ENTITY
         public Nullable<int> AgendaronAsistieron { get; set; }
         public Nullable<int> AgendaronAsistieronNo1800 { get; set; }
         public Nullable<int> RecordDeNotaEnvaidi { get; set; }
+        public int MetaSolicitudes { get; set; }
     }
 }

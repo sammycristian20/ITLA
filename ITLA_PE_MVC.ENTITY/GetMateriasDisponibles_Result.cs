@@ -15,6 +15,6 @@ namespace ITLA_PE_MVC.ENTITY
     {
         public int ProyectoEspecialMateriaGrupoID { get; set; }
         public string Materia { get; set; }
-        public int VacantesSolicitud { get; set; }
+        public Nullable<int> VacantesSolicitud { get; set; }
     }
 }
