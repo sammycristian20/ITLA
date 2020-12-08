@@ -12,6 +12,17 @@
           <Property Name="AreaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="AreaDescripcion" Type="varchar" MaxLength="100" />
         </EntityType>
+        <EntityType Name="CartaAdmision">
+          <Key>
+            <PropertyRef Name="CartaAdmisionID" />
+          </Key>
+          <Property Name="CartaAdmisionID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IDEstudiante" Type="int" Nullable="false" />
+          <Property Name="FechaCreacion" Type="datetime" Nullable="false" />
+          <Property Name="FechaEnviado" Type="datetime" />
+          <Property Name="EmailEnviado" Type="bit" Nullable="false" />
+          <Property Name="ExcepcionDetalle" Type="varchar(max)" />
+        </EntityType>
         <EntityType Name="Generic">
           <Key>
             <PropertyRef Name="GenericID" />
@@ -437,6 +448,7 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <Parameter Name="FechaEntrega" Type="date" Mode="In" />
         </Function>
         <Function Name="UspProvinciasRD" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
+        <Function Name="UspRegistroParaEnviarCarta" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin" />
         <Function Name="UspServicioRegistroBusqueda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="Admin">
           <Parameter Name="IDfactura" Type="int" Mode="In" />
         </Function>
@@ -531,6 +543,7 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
         </Function>
         <EntityContainer Name="ORBIPEModelStoreContainer">
           <EntitySet Name="Area" EntityType="Self.Area" Schema="Admin" store:Type="Tables" />
+          <EntitySet Name="CartaAdmision" EntityType="Self.CartaAdmision" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Generic" EntityType="Self.Generic" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="GenericType" EntityType="Self.GenericType" Schema="Admin" store:Type="Tables" />
           <EntitySet Name="Intencion" EntityType="Self.Intencion" Schema="Admin" store:Type="Tables" />
@@ -798,6 +811,8 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
           <FunctionImport Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre" ReturnType="Collection(ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result)">
           <Parameter Name="idPeriodo" Mode="In" Type="Int32" />
           </FunctionImport>
+          <EntitySet Name="CartaAdmisions" EntityType="ORBIPEModel.CartaAdmision" />
+          <FunctionImport Name="UspRegistroParaEnviarCarta" ReturnType="Collection(ORBIPEModel.UspRegistroParaEnviarCarta_Result)" />
           </EntityContainer>
         <ComplexType Name="GetMateriasDisponibles_Result">
           <Property Type="Int32" Name="ProyectoEspecialMateriaGrupoID" Nullable="false" />
@@ -1558,6 +1573,29 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
         <ComplexType Name="UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
           <Property Type="String" Name="Provincia" Nullable="true" MaxLength="100" />
           <Property Type="Int32" Name="Cantidad" Nullable="true" />
+        </ComplexType>
+        <EntityType Name="CartaAdmision">
+          <Key>
+            <PropertyRef Name="CartaAdmisionID" />
+          </Key>
+          <Property Name="CartaAdmisionID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IDEstudiante" Type="Int32" Nullable="false" />
+          <Property Name="FechaCreacion" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="FechaEnviado" Type="DateTime" Precision="3" />
+          <Property Name="EmailEnviado" Type="Boolean" Nullable="false" />
+          <Property Name="ExcepcionDetalle" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <ComplexType Name="UspRegistroParaEnviarCarta_Result">
+          <Property Type="Int32" Name="IDestudiante" Nullable="false" />
+          <Property Type="String" Name="FECHA" Nullable="true" MaxLength="4000" />
+          <Property Type="String" Name="ESTUDIANTE" Nullable="true" />
+          <Property Type="String" Name="MATRICULA" Nullable="true" MaxLength="15" />
+          <Property Type="String" Name="CARRERA" Nullable="true" />
+          <Property Type="String" Name="FECHACONVOCATORIA" Nullable="false" MaxLength="23" />
+          <Property Type="String" Name="FECHAPERIODO" Nullable="false" MaxLength="18" />
+          <Property Type="String" Name="FECHANUEGOINGRESO" Nullable="false" MaxLength="22" />
+          <Property Type="String" Name="FECHAAMBIENTACION" Nullable="false" MaxLength="21" />
+          <Property Type="String" Name="FECHAINICIODOCENCIA" Nullable="false" MaxLength="16" />
         </ComplexType>
         </Schema>
     </edmx:ConceptualModels>
@@ -2438,6 +2476,34 @@ warning 6002: The table/view 'ORBIPE.Admin.ProyectoEspecialMateriaGrupoSolicitud
               <ComplexTypeMapping TypeName="ORBIPEModel.UspReporteInscritosSeleccionXProvinciaCuatrimestre_Result">
                 <ScalarProperty Name="Provincia" ColumnName="Provincia" />
                 <ScalarProperty Name="Cantidad" ColumnName="Cantidad" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <EntitySetMapping Name="CartaAdmisions">
+            <EntityTypeMapping TypeName="ORBIPEModel.CartaAdmision">
+              <MappingFragment StoreEntitySet="CartaAdmision">
+                <ScalarProperty Name="ExcepcionDetalle" ColumnName="ExcepcionDetalle" />
+                <ScalarProperty Name="EmailEnviado" ColumnName="EmailEnviado" />
+                <ScalarProperty Name="FechaEnviado" ColumnName="FechaEnviado" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="IDEstudiante" ColumnName="IDEstudiante" />
+                <ScalarProperty Name="CartaAdmisionID" ColumnName="CartaAdmisionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="UspRegistroParaEnviarCarta" FunctionName="ORBIPEModel.Store.UspRegistroParaEnviarCarta">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="ORBIPEModel.UspRegistroParaEnviarCarta_Result">
+                <ScalarProperty Name="IDestudiante" ColumnName="IDestudiante" />
+                <ScalarProperty Name="FECHA" ColumnName="FECHA" />
+                <ScalarProperty Name="ESTUDIANTE" ColumnName="ESTUDIANTE" />
+                <ScalarProperty Name="MATRICULA" ColumnName="MATRICULA" />
+                <ScalarProperty Name="CARRERA" ColumnName="CARRERA" />
+                <ScalarProperty Name="FECHACONVOCATORIA" ColumnName="FECHACONVOCATORIA" />
+                <ScalarProperty Name="FECHAPERIODO" ColumnName="FECHAPERIODO" />
+                <ScalarProperty Name="FECHANUEGOINGRESO" ColumnName="FECHANUEGOINGRESO" />
+                <ScalarProperty Name="FECHAAMBIENTACION" ColumnName="FECHAAMBIENTACION" />
+                <ScalarProperty Name="FECHAINICIODOCENCIA" ColumnName="FECHAINICIODOCENCIA" />
               </ComplexTypeMapping>
             </ResultMapping>
           </FunctionImportMapping>

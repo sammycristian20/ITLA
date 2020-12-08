@@ -55,6 +55,9 @@
     <Compile Include="Area.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
+    <Compile Include="CartaAdmision.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
     <Compile Include="DashboardGeneroPorPeriodo_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
@@ -255,6 +258,9 @@
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspProvinciasRD_Result.cs">
+      <DependentUpon>ORBIPE.tt</DependentUpon>
+    </Compile>
+    <Compile Include="UspRegistroParaEnviarCarta_Result.cs">
       <DependentUpon>ORBIPE.tt</DependentUpon>
     </Compile>
     <Compile Include="UspReporteInscritosSeleccionCuatrimestre_Result.cs">
